@@ -11,6 +11,7 @@ function App(): JSX.Element {
       setLoading(false);
     }, 2000);
   }, []);
+
   return loading ? (
     <SplashScreen />
   ) : (
