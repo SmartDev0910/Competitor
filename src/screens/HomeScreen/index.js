@@ -1,11 +1,69 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT, COLOR_WHITE} from '../../constants/colors';
+import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
+import {
+  COLOR_FONT_DEFAULT,
+  COLOR_PINK,
+  COLOR_WHITE,
+} from '../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 
 import MainFragment from './mainFragment';
 
+const LicensedTab = () => <MainFragment />;
+const UnlicensedTab = () => (
+  <View>
+    <Text>Unlicensed Tab</Text>
+  </View>
+);
+
 function HomeScreen() {
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    {key: 'licensed', title: 'Licensed'},
+    {key: 'unlicensed', title: 'Unlicensed'},
+    {key: 'clinics', title: 'Clinics'},
+    {key: 'other', title: 'Other'},
+    {key: 'follow', title: 'Follow'},
+  ]);
+
+  const renderScene = SceneMap({
+    licensed: LicensedTab,
+    unlicensed: UnlicensedTab,
+    clinics: UnlicensedTab,
+    other: UnlicensedTab,
+    follow: UnlicensedTab,
+  });
+
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      indicatorStyle={{backgroundColor: COLOR_PINK}}
+      style={{backgroundColor: COLOR_WHITE}}
+      scrollEnabled
+      renderLabel={({route, focused, color}) => (
+        <View
+          style={{
+            flex: 1,
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              color: focused ? COLOR_PINK : COLOR_FONT_DEFAULT,
+              fontSize: 14,
+              fontFamily: FONT_REGULAR,
+            }}
+            numberOfLines={1}
+            ellipsizeMode="tail">
+            {route.title}
+          </Text>
+        </View>
+      )}
+    />
+  );
+
   return (
     <View style={styles.Wrapper}>
       <View style={styles.Appbar}>
@@ -17,7 +75,13 @@ function HomeScreen() {
         <Button title="Group" />
         <Button title="Map" />
       </View>
-      <MainFragment />
+      <TabView
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        renderTabBar={renderTabBar}
+        onIndexChange={setIndex}
+        initialLayout={initialLayout}
+      />
     </View>
   );
 }
@@ -26,11 +90,13 @@ const styles = StyleSheet.create({
   Wrapper: {
     backgroundColor: COLOR_WHITE,
     justifyContent: 'center',
+    flex: 1,
   },
   Appbar: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    padding: 20,
+    paddingHorizontal: 24,
+    paddingTop: 20,
     // gap: 1,
   },
   CurrentLocation: {

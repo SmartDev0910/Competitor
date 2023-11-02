@@ -4,12 +4,22 @@ import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   HomeScreen,
-  MessageScreen,
+  EventsScreen,
   NotificationScreen,
+  MessageScreen,
   ProfileScreen,
-  FollowingScreen,
 } from '../screens';
-import {HomeSelectedIcon, HomeIcon} from '../constants';
+import {
+  HomeWeakIcon,
+  HomeSelectedIcon,
+  TodayWeakIcon,
+  TodaySelectedIcon,
+  DoorbellWeakIcon,
+  DoorbellSelectedIcon,
+  MessagingWeakIcon,
+  MessagingSelectedIcon,
+} from '../constants/icons';
+import {UserAvatarImage} from '../constants/images';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,25 +41,25 @@ function HomeStackScreen() {
     </HomeStack.Navigator>
   );
 }
-const FollwingStack = createStackNavigator();
+const NotificationStack = createStackNavigator();
 
-function FollowingStackScreen() {
+function NotificationStackScreen() {
   return (
-    <FollwingStack.Navigator>
-      <FollwingStack.Screen
-        name="FollowingScreen"
-        component={FollowingScreen}
+    <NotificationStack.Navigator>
+      <NotificationStack.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
         options={{
           headerShown: false,
         }}
       />
-    </FollwingStack.Navigator>
+    </NotificationStack.Navigator>
   );
 }
 
 const MessageStack = createStackNavigator();
 
-function MessageStackcreen() {
+function MessageStackScreen() {
   return (
     <MessageStack.Navigator>
       <MessageStack.Screen
@@ -62,19 +72,19 @@ function MessageStackcreen() {
     </MessageStack.Navigator>
   );
 }
-const NotificationsStack = createStackNavigator();
+const EventsStack = createStackNavigator();
 
-function NotificationsStackScreen() {
+function EventsStackScreen() {
   return (
-    <NotificationsStack.Navigator>
-      <NotificationsStack.Screen
-        name="NotificationScreen"
-        component={NotificationScreen}
+    <EventsStack.Navigator>
+      <EventsStack.Screen
+        name="EventsScreen"
+        component={EventsScreen}
         options={{
           headerShown: false,
         }}
       />
-    </NotificationsStack.Navigator>
+    </EventsStack.Navigator>
   );
 }
 
@@ -110,26 +120,67 @@ export default AppStack = () => {
             tabBarIcon: ({focused, color, size}) => {
               return (
                 <Image
-                  source={focused ? HomeIcon : HomeSelectedIcon}
+                  source={focused ? HomeSelectedIcon : HomeWeakIcon}
                   style={styles.bottombaricon}
                 />
               );
             },
           }}
         />
-        <Tab.Screen name="Notifications" component={NotificationsStackScreen} />
-        <Tab.Screen name="Profile" component={ProfileStackScreen} />
-        <Tab.Screen name="Messagen" component={MessageStackcreen} />
-        <Tab.Screen name="Following" component={FollowingStackScreen} />
+        <Tab.Screen
+          name="Events"
+          component={EventsStackScreen}
+          options={{
+            tabBarIcon: ({focused, color, size}) => {
+              return (
+                <Image
+                  source={focused ? TodaySelectedIcon : TodayWeakIcon}
+                  style={styles.bottombaricon}
+                />
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Notification"
+          component={NotificationScreen}
+          options={{
+            tabBarIcon: ({focused, color, size}) => {
+              return (
+                <Image
+                  source={focused ? DoorbellSelectedIcon : DoorbellWeakIcon}
+                  style={styles.bottombaricon}
+                />
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Message"
+          component={MessageStackScreen}
+          options={{
+            tabBarIcon: ({focused, color, size}) => {
+              return (
+                <Image
+                  source={focused ? MessagingSelectedIcon : MessagingWeakIcon}
+                  style={styles.bottombaricon}
+                />
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileStackScreen}
+          options={{
+            tabBarIcon: ({focused, color, size}) => {
+              return (
+                <Image source={UserAvatarImage} style={styles.bottombaricon} />
+              );
+            },
+          }}
+        />
       </Tab.Navigator>
-      {/* <Stack.Navigator
-        screenOptions={{
-          gestureEnabled: true,
-          headerShown: false,
-          ...TransitionPresets.SlideFromRightIOS,
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator> */}
     </SafeAreaView>
   );
 };
