@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   Wrapper: {
     backgroundColor: COLOR_WHITE,
     justifyContent: 'center',
-    margin: 24,
+    marginHorizontal: 24,
   },
 });
 
