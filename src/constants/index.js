@@ -94,8 +94,8 @@ import UserGroupsIcon from '../assets/icons/UserGroups.png';
 import UserShieldIcon from '../assets/icons/UserShield.png';
 import YearOfHorseIcon from '../assets/icons/YearOfHorse.png';
 
-// assets -> imagesß
-import UserAvatar from '../assets/images/UserAvatar';
+// assets -> images
+import UserAvatar from '../assets/images/UserAvatar.png';
 
 // Images
 export const Images = {
