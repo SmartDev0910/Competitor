@@ -80,7 +80,6 @@ function HomeScreen() {
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         onIndexChange={setIndex}
-        initialLayout={initialLayout}
       />
     </View>
   );
