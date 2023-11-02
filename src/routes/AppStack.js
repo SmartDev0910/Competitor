@@ -8,6 +8,7 @@ import {
   NotificationScreen,
   MessageScreen,
   ProfileScreen,
+  SearchScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -23,17 +24,22 @@ import {UserAvatarImage} from '../constants/images';
 
 const Tab = createBottomTabNavigator();
 
-const Stack = createStackNavigator();
-
 // Stack Navigator for each of the screens
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator initialRouteName="HomeScreen">
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
         options={{
           headerShown: false,
         }}
@@ -143,7 +149,7 @@ export default AppStack = () => {
         />
         <Tab.Screen
           name="Notification"
-          component={NotificationScreen}
+          component={NotificationStackScreen}
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (

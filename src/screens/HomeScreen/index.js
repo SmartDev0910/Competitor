@@ -1,14 +1,21 @@
 import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import {
+  COLOR_FONT_COMMENT,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
-
-import MainFragment from './mainFragment';
+import ImageButton from '../../components/home/ImageButton';
+import MainFragment from './MainFragment';
+import {
+  DataTransferIcon,
+  MapIcon,
+  DropDownIcon,
+  SearchIcon,
+} from '../../constants/icons';
 
 const LicensedTab = () => <MainFragment />;
 const UnlicensedTab = () => (
@@ -17,7 +24,7 @@ const UnlicensedTab = () => (
   </View>
 );
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: 'licensed', title: 'Licensed'},
@@ -68,12 +75,33 @@ function HomeScreen() {
     <View style={styles.Wrapper}>
       <View style={styles.Appbar}>
         <View style={styles.CurrentLocation}>
-          <Text style={styles.LocationTitle}>Current Location</Text>
-          <Text style={styles.LocationDetail}>Middleburg, VA</Text>
+          <View style={styles.LocationView}>
+            <Text style={styles.LocationTitle}>Current Location</Text>
+            <Image source={DropDownIcon} style={styles.DropDownIcon} />
+          </View>
+          <Text
+            style={styles.LocationDetail}
+            onPress={() => navigation.navigate('SearchScreen')}>
+            Middleburg, VA
+          </Text>
         </View>
-        <Button title="Search" />
-        <Button title="Group" />
-        <Button title="Map" />
+        <View style={styles.AppTopButtonView}>
+          <ImageButton
+            source={SearchIcon}
+            style={styles.TopButton}
+            viewStyle={styles.TopButtonView}
+          />
+          <ImageButton
+            source={DataTransferIcon}
+            style={styles.TopButton}
+            viewStyle={styles.TopButtonView}
+          />
+          <ImageButton
+            source={MapIcon}
+            style={styles.TopButton}
+            viewStyle={styles.TopButtonView}
+          />
+        </View>
       </View>
       <TabView
         navigationState={{index, routes}}
@@ -94,6 +122,7 @@ const styles = StyleSheet.create({
   Appbar: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 24,
     paddingTop: 20,
     // gap: 1,
@@ -110,6 +139,29 @@ const styles = StyleSheet.create({
     fontFamily: FONT_BOLD,
     fontSize: 13,
     color: COLOR_FONT_DEFAULT,
+  },
+  TopButton: {
+    width: 24,
+    height: 24,
+  },
+  TopButtonView: {
+    borderWidth: 1,
+    borderColor: COLOR_FONT_COMMENT,
+    borderRadius: 45,
+    padding: 6,
+  },
+  AppTopButtonView: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  LocationView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  DropDownIcon: {
+    width: 10,
+    height: 5,
   },
 });
 
