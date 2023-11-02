@@ -1,0 +1,62 @@
+import {
+  LicensedHorseMatch_01_01Image,
+  LicensedHorseMatch_12_14Image,
+  LicensedHorseMatch_12_15Image,
+  LogoPegasusWarrior1Image,
+  LogoPegasusWarrior2Image,
+  LogoPegasusWarrior3Image,
+} from '../images';
+
+export default [
+  {
+    introImages: [
+      LicensedHorseMatch_12_14Image,
+      LicensedHorseMatch_12_14Image,
+      LicensedHorseMatch_12_14Image,
+      LicensedHorseMatch_12_14Image,
+      LicensedHorseMatch_12_14Image,
+    ],
+    day: '12',
+    month: 'DEC',
+    logo: LogoPegasusWarrior3Image,
+    title: 'Wellington Global Winter Classic 2022',
+    discipline: 'Hunter Jumper',
+    prize: 'Grand Prix, Level 6',
+    place: 'Wellington, Florida',
+    registrationDate: 'Registrations: Nov 15 - Dec 8',
+  },
+  {
+    introImages: [
+      LicensedHorseMatch_12_15Image,
+      LicensedHorseMatch_12_15Image,
+      LicensedHorseMatch_12_15Image,
+      LicensedHorseMatch_12_15Image,
+      LicensedHorseMatch_12_15Image,
+    ],
+    day: '15',
+    month: 'DEC',
+    logo: LogoPegasusWarrior2Image,
+    title: 'Wellington Global Winter Classic 2022',
+    discipline: 'Hunter Jumper',
+    prize: 'Grand Prix, Level 6',
+    place: 'Wellington, Florida',
+    registrationDate: 'Registrations: Nov 15 - Dec 8',
+  },
+  {
+    introImages: [
+      LicensedHorseMatch_01_01Image,
+      LicensedHorseMatch_01_01Image,
+      LicensedHorseMatch_01_01Image,
+      LicensedHorseMatch_01_01Image,
+      LicensedHorseMatch_01_01Image,
+    ],
+    day: '01',
+    month: 'JAN',
+    logo: LogoPegasusWarrior1Image,
+    title: 'Wellington Global Winter Classic 2022',
+    discipline: 'Hunter Jumper',
+    prize: 'Grand Prix, Level 6',
+    place: 'Wellington, Florida',
+    registrationDate: 'Registrations: Nov 15 - Dec 8',
+  },
+];
