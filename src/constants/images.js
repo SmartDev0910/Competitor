@@ -53,3 +53,5 @@ export const EventImage3 = require('../assets/images/EventImage3.png');
 export const EventImage4 = require('../assets/images/EventImage4.png');
 export const MapMarsWinterImage = require('../assets/images/MapMarsWinter.png');
 export const MapWellingtonImage = require('../assets/images/MapWellington.png');
+export const RedNoBorderLogoImage = require('../assets/images/RedNoBorderLogo.png');
+export const TransparentLogoImage = require('../assets/images/TransparentLogo.png');

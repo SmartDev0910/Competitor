@@ -1,22 +1,29 @@
 import React from 'react';
-import {Text, View, ScrollView, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet} from 'react-native';
+import {COLOR_PINK} from '../../constants/colors';
+import {TransparentLogoImage} from '../../constants/images';
 
 function SplashScreen() {
   return (
-    <ScrollView style={{backgroundColor: '#FFF'}}>
-      <View style={styles.Wrapper}>
-        <Text>Your Splash Screen</Text>
-      </View>
-    </ScrollView>
+    <View style={styles.Wrapper}>
+      <Image
+        source={TransparentLogoImage}
+        style={styles.TransparentLogoImage}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   Wrapper: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLOR_PINK,
     flex: 1,
-    padding: 40,
-    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  TransparentLogoImage: {
+    width: 180,
+    height: 180,
   },
 });
 
