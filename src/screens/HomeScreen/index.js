@@ -16,6 +16,7 @@ import {
   DropDownIcon,
   SearchIcon,
 } from '../../constants/icons';
+import FilterEventsModal from '../../components/home/FilterEventsModal';
 
 const LicensedTab = () => <MainFragment />;
 const UnlicensedTab = () => (
@@ -26,6 +27,7 @@ const UnlicensedTab = () => (
 
 function HomeScreen({navigation}) {
   const [index, setIndex] = useState(0);
+  const [modalVisible, setModalVisible] = React.useState(false);
   const [routes] = useState([
     {key: 'licensed', title: 'Licensed'},
     {key: 'unlicensed', title: 'Unlicensed'},
@@ -71,6 +73,10 @@ function HomeScreen({navigation}) {
     />
   );
 
+  const handleFilterEvents = () => {
+    setModalVisible(true);
+  };
+
   return (
     <View style={styles.Wrapper}>
       <View style={styles.Appbar}>
@@ -95,6 +101,7 @@ function HomeScreen({navigation}) {
             source={DataTransferIcon}
             style={styles.TopButton}
             viewStyle={styles.TopButtonView}
+            onPress={handleFilterEvents}
           />
           <ImageButton
             source={MapIcon}
@@ -108,6 +115,10 @@ function HomeScreen({navigation}) {
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         onIndexChange={setIndex}
+      />
+      <FilterEventsModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
     </View>
   );

@@ -6,3 +6,5 @@ export const COLOR_FONT_COMMENT = 'rgba(18, 43, 70, 0.50)';
 export const COLOR_BUTTON_DEFAULT = 'rgba(18, 43, 70, 0.70)';
 export const COLOR_SEARCH_TEXT = '#F6F7FB';
 export const COLOR_EVENT_BORDER = '#D3DAEE';
+export const COLOR_MODAL_OVERLAY = 'rgba(0, 0, 0, 0.30)';
+export const COLOR_BUTTON_CANCEL = '#E7EAED';
