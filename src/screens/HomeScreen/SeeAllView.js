@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import {
   COLOR_FONT_DEFAULT,
@@ -12,8 +12,18 @@ import ItemsListFragment from './ItemsListFragment';
 
 const LicensedTab = () => <ItemsListFragment />;
 const UnlicensedTab = () => (
-  <View>
+  <View style={styles.TabViewWrapper}>
     <Text>Unlicensed Tab</Text>
+  </View>
+);
+const ClinicsTab = () => (
+  <View style={styles.TabViewWrapper}>
+    <Text>Clinics Tab</Text>
+  </View>
+);
+const OtherTab = () => (
+  <View style={styles.TabViewWrapper}>
+    <Text>Other Tab</Text>
   </View>
 );
 
@@ -29,8 +39,8 @@ function SeeAllView() {
   const renderScene = SceneMap({
     licensed: LicensedTab,
     unlicensed: UnlicensedTab,
-    clinics: UnlicensedTab,
-    other: UnlicensedTab,
+    clinics: ClinicsTab,
+    other: OtherTab,
   });
 
   const renderTabBar = props => (
@@ -60,5 +70,15 @@ function SeeAllView() {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  TabViewWrapper: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+});
 
 export default SeeAllView;

@@ -27,8 +27,26 @@ const LicensedMapViewTab = () => (
   <Image source={MapMarsWinterImage} style={styles.MapMarsWinterImage} />
 );
 const UnlicensedTab = () => (
-  <View>
-    <Text>Tab</Text>
+  <View style={styles.TabViewWrapper}>
+    <Text>Unlicensed Tab</Text>
+  </View>
+);
+
+const ClinicsTab = () => (
+  <View style={styles.TabViewWrapper}>
+    <Text>Clinics Tab</Text>
+  </View>
+);
+
+const OtherTab = () => (
+  <View style={styles.TabViewWrapper}>
+    <Text>Other Tab</Text>
+  </View>
+);
+
+const FollowTab = () => (
+  <View style={styles.TabViewWrapper}>
+    <Text>Follow Tab</Text>
   </View>
 );
 
@@ -48,9 +66,9 @@ function HomeScreen({navigation}) {
   const renderScene = SceneMap({
     licensed: mapViewVisible ? LicensedMapViewTab : LicensedTab,
     unlicensed: UnlicensedTab,
-    clinics: UnlicensedTab,
-    other: UnlicensedTab,
-    follow: UnlicensedTab,
+    clinics: ClinicsTab,
+    other: OtherTab,
+    follow: FollowTab,
   });
 
   const renderTabBar = props => (
@@ -201,6 +219,13 @@ const styles = StyleSheet.create({
     height: 5,
   },
   MapMarsWinterImage: {
+    width: '100%',
+    height: '100%',
+  },
+  TabViewWrapper: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     height: '100%',
   },

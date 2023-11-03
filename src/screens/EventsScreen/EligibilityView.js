@@ -1,0 +1,50 @@
+import React from 'react';
+import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {COLOR_FONT_DEFAULT} from '../../constants/colors';
+import {FONT_REGULAR} from '../../constants/fonts';
+import EligibilityEvents from '../../constants/events/eligibility';
+import EligibilityPane from '../../components/events/EligibilityPane';
+
+const EligibilityView = () => {
+  return (
+    <ScrollView>
+      <View style={styles.Wrapper}>
+        <View style={styles.HeadWrapper}>
+          <Text style={styles.HeadFont}>3 issues found</Text>
+        </View>
+        {EligibilityEvents.map((item, index) => {
+          return (
+            <EligibilityPane
+              key={index}
+              image={item.image}
+              title={item.title}
+              statusText={item.statusText}
+            />
+          );
+        })}
+      </View>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  Wrapper: {
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 12,
+  },
+  HeadWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  HeadFont: {
+    color: COLOR_FONT_DEFAULT,
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    lineHeight: 34,
+  },
+});
+
+export default EligibilityView;

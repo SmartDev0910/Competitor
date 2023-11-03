@@ -7,8 +7,8 @@ import {
   EventsScreen,
   NotificationScreen,
   MessageScreen,
-  ProfileScreen,
   SearchScreen,
+  FollowingScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -42,6 +42,13 @@ function HomeStackScreen() {
       <HomeStack.Screen
         name="SearchScreen"
         component={SearchScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="EventsScreen"
+        component={EventsScreen}
         options={{
           headerShown: false,
         }}
@@ -96,19 +103,19 @@ function EventsStackScreen() {
   );
 }
 
-const ProfileStack = createStackNavigator();
+const FollowingStack = createStackNavigator();
 
-function ProfileStackScreen() {
+function FollowingStackScreen() {
   return (
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen
-        name="ProfileScreen"
-        component={ProfileScreen}
+    <FollowingStack.Navigator>
+      <FollowingStack.Screen
+        name="FollowingScreen"
+        component={FollowingScreen}
         options={{
           headerShown: false,
         }}
       />
-    </ProfileStack.Navigator>
+    </FollowingStack.Navigator>
   );
 }
 
@@ -197,15 +204,17 @@ export default AppStack = () => {
           }}
         />
         <Tab.Screen
-          name="Profile"
-          component={ProfileStackScreen}
+          name="Following"
+          component={FollowingStackScreen}
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
                 <View style={styles.TabBarIcon}>
                   <Image
                     source={UserAvatarImage}
-                    style={styles.bottombaricon}
+                    style={
+                      focused ? styles.UserAvatarImage : styles.bottombaricon
+                    }
                   />
                   {focused ? <Divider style={styles.Divider} /> : ''}
                 </View>
@@ -234,10 +243,17 @@ const styles = StyleSheet.create({
     height: 2,
     backgroundColor: COLOR_PINK,
     width: 18,
-    marginTop: 2,
+    marginTop: 4,
   },
   TabBarIcon: {
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  UserAvatarImage: {
+    width: 30,
+    height: 30,
+    borderWidth: 1,
+    borderColor: COLOR_PINK,
+    borderRadius: 45,
   },
 });

@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 24,
     marginBottom: 40,
+    marginTop: 10,
   },
 });
 
