@@ -1,26 +1,21 @@
 import React from 'react';
 import {View, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_WHITE} from '../../constants/colors';
-import MatchPane from '../../components/home/MatchPane';
-import LicensedHorseMatchs from '../../constants/home/licensedHorseMatchs';
+import Events from '../../constants/home/events';
+import EventPane from '../../components/home/EventPane';
 
-function MainFragment() {
+function ItemsListFragment() {
   return (
     <ScrollView style={styles.ScrollWrapper}>
       <View style={styles.Wrapper}>
-        {LicensedHorseMatchs.map((item, index) => {
+        {Events.map((item, index) => {
           return (
-            <MatchPane
+            <EventPane
               key={index}
-              introImages={item.introImages}
-              day={item.day}
-              month={item.month}
-              logo={item.logo}
               title={item.title}
-              discipline={item.discipline}
-              prize={item.prize}
-              place={item.place}
-              registrationDate={item.registrationDate}
+              image={item.image}
+              date={item.date}
+              location={item.location}
             />
           );
         })}
@@ -41,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainFragment;
+export default ItemsListFragment;
