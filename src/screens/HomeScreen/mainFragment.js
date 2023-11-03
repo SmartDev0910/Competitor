@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_WHITE} from '../../constants/colors';
-import MatchPane from '../../components/home/MatchPane';
+import MatchPane from '../../components/home/matchPane';
 import LicensedHorseMatchs from '../../constants/home/licensedHorseMatchs';
 
-function MainFragment() {
+const MainFragment = () => {
   return (
     <ScrollView style={styles.ScrollWrapper}>
       <View style={styles.Wrapper}>
@@ -27,7 +27,7 @@ function MainFragment() {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   ScrollWrapper: {

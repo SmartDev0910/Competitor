@@ -9,25 +9,34 @@ import {
 } from '../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 import ImageButton from '../../components/home/ImageButton';
-import MainFragment from './MainFragment';
+
 import {
   DataTransferIcon,
   MapIcon,
+  MapOutlinedIcon,
   DropDownIcon,
   SearchIcon,
 } from '../../constants/icons';
 import FilterEventsModal from '../../components/home/FilterEventsModal';
+import {MapMarsWinterImage} from '../../constants/images';
+import SearchModal from '../../components/home/SearchModal';
+import MainFragment from './mainFragment';
 
 const LicensedTab = () => <MainFragment />;
+const LicensedMapViewTab = () => (
+  <Image source={MapMarsWinterImage} style={styles.MapMarsWinterImage} />
+);
 const UnlicensedTab = () => (
   <View>
-    <Text>Unlicensed Tab</Text>
+    <Text>Tab</Text>
   </View>
 );
 
 function HomeScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [mapViewVisible, setMapViewVisible] = React.useState(false);
+  const [searchModalVisible, setSearchModalVisible] = React.useState(false);
   const [routes] = useState([
     {key: 'licensed', title: 'Licensed'},
     {key: 'unlicensed', title: 'Unlicensed'},
@@ -37,7 +46,7 @@ function HomeScreen({navigation}) {
   ]);
 
   const renderScene = SceneMap({
-    licensed: LicensedTab,
+    licensed: mapViewVisible ? LicensedMapViewTab : LicensedTab,
     unlicensed: UnlicensedTab,
     clinics: UnlicensedTab,
     other: UnlicensedTab,
@@ -75,6 +84,16 @@ function HomeScreen({navigation}) {
 
   const handleFilterEvents = () => {
     setModalVisible(true);
+    setMapViewVisible(false);
+  };
+
+  const handleMapView = () => {
+    setMapViewVisible(!mapViewVisible);
+  };
+
+  const handleSearchModal = () => {
+    setSearchModalVisible(true);
+    setMapViewVisible(false);
   };
 
   return (
@@ -96,6 +115,7 @@ function HomeScreen({navigation}) {
             source={SearchIcon}
             style={styles.TopButton}
             viewStyle={styles.TopButtonView}
+            onPress={handleSearchModal}
           />
           <ImageButton
             source={DataTransferIcon}
@@ -104,9 +124,11 @@ function HomeScreen({navigation}) {
             onPress={handleFilterEvents}
           />
           <ImageButton
-            source={MapIcon}
+            source={mapViewVisible ? MapOutlinedIcon : MapIcon}
             style={styles.TopButton}
             viewStyle={styles.TopButtonView}
+            active={mapViewVisible}
+            onPress={handleMapView}
           />
         </View>
       </View>
@@ -119,6 +141,10 @@ function HomeScreen({navigation}) {
       <FilterEventsModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
+      />
+      <SearchModal
+        modalVisible={searchModalVisible}
+        setModalVisible={setSearchModalVisible}
       />
     </View>
   );
@@ -173,6 +199,10 @@ const styles = StyleSheet.create({
   DropDownIcon: {
     width: 10,
     height: 5,
+  },
+  MapMarsWinterImage: {
+    width: '100%',
+    height: '100%',
   },
 });
 

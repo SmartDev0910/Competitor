@@ -7,6 +7,7 @@ import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
+  COLOR_FONT_DIVIDER,
 } from '../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 import {ArrowLeftImage, ArrowRightImage} from '../../constants/images';
@@ -106,7 +107,7 @@ function SearchScreen({navigation}) {
           />
         </View>
       </View>
-      <Divider />
+      <Divider style={styles.Divider} />
       {isSeeAllShow ? (
         <SeeAllView />
       ) : (
@@ -204,6 +205,12 @@ const styles = StyleSheet.create({
     color: COLOR_PINK,
     fontFamily: FONT_REGULAR,
     fontSize: 14,
+  },
+  Divider: {
+    height: 1,
+    backgroundColor: COLOR_FONT_DIVIDER,
+    width: '100%',
+    marginVertical: 20,
   },
 });
 

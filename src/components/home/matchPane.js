@@ -1,12 +1,18 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
-import {COLOR_FONT_DEFAULT, COLOR_PINK} from '../../constants/colors';
+import {
+  COLOR_FONT_DEFAULT,
+  COLOR_GREY,
+  COLOR_PINK,
+  COLOR_WHITE,
+} from '../../constants/colors';
 import {
   PrizeIcon,
   YearOfHorseIcon,
   LocationIcon,
   CalendarIcon,
+  BookmarkSelectedIcon,
 } from '../../constants/icons';
 import {
   UserOval1Image,
@@ -29,6 +35,17 @@ const MatchPane = ({
     <View style={styles.View}>
       <View style={styles.AdImageView}>
         <Image source={introImages[0]} style={styles.AdImageView} />
+        <View style={styles.DateView}>
+          <Text style={styles.DayFont}>{day}</Text>
+          <Text style={styles.DayFont}>{month}</Text>
+        </View>
+        <Image source={logo} style={styles.LogoImage} />
+        <View style={styles.BookmarkView}>
+          <Image
+            source={BookmarkSelectedIcon}
+            style={styles.BookmarkSelectedIcon}
+          />
+        </View>
       </View>
       <Text style={styles.TitleText}>{title}</Text>
       <View style={styles.DetailView}>
@@ -146,6 +163,52 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: COLOR_FONT_DEFAULT,
     lineHeight: 20,
+  },
+  DateView: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    width: 45,
+    height: 45,
+    backgroundColor: COLOR_GREY,
+    borderRadius: 6,
+    backdropFilter: 'blur(3px)',
+  },
+  DayFont: {
+    color: COLOR_PINK,
+    fontFamily: FONT_BOLD,
+    fontSize: 14,
+    lineHeight: 15,
+    textTransform: 'uppercase',
+  },
+  LogoImage: {
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+    width: 45,
+    height: 45,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: COLOR_WHITE,
+  },
+  BookmarkView: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 30,
+    height: 30,
+    borderRadius: 6,
+    backgroundColor: COLOR_GREY,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backdropFilter: 'blur(3px)',
+  },
+  BookmarkSelectedIcon: {
+    width: 14,
+    height: 14,
   },
 });
 

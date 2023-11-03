@@ -1,6 +1,6 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Image} from 'react-native';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import {SafeAreaView, StyleSheet, View, Image} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   HomeScreen,
@@ -21,7 +21,8 @@ import {
   MessagingSelectedIcon,
 } from '../constants/icons';
 import {UserAvatarImage} from '../constants/images';
-import {COLOR_WHITE} from '../constants/colors';
+import {COLOR_PINK, COLOR_WHITE} from '../constants/colors';
+import Divider from '../components/home/Divider';
 
 const Tab = createBottomTabNavigator();
 
@@ -124,7 +125,7 @@ export default AppStack = () => {
             elevation: 0,
           },
           tabBarItemStyle: {
-            marginTop: 29,
+            marginTop: 27,
           },
         }}>
         <Tab.Screen
@@ -133,10 +134,13 @@ export default AppStack = () => {
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
-                <Image
-                  source={focused ? HomeSelectedIcon : HomeWeakIcon}
-                  style={styles.bottombaricon}
-                />
+                <View style={styles.TabBarIcon}>
+                  <Image
+                    source={focused ? HomeSelectedIcon : HomeWeakIcon}
+                    style={styles.bottombaricon}
+                  />
+                  {focused ? <Divider style={styles.Divider} /> : ''}
+                </View>
               );
             },
           }}
@@ -147,10 +151,13 @@ export default AppStack = () => {
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
-                <Image
-                  source={focused ? TodaySelectedIcon : TodayWeakIcon}
-                  style={styles.bottombaricon}
-                />
+                <View style={styles.TabBarIcon}>
+                  <Image
+                    source={focused ? TodaySelectedIcon : TodayWeakIcon}
+                    style={styles.bottombaricon}
+                  />
+                  {focused ? <Divider style={styles.Divider} /> : ''}
+                </View>
               );
             },
           }}
@@ -161,10 +168,13 @@ export default AppStack = () => {
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
-                <Image
-                  source={focused ? DoorbellSelectedIcon : DoorbellWeakIcon}
-                  style={styles.bottombaricon}
-                />
+                <View style={styles.TabBarIcon}>
+                  <Image
+                    source={focused ? DoorbellSelectedIcon : DoorbellWeakIcon}
+                    style={styles.bottombaricon}
+                  />
+                  {focused ? <Divider style={styles.Divider} /> : ''}
+                </View>
               );
             },
           }}
@@ -175,10 +185,13 @@ export default AppStack = () => {
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
-                <Image
-                  source={focused ? MessagingSelectedIcon : MessagingWeakIcon}
-                  style={styles.bottombaricon}
-                />
+                <View style={styles.TabBarIcon}>
+                  <Image
+                    source={focused ? MessagingSelectedIcon : MessagingWeakIcon}
+                    style={styles.bottombaricon}
+                  />
+                  {focused ? <Divider style={styles.Divider} /> : ''}
+                </View>
               );
             },
           }}
@@ -189,7 +202,13 @@ export default AppStack = () => {
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
-                <Image source={UserAvatarImage} style={styles.bottombaricon} />
+                <View style={styles.TabBarIcon}>
+                  <Image
+                    source={UserAvatarImage}
+                    style={styles.bottombaricon}
+                  />
+                  {focused ? <Divider style={styles.Divider} /> : ''}
+                </View>
               );
             },
           }}
@@ -210,5 +229,15 @@ const styles = StyleSheet.create({
   bottombaricon: {
     width: 30,
     height: 30,
+  },
+  Divider: {
+    height: 2,
+    backgroundColor: COLOR_PINK,
+    width: 18,
+    marginTop: 2,
+  },
+  TabBarIcon: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
