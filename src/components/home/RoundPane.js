@@ -3,9 +3,9 @@ import {View, Text, StyleSheet} from 'react-native';
 import {FONT_REGULAR} from '../../constants/fonts';
 import {COLOR_FONT_COMMENT, COLOR_EVENT_BORDER} from '../../constants/colors';
 
-const RoundPane = ({text}) => {
+const RoundPane = ({text, style}) => {
   return (
-    <View style={styles.View}>
+    <View style={[styles.View, style]}>
       <Text style={styles.Text}>{text}</Text>
     </View>
   );
@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 15,
     height: 54,
     borderRadius: 10,
     borderWidth: 1,

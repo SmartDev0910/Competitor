@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLOR_FONT_COMMENT,
     borderRadius: 45,
-    padding: 6,
+    padding: 3,
   },
   AppTopButtonView: {
     flexDirection: 'row',

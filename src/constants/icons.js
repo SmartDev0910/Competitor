@@ -104,3 +104,5 @@ export const YearOfHorseIcon = require('../assets/icons/YearOfHorse.png');
 export const YearOfHorseOutlinedIcon = require('../assets/icons/YearOfHorseOutlined.png');
 export const DropDownIcon = require('../assets/icons/DropDown.png');
 export const ArrowRightIcon = require('../assets/icons/ArrowRight.png');
+export const ArrowRightPinkIcon = require('../assets/icons/ArrowRightPink.png');
+export const ArrowLeftIcon = require('../assets/icons/ArrowLeft.png');

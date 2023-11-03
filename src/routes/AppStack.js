@@ -21,6 +21,7 @@ import {
   MessagingSelectedIcon,
 } from '../constants/icons';
 import {UserAvatarImage} from '../constants/images';
+import {COLOR_WHITE} from '../constants/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -118,6 +119,13 @@ export default AppStack = () => {
         screenOptions={{
           headerShown: false,
           tabBarShowLabel: false,
+          tabBarStyle: {
+            height: 58,
+            elevation: 0,
+          },
+          tabBarItemStyle: {
+            marginTop: 29,
+          },
         }}>
         <Tab.Screen
           name="Home"
@@ -196,7 +204,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#281034',
+    marginTop: 44,
+    backgroundColor: COLOR_WHITE,
   },
   bottombaricon: {
     width: 30,

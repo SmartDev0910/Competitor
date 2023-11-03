@@ -1,17 +1,47 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {COLOR_FONT_COMMENT, COLOR_EVENT_BORDER} from '../../constants/colors';
+import {
+  COLOR_EVENT_BORDER,
+  COLOR_FONT_COMMENT,
+  COLOR_PINK,
+  COLOR_PINK_THIN,
+} from '../../constants/colors';
 
-const Discipline = ({icon, text, rightIcon}) => {
+const Discipline = ({
+  icon,
+  text,
+  selected,
+  selectedIcon,
+  selectedRightIcon,
+  onPress,
+  rightIcon,
+  style,
+}) => {
   return (
-    <View style={styles.View}>
-      <View style={styles.LeftView}>
-        <Image source={icon} style={styles.Icon} />
-        <Text style={styles.Text}>{text}</Text>
-      </View>
-      <Image source={rightIcon} style={styles.RightIcon} />
-    </View>
+    <>
+      {selected ? (
+        <TouchableOpacity
+          style={[styles.View, styles.SelectedItem, style]}
+          onPress={onPress}>
+          <View style={styles.LeftView}>
+            <Image source={selectedIcon} style={styles.Icon} />
+            <Text style={[styles.Text, styles.SelectedText]}>{text}</Text>
+          </View>
+          <Image source={selectedRightIcon} style={styles.RightIcon} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={[styles.View, styles.DefaultItem, style]}
+          onPress={onPress}>
+          <View style={styles.LeftView}>
+            <Image source={icon} style={styles.Icon} />
+            <Text style={[styles.Text, styles.DefaultText]}>{text}</Text>
+          </View>
+          <Image source={rightIcon} style={styles.RightIcon} />
+        </TouchableOpacity>
+      )}
+    </>
   );
 };
 
@@ -24,6 +54,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     height: 54,
     borderRadius: 10,
+  },
+  SelectedItem: {
+    borderWidth: 1,
+    borderColor: COLOR_PINK_THIN,
+    backgroundColor: COLOR_PINK_THIN,
+  },
+  DefaultItem: {
     borderWidth: 1,
     borderColor: COLOR_EVENT_BORDER,
   },
@@ -33,9 +70,14 @@ const styles = StyleSheet.create({
   },
   Text: {
     fontFamily: FONT_REGULAR,
-    color: COLOR_FONT_COMMENT,
     fontSize: 14,
     marginLeft: 24,
+  },
+  SelectedText: {
+    color: COLOR_PINK,
+  },
+  DefaultText: {
+    color: COLOR_FONT_COMMENT,
   },
   RightIcon: {
     width: 4.2,
