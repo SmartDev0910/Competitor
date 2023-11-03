@@ -48,6 +48,7 @@ export const LocationIcon = require('../assets/icons/Location.png');
 export const LockIcon = require('../assets/icons/Lock.png');
 export const LogoIcon = require('../assets/icons/Logo.png');
 export const MapIcon = require('../assets/icons/Map.png');
+export const MapOutlinedIcon = require('../assets/icons/MapOutlined.png');
 export const MedalIcon = require('../assets/icons/Medal.png');
 export const MessagingIcon = require('../assets/icons/Messaging.png');
 export const MessagingWeakIcon = require('../assets/icons/MessagingWeak.png');
