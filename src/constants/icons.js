@@ -107,3 +107,5 @@ export const DropDownIcon = require('../assets/icons/DropDown.png');
 export const ArrowRightIcon = require('../assets/icons/ArrowRight.png');
 export const ArrowRightPinkIcon = require('../assets/icons/ArrowRightPink.png');
 export const ArrowLeftIcon = require('../assets/icons/ArrowLeft.png');
+export const SendThinIcon = require('../assets/icons/SendThin.png');
+export const SearchThinIcon = require('../assets/icons/SearchThin.png');

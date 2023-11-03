@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   Pressable,
-  ScrollView,
+  Image,
   View,
   SafeAreaView,
   Dimensions,
@@ -18,27 +18,36 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import SliderPane from './SliderPane';
+import {MapWellingtonImage} from '../../constants/images';
+import RadiusSliderPane from './RadiusSliderPane';
+import SearchMapText from './SearchMapText';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const SearchModal = ({modalVisible, setModalVisible}) => {
   const [sliderValue, setSliderValue] = useState(0);
+  const [searchText, setSearchText] = useState('');
 
   const handleSliderValueChange = value => {
     setSliderValue(value);
   };
 
-  const FilterEventsView = (
+  const onChangeText = text => {
+    setSearchText(text);
+  };
+
+  const MapView = (
     <>
-      <Text style={styles.SubTitleFont}>Category</Text>
-      <SliderPane
-        style={styles.SliderPane}
-        title="Price"
-        value={sliderValue}
-        onValueChange={handleSliderValueChange}
-      />
+      <Image source={MapWellingtonImage} style={styles.MapWellingtonImage} />
+      <View style={styles.ScrollView}>
+        <RadiusSliderPane
+          style={styles.RadiusSliderPane}
+          title="Select radius"
+          value={sliderValue}
+          onValueChange={handleSliderValueChange}
+        />
+      </View>
     </>
   );
 
@@ -47,9 +56,14 @@ const SearchModal = ({modalVisible, setModalVisible}) => {
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Filter Events</Text>
-          <ScrollView style={styles.ScrollView}>{FilterEventsView}</ScrollView>
-
+          <View style={styles.BottomButton}>
+            <SearchMapText
+              style={[styles.SearchMapText]}
+              value={searchText}
+              onChangeText={onChangeText}
+            />
+          </View>
+          {MapView}
           <View style={styles.BottomButton}>
             <Pressable style={[styles.Button, styles.ButtonApply]}>
               <Text style={[styles.TextStyle, styles.TextApply]}>Save</Text>
@@ -134,12 +148,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 34,
   },
-  SliderPane: {
+  RadiusSliderPane: {
     marginVertical: 10,
     width: '100%',
   },
   BottomButton: {
     marginHorizontal: 24,
+  },
+  SearchMapText: {
+    width: '82%',
+    height: 50,
+  },
+  MapWellingtonImage: {
+    width: '100%',
+    height: '50%',
+    marginVertical: 20,
   },
 });
 

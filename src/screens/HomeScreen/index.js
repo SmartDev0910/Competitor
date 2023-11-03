@@ -84,6 +84,7 @@ function HomeScreen({navigation}) {
 
   const handleFilterEvents = () => {
     setModalVisible(true);
+    setMapViewVisible(false);
   };
 
   const handleMapView = () => {
@@ -92,6 +93,7 @@ function HomeScreen({navigation}) {
 
   const handleSearchModal = () => {
     setSearchModalVisible(true);
+    setMapViewVisible(false);
   };
 
   return (
