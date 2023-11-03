@@ -153,7 +153,6 @@ const FilterEventsModal = ({modalVisible, setModalVisible}) => {
             <View style={styles.DisciplineViewHeader}>
               <ImageButton
                 source={ArrowLeftIcon}
-                style={styles.BackButton}
                 onPress={() => handleSelectDiscipline()}
               />
               <Text style={styles.DisciplineSelectFont}>Select discipline</Text>

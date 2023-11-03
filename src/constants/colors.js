@@ -12,3 +12,5 @@ export const COLOR_MODAL_OVERLAY = 'rgba(0, 0, 0, 0.30)';
 export const COLOR_BUTTON_CANCEL = '#E7EAED';
 export const COLOR_GREY = 'rgba(255, 255, 255, 0.70)';
 export const COLOR_PINK_TRANSPARENT = 'rgba(247, 7, 79, 0.7)';
+export const COLOR_BLACK = '#000';
+export const COLOR_SKELETON_BORDER = '#E6E6E6';

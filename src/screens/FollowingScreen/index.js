@@ -1,42 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import Appbar from '../../components/events/Appbar';
-import ProfilePane from '../../components/events/ProfilePane';
 import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
 } from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import {TammyWilliamsImage} from '../../constants/images';
-import AuthorityView from './AuthorityView';
-import EligibilityView from './EligibilityView';
-import EventsView from './EventsView';
-import PastEventsView from './PastEventsView';
+import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
+import NoFollowingView from './NoFollowingView';
+import FollowerView from './FollowerView';
+import OrganizersView from './OrganizersView';
 
-function EventsScreen({navigation}) {
+function FollowingScreen({navigation}) {
   const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [routes] = useState([
-    {key: 'events', title: 'Events'},
-    {key: 'past', title: 'Past'},
-    {key: 'eligibility', title: 'Eligibility'},
-    {key: 'authority', title: 'Authority'},
+    {key: 'team', title: 'Team'},
+    {key: 'organizers', title: 'Organizers'},
   ]);
 
-  const EventsTab = () => <EventsView />;
+  const TeamTab = () =>
+    loading ? <NoFollowingView /> : <FollowerView navigation={navigation} />;
 
-  const PastTab = () => <PastEventsView />;
-
-  const EligibilityTab = () => <EligibilityView />;
-
-  const AuthorityTab = () => <AuthorityView />;
+  const OrganizersTab = () => <OrganizersView navigation={navigation} />;
 
   const renderScene = SceneMap({
-    events: EventsTab,
-    past: PastTab,
-    eligibility: EligibilityTab,
-    authority: AuthorityTab,
+    team: TeamTab,
+    organizers: OrganizersTab,
   });
 
   const renderTabBar = props => (
@@ -57,14 +47,15 @@ function EventsScreen({navigation}) {
     />
   );
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <View style={styles.Wrapper}>
-      <Appbar navigation={navigation} />
-      <ProfilePane
-        image={TammyWilliamsImage}
-        fullName="Tammy Williams"
-        statusText="Mr Tobins • Trainer • Unauthorized"
-      />
+      <Text style={styles.FollowingFont}>Following</Text>
       <TabView
         navigationState={{index, routes}}
         renderScene={renderScene}
@@ -77,10 +68,17 @@ function EventsScreen({navigation}) {
 
 const styles = StyleSheet.create({
   Wrapper: {
-    paddingBottom: 20,
     backgroundColor: COLOR_WHITE,
     justifyContent: 'center',
     flex: 1,
+  },
+  FollowingFont: {
+    fontFamily: FONT_BOLD,
+    fontSize: 20,
+    color: COLOR_FONT_DEFAULT,
+    marginVertical: 10,
+    paddingHorizontal: 24,
+    paddingTop: 20,
   },
   TabViewWrapper: {
     flexDirection: 'column',
@@ -91,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EventsScreen;
+export default FollowingScreen;

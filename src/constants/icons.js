@@ -109,3 +109,4 @@ export const ArrowRightPinkIcon = require('../assets/icons/ArrowRightPink.png');
 export const ArrowLeftIcon = require('../assets/icons/ArrowLeft.png');
 export const SendThinIcon = require('../assets/icons/SendThin.png');
 export const SearchThinIcon = require('../assets/icons/SearchThin.png');
+export const RubberStampIcon = require('../assets/icons/RubberStamp.png');
