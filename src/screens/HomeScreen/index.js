@@ -9,7 +9,7 @@ import {
 } from '../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 import ImageButton from '../../components/home/ImageButton';
-import MainFragment from './MainFragment';
+
 import {
   DataTransferIcon,
   MapIcon,
@@ -20,6 +20,7 @@ import {
 import FilterEventsModal from '../../components/home/FilterEventsModal';
 import {MapMarsWinterImage} from '../../constants/images';
 import SearchModal from '../../components/home/SearchModal';
+import MainFragment from './mainFragment';
 
 const LicensedTab = () => <MainFragment />;
 const LicensedMapViewTab = () => (
