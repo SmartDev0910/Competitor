@@ -19,7 +19,7 @@ const OrganizersView = ({navigation}) => {
               title={item.title}
               image={item.image}
               statusText={item.statusText}
-              onPress={() => navigation.navigate('EventsScreen')}
+              onPress={() => navigation.navigate('OrganizerProfileScreen')}
             />
           );
         })}

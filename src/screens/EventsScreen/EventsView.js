@@ -4,8 +4,14 @@ import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
 import Events from '../../constants/events/events';
 import EventPane from '../../components/events/EventPane';
+import ExhibitorsModal from '../../components/events/ExhibitorsModal';
 
-const EventsView = () => {
+const EventsView = ({navigation}) => {
+  const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
+  const handleShowExibitorsModal = () => {
+    setShowExhibitorsModal(true);
+  };
+
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
@@ -22,10 +28,16 @@ const EventsView = () => {
               location={item.location}
               prize={item.prize}
               statusText={item.statusText}
+              onPress={handleShowExibitorsModal}
             />
           );
         })}
       </View>
+      <ExhibitorsModal
+        modalVisible={showExhibitorsModal}
+        setModalVisible={setShowExhibitorsModal}
+        navigation={navigation}
+      />
     </ScrollView>
   );
 };

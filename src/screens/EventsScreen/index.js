@@ -24,9 +24,9 @@ function EventsScreen({navigation}) {
     {key: 'authority', title: 'Authority'},
   ]);
 
-  const EventsTab = () => <EventsView />;
+  const EventsTab = () => <EventsView navigation={navigation} />;
 
-  const PastTab = () => <PastEventsView />;
+  const PastTab = () => <PastEventsView navigation={navigation} />;
 
   const EligibilityTab = () => <EligibilityView />;
 
@@ -81,13 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_WHITE,
     justifyContent: 'center',
     flex: 1,
-  },
-  TabViewWrapper: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
   },
 });
 

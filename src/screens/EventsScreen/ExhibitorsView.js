@@ -2,27 +2,20 @@ import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import Events from '../../constants/events/events';
-import PastEventPane from '../../components/events/PastEventPane';
+import ExhibitorItem from '../../components/events/ExhibitorItem';
+import Exhibitors from '../../constants/events/exhibitors';
 
-const PastEventsView = ({navigation}) => {
+const ExhibitorsView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
-        <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>4 past events</Text>
-          <Text style={styles.HeadFont}>Sort</Text>
-        </View>
-        {Events.map((item, index) => {
+        {Exhibitors.map((item, index) => {
           return (
-            <PastEventPane
+            <ExhibitorItem
               key={index}
-              image={item.image}
-              title={item.title}
-              location={item.location}
-              prize={item.prize}
-              statusText={item.statusText}
-              onPress={() => navigation.navigate('ViewEventScreen')}
+              fullName={item.fullName}
+              avatar={item.avatar}
+              detail={item.detail}
             />
           );
         })}
@@ -51,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PastEventsView;
+export default ExhibitorsView;

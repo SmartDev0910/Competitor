@@ -9,6 +9,8 @@ import {
   MessageScreen,
   SearchScreen,
   FollowingScreen,
+  OrganizerProfileScreen,
+  ViewEventScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -99,6 +101,13 @@ function EventsStackScreen() {
           headerShown: false,
         }}
       />
+      <EventsStack.Screen
+        name="ViewEventScreen"
+        component={ViewEventScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </EventsStack.Navigator>
   );
 }
@@ -111,6 +120,13 @@ function FollowingStackScreen() {
       <FollowingStack.Screen
         name="FollowingScreen"
         component={FollowingScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <FollowingStack.Screen
+        name="OrganizerProfileScreen"
+        component={OrganizerProfileScreen}
         options={{
           headerShown: false,
         }}
@@ -232,7 +248,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    marginTop: 44,
+    marginTop: 48,
     backgroundColor: COLOR_WHITE,
   },
   bottombaricon: {

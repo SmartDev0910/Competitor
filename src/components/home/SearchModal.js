@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   Modal,
   StyleSheet,
@@ -21,13 +21,48 @@ import {FONT_REGULAR} from '../../constants/fonts';
 import {MapWellingtonImage} from '../../constants/images';
 import RadiusSliderPane from './RadiusSliderPane';
 import SearchMapText from './SearchMapText';
+import {GOOGLE_MAPS_API_KEY} from '../../constants/env';
+import Geocoder from 'react-native-geocoding';
+import MapView from 'react-native-maps';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
+Geocoder.init(GOOGLE_MAPS_API_KEY);
+
 const SearchModal = ({modalVisible, setModalVisible}) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [searchText, setSearchText] = useState('');
+  // const [address, setAddress] = useState('26 Lombard Street East, Dublin, Ireland');
+  const [location, setLocation] = useState({lat: 53.3472, lng: -6.2621});
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.animateToRegion({
+        latitude: location.lat,
+        longitude: location.lng,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+    }
+  }, [location]);
+
+  const onRegionChangeComplete = async region => {
+    const {latitude, longitude} = region;
+
+    try {
+      const geo = await Geocoder.from(latitude, longitude).catch(e => {
+        return {status: 'ERROR', results: []};
+      });
+      if (geo.results.length > 0) {
+        // const address = geo.results[0].formatted_address;
+        // setAddress(address);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleSliderValueChange = value => {
     setSliderValue(value);
@@ -37,9 +72,20 @@ const SearchModal = ({modalVisible, setModalVisible}) => {
     setSearchText(text);
   };
 
-  const MapView = (
+  const MapPane = (
     <>
-      <Image source={MapWellingtonImage} style={styles.MapWellingtonImage} />
+      <MapView
+        ref={mapRef}
+        style={styles.MapWellingtonImage}
+        initialRegion={{
+          latitude: location.lat,
+          longitude: location.lng,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        onRegionChangeComplete={onRegionChangeComplete}
+      />
+      {/* <Image source={MapWellingtonImage} style={styles.MapWellingtonImage} /> */}
       <View style={styles.ScrollView}>
         <RadiusSliderPane
           style={styles.RadiusSliderPane}
@@ -63,7 +109,7 @@ const SearchModal = ({modalVisible, setModalVisible}) => {
               onChangeText={onChangeText}
             />
           </View>
-          {MapView}
+          {MapPane}
           <View style={styles.BottomButton}>
             <Pressable style={[styles.Button, styles.ButtonApply]}>
               <Text style={[styles.TextStyle, styles.TextApply]}>Save</Text>

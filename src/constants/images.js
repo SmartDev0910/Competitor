@@ -60,3 +60,5 @@ export const UserSelectedImage = require('../assets/images/UserSelected.png');
 export const OrganizerLogo1Image = require('../assets/images/OrganizerLogo1.png');
 export const OrganizerLogo2Image = require('../assets/images/OrganizerLogo2.png');
 export const OrganizerLogo3Image = require('../assets/images/OrganizerLogo3.png');
+export const OrganizerProfileImage = require('../assets/images/OrganizerProfile.png');
+export const AboutEventImage = require('../assets/images/AboutEvent.png');

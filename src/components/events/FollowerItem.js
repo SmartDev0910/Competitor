@@ -10,11 +10,10 @@ import {
 import {
   COLOR_EVENT_BORDER,
   COLOR_FONT_COMMENT,
-  COLOR_PINK,
+  COLOR_FONT_DEFAULT,
   COLOR_WHITE,
 } from '../../constants/colors';
-import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
-import {ArrowRightIcon, TearOffCalendarIcon} from '../../constants/icons';
+import {FONT_REGULAR} from '../../constants/fonts';
 
 const FollowerItem = ({avatar, fullName, match, style, onPress}) => {
   return (
@@ -22,15 +21,7 @@ const FollowerItem = ({avatar, fullName, match, style, onPress}) => {
       <Image source={avatar} style={styles.Avatar} />
       <View style={styles.DetailView}>
         <Text style={styles.NameFont}>{fullName}</Text>
-        <View style={styles.MatchView}>
-          <Image
-            source={TearOffCalendarIcon}
-            style={styles.TearOffCalendarIcon}
-          />
-          <Text style={styles.MatchText}>{match}</Text>
-        </View>
       </View>
-      <Image source={ArrowRightIcon} style={styles.ArrowRightIcon} />
     </TouchableOpacity>
   );
 };
@@ -39,28 +30,29 @@ const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   View: {
-    flex: 1,
-    padding: 12,
+    paddingHorizontal: 12,
     marginVertical: 5,
     flexDirection: 'row',
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 8,
     borderColor: COLOR_EVENT_BORDER,
     backgroundColor: COLOR_WHITE,
     gap: 12,
     alignItems: 'center',
+    height: 56,
   },
   Avatar: {
-    width: 45,
-    height: 45,
-    borderRadius: 8,
+    width: 44,
+    height: 44,
+    borderRadius: 44,
   },
   NameFont: {
-    fontFamily: FONT_SEMI_BOLD,
-    fontSize: 15,
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
     width: width - 142,
     flexWrap: 'wrap',
     marginVertical: 2,
+    color: COLOR_FONT_DEFAULT,
   },
   DetailView: {
     flexDirection: 'column',
