@@ -14,3 +14,4 @@ export const COLOR_GREY = 'rgba(255, 255, 255, 0.70)';
 export const COLOR_PINK_TRANSPARENT = 'rgba(247, 7, 79, 0.7)';
 export const COLOR_BLACK = '#000';
 export const COLOR_SKELETON_BORDER = '#E6E6E6';
+export const COLOR_GREY_CAMERA = '#8C95AC';

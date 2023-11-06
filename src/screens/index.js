@@ -8,3 +8,4 @@ export {default as EventsScreen} from './EventsScreen';
 export {default as FollowingScreen} from './FollowingScreen';
 export {default as OrganizerProfileScreen} from './FollowingScreen/OrganizerProfileScreen';
 export {default as ViewEventScreen} from './EventsScreen/ViewEventScreen';
+export {default as ProfileScreen} from './FollowingScreen/ProfileScreen';
