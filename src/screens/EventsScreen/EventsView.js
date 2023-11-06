@@ -6,7 +6,7 @@ import Events from '../../constants/events/events';
 import EventPane from '../../components/events/EventPane';
 import ExhibitorsModal from '../../components/events/ExhibitorsModal';
 
-const EventsView = () => {
+const EventsView = ({navigation}) => {
   const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
   const handleShowExibitorsModal = () => {
     setShowExhibitorsModal(true);
@@ -36,6 +36,7 @@ const EventsView = () => {
       <ExhibitorsModal
         modalVisible={showExhibitorsModal}
         setModalVisible={setShowExhibitorsModal}
+        navigation={navigation}
       />
     </ScrollView>
   );

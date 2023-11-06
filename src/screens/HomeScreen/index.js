@@ -21,11 +21,15 @@ import FilterEventsModal from '../../components/home/FilterEventsModal';
 import {MapMarsWinterImage} from '../../constants/images';
 import SearchModal from '../../components/home/SearchModal';
 import MainFragment from './mainFragment';
+import AddressView from './AddressView';
 
 const LicensedTab = () => <MainFragment />;
 const LicensedMapViewTab = () => (
   <Image source={MapMarsWinterImage} style={styles.MapMarsWinterImage} />
 );
+
+// const LicensedMapViewTab = () => <AddressView />;
+
 const UnlicensedTab = () => (
   <View style={styles.TabViewWrapper}>
     <Text>Unlicensed Tab</Text>

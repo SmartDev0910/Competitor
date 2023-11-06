@@ -24,9 +24,9 @@ function EventsScreen({navigation}) {
     {key: 'authority', title: 'Authority'},
   ]);
 
-  const EventsTab = () => <EventsView />;
+  const EventsTab = () => <EventsView navigation={navigation} />;
 
-  const PastTab = () => <PastEventsView />;
+  const PastTab = () => <PastEventsView navigation={navigation} />;
 
   const EligibilityTab = () => <EligibilityView />;
 

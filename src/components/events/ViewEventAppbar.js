@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT, COLOR_FONT_COMMENT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
+import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
 import {ArrowLeftIcon, MessagingWeakIcon} from '../../constants/icons';
 import ImageButton from '../home/ImageButton';
 import MessageModal from './MessageModal';
 
-const Appbar = ({navigation}) => {
+const ViewEventAppbar = ({navigation}) => {
   const [showMessageModal, setShowMessageModal] = React.useState(false);
   const handleShowMessageModal = () => {
     setShowMessageModal(true);
@@ -14,15 +14,15 @@ const Appbar = ({navigation}) => {
 
   return (
     <>
-      <View style={styles.Appbar}>
+      <View style={styles.ViewEventAppbar}>
         <View style={styles.BackView}>
           <ImageButton
             source={ArrowLeftIcon}
             onPress={() => navigation.goBack()}
             style={styles.BackButton}
           />
-          <Text style={styles.BackFont}>Back</Text>
         </View>
+        <Text style={styles.AppbarTitle}>WEF Winter Festival and c...</Text>
         <ImageButton
           source={MessagingWeakIcon}
           style={styles.TopButton}
@@ -39,13 +39,12 @@ const Appbar = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  Appbar: {
+  ViewEventAppbar: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 24,
     paddingTop: 20,
-    paddingBottom: 12,
   },
   BackView: {
     flexDirection: 'row',
@@ -71,6 +70,11 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     padding: 3,
   },
+  AppbarTitle: {
+    fontFamily: FONT_SEMI_BOLD,
+    fontSize: 20,
+    color: COLOR_FONT_DEFAULT,
+  },
 });
 
-export default Appbar;
+export default ViewEventAppbar;

@@ -18,75 +18,19 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import ExhibitorsView from '../../screens/EventsScreen/ExhibitorsView';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const ExhibitorsTabView = () => {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = useState([
-    {key: 'registered', title: '35 Registered'},
-    {key: 'waitlisted', title: '2 Waitlisted'},
-  ]);
-
-  const RegisteredTab = () => <ExhibitorsView />;
-
-  const WaitlistedTab = () => <ExhibitorsView />;
-
-  const renderScene = SceneMap({
-    registered: RegisteredTab,
-    waitlisted: WaitlistedTab,
-  });
-
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={{backgroundColor: COLOR_PINK}}
-      style={{backgroundColor: COLOR_WHITE}}
-      renderLabel={({route, focused, color}) => (
-        <Text
-          style={{
-            color: focused ? COLOR_PINK : COLOR_FONT_DEFAULT,
-            fontSize: 14,
-            fontFamily: FONT_REGULAR,
-          }}>
-          {route.title}
-        </Text>
-      )}
-    />
-  );
-  return (
-    <TabView
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-    />
-  );
-};
-
-const ExhibitorsModal = ({modalVisible, setModalVisible, navigation}) => {
-  const handleViewEvent = () => {
-    navigation.navigate('ViewEventScreen');
-    setModalVisible(false);
-  };
+const SentModal = ({modalVisible, setModalVisible}) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Exhibitors</Text>
-          <ExhibitorsTabView />
+          <Text style={styles.ModalTitleFont}>Sent!</Text>
+
           <View style={styles.BottomButton}>
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleViewEvent}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                View Event
-              </Text>
-            </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
@@ -107,9 +51,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: (height * 3) / 4,
     width: width,
-    height: height - 106,
+    height: (height * 1) / 4,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -164,7 +108,14 @@ const styles = StyleSheet.create({
   },
   BottomButton: {
     marginHorizontal: 24,
+    position: 'absolute',
+    bottom: 30,
+    width: width - 48,
+  },
+  ModalContentView: {
+    paddingHorizontal: 20,
+    flexDirection: 'column',
   },
 });
 
-export default ExhibitorsModal;
+export default SentModal;

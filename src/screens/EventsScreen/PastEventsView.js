@@ -5,7 +5,7 @@ import {FONT_REGULAR} from '../../constants/fonts';
 import Events from '../../constants/events/events';
 import PastEventPane from '../../components/events/PastEventPane';
 
-const PastEventsView = () => {
+const PastEventsView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
@@ -22,6 +22,7 @@ const PastEventsView = () => {
               location={item.location}
               prize={item.prize}
               statusText={item.statusText}
+              onPress={() => navigation.navigate('ViewEventScreen')}
             />
           );
         })}

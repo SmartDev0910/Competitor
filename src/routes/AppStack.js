@@ -10,6 +10,7 @@ import {
   SearchScreen,
   FollowingScreen,
   OrganizerProfileScreen,
+  ViewEventScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -96,6 +97,13 @@ function EventsStackScreen() {
       <EventsStack.Screen
         name="EventsScreen"
         component={EventsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <EventsStack.Screen
+        name="ViewEventScreen"
+        component={ViewEventScreen}
         options={{
           headerShown: false,
         }}
@@ -240,7 +248,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    marginTop: 44,
+    marginTop: 48,
     backgroundColor: COLOR_WHITE,
   },
   bottombaricon: {

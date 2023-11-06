@@ -18,73 +18,43 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import ExhibitorsView from '../../screens/EventsScreen/ExhibitorsView';
+import FollowingPeople from '../../constants/following/followingPeople';
+import FollowerItem from './FollowerItem';
+import TextAreaInput from './TextAreaInput';
+import SentModal from './SentModal';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const ExhibitorsTabView = () => {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = useState([
-    {key: 'registered', title: '35 Registered'},
-    {key: 'waitlisted', title: '2 Waitlisted'},
-  ]);
-
-  const RegisteredTab = () => <ExhibitorsView />;
-
-  const WaitlistedTab = () => <ExhibitorsView />;
-
-  const renderScene = SceneMap({
-    registered: RegisteredTab,
-    waitlisted: WaitlistedTab,
-  });
-
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={{backgroundColor: COLOR_PINK}}
-      style={{backgroundColor: COLOR_WHITE}}
-      renderLabel={({route, focused, color}) => (
-        <Text
-          style={{
-            color: focused ? COLOR_PINK : COLOR_FONT_DEFAULT,
-            fontSize: 14,
-            fontFamily: FONT_REGULAR,
-          }}>
-          {route.title}
-        </Text>
-      )}
-    />
-  );
-  return (
-    <TabView
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-    />
-  );
-};
-
-const ExhibitorsModal = ({modalVisible, setModalVisible, navigation}) => {
-  const handleViewEvent = () => {
-    navigation.navigate('ViewEventScreen');
+const MessageModal = ({modalVisible, setModalVisible}) => {
+  const [showSentModal, setShowSentModal] = useState(false);
+  const handleShowSentModal = () => {
     setModalVisible(false);
+    setShowSentModal(true);
   };
+
   return (
-    <SafeAreaView>
+    <>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Exhibitors</Text>
-          <ExhibitorsTabView />
+          <Text style={styles.ModalTitleFont}>Message</Text>
+          <View style={styles.ModalContentView}>
+            <FollowerItem
+              fullName={FollowingPeople[0].fullName}
+              avatar={FollowingPeople[0].avatar}
+              match={FollowingPeople[0].match}
+              style={styles.FollowerItem}
+            />
+            <TextAreaInput />
+          </View>
+
           <View style={styles.BottomButton}>
             <Pressable
               style={[styles.Button, styles.ButtonApply]}
-              onPress={handleViewEvent}>
+              onPress={handleShowSentModal}>
               <Text style={[styles.TextStyle, styles.TextApply]}>
-                View Event
+                Send Message
               </Text>
             </Pressable>
             <Pressable
@@ -95,7 +65,11 @@ const ExhibitorsModal = ({modalVisible, setModalVisible, navigation}) => {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+      <SentModal
+        modalVisible={showSentModal}
+        setModalVisible={setShowSentModal}
+      />
+    </>
   );
 };
 
@@ -107,9 +81,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: 220,
     width: width,
-    height: height - 106,
+    height: height - 220,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -164,7 +138,14 @@ const styles = StyleSheet.create({
   },
   BottomButton: {
     marginHorizontal: 24,
+    position: 'absolute',
+    bottom: 30,
+    width: width - 48,
+  },
+  ModalContentView: {
+    paddingHorizontal: 20,
+    flexDirection: 'column',
   },
 });
 
-export default ExhibitorsModal;
+export default MessageModal;
