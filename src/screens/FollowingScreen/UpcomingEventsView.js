@@ -2,38 +2,29 @@ import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import EligibilityEvents from '../../constants/events/eligibility';
-import EligibilityPane from '../../components/events/EligibilityPane';
-import StatusModal from '../../components/events/StatusModal';
+import Events from '../../constants/events/events';
+import EventPane from '../../components/following/EventPane';
 
-const EligibilityView = () => {
-  const [showStatusModal, setShowStatusModal] = React.useState(false);
-  const handleStatusModal = () => {
-    setShowStatusModal(true);
-  };
-
+const UpcomingEventsView = () => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>3 issues found</Text>
+          <Text style={styles.HeadFont}>upcoming events</Text>
         </View>
-        {EligibilityEvents.map((item, index) => {
+        {Events.map((item, index) => {
           return (
-            <EligibilityPane
+            <EventPane
               key={index}
               image={item.image}
               title={item.title}
+              location={item.location}
+              prize={item.prize}
               statusText={item.statusText}
-              onPress={handleStatusModal}
             />
           );
         })}
       </View>
-      <StatusModal
-        modalVisible={showStatusModal}
-        setModalVisible={setShowStatusModal}
-      />
     </ScrollView>
   );
 };
@@ -55,7 +46,8 @@ const styles = StyleSheet.create({
     fontFamily: FONT_REGULAR,
     fontSize: 14,
     lineHeight: 34,
+    textTransform: 'uppercase',
   },
 });
 
-export default EligibilityView;
+export default UpcomingEventsView;

@@ -9,6 +9,7 @@ import {
   MessageScreen,
   SearchScreen,
   FollowingScreen,
+  OrganizerProfileScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -111,6 +112,13 @@ function FollowingStackScreen() {
       <FollowingStack.Screen
         name="FollowingScreen"
         component={FollowingScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <FollowingStack.Screen
+        name="OrganizerProfileScreen"
+        component={OrganizerProfileScreen}
         options={{
           headerShown: false,
         }}

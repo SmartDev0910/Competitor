@@ -2,24 +2,20 @@ import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import Organizers from '../../constants/following/organizers';
-import OrganizerItem from '../../components/following/OrganizerItem';
+import ExhibitorItem from '../../components/events/ExhibitorItem';
+import Exhibitors from '../../constants/events/exhibitors';
 
-const OrganizersView = ({navigation}) => {
+const ExhibitorsView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
-        <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>Following 3 event organizers</Text>
-        </View>
-        {Organizers.map((item, index) => {
+        {Exhibitors.map((item, index) => {
           return (
-            <OrganizerItem
+            <ExhibitorItem
               key={index}
-              title={item.title}
-              image={item.image}
-              statusText={item.statusText}
-              onPress={() => navigation.navigate('OrganizerProfileScreen')}
+              fullName={item.fullName}
+              avatar={item.avatar}
+              detail={item.detail}
             />
           );
         })}
@@ -48,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrganizersView;
+export default ExhibitorsView;
