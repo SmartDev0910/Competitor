@@ -8,28 +8,28 @@ import {
 
 export default [
   {
-    fullname: 'Alexi Lee',
+    fullName: 'Alexi Lee',
     avatar: AlexiLeeImage,
-    statusText: 'Authorized',
+    detail: 'Trainer • Authorized',
   },
   {
-    fullname: 'Micheala Ulasi',
+    fullName: 'Micheala Ulasi',
     avatar: MichealUlasiImage,
-    statusText: 'Authorized',
+    detail: 'Rider • Unauthorized',
   },
   {
-    fullname: 'Cristofer grace',
+    fullName: 'Cristofer grace',
     avatar: CristoferGrace1Image,
-    statusText: 'Authorized',
+    detail: 'Owner • Unauthorized',
   },
   {
-    fullname: 'Michelle Williams',
+    fullName: 'Michelle Williams',
     avatar: MichelleWilliams1Image,
-    statusText: 'Authorized',
+    detail: 'Owner • Unauthorized',
   },
   {
-    fullname: 'Jared Tulsa',
+    fullName: 'Jared Tulsa',
     avatar: JaredTulsa1Image,
-    statusText: 'Authorized',
+    detail: 'Owner • Unauthorized',
   },
 ];

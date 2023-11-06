@@ -11,7 +11,11 @@ const FollowerView = ({navigation}) => {
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
           <Text style={styles.HeadFont}>Following 6 people</Text>
-          <Text style={styles.HeadFont}>Add</Text>
+          <Text
+            style={styles.HeadFont}
+            onPress={() => navigation.navigate('ProfileScreen')}>
+            Add
+          </Text>
         </View>
         {FollowingPeople.map((item, index) => {
           return (

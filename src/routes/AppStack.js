@@ -11,6 +11,7 @@ import {
   FollowingScreen,
   OrganizerProfileScreen,
   ViewEventScreen,
+  ProfileScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -108,6 +109,13 @@ function EventsStackScreen() {
           headerShown: false,
         }}
       />
+      <FollowingStack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </EventsStack.Navigator>
   );
 }
@@ -127,6 +135,13 @@ function FollowingStackScreen() {
       <FollowingStack.Screen
         name="OrganizerProfileScreen"
         component={OrganizerProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <FollowingStack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
         options={{
           headerShown: false,
         }}

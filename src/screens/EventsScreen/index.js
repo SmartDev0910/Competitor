@@ -30,7 +30,7 @@ function EventsScreen({navigation}) {
 
   const EligibilityTab = () => <EligibilityView />;
 
-  const AuthorityTab = () => <AuthorityView />;
+  const AuthorityTab = () => <AuthorityView navigation={navigation} />;
 
   const renderScene = SceneMap({
     events: EventsTab,

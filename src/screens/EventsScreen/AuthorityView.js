@@ -5,14 +5,18 @@ import {FONT_REGULAR} from '../../constants/fonts';
 import AuthorityPane from '../../components/events/AuthorityPane';
 import {PublicSafetyIcon} from '../../constants/icons';
 
-const AuthorityView = () => {
+const AuthorityView = ({navigation}) => {
   return (
     <View style={styles.Wrapper}>
       <View style={styles.HeadWrapper}>
         <Text style={styles.HeadFont}>
           Authority to register you for events
         </Text>
-        <Text style={styles.HeadFont}>Edit</Text>
+        <Text
+          style={styles.HeadFont}
+          onPress={() => navigation.navigate('ProfileScreen')}>
+          Edit
+        </Text>
       </View>
       <AuthorityPane image={PublicSafetyIcon} title="Unauthorized" />
     </View>
