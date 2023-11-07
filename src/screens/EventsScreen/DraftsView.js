@@ -6,7 +6,7 @@ import Events from '../../constants/events/events';
 import EventPane from '../../components/events/EventPane';
 import ExhibitorsModal from '../../components/events/ExhibitorsModal';
 
-const EventsView = ({navigation}) => {
+const DraftsView = ({navigation}) => {
   const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
   const handleShowExibitorsModal = () => {
     setShowExhibitorsModal(true);
@@ -16,7 +16,7 @@ const EventsView = ({navigation}) => {
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>4 upcoming events</Text>
+          <Text style={styles.HeadFont}>4 drafts events</Text>
           <Text style={styles.HeadFont}>Sort</Text>
         </View>
         {Events.map((item, index) => {
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EventsView;
+export default DraftsView;

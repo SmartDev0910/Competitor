@@ -2,20 +2,27 @@ import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import ExhibitorItem from '../../components/events/ExhibitorItem';
-import Exhibitors from '../../constants/events/exhibitors';
+import Events from '../../constants/events/events';
+import EventPane from '../../components/events/EventPane';
 
-const ExhibitorsView = ({navigation}) => {
+const TicketsView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
-        {Exhibitors.map((item, index) => {
+        <View style={styles.HeadWrapper}>
+          <Text style={styles.HeadFont}>4 events</Text>
+          <Text style={styles.HeadFont}>Sort</Text>
+        </View>
+        {Events.map((item, index) => {
           return (
-            <ExhibitorItem
+            <EventPane
               key={index}
-              fullName={item.fullName}
-              avatar={item.avatar}
-              detail={item.detail}
+              image={item.image}
+              title={item.title}
+              location={item.location}
+              prize={item.prize}
+              statusText={item.statusText}
+              onPress={() => navigation.navigate('TicketsScreen')}
             />
           );
         })}
@@ -44,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExhibitorsView;
+export default TicketsView;

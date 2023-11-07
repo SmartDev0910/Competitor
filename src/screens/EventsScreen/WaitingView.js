@@ -6,7 +6,7 @@ import Events from '../../constants/events/events';
 import EventPane from '../../components/events/EventPane';
 import ExhibitorsModal from '../../components/events/ExhibitorsModal';
 
-const EventsView = ({navigation}) => {
+const WaitingView = ({navigation}) => {
   const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
   const handleShowExibitorsModal = () => {
     setShowExhibitorsModal(true);
@@ -37,7 +37,7 @@ const EventsView = ({navigation}) => {
         modalVisible={showExhibitorsModal}
         setModalVisible={setShowExhibitorsModal}
         navigation={navigation}
-        activeTab={0}
+        activeTab={1}
       />
     </ScrollView>
   );
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EventsView;
+export default WaitingView;

@@ -12,6 +12,9 @@ import {
   OrganizerProfileScreen,
   ViewEventScreen,
   ProfileScreen,
+  NavScreen,
+  MyEventsScreen,
+  TicketsScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -26,6 +29,7 @@ import {
 import {UserAvatarImage} from '../constants/images';
 import {COLOR_PINK, COLOR_WHITE} from '../constants/colors';
 import Divider from '../components/home/Divider';
+import {ModalProvider} from '../providers/ModalProvider';
 
 const Tab = createBottomTabNavigator();
 
@@ -103,13 +107,27 @@ function EventsStackScreen() {
         }}
       />
       <EventsStack.Screen
+        name="MyEventsScreen"
+        component={MyEventsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <EventsStack.Screen
         name="ViewEventScreen"
         component={ViewEventScreen}
         options={{
           headerShown: false,
         }}
       />
-      <FollowingStack.Screen
+      <EventsStack.Screen
+        name="TicketsScreen"
+        component={TicketsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <EventsStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
@@ -120,33 +138,63 @@ function EventsStackScreen() {
   );
 }
 
-const FollowingStack = createStackNavigator();
+const NavStack = createStackNavigator();
 
-function FollowingStackScreen() {
+function NavStackScreen() {
   return (
-    <FollowingStack.Navigator>
-      <FollowingStack.Screen
-        name="FollowingScreen"
-        component={FollowingScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <FollowingStack.Screen
-        name="OrganizerProfileScreen"
-        component={OrganizerProfileScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <FollowingStack.Screen
-        name="ProfileScreen"
-        component={ProfileScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </FollowingStack.Navigator>
+    <ModalProvider>
+      <NavStack.Navigator initialRouteName="NavScreen">
+        <NavStack.Screen
+          name="NavScreen"
+          component={NavScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="FollowingScreen"
+          component={FollowingScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="MyEventsScreen"
+          component={MyEventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="OrganizerProfileScreen"
+          component={OrganizerProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="TicketsScreen"
+          component={TicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </NavStack.Navigator>
+    </ModalProvider>
   );
 }
 
@@ -235,8 +283,8 @@ export default AppStack = () => {
           }}
         />
         <Tab.Screen
-          name="Following"
-          component={FollowingStackScreen}
+          name="Nav"
+          component={NavStackScreen}
           options={{
             tabBarIcon: ({focused, color, size}) => {
               return (
