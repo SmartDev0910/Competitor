@@ -1,3 +1,4 @@
+export {default as NavScreen} from './NavScreen';
 export {default as AuthLoadingScreen} from './AuthLoadingScreen';
 export {default as SplashScreen} from './SplashScreen';
 export {default as HomeScreen} from './HomeScreen';
@@ -5,7 +6,9 @@ export {default as SearchScreen} from './HomeScreen/SearchScreen';
 export {default as NotificationScreen} from './NotificationScreen';
 export {default as MessageScreen} from './MessageScreen';
 export {default as EventsScreen} from './EventsScreen';
+export {default as MyEventsScreen} from './EventsScreen/MyEventsScreen';
 export {default as FollowingScreen} from './FollowingScreen';
 export {default as OrganizerProfileScreen} from './FollowingScreen/OrganizerProfileScreen';
 export {default as ViewEventScreen} from './EventsScreen/ViewEventScreen';
 export {default as ProfileScreen} from './FollowingScreen/ProfileScreen';
+export {default as TicketsScreen} from './EventsScreen/TicketsScreen';

@@ -3,7 +3,7 @@ import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
 import Events from '../../constants/events/events';
-import PastEventPane from '../../components/events/PastEventPane';
+import EventPane from '../../components/events/EventPane';
 
 const PastEventsView = ({navigation}) => {
   return (
@@ -15,7 +15,7 @@ const PastEventsView = ({navigation}) => {
         </View>
         {Events.map((item, index) => {
           return (
-            <PastEventPane
+            <EventPane
               key={index}
               image={item.image}
               title={item.title}

@@ -19,21 +19,22 @@ import {
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import ExhibitorsView from '../../screens/EventsScreen/ExhibitorsView';
+import RegisteredExhibitorsView from '../../screens/EventsScreen/RegisteredExhibitorsView';
+import WaitingExhibitorsView from '../../screens/EventsScreen/WaitingExhibitorsView';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const ExhibitorsTabView = () => {
-  const [index, setIndex] = React.useState(0);
+const ExhibitorsTabView = ({activeTab}) => {
+  const [index, setIndex] = React.useState(activeTab);
   const [routes] = useState([
     {key: 'registered', title: '35 Registered'},
     {key: 'waitlisted', title: '2 Waitlisted'},
   ]);
 
-  const RegisteredTab = () => <ExhibitorsView />;
+  const RegisteredTab = () => <RegisteredExhibitorsView />;
 
-  const WaitlistedTab = () => <ExhibitorsView />;
+  const WaitlistedTab = () => <WaitingExhibitorsView />;
 
   const renderScene = SceneMap({
     registered: RegisteredTab,
@@ -67,7 +68,12 @@ const ExhibitorsTabView = () => {
   );
 };
 
-const ExhibitorsModal = ({modalVisible, setModalVisible, navigation}) => {
+const ExhibitorsModal = ({
+  modalVisible,
+  setModalVisible,
+  navigation,
+  activeTab,
+}) => {
   const handleViewEvent = () => {
     navigation.navigate('ViewEventScreen');
     setModalVisible(false);
@@ -78,7 +84,7 @@ const ExhibitorsModal = ({modalVisible, setModalVisible, navigation}) => {
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
           <Text style={styles.ModalTitleFont}>Exhibitors</Text>
-          <ExhibitorsTabView />
+          <ExhibitorsTabView activeTab={activeTab} />
           <View style={styles.BottomButton}>
             <Pressable
               style={[styles.Button, styles.ButtonApply]}
