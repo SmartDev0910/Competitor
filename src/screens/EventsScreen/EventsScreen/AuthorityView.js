@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import AuthorityPane from '../../components/events/AuthorityPane';
-import {PublicSafetyIcon} from '../../constants/icons';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import AuthorityPane from '../../../components/events/AuthorityPane';
+import {PublicSafetyIcon} from '../../../constants/icons';
 
 const AuthorityView = ({navigation}) => {
   return (

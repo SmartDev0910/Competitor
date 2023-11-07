@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import EligibilityEvents from '../../constants/events/eligibility';
-import EligibilityPane from '../../components/events/EligibilityPane';
-import StatusModal from '../../components/events/StatusModal';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import EligibilityEvents from '../../../constants/events/eligibility';
+import EligibilityPane from '../../../components/events/EligibilityPane';
+import StatusModal from '../../../components/events/StatusModal';
 
 const EligibilityView = () => {
   const [showStatusModal, setShowStatusModal] = React.useState(false);

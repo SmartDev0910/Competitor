@@ -1,18 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import ViewEventAppbar from '../../components/events/ViewEventAppbar';
+import ViewEventAppbar from '../../../components/events/ViewEventAppbar';
 import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
-} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
+} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
 import AboutEventView from './AboutEventView';
+import FeedView from './FeedView';
+import ClassesView from './ClassesView';
+import FeesView from './FeesView';
+import EligibilityView from './EligibilityView';
+import DocsView from './DocsView';
+import TeamView from './TeamView';
 
 function ViewEventScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
+    {key: 'feed', title: 'Feed'},
     {key: 'about', title: 'About'},
     {key: 'classes', title: 'Classes'},
     {key: 'fees', title: 'Fees'},
@@ -22,34 +29,16 @@ function ViewEventScreen({navigation}) {
   ]);
 
   const AboutTab = () => <AboutEventView />;
-  const ClassesTab = () => (
-    <View style={styles.TabViewWrapper}>
-      <Text>Classes Tab</Text>
-    </View>
-  );
-  const FeesTab = () => (
-    <View style={styles.TabViewWrapper}>
-      <Text>Fees Tab</Text>
-    </View>
-  );
-  const EligibilityTab = () => (
-    <View style={styles.TabViewWrapper}>
-      <Text>Eligibility Tab</Text>
-    </View>
-  );
-  const DocsTab = () => (
-    <View style={styles.TabViewWrapper}>
-      <Text>Docs Tab</Text>
-    </View>
-  );
-  const TeamTab = () => (
-    <View style={styles.TabViewWrapper}>
-      <Text>Team Tab</Text>
-    </View>
-  );
+  const FeedTab = () => <FeedView navigation={navigation} />;
+  const ClassesTab = () => <ClassesView navigation={navigation} />;
+  const FeesTab = () => <FeesView navigation={navigation} />;
+  const EligibilityTab = () => <EligibilityView navigation={navigation} />;
+  const DocsTab = () => <DocsView navigation={navigation} />;
+  const TeamTab = () => <TeamView navigation={navigation} />;
 
   const renderScene = SceneMap({
     about: AboutTab,
+    feed: FeedTab,
     classes: ClassesTab,
     fees: FeesTab,
     eligibility: EligibilityTab,

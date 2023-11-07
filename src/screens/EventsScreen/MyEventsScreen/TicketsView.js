@@ -1,22 +1,16 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import Events from '../../constants/events/events';
-import EventPane from '../../components/events/EventPane';
-import ExhibitorsModal from '../../components/events/ExhibitorsModal';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import Events from '../../../constants/events/events';
+import EventPane from '../../../components/events/EventPane';
 
-const SavedView = ({navigation}) => {
-  const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
-  const handleShowExibitorsModal = () => {
-    setShowExhibitorsModal(true);
-  };
-
+const TicketsView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>4 bookmarked events</Text>
+          <Text style={styles.HeadFont}>4 events</Text>
           <Text style={styles.HeadFont}>Sort</Text>
         </View>
         {Events.map((item, index) => {
@@ -28,17 +22,11 @@ const SavedView = ({navigation}) => {
               location={item.location}
               prize={item.prize}
               statusText={item.statusText}
-              onPress={handleShowExibitorsModal}
+              onPress={() => navigation.navigate('TicketsScreen')}
             />
           );
         })}
       </View>
-      <ExhibitorsModal
-        modalVisible={showExhibitorsModal}
-        setModalVisible={setShowExhibitorsModal}
-        navigation={navigation}
-        activeTab={0}
-      />
     </ScrollView>
   );
 };
@@ -63,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SavedView;
+export default TicketsView;

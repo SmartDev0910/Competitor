@@ -5,8 +5,8 @@ import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
-} from '../../constants/colors';
-import {FONT_REGULAR, FONT_BOLD} from '../../constants/fonts';
+} from '../../../constants/colors';
+import {FONT_REGULAR, FONT_BOLD} from '../../../constants/fonts';
 import RegisteredView from './RegisteredView';
 import WaitingView from './WaitingView';
 import DraftsView from './DraftsView';

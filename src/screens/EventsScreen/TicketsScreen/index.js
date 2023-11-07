@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT, COLOR_WHITE} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import {ArrowLeftIcon} from '../../constants/icons';
-import ImageButton from '../../components/home/ImageButton';
-import TicketPane from '../../components/events/TicketPane';
-import {ModalContext} from '../../providers/ModalProvider';
+import {COLOR_FONT_DEFAULT, COLOR_WHITE} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import {ArrowLeftIcon} from '../../../constants/icons';
+import ImageButton from '../../../components/home/ImageButton';
+import TicketPane from '../../../components/events/TicketPane';
+import {ModalContext} from '../../../providers/ModalProvider';
 
 function TicketsScreen({navigation}) {
   const [, , ticketAssignName, , ticketAssignEmail, ,] =

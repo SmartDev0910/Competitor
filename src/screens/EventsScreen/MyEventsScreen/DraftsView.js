@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import Events from '../../constants/events/events';
-import EventPane from '../../components/events/EventPane';
-import ExhibitorsModal from '../../components/events/ExhibitorsModal';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import Events from '../../../constants/events/events';
+import EventPane from '../../../components/events/EventPane';
+import ExhibitorsModal from '../../../components/events/ExhibitorsModal';
 
-const WaitingView = ({navigation}) => {
+const DraftsView = ({navigation}) => {
   const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
   const handleShowExibitorsModal = () => {
     setShowExhibitorsModal(true);
@@ -16,7 +16,7 @@ const WaitingView = ({navigation}) => {
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>4 upcoming events</Text>
+          <Text style={styles.HeadFont}>4 drafts events</Text>
           <Text style={styles.HeadFont}>Sort</Text>
         </View>
         {Events.map((item, index) => {
@@ -37,7 +37,7 @@ const WaitingView = ({navigation}) => {
         modalVisible={showExhibitorsModal}
         setModalVisible={setShowExhibitorsModal}
         navigation={navigation}
-        activeTab={1}
+        activeTab={0}
       />
     </ScrollView>
   );
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WaitingView;
+export default DraftsView;

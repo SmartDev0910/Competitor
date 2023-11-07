@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import Appbar from '../../components/events/Appbar';
-import ProfilePane from '../../components/events/ProfilePane';
+import Appbar from '../../../components/events/Appbar';
+import ProfilePane from '../../../components/events/ProfilePane';
 import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
-} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import {TammyWilliamsImage} from '../../constants/images';
+} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import {TammyWilliamsImage} from '../../../constants/images';
 import AuthorityView from './AuthorityView';
 import EligibilityView from './EligibilityView';
 import EventsView from './EventsView';

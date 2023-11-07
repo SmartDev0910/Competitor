@@ -193,6 +193,13 @@ function NavStackScreen() {
             headerShown: false,
           }}
         />
+        <NavStack.Screen
+          name="ViewEventScreen"
+          component={ViewEventScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
       </NavStack.Navigator>
     </ModalProvider>
   );

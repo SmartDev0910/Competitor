@@ -7,12 +7,12 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import {AboutEventImage} from '../../constants/images';
-import ZoetisPane from '../../components/events/ZoetisPane';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
-import EventItems from '../../constants/events/eventitems';
-import EventItem from '../../components/events/EventItem';
+import {AboutEventImage} from '../../../constants/images';
+import ZoetisPane from '../../../components/events/ZoetisPane';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
+import EventItems from '../../../constants/events/eventitems';
+import EventItem from '../../../components/events/EventItem';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

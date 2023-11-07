@@ -64,3 +64,6 @@ export const OrganizerProfileImage = require('../assets/images/OrganizerProfile.
 export const AboutEventImage = require('../assets/images/AboutEvent.png');
 export const ProfileEditImage = require('../assets/images/ProfileEdit.png');
 export const QRCodeImage = require('../assets/images/QRCode.png');
+export const FeedViewImage = require('../assets/images/FeedView.png');
+export const UsefLogo14Image = require('../assets/images/UsefLogo14.png');
+export const UsefLogo15Image = require('../assets/images/UsefLogo15.png');

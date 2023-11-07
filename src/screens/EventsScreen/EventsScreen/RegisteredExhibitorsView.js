@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import ExhibitorItem from '../../components/events/ExhibitorItem';
-import Exhibitors from '../../constants/events/exhibitors';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import ExhibitorItem from '../../../components/events/ExhibitorItem';
+import Exhibitors from '../../../constants/events/exhibitors';
 
 const RegisteredExhibitorsView = ({navigation}) => {
   return (
