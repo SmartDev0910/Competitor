@@ -98,43 +98,45 @@ const EventsStack = createStackNavigator();
 
 function EventsStackScreen() {
   return (
-    <EventsStack.Navigator>
-      <EventsStack.Screen
-        name="EventsScreen"
-        component={EventsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="MyEventsScreen"
-        component={MyEventsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="ViewEventScreen"
-        component={ViewEventScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="TicketsScreen"
-        component={TicketsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="ProfileScreen"
-        component={ProfileScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </EventsStack.Navigator>
+    <ModalProvider>
+      <EventsStack.Navigator>
+        <EventsStack.Screen
+          name="EventsScreen"
+          component={EventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="MyEventsScreen"
+          component={MyEventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="ViewEventScreen"
+          component={ViewEventScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="TicketsScreen"
+          component={TicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </EventsStack.Navigator>
+    </ModalProvider>
   );
 }
 

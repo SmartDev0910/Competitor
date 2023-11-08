@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     height: 65,
     marginHorizontal: 24,
     paddingHorizontal: 24,
+    justifyContent: 'space-between',
   },
   ScratchedWrapper: {
     borderColor: COLOR_FONT_DEFAULT,
