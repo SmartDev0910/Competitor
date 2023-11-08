@@ -18,53 +18,31 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import FollowingPeople from '../../constants/following/followingPeople';
-import FollowerItem from './FollowerItem';
 import EligibilityItem from './EligibilityItem';
-import EligibilityEvents from '../../constants/events/eligibility';
-import DateItem from './DateItem';
-import {HelpIcon, InfoIcon, RubberStampIcon} from '../../constants/icons';
-import StatusDetailItem from './StatusDetailItem';
-import StatusHelpItem from './StatusHelpItem';
+import IconItem from './IconItem';
+import {FullScreenIcon, QuillPenIcon} from '../../constants/icons';
+import Docs from '../../constants/events/docs';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const StatusModal = ({modalVisible, setModalVisible}) => {
+const SignSuccessModal = ({modalVisible, setModalVisible}) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Status</Text>
+          <Text style={styles.ModalTitleFont}>Success</Text>
           <View style={styles.ModalContentView}>
-            <FollowerItem
-              fullName={FollowingPeople[0].fullName}
-              avatar={FollowingPeople[0].avatar}
-              match={FollowingPeople[0].match}
-              style={styles.FollowerItem}
-            />
-            <EligibilityItem
-              title={EligibilityEvents[0].title}
-              image={EligibilityEvents[0].image}
-            />
-            <DateItem title="Expired: 2021-12-13" image={RubberStampIcon} />
-            <StatusDetailItem
-              image={InfoIcon}
-              title="Detail"
-              content="No details available"
-            />
-            <StatusHelpItem
-              image={HelpIcon}
-              title="How do I fix this?"
-              content="They must update their details with the USEF to fix this issue. Once fixed, click 'Refresh' to update their Pegasus profile."
+            <EligibilityItem title={Docs[0].title} image={Docs[0].image} />
+            <EligibilityItem title={Docs[1].title} image={Docs[1].image} />
+            <IconItem
+              title="Signed: 10:35am, Nov 12th, 2023"
+              image={QuillPenIcon}
             />
           </View>
 
           <View style={styles.BottomButton}>
-            <Pressable style={[styles.Button, styles.ButtonApply]}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>Fix</Text>
-            </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
@@ -85,9 +63,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: height - 400,
     width: width,
-    height: height - 106,
+    height: 400,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -152,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StatusModal;
+export default SignSuccessModal;

@@ -18,52 +18,50 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import FollowingPeople from '../../constants/following/followingPeople';
-import FollowerItem from './FollowerItem';
 import EligibilityItem from './EligibilityItem';
-import EligibilityEvents from '../../constants/events/eligibility';
-import DateItem from './DateItem';
-import {HelpIcon, InfoIcon, RubberStampIcon} from '../../constants/icons';
-import StatusDetailItem from './StatusDetailItem';
+import IconItem from './IconItem';
+import {FullScreenIcon, HelpIcon, UserGroupsIcon} from '../../constants/icons';
 import StatusHelpItem from './StatusHelpItem';
+import Docs from '../../constants/events/docs';
+import SignSuccessModal from './SignSuccessModal';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const StatusModal = ({modalVisible, setModalVisible}) => {
+const SignModal = ({modalVisible, setModalVisible}) => {
+  const [showSignSuccessModal, setShowSignSuccessModal] = useState(false);
+  const handleShowSignSuccessModal = () => {
+    setModalVisible(false);
+    setShowSignSuccessModal(true);
+  };
+
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Status</Text>
+          <Text style={styles.ModalTitleFont}>Sign</Text>
           <View style={styles.ModalContentView}>
-            <FollowerItem
-              fullName={FollowingPeople[0].fullName}
-              avatar={FollowingPeople[0].avatar}
-              match={FollowingPeople[0].match}
-              style={styles.FollowerItem}
-            />
-            <EligibilityItem
-              title={EligibilityEvents[0].title}
-              image={EligibilityEvents[0].image}
-            />
-            <DateItem title="Expired: 2021-12-13" image={RubberStampIcon} />
-            <StatusDetailItem
-              image={InfoIcon}
-              title="Detail"
-              content="No details available"
-            />
+            <EligibilityItem title={Docs[0].title} image={Docs[0].image} />
+            <EligibilityItem title={Docs[1].title} image={Docs[1].image} />
+            <IconItem title="View Document" image={FullScreenIcon} />
             <StatusHelpItem
               image={HelpIcon}
-              title="How do I fix this?"
-              content="They must update their details with the USEF to fix this issue. Once fixed, click 'Refresh' to update their Pegasus profile."
+              title="What is this?"
+              content="A signed declaration that you will adhere to the USEFs rules and policies at this event."
+            />
+            <StatusHelpItem
+              image={UserGroupsIcon}
+              title="Who must sign?"
+              content="All riders, owners, trainers and coaches attending this event. Guardians of any rider under the age of 18 competing in this event."
             />
           </View>
 
           <View style={styles.BottomButton}>
-            <Pressable style={[styles.Button, styles.ButtonApply]}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>Fix</Text>
+            <Pressable
+              style={[styles.Button, styles.ButtonApply]}
+              onPress={() => handleShowSignSuccessModal()}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>Sign</Text>
             </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
@@ -73,6 +71,10 @@ const StatusModal = ({modalVisible, setModalVisible}) => {
           </View>
         </View>
       </Modal>
+      <SignSuccessModal
+        modalVisible={showSignSuccessModal}
+        setModalVisible={setShowSignSuccessModal}
+      />
     </SafeAreaView>
   );
 };
@@ -152,4 +154,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StatusModal;
+export default SignModal;

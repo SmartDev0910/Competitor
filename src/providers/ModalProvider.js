@@ -8,6 +8,7 @@ export const ModalProvider = ({children}) => {
   const [showNavModal, setShowNavModal] = useState(true);
   const [ticketAssignName, setTicketAssignName] = useState('');
   const [ticketAssignEmail, setTicketAssignEmail] = useState('');
+  const [showScratchView, setShowScratchView] = useState(false);
 
   return (
     <ModalContext.Provider
@@ -18,6 +19,8 @@ export const ModalProvider = ({children}) => {
         setTicketAssignName,
         ticketAssignEmail,
         setTicketAssignEmail,
+        showScratchView,
+        setShowScratchView,
       ]}>
       {children}
     </ModalContext.Provider>

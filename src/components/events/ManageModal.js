@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Modal,
   StyleSheet,
@@ -18,11 +18,24 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
+import {ModalContext} from '../../providers/ModalProvider';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const ManageModal = ({modalVisible, setModalVisible}) => {
+  const [, , , , , , , setShowScratchView] = useContext(ModalContext);
+
+  const handleScratch = () => {
+    setShowScratchView(true);
+    setModalVisible(false);
+  };
+
+  const handleClose = () => {
+    setShowScratchView(false);
+    setModalVisible(false);
+  };
+
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
@@ -32,14 +45,16 @@ const ManageModal = ({modalVisible, setModalVisible}) => {
             <Pressable style={[styles.Button, styles.ButtonAdd]}>
               <Text style={[styles.TextStyle, styles.TextAdd]}>Add</Text>
             </Pressable>
-            <Pressable style={[styles.Button, styles.ButtonScratch]}>
+            <Pressable
+              style={[styles.Button, styles.ButtonScratch]}
+              onPress={handleScratch}>
               <Text style={[styles.TextStyle, styles.TextScratch]}>
                 Scratch
               </Text>
             </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
-              onPress={() => setModalVisible(false)}>
+              onPress={handleClose}>
               <Text style={[styles.TextStyle, styles.TextCancel]}>Close</Text>
             </Pressable>
           </View>

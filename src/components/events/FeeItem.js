@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {
   COLOR_EVENT_BORDER,
   COLOR_FONT_COMMENT,
@@ -15,21 +8,13 @@ import {
 import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
 import {
   ClockIcon,
+  MagneticCardWeakIcon,
   MoneyBagIcon,
   OkSelectedIcon,
   OkUnselectedIcon,
-  YearOfHorseIcon,
 } from '../../constants/icons';
 
-const ClassItem = ({
-  title,
-  match,
-  date,
-  price,
-  selected,
-  scratched,
-  onPress,
-}) => {
+const FeeItem = ({title, detail, price, selected, scratched, onPress}) => {
   return (
     <>
       <TouchableOpacity
@@ -38,17 +23,15 @@ const ClassItem = ({
           scratched ? styles.ScratchedWrapper : styles.DefaultWrapper,
         ]}
         onPress={onPress}>
-        <View style={styles.ContentView}>
-          <View>
+        <View>
+          <TouchableOpacity>
             <Text style={styles.TitleFont}>{title}</Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.DetailView}>
-            <Image source={YearOfHorseIcon} style={styles.DetailIcon} />
-            <Text style={styles.DetailFont}>{match}</Text>
-            <Image source={ClockIcon} style={styles.DetailIcon} />
-            <Text style={styles.DetailFont}>{date}</Text>
             <Image source={MoneyBagIcon} style={styles.DetailIcon} />
             <Text style={styles.DetailFont}>{price}</Text>
+            <Image source={MagneticCardWeakIcon} style={styles.DetailIcon} />
+            <Text style={styles.DetailFont}>{detail}</Text>
           </View>
         </View>
         {scratched ? (
@@ -63,8 +46,6 @@ const ClassItem = ({
     </>
   );
 };
-
-const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   Wrapper: {
@@ -83,16 +64,11 @@ const styles = StyleSheet.create({
   DefaultWrapper: {
     borderColor: COLOR_EVENT_BORDER,
   },
-  ContentView: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
   TitleFont: {
     fontFamily: FONT_SEMI_BOLD,
     fontSize: 15,
     color: COLOR_FONT_DEFAULT,
     lineHeight: 24,
-    width: width - 110,
   },
   DetailView: {
     height: 24,
@@ -116,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ClassItem;
+export default FeeItem;

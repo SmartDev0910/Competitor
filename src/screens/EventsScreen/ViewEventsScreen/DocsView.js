@@ -1,21 +1,40 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {
-  COLOR_FONT_DEFAULT,
-  COLOR_SEARCH_TEXT,
-  COLOR_WHITE,
-} from '../../../constants/colors';
+import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
+import Docs from '../../../constants/events/docs';
+import DocItem from '../../../components/events/DocItem';
+import SignModal from '../../../components/events/SignModal';
 
-const DocsView = ({navigation}) => {
+const DocsView = () => {
+  const [showSignModal, setShowSignModal] = React.useState(false);
+  const handleStatusModal = () => {
+    setShowSignModal(true);
+  };
+
   return (
-    <>
+    <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
           <Text style={styles.HeadFont}>3 signed, 1 unsigned</Text>
         </View>
+        {Docs.map((item, index) => {
+          return (
+            <DocItem
+              key={index}
+              image={item.image}
+              title={item.title}
+              statusText={item.statusText}
+              onPress={handleStatusModal}
+            />
+          );
+        })}
       </View>
-    </>
+      <SignModal
+        modalVisible={showSignModal}
+        setModalVisible={setShowSignModal}
+      />
+    </ScrollView>
   );
 };
 
@@ -24,13 +43,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
+    paddingHorizontal: 20,
     paddingTop: 12,
-    backgroundColor: COLOR_WHITE,
   },
   HeadWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 24,
   },
   HeadFont: {
     color: COLOR_FONT_DEFAULT,

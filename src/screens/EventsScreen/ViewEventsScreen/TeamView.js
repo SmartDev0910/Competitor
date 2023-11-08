@@ -1,11 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {
-  COLOR_FONT_DEFAULT,
-  COLOR_SEARCH_TEXT,
-  COLOR_WHITE,
-} from '../../../constants/colors';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
+import FollowingPeople from '../../../constants/following/followingPeople';
+import TeamItem from '../../../components/events/TeamItem';
 
 const TeamView = ({navigation}) => {
   return (
@@ -15,6 +13,17 @@ const TeamView = ({navigation}) => {
           <Text style={styles.HeadFont}>5 new updates</Text>
           <Text style={styles.HeadFont}>Refresh</Text>
         </View>
+        {FollowingPeople.map((item, index) => {
+          return (
+            <TeamItem
+              key={index}
+              fullName={item.fullName}
+              avatar={item.avatar}
+              match={item.match}
+              onPress={() => navigation.navigate('EventsScreen')}
+            />
+          );
+        })}
       </View>
     </>
   );
@@ -25,13 +34,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
+    paddingHorizontal: 20,
     paddingTop: 12,
-    backgroundColor: COLOR_WHITE,
   },
   HeadWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 24,
   },
   HeadFont: {
     color: COLOR_FONT_DEFAULT,

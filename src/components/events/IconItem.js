@@ -15,7 +15,7 @@ import {
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
 
-const EligibilityItem = ({image, title, onPress}) => {
+const IconItem = ({image, title, onPress}) => {
   return (
     <TouchableOpacity style={styles.View} onPress={onPress}>
       <Image source={image} style={styles.Image} />
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Image: {
-    width: 44,
-    height: 44,
+    width: 24,
+    height: 24,
     borderRadius: 10,
   },
   LocationFont: {
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   },
   DetailView: {
     flexDirection: 'column',
+    marginLeft: 21,
   },
   StatusTextView: {
     flexDirection: 'row',
@@ -78,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EligibilityItem;
+export default IconItem;
