@@ -86,6 +86,7 @@ export const PeopleIcon = require('../assets/icons/People.png');
 export const PinterestIcon = require('../assets/icons/Pinterest.png');
 export const PlusIcon = require('../assets/icons/Plus.png');
 export const PlusOutlinedIcon = require('../assets/icons/PlusOutlined.png');
+export const PoliceBadgeIcon = require('../assets/icons/PoliceBadge.png');
 export const PriceTagIcon = require('../assets/icons/PriceTag.png');
 export const PrizeIcon = require('../assets/icons/Prize.png');
 export const PublicSafetyIcon = require('../assets/icons/PublicSafety.png');

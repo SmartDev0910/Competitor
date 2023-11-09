@@ -36,7 +36,11 @@ import FeeDataItem from '../../../components/events/FeeDataItem';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const AboutEventView = () => {
+const AboutEventView = ({navigation}) => {
+  const handleRegister = () => {
+    navigation.navigate('RegisterTeamScreen');
+  };
+
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
@@ -136,7 +140,9 @@ const AboutEventView = () => {
             })}
           </View>
 
-          <Pressable style={[styles.Button, styles.ButtonApply]}>
+          <Pressable
+            style={[styles.Button, styles.ButtonApply]}
+            onPress={handleRegister}>
             <Text style={[styles.TextStyle, styles.TextApply]}>Register</Text>
           </Pressable>
         </View>

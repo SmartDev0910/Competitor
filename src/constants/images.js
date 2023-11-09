@@ -74,3 +74,6 @@ export const UsefLogoEvent4Image = require('../assets/images/UsefLogoEvent4.png'
 export const UsefLogoEvent5Image = require('../assets/images/UsefLogoEvent5.png');
 export const UsefLogoEvent6Image = require('../assets/images/UsefLogoEvent6.png');
 export const UsefLogoEvent7Image = require('../assets/images/UsefLogoEvent7.png');
+export const HorseMrTobinsImage = require('../assets/images/HorseMrTobins.png');
+export const HorseHappyFeetImage = require('../assets/images/HorseHappyFeet.png');
+export const HorseSocksImage = require('../assets/images/HorseSocks.png');

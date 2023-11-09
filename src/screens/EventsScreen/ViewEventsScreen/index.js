@@ -28,7 +28,7 @@ function ViewEventScreen({navigation}) {
     {key: 'team', title: 'Team'},
   ]);
 
-  const AboutTab = () => <AboutEventView />;
+  const AboutTab = () => <AboutEventView navigation={navigation} />;
   const FeedTab = () => <FeedView navigation={navigation} />;
   const ClassesTab = () => <ClassesView navigation={navigation} />;
   const FeesTab = () => <FeesView navigation={navigation} />;

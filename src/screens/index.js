@@ -12,3 +12,13 @@ export {default as OrganizerProfileScreen} from './FollowingScreen/OrganizerProf
 export {default as ViewEventScreen} from './EventsScreen/ViewEventsScreen';
 export {default as ProfileScreen} from './FollowingScreen/ProfileScreen';
 export {default as TicketsScreen} from './EventsScreen/TicketsScreen';
+export {default as RegisterTeamScreen} from './EventsScreen/RegisterScreen/TeamScreen';
+export {default as RegisterConfirmationScreen} from './EventsScreen/RegisterScreen/ConfirmationScreen';
+export {default as RegisterFeesScreen} from './EventsScreen/RegisterScreen/FeesScreen';
+export {default as RegisterHorsesScreen} from './EventsScreen/RegisterScreen/HorsesScreen';
+export {default as RegisterPaperworkScreen} from './EventsScreen/RegisterScreen/PaperworkScreen';
+export {default as RegisterPayScreen} from './EventsScreen/RegisterScreen/PayScreen';
+export {default as RegisterRidersScreen} from './EventsScreen/RegisterScreen/RidersScreen';
+export {default as RegisterSignScreen} from './EventsScreen/RegisterScreen/SignScreen';
+export {default as RegisterSplitPaymentsScreen} from './EventsScreen/RegisterScreen/SplitPaymentsScreen';
+export {default as RegisterTicketsScreen} from './EventsScreen/RegisterScreen/TicketsScreen';
