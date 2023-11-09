@@ -62,6 +62,9 @@ const StatusModal = ({modalVisible, setModalVisible}) => {
           </View>
 
           <View style={styles.BottomButton}>
+            <Pressable style={[styles.Button, styles.ButtonApply]}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>Fix</Text>
+            </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>

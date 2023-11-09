@@ -15,6 +15,16 @@ import {
   NavScreen,
   MyEventsScreen,
   TicketsScreen,
+  RegisterTeamScreen,
+  RegisterConfirmationScreen,
+  RegisterFeesScreen,
+  RegisterHorsesScreen,
+  RegisterPaperworkScreen,
+  RegisterPayScreen,
+  RegisterRidersScreen,
+  RegisterSignScreen,
+  RegisterSplitPaymentsScreen,
+  RegisterTicketsScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -98,43 +108,115 @@ const EventsStack = createStackNavigator();
 
 function EventsStackScreen() {
   return (
-    <EventsStack.Navigator>
-      <EventsStack.Screen
-        name="EventsScreen"
-        component={EventsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="MyEventsScreen"
-        component={MyEventsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="ViewEventScreen"
-        component={ViewEventScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="TicketsScreen"
-        component={TicketsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <EventsStack.Screen
-        name="ProfileScreen"
-        component={ProfileScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </EventsStack.Navigator>
+    <ModalProvider>
+      <EventsStack.Navigator>
+        <EventsStack.Screen
+          name="EventsScreen"
+          component={EventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="MyEventsScreen"
+          component={MyEventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="ViewEventScreen"
+          component={ViewEventScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="TicketsScreen"
+          component={TicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterTeamScreen"
+          component={RegisterTeamScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterConfirmationScreen"
+          component={RegisterConfirmationScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterFeesScreen"
+          component={RegisterFeesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterHorsesScreen"
+          component={RegisterHorsesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterPaperworkScreen"
+          component={RegisterPaperworkScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterPayScreen"
+          component={RegisterPayScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterRidersScreen"
+          component={RegisterRidersScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterSignScreen"
+          component={RegisterSignScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterSplitPaymentsScreen"
+          component={RegisterSplitPaymentsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="RegisterTicketsScreen"
+          component={RegisterTicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </EventsStack.Navigator>
+    </ModalProvider>
   );
 }
 
@@ -189,6 +271,83 @@ function NavStackScreen() {
         <NavStack.Screen
           name="TicketsScreen"
           component={TicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="ViewEventScreen"
+          component={ViewEventScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterTeamScreen"
+          component={RegisterTeamScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterConfirmationScreen"
+          component={RegisterConfirmationScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterFeesScreen"
+          component={RegisterFeesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterHorsesScreen"
+          component={RegisterHorsesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterPaperworkScreen"
+          component={RegisterPaperworkScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterPayScreen"
+          component={RegisterPayScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterRidersScreen"
+          component={RegisterRidersScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterSignScreen"
+          component={RegisterSignScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterSplitPaymentsScreen"
+          component={RegisterSplitPaymentsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="RegisterTicketsScreen"
+          component={RegisterTicketsScreen}
           options={{
             headerShown: false,
           }}

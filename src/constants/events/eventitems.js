@@ -1,7 +1,12 @@
 import {
   CertificateOutlinedIcon,
+  ClockOutlinedIcon,
+  DepartmentShopOutlinedIcon,
+  JourneyIcon,
+  JourneyOutlinedIcon,
   LocationOutlinedIcon,
   TearOffCalendarOutlinedIcon,
+  TwoTicketsOutlinedIcon,
 } from '../icons';
 
 export default [
@@ -19,5 +24,25 @@ export default [
     title: 'Palm Beach Equestrian Center',
     statusText: 'Wellington, FL',
     image: LocationOutlinedIcon,
+  },
+  {
+    title: 'Course Map',
+    statusText: 'Draft',
+    image: JourneyOutlinedIcon,
+  },
+  {
+    title: 'Accepting Partners',
+    statusText: 'Sponsors, Vendors, Nearbye Businesses',
+    image: DepartmentShopOutlinedIcon,
+  },
+  {
+    title: '236 tickets remaining',
+    statusText: 'Spectator tickets',
+    image: TwoTicketsOutlinedIcon,
+  },
+  {
+    title: 'Event schedule',
+    statusText: 'Starts Friday, 8am',
+    image: ClockOutlinedIcon,
   },
 ];

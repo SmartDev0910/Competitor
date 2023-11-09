@@ -10,17 +10,21 @@ import {
 import {
   COLOR_EVENT_BORDER,
   COLOR_FONT_COMMENT,
-  COLOR_FONT_DEFAULT,
   COLOR_WHITE,
 } from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
+import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
+import {RubberStampIcon} from '../../constants/icons';
 
-const EligibilityItem = ({image, title, onPress}) => {
+const DocItem = ({image, title, statusText, onPress}) => {
   return (
     <TouchableOpacity style={styles.View} onPress={onPress}>
       <Image source={image} style={styles.Image} />
       <View style={styles.DetailView}>
         <Text style={styles.TitleFont}>{title}</Text>
+        <View style={styles.StatusTextView}>
+          <Image source={RubberStampIcon} style={styles.RubberStampIcon} />
+          <Text style={styles.StatusTextFont}>{statusText}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -30,20 +34,19 @@ const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   View: {
-    paddingHorizontal: 12,
+    flex: 1,
+    padding: 10,
     marginVertical: 5,
     flexDirection: 'row',
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 10,
     borderColor: COLOR_EVENT_BORDER,
     backgroundColor: COLOR_WHITE,
     gap: 12,
-    height: 55,
-    alignItems: 'center',
   },
   Image: {
-    width: 44,
-    height: 44,
+    width: 45,
+    height: 45,
     borderRadius: 10,
   },
   LocationFont: {
@@ -52,12 +55,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   TitleFont: {
-    fontFamily: FONT_REGULAR,
-    fontSize: 14,
-    width: width - 150,
-    flexWrap: 'wrap',
+    fontFamily: FONT_SEMI_BOLD,
+    fontSize: 15,
     marginVertical: 2,
-    color: COLOR_FONT_DEFAULT,
   },
   DetailView: {
     flexDirection: 'column',
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EligibilityItem;
+export default DocItem;

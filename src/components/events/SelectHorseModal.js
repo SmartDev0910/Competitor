@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   Pressable,
-  Image,
   View,
   SafeAreaView,
   Dimensions,
@@ -18,79 +17,48 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import RegisteredExhibitorsView from '../../screens/EventsScreen/EventsScreen/RegisteredExhibitorsView';
-import WaitingExhibitorsView from '../../screens/EventsScreen/EventsScreen/WaitingExhibitorsView';
+import SelectableTeamMemberItem from './SelectableTeamMemberItem';
+import Horses from '../../constants/events/horses';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const ExhibitorsTabView = ({activeTab}) => {
-  const [index, setIndex] = React.useState(activeTab);
-  const [routes] = useState([
-    {key: 'registered', title: '35 Registered'},
-    {key: 'waitlisted', title: '2 Waitlisted'},
-  ]);
+const SelectHorseModal = ({modalVisible, setModalVisible}) => {
+  const [selectedHorseItems, setSelectedHorseItems] = React.useState([]);
 
-  const RegisteredTab = () => <RegisteredExhibitorsView />;
-
-  const WaitlistedTab = () => <WaitingExhibitorsView />;
-
-  const renderScene = SceneMap({
-    registered: RegisteredTab,
-    waitlisted: WaitlistedTab,
-  });
-
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={{backgroundColor: COLOR_PINK}}
-      style={{backgroundColor: COLOR_WHITE}}
-      renderLabel={({route, focused, color}) => (
-        <Text
-          style={{
-            color: focused ? COLOR_PINK : COLOR_FONT_DEFAULT,
-            fontSize: 14,
-            fontFamily: FONT_REGULAR,
-          }}>
-          {route.title}
-        </Text>
-      )}
-    />
-  );
-  return (
-    <TabView
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-    />
-  );
-};
-
-const ExhibitorsModal = ({
-  modalVisible,
-  setModalVisible,
-  navigation,
-  activeTab,
-}) => {
-  const handleViewEvent = () => {
-    navigation.navigate('ViewEventScreen');
-    setModalVisible(false);
+  const handleHorseItemPress = index => {
+    if (selectedHorseItems.includes(index)) {
+      setSelectedHorseItems(selectedHorseItems.filter(item => item !== index));
+    } else {
+      setSelectedHorseItems([...selectedHorseItems, index]);
+    }
   };
+
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Exhibitors</Text>
-          <ExhibitorsTabView activeTab={activeTab} />
+          <Text style={styles.ModalTitleFont}>Select a horse</Text>
+          <View style={styles.ModalContentView}>
+            {Horses.map((item, index) => {
+              return (
+                <SelectableTeamMemberItem
+                  key={index}
+                  fullName={item.fullName}
+                  avatar={item.avatar}
+                  status={item.status}
+                  selected={selectedHorseItems.includes(index)}
+                  onPress={() => handleHorseItemPress(index)}
+                />
+              );
+            })}
+          </View>
+
           <View style={styles.BottomButton}>
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleViewEvent}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                View Event
+            <Pressable style={[styles.Button, styles.ButtonReadyApply]}>
+              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+                Save
               </Text>
             </Pressable>
             <Pressable
@@ -113,9 +81,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: height - 480,
     width: width,
-    height: height - 106,
+    height: 480,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -148,6 +116,10 @@ const styles = StyleSheet.create({
   ButtonCancel: {
     backgroundColor: COLOR_BUTTON_CANCEL,
   },
+  ButtonReadyApply: {
+    borderWidth: 1,
+    borderColor: COLOR_PINK,
+  },
   TextStyle: {
     fontFamily: FONT_REGULAR,
     fontSize: 16,
@@ -160,6 +132,9 @@ const styles = StyleSheet.create({
   TextApply: {
     color: COLOR_WHITE,
   },
+  TextReadyApply: {
+    color: COLOR_PINK,
+  },
   ModalTitleFont: {
     marginBottom: 15,
     fontFamily: FONT_REGULAR,
@@ -170,7 +145,14 @@ const styles = StyleSheet.create({
   },
   BottomButton: {
     marginHorizontal: 24,
+    position: 'absolute',
+    bottom: 30,
+    width: width - 48,
+  },
+  ModalContentView: {
+    paddingHorizontal: 20,
+    flexDirection: 'column',
   },
 });
 
-export default ExhibitorsModal;
+export default SelectHorseModal;

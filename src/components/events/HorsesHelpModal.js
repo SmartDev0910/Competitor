@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   Pressable,
-  Image,
   View,
   SafeAreaView,
   Dimensions,
@@ -18,81 +17,40 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import RegisteredExhibitorsView from '../../screens/EventsScreen/EventsScreen/RegisteredExhibitorsView';
-import WaitingExhibitorsView from '../../screens/EventsScreen/EventsScreen/WaitingExhibitorsView';
+import {PublicSafetyIcon, YearOfHorseIcon} from '../../constants/icons';
+import StatusHelpItem from './StatusHelpItem';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const ExhibitorsTabView = ({activeTab}) => {
-  const [index, setIndex] = React.useState(activeTab);
-  const [routes] = useState([
-    {key: 'registered', title: '35 Registered'},
-    {key: 'waitlisted', title: '2 Waitlisted'},
-  ]);
-
-  const RegisteredTab = () => <RegisteredExhibitorsView />;
-
-  const WaitlistedTab = () => <WaitingExhibitorsView />;
-
-  const renderScene = SceneMap({
-    registered: RegisteredTab,
-    waitlisted: WaitlistedTab,
-  });
-
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      indicatorStyle={{backgroundColor: COLOR_PINK}}
-      style={{backgroundColor: COLOR_WHITE}}
-      renderLabel={({route, focused, color}) => (
-        <Text
-          style={{
-            color: focused ? COLOR_PINK : COLOR_FONT_DEFAULT,
-            fontSize: 14,
-            fontFamily: FONT_REGULAR,
-          }}>
-          {route.title}
-        </Text>
-      )}
-    />
-  );
-  return (
-    <TabView
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-    />
-  );
-};
-
-const ExhibitorsModal = ({
-  modalVisible,
-  setModalVisible,
-  navigation,
-  activeTab,
-}) => {
-  const handleViewEvent = () => {
-    navigation.navigate('ViewEventScreen');
-    setModalVisible(false);
-  };
+const HorsesHelpModal = ({modalVisible, setModalVisible}) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Exhibitors</Text>
-          <ExhibitorsTabView activeTab={activeTab} />
+          <Text style={styles.ModalTitleFont}>Horses</Text>
+          <View style={styles.ModalContentView}>
+            <StatusHelpItem
+              image={YearOfHorseIcon}
+              title="Add horses"
+              content="Select a horse for each rider, per class. "
+            />
+            <StatusHelpItem
+              image={PublicSafetyIcon}
+              title="Can't select a horse?"
+              content="You can only select horses that:
+              Are saved to your account, or
+              Are owned by a team member  who 'Authorized' you
+              
+              To add a new horse:
+              Go to Settings > Horses, or
+              Ask your team member to Authorize you in their account settings.
+              "
+            />
+          </View>
+
           <View style={styles.BottomButton}>
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleViewEvent}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                View Event
-              </Text>
-            </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
@@ -170,7 +128,14 @@ const styles = StyleSheet.create({
   },
   BottomButton: {
     marginHorizontal: 24,
+    position: 'absolute',
+    bottom: 30,
+    width: width - 48,
+  },
+  ModalContentView: {
+    paddingHorizontal: 20,
+    flexDirection: 'column',
   },
 });
 
-export default ExhibitorsModal;
+export default HorsesHelpModal;
