@@ -11,10 +11,14 @@ import Appbar from './Appbar';
 import {
   COLOR_BUTTON_CANCEL,
   COLOR_BUTTON_DEFAULT,
+  COLOR_EVENT_BORDER,
   COLOR_PINK,
   COLOR_WHITE,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
+import TicketsData from '../../../constants/events/ticketsData';
+import TicketsPaneItem from '../../../components/events/TicketsPaneItem';
+import Divider from '../../../components/home/Divider';
 
 const TicketsScreen = ({navigation}) => {
   const handleNext = () => {
@@ -30,6 +34,23 @@ const TicketsScreen = ({navigation}) => {
       <Appbar title="Tickets" navigation={navigation} />
       <ScrollView>
         <View style={styles.ContentView}>
+          <View style={styles.TicketsWrapper}>
+            {TicketsData.map((item, index) => {
+              return (
+                <>
+                  <TicketsPaneItem
+                    key={index}
+                    title={item.subTitle}
+                    available={item.available}
+                    price={item.price}
+                    amount={item.amount}
+                    info={item.info}
+                  />
+                  <Divider style={styles.Divider} />
+                </>
+              );
+            })}
+          </View>
           <Pressable
             style={[styles.Button, styles.ButtonApply]}
             onPress={handleNext}>
@@ -96,6 +117,19 @@ const styles = StyleSheet.create({
   },
   TextReadyApply: {
     color: COLOR_PINK,
+  },
+  Divider: {
+    height: 1,
+    backgroundColor: COLOR_EVENT_BORDER,
+    marginVertical: 20,
+  },
+  TicketsWrapper: {
+    borderWidth: 1,
+    borderColor: COLOR_EVENT_BORDER,
+    borderRadius: 10,
+    padding: 18,
+    flexDirection: 'column',
+    marginVertical: 5,
   },
 });
 

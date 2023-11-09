@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import {ArrowLeftIcon, HelpIcon} from '../../../constants/icons';
+import {ArrowLeftIcon, CollapseIcon, HelpIcon} from '../../../constants/icons';
 import {FONT_BOLD} from '../../../constants/fonts';
 import {
   COLOR_EVENT_BORDER,
@@ -8,16 +8,22 @@ import {
   COLOR_WHITE,
 } from '../../../constants/colors';
 
-const Appbar = ({title, navigation, onInfoPress}) => {
+const Appbar = ({title, navigation, collapsable, onCollapse, onInfoPress}) => {
   return (
     <View style={styles.Wrapper}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image source={ArrowLeftIcon} style={styles.ArrowLeftIcon} />
       </TouchableOpacity>
       <Text style={styles.TitleFont}>{title}</Text>
-      <TouchableOpacity onPress={onInfoPress}>
-        <Image source={HelpIcon} style={styles.HelpIcon} />
-      </TouchableOpacity>
+      {collapsable ? (
+        <TouchableOpacity onPress={onCollapse}>
+          <Image source={CollapseIcon} style={styles.CollapseIcon} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={onInfoPress}>
+          <Image source={HelpIcon} style={styles.HelpIcon} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -45,6 +51,10 @@ const styles = StyleSheet.create({
   HelpIcon: {
     width: 16,
     height: 16,
+  },
+  CollapseIcon: {
+    width: 28,
+    height: 28,
   },
 });
 
