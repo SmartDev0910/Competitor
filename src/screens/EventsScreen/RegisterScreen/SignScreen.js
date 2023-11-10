@@ -15,8 +15,17 @@ import {
   COLOR_WHITE,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
+import SignsData from '../../../constants/events/signsData';
+import SignPane from '../../../components/events/SignPane';
+import SignHelpModal from '../../../components/events/SignHelpModal';
 
 const SignScreen = ({navigation}) => {
+  const [showHelpModal, setShowHelpModal] = React.useState(false);
+
+  const handleHelpModal = () => {
+    setShowHelpModal(true);
+  };
+
   const handleNext = () => {
     navigation.navigate('RegisterConfirmationScreen');
   };
@@ -26,30 +35,57 @@ const SignScreen = ({navigation}) => {
   const handleCancel = () => {};
 
   return (
-    <View style={styles.Wrapper}>
-      <Appbar title="Sign" navigation={navigation} />
-      <ScrollView>
-        <View style={styles.ContentView}>
-          <Pressable
-            style={[styles.Button, styles.ButtonApply]}
-            onPress={handleNext}>
-            <Text style={[styles.TextStyle, styles.TextApply]}>{'Next >'}</Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonReadyApply]}
-            onPress={handleSaveAndExit}>
-            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-              {'SAVE & EXIT'}
-            </Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonCancel]}
-            onPress={handleCancel}>
-            <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-          </Pressable>
-        </View>
-      </ScrollView>
-    </View>
+    <>
+      <View style={styles.Wrapper}>
+        <Appbar
+          title="Sign"
+          navigation={navigation}
+          visibleHelp={true}
+          onInfoPress={handleHelpModal}
+        />
+        <ScrollView>
+          <View style={styles.ContentView}>
+            {SignsData.map((item, index) => {
+              return (
+                <SignPane
+                  key={index}
+                  image={item.image}
+                  title={item.title}
+                  description={item.description}
+                  viewDocument={true}
+                  viewAnnex={true}
+                  signed={false}
+                  info={item.info}
+                />
+              );
+            })}
+            <Pressable
+              style={[styles.Button, styles.ButtonApply]}
+              onPress={handleNext}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>
+                {'Next >'}
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.Button, styles.ButtonReadyApply]}
+              onPress={handleSaveAndExit}>
+              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+                {'SAVE & EXIT'}
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.Button, styles.ButtonCancel]}
+              onPress={handleCancel}>
+              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
+      </View>
+      <SignHelpModal
+        modalVisible={showHelpModal}
+        setModalVisible={setShowHelpModal}
+      />
+    </>
   );
 };
 

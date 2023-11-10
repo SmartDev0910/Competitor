@@ -46,6 +46,7 @@ const RidersScreen = ({navigation}) => {
         <Appbar
           title="Riders"
           navigation={navigation}
+          visibleHelp={true}
           onInfoPress={handleHelpModal}
         />
         <ScrollView>

@@ -45,6 +45,7 @@ const HorsesScreen = ({navigation}) => {
       <Appbar
         title="Horses"
         navigation={navigation}
+        visibleHelp={true}
         onInfoPress={handleHelpModal}
       />
       <ScrollView>

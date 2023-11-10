@@ -11,12 +11,23 @@ import Appbar from './Appbar';
 import {
   COLOR_BUTTON_CANCEL,
   COLOR_BUTTON_DEFAULT,
+  COLOR_EVENT_BORDER,
+  COLOR_FONT_DEFAULT,
   COLOR_PINK,
+  COLOR_SKY,
   COLOR_WHITE,
 } from '../../../constants/colors';
-import {FONT_REGULAR} from '../../../constants/fonts';
+import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
+import SelectPaymentMethodModal from '../../../components/events/SelectPaymentMethodModal';
 
 const PayScreen = ({navigation}) => {
+  const [showSelectPaymentMethodModal, setShowSelectPaymentMethodModal] =
+    React.useState(false);
+
+  const handleSelectPaymentMethodModal = () => {
+    setShowSelectPaymentMethodModal(true);
+  };
+
   const handleNext = () => {
     navigation.navigate('RegisterSplitPaymentsScreen');
   };
@@ -26,30 +37,60 @@ const PayScreen = ({navigation}) => {
   const handleCancel = () => {};
 
   return (
-    <View style={styles.Wrapper}>
-      <Appbar title="Pay" navigation={navigation} />
-      <ScrollView>
-        <View style={styles.ContentView}>
-          <Pressable
-            style={[styles.Button, styles.ButtonApply]}
-            onPress={handleNext}>
-            <Text style={[styles.TextStyle, styles.TextApply]}>{'Next >'}</Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonReadyApply]}
-            onPress={handleSaveAndExit}>
-            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-              {'SAVE & EXIT'}
-            </Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonCancel]}
-            onPress={handleCancel}>
-            <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-          </Pressable>
-        </View>
-      </ScrollView>
-    </View>
+    <>
+      <View style={styles.Wrapper}>
+        <Appbar title="Pay" navigation={navigation} />
+        <ScrollView>
+          <View style={styles.ContentView}>
+            <View style={styles.PayResultView}>
+              <View style={styles.PayRowView}>
+                <Text style={styles.PayItemFont}>Registrations</Text>
+                <Text style={styles.PayItemFont}>$775</Text>
+              </View>
+              <View style={styles.PayRowView}>
+                <Text style={styles.PayItemFont}>Fees</Text>
+                <Text style={styles.PayItemFont}>$6,750</Text>
+              </View>
+              <View style={styles.PayRowView}>
+                <Text style={styles.PayItemFont}>Tickets</Text>
+                <Text style={styles.PayItemFont}>$2,400</Text>
+              </View>
+              <View style={styles.PayRowView}>
+                <Text style={styles.PayItemFont}>Taxes</Text>
+                <Text style={styles.PayItemFont}>$250</Text>
+              </View>
+              <View style={styles.PayRowView}>
+                <Text style={styles.PayTotalTextFont}>Grand Total</Text>
+                <Text style={styles.PayTotalTextFont}>$10,175</Text>
+              </View>
+            </View>
+            <Pressable
+              style={[styles.Button, styles.ButtonApply]}
+              onPress={handleSelectPaymentMethodModal}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>
+                {'PAY $10,175 >'}
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.Button, styles.ButtonReadyApply]}
+              onPress={handleSaveAndExit}>
+              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+                {'SAVE & EXIT'}
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.Button, styles.ButtonCancel]}
+              onPress={handleCancel}>
+              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
+      </View>
+      <SelectPaymentMethodModal
+        modalVisible={showSelectPaymentMethodModal}
+        setModalVisible={setShowSelectPaymentMethodModal}
+      />
+    </>
   );
 };
 
@@ -96,6 +137,31 @@ const styles = StyleSheet.create({
   },
   TextReadyApply: {
     color: COLOR_PINK,
+  },
+  PayResultView: {
+    paddingHorizontal: 24,
+    paddingVertical: 10,
+    borderColor: COLOR_FONT_DEFAULT,
+    borderWidth: 1,
+    borderRadius: 10,
+    flexDirection: 'column',
+  },
+  PayRowView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  PayItemFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+    lineHeight: 34,
+  },
+  PayTotalTextFont: {
+    fontFamily: FONT_BOLD,
+    fontSize: 14,
+    color: COLOR_SKY,
+    lineHeight: 34,
   },
 });
 
