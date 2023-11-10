@@ -55,6 +55,7 @@ const PaperworkScreen = ({navigation}) => {
         <Appbar
           title="Paperwork"
           navigation={navigation}
+          visibleHelp={true}
           onInfoPress={handlePaperworkHelpModal}
         />
         <ScrollView>

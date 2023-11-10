@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   DetailView: {
     flexDirection: 'column',
-    width: width - 160,
+    width: width - 155,
   },
   MatchView: {
     flexDirection: 'row',
@@ -84,10 +84,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT_REGULAR,
     fontSize: 12,
   },
-  ArrowDownIcon: {
-    width: 12,
-    height: 6,
-  },
+  ArrowDownIcon: {},
 });
 
 export default RegisteredRiderItem;

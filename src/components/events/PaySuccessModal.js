@@ -21,27 +21,33 @@ import {FONT_REGULAR} from '../../constants/fonts';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const CollapseModal = ({modalVisible, setModalVisible}) => {
+const PaySuccessModal = ({modalVisible, setModalVisible}) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
+          <Text style={styles.ModalTitleFont}>Success!</Text>
+          <View style={styles.ModalContentView}>
+            <Text style={styles.HelpTextFont}>
+              {`Review and sign these documents to register for this event.
+
+Each document was add by the event organizer and are a mandatory requirement to register.
+
+You will be able to view and download your signed documents at any time in your Paperwork dashboard.`}
+            </Text>
+          </View>
+
           <View style={styles.BottomButton}>
             <Pressable style={[styles.Button, styles.ButtonApply]}>
               <Text style={[styles.TextStyle, styles.TextApply]}>
-                Expand all
-              </Text>
-            </Pressable>
-            <Pressable style={[styles.Button, styles.ButtonReadyApply]}>
-              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-                Collapse all
+                VIEW RECEIPT
               </Text>
             </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Close</Text>
+              <Text style={[styles.TextStyle, styles.TextCancel]}>CLOSE</Text>
             </Pressable>
           </View>
         </View>
@@ -58,9 +64,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: height - 280,
+    marginTop: height - 460,
     width: width,
-    height: 280,
+    height: 460,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -73,6 +79,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
   },
+  ScrollView: {
+    paddingHorizontal: 24,
+  },
   Button: {
     borderRadius: 10,
     padding: 10,
@@ -83,16 +92,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 5,
   },
-  ButtonCancel: {
-    backgroundColor: COLOR_BUTTON_CANCEL,
-  },
-  ButtonReadyApply: {
-    borderWidth: 1,
-    borderColor: COLOR_PINK,
-  },
   ButtonApply: {
     backgroundColor: COLOR_PINK,
     marginTop: 20,
+  },
+  ButtonCancel: {
+    backgroundColor: COLOR_BUTTON_CANCEL,
   },
   TextStyle: {
     fontFamily: FONT_REGULAR,
@@ -103,11 +108,16 @@ const styles = StyleSheet.create({
   TextCancel: {
     color: COLOR_BUTTON_DEFAULT,
   },
-  TextReadyApply: {
-    color: COLOR_PINK,
-  },
   TextApply: {
     color: COLOR_WHITE,
+  },
+  ModalTitleFont: {
+    marginBottom: 15,
+    fontFamily: FONT_REGULAR,
+    fontSize: 25,
+    color: COLOR_FONT_DEFAULT,
+    lineHeight: 34,
+    marginHorizontal: 24,
   },
   BottomButton: {
     marginHorizontal: 24,
@@ -115,6 +125,15 @@ const styles = StyleSheet.create({
     bottom: 30,
     width: width - 48,
   },
+  ModalContentView: {
+    paddingHorizontal: 20,
+    flexDirection: 'column',
+  },
+  HelpTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+  },
 });
 
-export default CollapseModal;
+export default PaySuccessModal;

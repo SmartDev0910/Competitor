@@ -17,53 +17,49 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {AddUserMaleIcon, InfoIcon} from '../../constants/icons';
+import {AddUserMaleIcon, InfoIcon, LawIcon} from '../../constants/icons';
 import StatusHelpItem from './StatusHelpItem';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const PaperworkHelpModal = ({modalVisible, setModalVisible}) => {
+const SignViewAnnexModal = ({modalVisible, setModalVisible}) => {
   return (
-    <SafeAreaView>
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={styles.OverlayStyle} />
-        <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Paperwork</Text>
-          <View style={styles.ModalContentView}>
-            <StatusHelpItem
-              image={InfoIcon}
-              title="Details"
-              content={`Send event paperwork to team members for signature to support this registration.
+    <>
+      <SafeAreaView>
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <View style={styles.OverlayStyle} />
+          <View style={styles.ModalView}>
+            <Text style={styles.ModalTitleFont}>Annex</Text>
+            <View style={styles.ModalContentView}>
+              <Text style={styles.HelpTextFont}>
+                {`Pegasus generates a General Liability Waiver for all events.  Event organizers add clauses to this liability waiver that are unique to their event and/or property. These unique clauses will be appended to the end of the General Liability Waiver as an annex. 
 
-You can only send paperwork to people saved to your Team. 
-              
-This is restriction is in place to prevent fraud.`}
-            />
-            <StatusHelpItem
-              image={AddUserMaleIcon}
-              title="Add new team member"
-              content={`To add a new team member to send paperwork, add them to your team in Settings > Team > Authorize.`}
-            />
-          </View>
-
-          <View style={styles.BottomButton}>
-            <Pressable
-              style={[styles.Button, styles.ButtonReadyApply]}
-              onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-                {'TEAM SETTINGS >'}
+You can review these unique clauses below.`}
               </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonCancel]}
-              onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Close</Text>
-            </Pressable>
+              <StatusHelpItem
+                image={LawIcon}
+                title="No dog allowed."
+                content={`Turpis massa sed elementum tempus egestas sed sed risus. Convallis a cras semper auctor neque vitae tempus quam.`}
+              />
+              <StatusHelpItem
+                image={LawIcon}
+                title="RV's must be electric powered."
+                content={`Turpis massa sed elementum tempus egestas sed sed risus. Convallis a cras semper auctor neque vitae tempus quam`}
+              />
+            </View>
+
+            <View style={styles.BottomButton}>
+              <Pressable
+                style={[styles.Button, styles.ButtonCancel]}
+                onPress={() => setModalVisible(false)}>
+                <Text style={[styles.TextStyle, styles.TextCancel]}>Close</Text>
+              </Pressable>
+            </View>
           </View>
-        </View>
-      </Modal>
-    </SafeAreaView>
+        </Modal>
+      </SafeAreaView>
+    </>
   );
 };
 
@@ -107,10 +103,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_PINK,
     marginTop: 20,
   },
-  ButtonReadyApply: {
-    borderWidth: 1,
-    borderColor: COLOR_PINK,
-  },
   ButtonCancel: {
     backgroundColor: COLOR_BUTTON_CANCEL,
   },
@@ -122,9 +114,6 @@ const styles = StyleSheet.create({
   },
   TextCancel: {
     color: COLOR_BUTTON_DEFAULT,
-  },
-  TextReadyApply: {
-    color: COLOR_PINK,
   },
   TextApply: {
     color: COLOR_WHITE,
@@ -147,6 +136,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'column',
   },
+  HelpTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+  },
 });
 
-export default PaperworkHelpModal;
+export default SignViewAnnexModal;

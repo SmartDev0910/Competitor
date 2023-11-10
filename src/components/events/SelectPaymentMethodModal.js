@@ -17,35 +17,46 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
+import PaySuccessModal from './PaySuccessModal';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const CollapseModal = ({modalVisible, setModalVisible}) => {
+const SelectPaymentMethodModal = ({modalVisible, setModalVisible}) => {
+  const [showPaySuccessModal, setShowPaySuccessModal] = useState(false);
+  const handleShowPaySuccessModal = () => {
+    setModalVisible(false);
+    setShowPaySuccessModal(true);
+  };
+
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
+          <Text style={styles.ModalTitleFont}>Select payment method</Text>
+          <View style={styles.ModalContentView}></View>
+
           <View style={styles.BottomButton}>
-            <Pressable style={[styles.Button, styles.ButtonApply]}>
+            <Pressable
+              style={[styles.Button, styles.ButtonApply]}
+              onPress={() => handleShowPaySuccessModal()}>
               <Text style={[styles.TextStyle, styles.TextApply]}>
-                Expand all
-              </Text>
-            </Pressable>
-            <Pressable style={[styles.Button, styles.ButtonReadyApply]}>
-              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-                Collapse all
+                PAY $10,175
               </Text>
             </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Close</Text>
+              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
+      <PaySuccessModal
+        modalVisible={showPaySuccessModal}
+        setModalVisible={setShowPaySuccessModal}
+      />
     </SafeAreaView>
   );
 };
@@ -58,9 +69,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: height - 280,
+    marginTop: 106,
     width: width,
-    height: 280,
+    height: height - 106,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -73,6 +84,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
   },
+  ScrollView: {
+    paddingHorizontal: 24,
+  },
   Button: {
     borderRadius: 10,
     padding: 10,
@@ -83,16 +97,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 5,
   },
-  ButtonCancel: {
-    backgroundColor: COLOR_BUTTON_CANCEL,
-  },
-  ButtonReadyApply: {
-    borderWidth: 1,
-    borderColor: COLOR_PINK,
-  },
   ButtonApply: {
     backgroundColor: COLOR_PINK,
     marginTop: 20,
+  },
+  ButtonCancel: {
+    backgroundColor: COLOR_BUTTON_CANCEL,
   },
   TextStyle: {
     fontFamily: FONT_REGULAR,
@@ -103,11 +113,16 @@ const styles = StyleSheet.create({
   TextCancel: {
     color: COLOR_BUTTON_DEFAULT,
   },
-  TextReadyApply: {
-    color: COLOR_PINK,
-  },
   TextApply: {
     color: COLOR_WHITE,
+  },
+  ModalTitleFont: {
+    marginBottom: 15,
+    fontFamily: FONT_REGULAR,
+    fontSize: 25,
+    color: COLOR_FONT_DEFAULT,
+    lineHeight: 34,
+    marginHorizontal: 24,
   },
   BottomButton: {
     marginHorizontal: 24,
@@ -115,6 +130,10 @@ const styles = StyleSheet.create({
     bottom: 30,
     width: width - 48,
   },
+  ModalContentView: {
+    paddingHorizontal: 20,
+    flexDirection: 'column',
+  },
 });
 
-export default CollapseModal;
+export default SelectPaymentMethodModal;

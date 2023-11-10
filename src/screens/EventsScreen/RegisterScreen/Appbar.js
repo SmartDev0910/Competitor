@@ -8,7 +8,14 @@ import {
   COLOR_WHITE,
 } from '../../../constants/colors';
 
-const Appbar = ({title, navigation, collapsable, onCollapse, onInfoPress}) => {
+const Appbar = ({
+  title,
+  navigation,
+  visibleHelp,
+  collapsable,
+  onCollapse,
+  onInfoPress,
+}) => {
   return (
     <View style={styles.Wrapper}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -19,10 +26,12 @@ const Appbar = ({title, navigation, collapsable, onCollapse, onInfoPress}) => {
         <TouchableOpacity onPress={onCollapse}>
           <Image source={CollapseIcon} style={styles.CollapseIcon} />
         </TouchableOpacity>
-      ) : (
+      ) : visibleHelp ? (
         <TouchableOpacity onPress={onInfoPress}>
           <Image source={HelpIcon} style={styles.HelpIcon} />
         </TouchableOpacity>
+      ) : (
+        <View></View>
       )}
     </View>
   );

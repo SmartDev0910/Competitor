@@ -38,6 +38,7 @@ const TeamScreen = ({navigation}) => {
         <Appbar
           title="Team"
           navigation={navigation}
+          visibleHelp={true}
           onInfoPress={handleHelpModal}
         />
         <ScrollView>
