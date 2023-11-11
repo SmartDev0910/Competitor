@@ -30,43 +30,42 @@ const HorseItem = ({title, riders, horses, members, onAddHorsePress}) => {
             <Text style={styles.ItemValueFont}>{horses}</Text>
           </View>
           {members &&
-            members?.map((item, index) => {
-              return (
-                <>
-                  <TeamMemberItem
-                    key={index}
-                    fullName={item.fullName}
-                    avatar={item.avatar}
-                    status={item.status}
+            members.map((item, memberIndex) => (
+              <React.Fragment key={'member' + memberIndex}>
+                <TeamMemberItem
+                  fullName={item.fullName}
+                  avatar={item.avatar}
+                  status={item.status}
+                />
+                {item.horses && item.horses.length > 0 ? (
+                  item.horses.map((horseItem, horseIndex) => (
+                    <TeamMemberItem
+                      key={'horse' + memberIndex + horseIndex}
+                      fullName={horseItem.fullName}
+                      avatar={horseItem.avatar}
+                      status={horseItem.status}
+                    />
+                  ))
+                ) : (
+                  <TouchableOpacity
+                    style={styles.ActionView}
+                    onPress={onAddHorsePress}
+                    key={'action' + memberIndex}>
+                    <Image
+                      source={PlusOutlinedIcon}
+                      style={styles.PlusOutlinedIcon}
+                    />
+                    <Text style={styles.AddHorseFont}>Add horse</Text>
+                  </TouchableOpacity>
+                )}
+                {memberIndex !== members.length - 1 && (
+                  <Divider
+                    key={'divider' + memberIndex}
+                    style={styles.Divider}
                   />
-                  {item?.horses?.length ? (
-                    item?.horses?.map((horseItem, horseIndex) => {
-                      return (
-                        <TeamMemberItem
-                          key={'horse' + horseIndex}
-                          fullName={horseItem.fullName}
-                          avatar={horseItem.avatar}
-                          status={horseItem.status}
-                        />
-                      );
-                    })
-                  ) : (
-                    <TouchableOpacity
-                      style={styles.ActionView}
-                      onPress={onAddHorsePress}>
-                      <Image
-                        source={PlusOutlinedIcon}
-                        style={styles.PlusOutlinedIcon}
-                      />
-                      <Text style={styles.AddHorseFont}>Add horse</Text>
-                    </TouchableOpacity>
-                  )}
-                  {index !== members.length - 1 && (
-                    <Divider style={styles.Divider} />
-                  )}
-                </>
-              );
-            })}
+                )}
+              </React.Fragment>
+            ))}
         </View>
       </View>
     </View>

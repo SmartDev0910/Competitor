@@ -18,46 +18,93 @@ import {
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
 import PaySuccessModal from './PaySuccessModal';
+import PaymentCardItem from './PaymentCardItem';
+import CardNumbers from '../../constants/events/cardNumbers';
+import AddNewCardItem from './AddNewCardItem';
+import AddNewCardModal from './AddNewCardModal';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const SelectPaymentMethodModal = ({modalVisible, setModalVisible}) => {
   const [showPaySuccessModal, setShowPaySuccessModal] = useState(false);
+  const [showAddNewCardModal, setShowAddNewCardModal] = useState(false);
+  const [selectedCardItem, setSelectedCardItem] = React.useState(-1);
+
   const handleShowPaySuccessModal = () => {
     setModalVisible(false);
     setShowPaySuccessModal(true);
   };
 
-  return (
-    <SafeAreaView>
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={styles.OverlayStyle} />
-        <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Select payment method</Text>
-          <View style={styles.ModalContentView}></View>
+  const handleAddNewCardModal = () => {
+    setModalVisible(false);
+    setShowAddNewCardModal(true);
+  };
 
-          <View style={styles.BottomButton}>
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={() => handleShowPaySuccessModal()}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                PAY $10,175
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonCancel]}
-              onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-            </Pressable>
+  const handleCardItemPress = index => {
+    setSelectedCardItem(index);
+  };
+
+  return (
+    <>
+      <SafeAreaView>
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <View style={styles.OverlayStyle} />
+          <View style={styles.ModalView}>
+            <Text style={styles.ModalTitleFont}>Select payment method</Text>
+            <View style={styles.ModalContentView}>
+              {CardNumbers.map((item, index) => {
+                return (
+                  <PaymentCardItem
+                    key={index}
+                    cardNumber={item}
+                    selected={selectedCardItem === index}
+                    onPress={() => handleCardItemPress(index)}
+                  />
+                );
+              })}
+              <AddNewCardItem onPress={() => handleAddNewCardModal()} />
+            </View>
+
+            <View style={styles.BottomButton}>
+              <Pressable
+                style={[
+                  styles.Button,
+                  selectedCardItem >= 0
+                    ? styles.ButtonApply
+                    : styles.ButtonReadyApply,
+                ]}
+                onPress={() => handleShowPaySuccessModal()}>
+                <Text
+                  style={[
+                    styles.TextStyle,
+                    selectedCardItem >= 0
+                      ? styles.TextApply
+                      : styles.TextReadyApply,
+                  ]}>
+                  PAY $10,175
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.Button, styles.ButtonCancel]}
+                onPress={() => setModalVisible(false)}>
+                <Text style={[styles.TextStyle, styles.TextCancel]}>
+                  Cancel
+                </Text>
+              </Pressable>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      </SafeAreaView>
+      <AddNewCardModal
+        modalVisible={showAddNewCardModal}
+        setModalVisible={setShowAddNewCardModal}
+      />
       <PaySuccessModal
         modalVisible={showPaySuccessModal}
         setModalVisible={setShowPaySuccessModal}
       />
-    </SafeAreaView>
+    </>
   );
 };
 
@@ -69,9 +116,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: height - 650,
     width: width,
-    height: height - 106,
+    height: 650,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -101,6 +148,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_PINK,
     marginTop: 20,
   },
+  ButtonReadyApply: {
+    borderWidth: 1,
+    borderColor: COLOR_PINK,
+  },
   ButtonCancel: {
     backgroundColor: COLOR_BUTTON_CANCEL,
   },
@@ -109,6 +160,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     letterSpacing: 1,
     textTransform: 'uppercase',
+  },
+  TextReadyApply: {
+    color: COLOR_PINK,
   },
   TextCancel: {
     color: COLOR_BUTTON_DEFAULT,

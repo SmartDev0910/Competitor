@@ -11,23 +11,20 @@ const FeesPane = ({title, fees}) => {
       <View>
         <Text style={styles.TitleFont}>{title}</Text>
       </View>
-      {fees.map((item, index) => {
-        return (
-          <>
-            <View style={{height: 10}} />
-            <Divider style={styles.Divider} />
-            <FeesPaneItem
-              key={index}
-              title={item.subTitle}
-              available={item.available}
-              price={item.price}
-              rate={item.rate}
-              amount={item.amount}
-              info={item.info}
-            />
-          </>
-        );
-      })}
+      {fees.map((item, feeIndex) => (
+        <React.Fragment key={'fee' + feeIndex}>
+          <View style={{height: 10}} />
+          <Divider style={styles.Divider} />
+          <FeesPaneItem
+            title={item.subTitle}
+            available={item.available}
+            price={item.price}
+            rate={item.rate}
+            amount={item.amount}
+            info={item.info}
+          />
+        </React.Fragment>
+      ))}
     </View>
   );
 };
