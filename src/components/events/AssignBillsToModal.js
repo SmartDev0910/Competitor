@@ -23,7 +23,7 @@ import TeamMembers from '../../constants/events/teamMembers';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
+const AssignBillsToModal = ({modalVisible, setModalVisible}) => {
   const [selectedMemberItems, setSelectedMemberItems] = React.useState([]);
 
   const handleMemberItemPress = index => {
@@ -41,7 +41,7 @@ const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Add team member</Text>
+          <Text style={styles.ModalTitleFont}>Assign all bills to:</Text>
           <View style={styles.ModalContentView}>
             {TeamMembers.map((item, index) => {
               return (
@@ -95,9 +95,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: height - 650,
     width: width,
-    height: height - 106,
+    height: 650,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -169,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddTeamMemberModal;
+export default AssignBillsToModal;

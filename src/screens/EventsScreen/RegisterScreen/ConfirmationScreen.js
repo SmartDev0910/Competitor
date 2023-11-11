@@ -3,7 +3,7 @@ import {
   View,
   ScrollView,
   Text,
-  Image,
+  Dimensions,
   Pressable,
   StyleSheet,
 } from 'react-native';
@@ -94,27 +94,27 @@ const ConfirmationScreen = ({navigation}) => {
               collapsed={grandTotalCollapsed}
               onCollapse={handleGrandTotalCollapse}
             />
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleNext}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                {'Pay >'}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonReadyApply]}
-              onPress={handleSaveAndExit}>
-              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-                {'SAVE & EXIT'}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonCancel]}
-              onPress={handleCancel}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-            </Pressable>
           </View>
         </ScrollView>
+        <View style={styles.ActionView}>
+          <Pressable
+            style={[styles.Button, styles.ButtonApply]}
+            onPress={handleNext}>
+            <Text style={[styles.TextStyle, styles.TextApply]}>{'Pay >'}</Text>
+          </Pressable>
+          <Pressable
+            style={[styles.Button, styles.ButtonReadyApply]}
+            onPress={handleSaveAndExit}>
+            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+              {'SAVE & EXIT'}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[styles.Button, styles.ButtonCancel]}
+            onPress={handleCancel}>
+            <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
+          </Pressable>
+        </View>
       </View>
       <CollapseModal
         modalVisible={showCollapseModal}
@@ -123,6 +123,8 @@ const ConfirmationScreen = ({navigation}) => {
     </>
   );
 };
+
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   Wrapper: {
@@ -167,6 +169,12 @@ const styles = StyleSheet.create({
   },
   TextReadyApply: {
     color: COLOR_PINK,
+  },
+  ActionView: {
+    position: 'absolute',
+    bottom: 10,
+    width: width - 48,
+    marginLeft: 24,
   },
 });
 

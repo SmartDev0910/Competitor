@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   ScrollView,
@@ -15,41 +15,106 @@ import {
   COLOR_WHITE,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
+import AssignBillsToModal from '../../../components/events/AssignBillsToModal';
+import SplitPaymentsRegistrationsPane from '../../../components/events/SplitPaymentsRegistrationsPane';
+import SplitPaymentsFeesPane from '../../../components/events/SplitPaymentsFeesPane';
+import SplitPaymentsTicketsPane from '../../../components/events/SplitPaymentsTicketsPane';
+import SplitPaymentsSummaryPane from '../../../components/events/SplitPaymentsSummaryPane';
+import PaySplitPaymentsModal from '../../../components/events/PaySplitPaymentsModal';
 
 const SplitPaymentsScreen = ({navigation}) => {
+  const [showAssignBillsToModal, setShowAssignBillsToModal] = useState(false);
+  const [showPaySplitPaymentsModal, setShowPaySplitPaymentsModal] =
+    useState(false);
+  const [registerationCollapsed, setRegisterationCollapsed] = useState(false);
+  const [feesCollapsed, setFeesCollapsed] = useState(false);
+  const [ticketsCollapsed, setTicketsCollapsed] = useState(false);
+  const [summaryCollapsed, setSummaryCollapsed] = useState(false);
+
+  const handleRegisterationCollapse = () => {
+    setRegisterationCollapsed(!registerationCollapsed);
+  };
+
+  const handleFeesCollapse = () => {
+    setFeesCollapsed(!feesCollapsed);
+  };
+
+  const handleTicketsCollapse = () => {
+    setTicketsCollapsed(!ticketsCollapsed);
+  };
+
+  const handleSummaryCollapse = () => {
+    setSummaryCollapsed(!summaryCollapsed);
+  };
+
   const handlePay = () => {
-    navigation.navigate('ViewEventsScreen');
+    setShowPaySplitPaymentsModal(true);
   };
 
   const handleSaveAndExit = () => {};
 
   const handleCancel = () => {};
 
+  const handleCollapseAll = () => {
+    setShowAssignBillsToModal(true);
+  };
+
   return (
-    <View style={styles.Wrapper}>
-      <Appbar title="Split Payments" navigation={navigation} />
-      <ScrollView>
-        <View style={styles.ContentView}>
-          <Pressable
-            style={[styles.Button, styles.ButtonApply]}
-            onPress={handlePay}>
-            <Text style={[styles.TextStyle, styles.TextApply]}>{'Pay'}</Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonReadyApply]}
-            onPress={handleSaveAndExit}>
-            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-              {'SAVE & EXIT'}
-            </Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonCancel]}
-            onPress={handleCancel}>
-            <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-          </Pressable>
-        </View>
-      </ScrollView>
-    </View>
+    <>
+      <View style={styles.Wrapper}>
+        <Appbar
+          title="Split Payments"
+          navigation={navigation}
+          collapsable={true}
+          onCollapse={handleCollapseAll}
+        />
+        <ScrollView>
+          <View style={styles.ContentView}>
+            <SplitPaymentsRegistrationsPane
+              collapsed={registerationCollapsed}
+              onCollapse={handleRegisterationCollapse}
+            />
+            <SplitPaymentsFeesPane
+              collapsed={feesCollapsed}
+              onCollapse={handleFeesCollapse}
+            />
+            <SplitPaymentsTicketsPane
+              collapsed={ticketsCollapsed}
+              onCollapse={handleTicketsCollapse}
+            />
+            <SplitPaymentsSummaryPane
+              collapsed={summaryCollapsed}
+              onCollapse={handleSummaryCollapse}
+            />
+            <Pressable
+              style={[styles.Button, styles.ButtonApply]}
+              onPress={handlePay}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>{'Pay'}</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.Button, styles.ButtonReadyApply]}
+              onPress={handleSaveAndExit}>
+              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+                {'SAVE & EXIT'}
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.Button, styles.ButtonCancel]}
+              onPress={handleCancel}>
+              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
+      </View>
+      <AssignBillsToModal
+        modalVisible={showAssignBillsToModal}
+        setModalVisible={setShowAssignBillsToModal}
+      />
+      <PaySplitPaymentsModal
+        modalVisible={showPaySplitPaymentsModal}
+        setModalVisible={setShowPaySplitPaymentsModal}
+      />
+    </>
   );
 };
 
