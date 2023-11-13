@@ -5,12 +5,15 @@ import {
   Text,
   Pressable,
   View,
+  Image,
   SafeAreaView,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import {
   COLOR_BUTTON_CANCEL,
   COLOR_BUTTON_DEFAULT,
+  COLOR_EVENT_BORDER,
   COLOR_FONT_DEFAULT,
   COLOR_MODAL_OVERLAY,
   COLOR_PINK,
@@ -22,11 +25,14 @@ import PaymentCardItem from './PaymentCardItem';
 import CardNumbers from '../../constants/events/cardNumbers';
 import AddNewCardItem from './AddNewCardItem';
 import AddNewCardModal from './AddNewCardModal';
+import StatusHelpItem from './StatusHelpItem';
+import {ErrorIcon, UsDollarCircledIcon, UserIcon} from '../../constants/icons';
+import Divider from '../home/Divider';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const SelectPaymentMethodModal = ({modalVisible, setModalVisible}) => {
+const PaySplitPaymentsModal = ({modalVisible, setModalVisible}) => {
   const [showPaySuccessModal, setShowPaySuccessModal] = useState(false);
   const [showAddNewCardModal, setShowAddNewCardModal] = useState(false);
   const [selectedCardItem, setSelectedCardItem] = React.useState(-1);
@@ -51,20 +57,68 @@ const SelectPaymentMethodModal = ({modalVisible, setModalVisible}) => {
         <Modal animationType="slide" transparent={true} visible={modalVisible}>
           <View style={styles.OverlayStyle} />
           <View style={styles.ModalView}>
-            <Text style={styles.ModalTitleFont}>Select payment method</Text>
-            <View style={styles.ModalContentView}>
-              {CardNumbers.map((item, index) => {
-                return (
-                  <PaymentCardItem
-                    key={index}
-                    cardNumber={item}
-                    selected={selectedCardItem === index}
-                    onPress={() => handleCardItemPress(index)}
-                  />
-                );
-              })}
-              <AddNewCardItem onPress={() => handleAddNewCardModal()} />
-            </View>
+            <Text style={styles.ModalTitleFont}>Pay</Text>
+            <ScrollView>
+              <View style={styles.ModalContentView}>
+                <View style={styles.InfoRowView}>
+                  <Text style={styles.InfoRowTitleFont}>
+                    Recipients will be charged:
+                  </Text>
+                  <View style={styles.InfoItemRowView}>
+                    <Image source={UserIcon} style={styles.InfoItemImage} />
+                    <Text style={styles.InfoItemTitleFont}>
+                      Jaylin Williams, $3,086
+                    </Text>
+                  </View>
+                  <View style={styles.InfoItemRowView}>
+                    <Image source={UserIcon} style={styles.InfoItemImage} />
+                    <Text style={styles.InfoItemTitleFont}>
+                      Jennery Trotter, $3,930
+                    </Text>
+                  </View>
+                  <View style={styles.InfoItemRowView}>
+                    <Image source={ErrorIcon} style={styles.InfoItemImage} />
+                    <Text style={styles.InfoItemTitleFont}>
+                      Recipients will be registered and sent bill when you click
+                      pay.
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.InfoRowView}>
+                  <Text style={styles.InfoRowTitleFont}>
+                    You will be charged:
+                  </Text>
+                  <View style={styles.InfoItemRowView}>
+                    <Image
+                      source={UsDollarCircledIcon}
+                      style={styles.InfoItemImage}
+                    />
+                    <Text style={styles.InfoItemTitleFont}>$3,168</Text>
+                  </View>
+                  <View style={styles.InfoItemRowView}>
+                    <Image source={ErrorIcon} style={styles.InfoItemImage} />
+                    <Text style={styles.InfoItemTitleFont}>
+                      Payment required to complete registration
+                    </Text>
+                  </View>
+                </View>
+                <Divider style={styles.Divider} />
+                <Text style={styles.SelectPaymentTitleFont}>
+                  Select payment method
+                </Text>
+                {CardNumbers.map((item, index) => {
+                  return (
+                    <PaymentCardItem
+                      key={index}
+                      cardNumber={item}
+                      selected={selectedCardItem === index}
+                      onPress={() => handleCardItemPress(index)}
+                    />
+                  );
+                })}
+                <AddNewCardItem onPress={() => handleAddNewCardModal()} />
+              </View>
+            </ScrollView>
 
             <View style={styles.BottomButton}>
               <Pressable
@@ -116,9 +170,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: height - 650,
+    marginTop: 106,
     width: width,
-    height: 650,
+    height: height - 106,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -130,9 +184,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-  },
-  ScrollView: {
-    paddingHorizontal: 24,
   },
   Button: {
     borderRadius: 10,
@@ -180,14 +231,51 @@ const styles = StyleSheet.create({
   },
   BottomButton: {
     marginHorizontal: 24,
-    position: 'absolute',
-    bottom: 30,
-    width: width - 48,
   },
   ModalContentView: {
     paddingHorizontal: 20,
     flexDirection: 'column',
   },
+  InfoRowView: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: COLOR_EVENT_BORDER,
+    marginVertical: 5,
+  },
+  Divider: {
+    height: 1,
+    backgroundColor: COLOR_EVENT_BORDER,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  InfoRowTitleFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+  },
+  InfoItemRowView: {
+    flexDirection: 'row',
+    gap: 6,
+    marginTop: 5,
+  },
+  InfoItemImage: {
+    width: 16,
+    height: 20,
+  },
+  InfoItemTitleFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+    flexWrap: 'wrap',
+  },
+  SelectPaymentTitleFont: {
+    marginBottom: 20,
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+  },
 });
 
-export default SelectPaymentMethodModal;
+export default PaySplitPaymentsModal;

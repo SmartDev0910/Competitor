@@ -6,6 +6,8 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import Appbar from './Appbar';
 import {
@@ -19,6 +21,7 @@ import {
 } from '../../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
 import SelectPaymentMethodModal from '../../../components/events/SelectPaymentMethodModal';
+import {ArrowRightIcon} from '../../../constants/icons';
 
 const PayScreen = ({navigation}) => {
   const [showSelectPaymentMethodModal, setShowSelectPaymentMethodModal] =
@@ -28,7 +31,7 @@ const PayScreen = ({navigation}) => {
     setShowSelectPaymentMethodModal(true);
   };
 
-  const handleNext = () => {
+  const handleSplitPayments = () => {
     navigation.navigate('RegisterSplitPaymentsScreen');
   };
 
@@ -64,27 +67,35 @@ const PayScreen = ({navigation}) => {
                 <Text style={styles.PayTotalTextFont}>$10,175</Text>
               </View>
             </View>
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleSelectPaymentMethodModal}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                {'PAY $10,175 >'}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonReadyApply]}
-              onPress={handleSaveAndExit}>
-              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-                {'SAVE & EXIT'}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonCancel]}
-              onPress={handleCancel}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-            </Pressable>
+            <TouchableOpacity
+              style={styles.SplitPaymentView}
+              onPress={handleSplitPayments}>
+              <Text style={styles.SplitPaymentTextFont}>Split Payments</Text>
+              <Image source={ArrowRightIcon} />
+            </TouchableOpacity>
           </View>
         </ScrollView>
+        <View style={styles.ActionView}>
+          <Pressable
+            style={[styles.Button, styles.ButtonApply]}
+            onPress={handleSelectPaymentMethodModal}>
+            <Text style={[styles.TextStyle, styles.TextApply]}>
+              {'PAY $10,175 >'}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[styles.Button, styles.ButtonReadyApply]}
+            onPress={handleSaveAndExit}>
+            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+              {'SAVE & EXIT'}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[styles.Button, styles.ButtonCancel]}
+            onPress={handleCancel}>
+            <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
+          </Pressable>
+        </View>
       </View>
       <SelectPaymentMethodModal
         modalVisible={showSelectPaymentMethodModal}
@@ -93,6 +104,8 @@ const PayScreen = ({navigation}) => {
     </>
   );
 };
+
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   Wrapper: {
@@ -162,6 +175,29 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLOR_SKY,
     lineHeight: 34,
+  },
+  SplitPaymentView: {
+    height: 56,
+    borderWidth: 1,
+    borderColor: COLOR_EVENT_BORDER,
+    borderRadius: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    marginTop: 12,
+  },
+  SplitPaymentTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+    lineHeight: 24,
+  },
+  ActionView: {
+    position: 'absolute',
+    bottom: 10,
+    width: width - 48,
+    marginLeft: 24,
   },
 });
 

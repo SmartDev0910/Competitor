@@ -35,21 +35,18 @@ const TicketsScreen = ({navigation}) => {
       <ScrollView>
         <View style={styles.ContentView}>
           <View style={styles.TicketsWrapper}>
-            {TicketsData.map((item, index) => {
-              return (
-                <>
-                  <TicketsPaneItem
-                    key={index}
-                    title={item.subTitle}
-                    available={item.available}
-                    price={item.price}
-                    amount={item.amount}
-                    info={item.info}
-                  />
-                  <Divider style={styles.Divider} />
-                </>
-              );
-            })}
+            {TicketsData.map((item, ticketIndex) => (
+              <React.Fragment key={'ticket' + ticketIndex}>
+                <TicketsPaneItem
+                  title={item.subTitle}
+                  available={item.available}
+                  price={item.price}
+                  amount={item.amount}
+                  info={item.info}
+                />
+                <Divider style={styles.Divider} />
+              </React.Fragment>
+            ))}
           </View>
           <Pressable
             style={[styles.Button, styles.ButtonApply]}

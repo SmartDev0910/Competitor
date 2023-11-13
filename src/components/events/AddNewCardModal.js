@@ -15,25 +15,29 @@ import {
   COLOR_MODAL_OVERLAY,
   COLOR_PINK,
   COLOR_WHITE,
+  COLOR_EVENT_BORDER,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import SelectableTeamMemberItem from './SelectableTeamMemberItem';
-import TeamMembers from '../../constants/events/teamMembers';
+import LabeledTextInput from '../common/LabeledTextInput';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
-  const [selectedMemberItems, setSelectedMemberItems] = React.useState([]);
+const AddNewCardModal = ({modalVisible, setModalVisible}) => {
+  const [cardNumber, setCardNumber] = useState('');
+  const [expiration, setExpiration] = useState('');
+  const [cvv, setCVV] = useState('');
+  const [zipCode, setZipCode] = useState('');
 
-  const handleMemberItemPress = index => {
-    if (selectedMemberItems.includes(index)) {
-      setSelectedMemberItems(
-        selectedMemberItems.filter(item => item !== index),
-      );
-    } else {
-      setSelectedMemberItems([...selectedMemberItems, index]);
-    }
+  const validateCardInfo = () => {
+    if (
+      cardNumber !== '' &&
+      expiration !== '' &&
+      cvv !== '' &&
+      zipCode !== ''
+    ) {
+      return true;
+    } else return false;
   };
 
   return (
@@ -41,44 +45,60 @@ const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>Add team member</Text>
+          <Text style={styles.ModalTitleFont}>Add new card</Text>
           <View style={styles.ModalContentView}>
-            {TeamMembers.map((item, index) => {
-              return (
-                <SelectableTeamMemberItem
-                  key={index}
-                  fullName={item.fullName}
-                  avatar={item.avatar}
-                  status={item.status}
-                  selected={selectedMemberItems.includes(index)}
-                  onPress={() => handleMemberItemPress(index)}
+            <View style={styles.CardWrapper}>
+              <View>
+                <LabeledTextInput
+                  label="Card number"
+                  value={cardNumber}
+                  onChangeText={text => setCardNumber(text)}
+                  placeholder="0000-0000-0000-0000"
                 />
-              );
-            })}
+              </View>
+              <View style={styles.CardInfoRow}>
+                <LabeledTextInput
+                  label="Expiration"
+                  placeholder="MM/YY"
+                  value={expiration}
+                  onChangeText={text => setExpiration(text)}
+                />
+                <LabeledTextInput
+                  label="CVV"
+                  placeholder="123"
+                  value={cvv}
+                  onChangeText={text => setCVV(text)}
+                />
+                <LabeledTextInput
+                  label="ZIP code"
+                  placeholder="XXX"
+                  value={zipCode}
+                  onChangeText={text => setZipCode(text)}
+                />
+              </View>
+            </View>
           </View>
 
           <View style={styles.BottomButton}>
             <Pressable
               style={[
                 styles.Button,
-                selectedMemberItems.length
+                validateCardInfo()
                   ? styles.ButtonApply
                   : styles.ButtonReadyApply,
               ]}>
               <Text
                 style={[
                   styles.TextStyle,
-                  selectedMemberItems.length
-                    ? styles.TextApply
-                    : styles.TextReadyApply,
+                  validateCardInfo() ? styles.TextApply : styles.TextReadyApply,
                 ]}>
-                Save
+                SAVE
               </Text>
             </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Close</Text>
+              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
             </Pressable>
           </View>
         </View>
@@ -95,9 +115,9 @@ const styles = StyleSheet.create({
     height: height,
   },
   ModalView: {
-    marginTop: 106,
+    marginTop: height - 460,
     width: width,
-    height: height - 106,
+    height: 460,
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -127,12 +147,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_PINK,
     marginTop: 20,
   },
-  ButtonCancel: {
-    backgroundColor: COLOR_BUTTON_CANCEL,
-  },
   ButtonReadyApply: {
     borderWidth: 1,
     borderColor: COLOR_PINK,
+  },
+  ButtonCancel: {
+    backgroundColor: COLOR_BUTTON_CANCEL,
   },
   TextStyle: {
     fontFamily: FONT_REGULAR,
@@ -140,14 +160,14 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
+  TextReadyApply: {
+    color: COLOR_PINK,
+  },
   TextCancel: {
     color: COLOR_BUTTON_DEFAULT,
   },
   TextApply: {
     color: COLOR_WHITE,
-  },
-  TextReadyApply: {
-    color: COLOR_PINK,
   },
   ModalTitleFont: {
     marginBottom: 15,
@@ -167,6 +187,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'column',
   },
+  HelpTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
+  },
+  CardWrapper: {
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: COLOR_EVENT_BORDER,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+  },
+  CardInfoRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 12,
+  },
 });
 
-export default AddTeamMemberModal;
+export default AddNewCardModal;
