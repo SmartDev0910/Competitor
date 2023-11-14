@@ -36,30 +36,34 @@ import {
 } from '../../../constants/colors';
 import {ProfileEditImage} from '../../../constants/images';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import AuthorizeView from './AuthorizeView';
+import TeamSettingsView from './TeamSettingsView';
+import UserView from './UserView';
+import SynchronizeView from './SynchronizeView';
+import HorsesSettingsView from './HorsesSettingsView';
+import AccountDetailView from './AccountDetailView';
 
 const EditProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(2);
   const [routes] = useState([
     {key: 'user', title: 'User'},
-    {key: 'events', title: 'Events'},
-    {key: 'people', title: 'People'},
-    {key: 'past', title: 'Past'},
-    {key: 'lock', title: 'Lock'},
+    {key: 'synchronize', title: 'Events'},
+    {key: 'team', title: 'Team'},
+    {key: 'horses', title: 'Horses'},
+    {key: 'account', title: 'Account'},
   ]);
 
-  const UserTab = () => <AuthorizeView />;
-  const EventsTab = () => <AuthorizeView />;
-  const PeopleTab = () => <AuthorizeView />;
-  const PastTab = () => <AuthorizeView />;
-  const LockTab = () => <AuthorizeView />;
+  const UserTab = () => <UserView />;
+  const SynchronizeTab = () => <SynchronizeView />;
+  const TeamSettingsTab = () => <TeamSettingsView />;
+  const HorsesSettingsTab = () => <HorsesSettingsView />;
+  const AccountDetailTab = () => <AccountDetailView />;
 
   const renderScene = SceneMap({
-    events: EventsTab,
-    past: PastTab,
-    people: PeopleTab,
     user: UserTab,
-    lock: LockTab,
+    synchronize: SynchronizeTab,
+    team: TeamSettingsTab,
+    horses: HorsesSettingsTab,
+    account: AccountDetailTab,
   });
 
   const renderTabBar = props => (
@@ -78,28 +82,28 @@ const EditProfileScreen = ({navigation}) => {
                 style={styles.TabTitleIcon}
               />
             );
-          case 'events':
+          case 'synchronize':
             return (
               <Image
                 source={focused ? SynchronizeOutlinedIcon : SynchronizeIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'people':
+          case 'team':
             return (
               <Image
                 source={focused ? UserGroupsOutlinedIcon : UserGroupsIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'past':
+          case 'horses':
             return (
               <Image
                 source={focused ? YearOfHorseOutlinedIcon : YearOfHorseIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'lock':
+          case 'account':
             return (
               <Image
                 source={focused ? LockOutlinedIcon : LockIcon}
@@ -126,7 +130,7 @@ const EditProfileScreen = ({navigation}) => {
             <Image source={CameraIcon} style={styles.CameraIcon} />
           </View>
         </View>
-        <View style={styles.AuthorizeView}>
+        <View style={styles.TeamSettingsView}>
           <TabView
             navigationState={{index, routes}}
             renderScene={renderScene}
@@ -210,7 +214,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: COLOR_BUTTON_DEFAULT,
   },
-  AuthorizeView: {
+  TeamSettingsView: {
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: COLOR_WHITE,

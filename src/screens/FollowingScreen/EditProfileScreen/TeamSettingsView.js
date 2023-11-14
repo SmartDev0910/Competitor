@@ -18,7 +18,7 @@ import AuthorizedMe from '../../../constants/following/authorizedMe';
 import {HelpIcon, PlusOutlinedIcon} from '../../../constants/icons';
 import Divider from '../../../components/home/Divider';
 
-const AuthorizeView = ({navigation}) => {
+const TeamSettingsView = ({navigation}) => {
   return (
     <ScrollView style={styles.ScrollView}>
       <View style={styles.Wrapper}>
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthorizeView;
+export default TeamSettingsView;
