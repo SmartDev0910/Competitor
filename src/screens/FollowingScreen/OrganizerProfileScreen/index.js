@@ -6,58 +6,60 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
-import {FONT_BOLD, FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
+import {
+  FONT_BOLD,
+  FONT_REGULAR,
+  FONT_SEMI_BOLD,
+} from '../../../constants/fonts';
 import {
   AddUserMaleIcon,
   ArrowLeftIcon,
   CalendarIcon,
   CalendarOutlinedIcon,
-  CameraIcon,
   ClockIcon,
-  LockIcon,
   SettingsIcon,
   SpeechBubbleIcon,
-  SynchronizeIcon,
   UserGroupsIcon,
-  UserGroupsOutlinedIcon,
   UserIcon,
-  YearOfHorseIcon,
-  YearOfHorseOutlinedIcon,
-} from '../../constants/icons';
+} from '../../../constants/icons';
 import {
   COLOR_BUTTON_DEFAULT,
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
-  COLOR_GREY_CAMERA,
-} from '../../constants/colors';
-import {ProfileEditImage} from '../../constants/images';
+} from '../../../constants/colors';
+import {OrganizerProfileImage} from '../../../constants/images';
+import FollowButton from '../../../components/following/FollowButton';
+import UpcomingEventsView from './UpcomingEventsView';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import AuthorizeView from './AuthorizeView';
 
-const ProfileScreen = ({navigation}) => {
-  const [index, setIndex] = useState(2);
+const OrganizerProfileScreen = ({navigation}) => {
+  const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'user', title: 'User'},
-    {key: 'events', title: 'Events'},
-    {key: 'people', title: 'People'},
+    {
+      key: 'events',
+      title: 'Events',
+    },
     {key: 'past', title: 'Past'},
-    {key: 'lock', title: 'Lock'},
+    {key: 'eligibility', title: 'Eligibility'},
+    {key: 'authority', title: 'Authority'},
   ]);
 
-  const UserTab = () => <AuthorizeView />;
-  const EventsTab = () => <AuthorizeView />;
-  const PeopleTab = () => <AuthorizeView />;
-  const PastTab = () => <AuthorizeView />;
-  const LockTab = () => <AuthorizeView />;
+  const EventsTab = () => <UpcomingEventsView />;
+
+  const PastTab = () => <UpcomingEventsView />;
+
+  const EligibilityTab = () => <UpcomingEventsView />;
+
+  const AuthorityTab = () => <UpcomingEventsView />;
 
   const renderScene = SceneMap({
     events: EventsTab,
     past: PastTab,
-    people: PeopleTab,
-    user: UserTab,
-    lock: LockTab,
+    eligibility: EligibilityTab,
+    authority: AuthorityTab,
   });
 
   const renderTabBar = props => (
@@ -69,38 +71,31 @@ const ProfileScreen = ({navigation}) => {
       style={{backgroundColor: COLOR_WHITE}}
       renderLabel={({route, focused, color}) => {
         switch (route.key) {
-          case 'user':
-            return (
-              <Image
-                source={focused ? UserIcon : UserIcon}
-                style={styles.TabTitleIcon}
-              />
-            );
           case 'events':
             return (
               <Image
-                source={focused ? SynchronizeIcon : SynchronizeIcon}
-                style={styles.TabTitleIcon}
-              />
-            );
-          case 'people':
-            return (
-              <Image
-                source={focused ? UserGroupsOutlinedIcon : UserGroupsIcon}
+                source={focused ? CalendarOutlinedIcon : CalendarIcon}
                 style={styles.TabTitleIcon}
               />
             );
           case 'past':
             return (
               <Image
-                source={focused ? YearOfHorseOutlinedIcon : YearOfHorseIcon}
+                source={focused ? ClockIcon : ClockIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'lock':
+          case 'eligibility':
             return (
               <Image
-                source={focused ? LockIcon : LockIcon}
+                source={focused ? UserGroupsIcon : UserGroupsIcon}
+                style={styles.TabTitleIcon}
+              />
+            );
+          case 'authority':
+            return (
+              <Image
+                source={focused ? UserIcon : UserIcon}
                 style={styles.TabTitleIcon}
               />
             );
@@ -116,38 +111,59 @@ const ProfileScreen = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
           </TouchableOpacity>
-          <Text style={styles.AppbarTextFont}>Edit Profile</Text>
+          <Text style={styles.AppbarTextFont}>Profile</Text>
+          <Image source={SettingsIcon} style={styles.AppbarButton} />
         </View>
         <View style={styles.ProfileView}>
-          <Image source={ProfileEditImage} style={styles.ProfileEditImage} />
-          <View style={styles.CameraView}>
-            <Image source={CameraIcon} style={styles.CameraIcon} />
+          <Image
+            source={OrganizerProfileImage}
+            style={styles.OrganizerProfileImage}
+          />
+          <Text style={styles.OrganizerTitleFont}>Pegasus Stables</Text>
+        </View>
+        <View style={styles.ActionButtonView}>
+          <FollowButton icon={AddUserMaleIcon} text="Follow" />
+          <FollowButton icon={SpeechBubbleIcon} text="Message" />
+        </View>
+        <View style={styles.FollowerDetail}>
+          <View style={styles.DetailItemView}>
+            <Text style={styles.DetailItemTitleFont}>Jumper</Text>
+            <Text style={styles.DetailItemDescFont}>Discipline</Text>
+          </View>
+          <View style={styles.DetailItemView}>
+            <Text style={styles.DetailItemTitleFont}>4</Text>
+            <Text style={styles.DetailItemDescFont}>Zone</Text>
+          </View>
+          <View style={styles.DetailItemView}>
+            <Text style={styles.DetailItemTitleFont}>FL, USA</Text>
+            <Text style={styles.DetailItemDescFont}>Location</Text>
           </View>
         </View>
-        <View style={styles.AuthorizeView}>
+        <View style={styles.UpcomingEventsView}>
           <TabView
             navigationState={{index, routes}}
             renderScene={renderScene}
             renderTabBar={renderTabBar}
             onIndexChange={setIndex}
           />
-          <AuthorizeView />
         </View>
       </View>
     </ScrollView>
   );
 };
 
+const height = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   Wrapper: {
     flex: 1,
-    backgroundColor: COLOR_WHITE,
   },
   Appbar: {
-    height: 36,
+    height: 24,
     paddingHorizontal: 24,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   AppbarButton: {
     width: 22,
@@ -155,18 +171,16 @@ const styles = StyleSheet.create({
   },
   AppbarTextFont: {
     fontFamily: FONT_REGULAR,
-    color: COLOR_FONT_DEFAULT,
-    fontSize: 24,
-    marginLeft: 7,
+    color: COLOR_BUTTON_DEFAULT,
   },
   ProfileView: {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  ProfileEditImage: {
+  OrganizerProfileImage: {
     width: 120,
     height: 120,
-    marginTop: 12,
+    marginTop: 11,
   },
   OrganizerTitleFont: {
     fontFamily: FONT_BOLD,
@@ -207,28 +221,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: COLOR_BUTTON_DEFAULT,
   },
-  AuthorizeView: {
+  UpcomingEventsView: {
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: COLOR_WHITE,
     paddingTop: 25,
+    height: height - 200,
   },
   TabTitleIcon: {
     width: 24,
     height: 24,
   },
-  CameraView: {
-    width: 30,
-    height: 30,
-    borderRadius: 45,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: COLOR_GREY_CAMERA,
-    position: 'absolute',
-    bottom: 2,
-    right: '37%',
-  },
 });
 
-export default ProfileScreen;
+export default OrganizerProfileScreen;

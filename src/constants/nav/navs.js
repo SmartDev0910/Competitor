@@ -31,7 +31,7 @@ export default [
   {
     icon: UserIcon,
     text: 'Profile',
-    route: 'FollowingScreen',
+    route: 'ProfileScreen',
   },
   {
     icon: MessagingIcon,

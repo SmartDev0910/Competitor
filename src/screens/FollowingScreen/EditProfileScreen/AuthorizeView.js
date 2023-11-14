@@ -11,12 +11,12 @@ import {
   COLOR_FONT_COMMENT,
   COLOR_FONT_DEFAULT,
   COLOR_WHITE,
-} from '../../constants/colors';
-import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
-import AuthorizeItem from '../../components/following/AuthorizeItem';
-import AuthorizedMe from '../../constants/following/authorizedMe';
-import {HelpIcon, PlusOutlinedIcon} from '../../constants/icons';
-import Divider from '../../components/home/Divider';
+} from '../../../constants/colors';
+import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
+import AuthorizeItem from '../../../components/following/AuthorizeItem';
+import AuthorizedMe from '../../../constants/following/authorizedMe';
+import {HelpIcon, PlusOutlinedIcon} from '../../../constants/icons';
+import Divider from '../../../components/home/Divider';
 
 const AuthorizeView = ({navigation}) => {
   return (

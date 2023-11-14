@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import FollowerSkeleton from '../../components/following/FollowerSkeleton';
-import {COLOR_BLACK} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import {UserImage, UserSelectedImage} from '../../constants/images';
+import FollowerSkeleton from '../../../components/following/FollowerSkeleton';
+import {COLOR_BLACK} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import {UserImage, UserSelectedImage} from '../../../constants/images';
 
 const NoFollowingView = () => {
   return (

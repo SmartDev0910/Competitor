@@ -17,18 +17,20 @@ import {PasteIcon, PrizeIcon} from '../../constants/icons';
 
 const EventPane = ({image, location, title, prize, statusText, onPress}) => {
   return (
-    <TouchableOpacity style={styles.View} onPress={onPress}>
-      <Image source={image} style={styles.Image} />
-      <View style={styles.DetailView}>
-        <Text style={styles.LocationFont}>{location}</Text>
-        <Text style={styles.TitleFont}>{title}</Text>
-        <View style={styles.PrizeView}>
-          <Image source={PrizeIcon} style={styles.PrizeIcon} />
-          <Text style={styles.PrizeTextFont}>{prize}</Text>
-        </View>
-        <View style={styles.StatusTextView}>
-          <Image source={PasteIcon} style={styles.PasteIcon} />
-          <Text style={styles.StatusTextFont}>{statusText}</Text>
+    <TouchableOpacity style={styles.Wrapper} onPress={onPress}>
+      <View style={styles.View}>
+        <Image source={image} style={styles.Image} />
+        <View style={styles.DetailView}>
+          <Text style={styles.LocationFont}>{location}</Text>
+          <Text style={styles.TitleFont}>{title}</Text>
+          <View style={styles.PrizeView}>
+            <Image source={PrizeIcon} style={styles.PrizeIcon} />
+            <Text style={styles.PrizeTextFont}>{prize}</Text>
+          </View>
+          <View style={styles.StatusTextView}>
+            <Image source={PasteIcon} style={styles.PasteIcon} />
+            <Text style={styles.StatusTextFont}>{statusText}</Text>
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -38,17 +40,22 @@ const EventPane = ({image, location, title, prize, statusText, onPress}) => {
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
-  View: {
+  Wrapper: {
     flex: 1,
-    padding: 12,
+    flexDirection: 'column',
+    alignItems: 'center',
     marginVertical: 5,
+  },
+  View: {
+    padding: 12,
     flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderRadius: 10,
     borderColor: COLOR_EVENT_BORDER,
     backgroundColor: COLOR_WHITE,
     gap: 12,
-    height: 102,
+    height: 112,
   },
   Image: {
     width: 80,

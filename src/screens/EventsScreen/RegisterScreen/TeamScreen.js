@@ -57,7 +57,7 @@ const TeamScreen = ({navigation}) => {
               <Text style={styles.ContentTitleFont}>Your team</Text>
               <Text
                 style={styles.ContentEditFont}
-                onPress={() => navigation.navigate('ProfileScreen')}>
+                onPress={() => navigation.navigate('EditProfileScreen')}>
                 {'Edit team >'}
               </Text>
             </View>

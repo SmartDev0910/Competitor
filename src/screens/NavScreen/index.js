@@ -1,12 +1,21 @@
 import React, {useEffect, useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {COLOR_WHITE} from '../constants/colors';
-import NavModal from '../components/nav/NavModal';
-import {ModalContext} from '../providers/ModalProvider';
+import {COLOR_WHITE} from '../../constants/colors';
+import NavModal from '../../components/nav/NavModal';
+import {ModalContext} from '../../providers/ModalProvider';
 import {useIsFocused} from '@react-navigation/native';
 
 function NavScreen({navigation}) {
-  const [, setShowNavModal] = useContext(ModalContext);
+  const [
+    showNavModal,
+    setShowNavModal,
+    ticketAssignName,
+    setTicketAssignName,
+    ticketAssignEmail,
+    setTicketAssignEmail,
+    showScratchView,
+    setShowScratchView,
+  ] = useContext(ModalContext);
   const isFocused = useIsFocused();
 
   useEffect(() => {

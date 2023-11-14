@@ -5,10 +5,10 @@ import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
-} from '../../constants/colors';
-import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
+} from '../../../constants/colors';
+import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
 import NoFollowingView from './NoFollowingView';
-import FollowerView from './FollowerView';
+import FollowerView from './TeamView';
 import OrganizersView from './OrganizersView';
 
 function FollowingScreen({navigation}) {

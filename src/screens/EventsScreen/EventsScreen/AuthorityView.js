@@ -14,7 +14,7 @@ const AuthorityView = ({navigation}) => {
         </Text>
         <Text
           style={styles.HeadFont}
-          onPress={() => navigation.navigate('ProfileScreen')}>
+          onPress={() => navigation.navigate('EditProfileScreen')}>
           Edit
         </Text>
       </View>
