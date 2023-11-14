@@ -1,25 +1,26 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import Organizers from '../../constants/following/organizers';
-import OrganizerItem from '../../components/following/OrganizerItem';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import Events from '../../../constants/events/events';
+import EventPane from '../../../components/following/EventPane';
 
-const OrganizersView = ({navigation}) => {
+const PastEventsView = () => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>Following 3 event organizers</Text>
+          <Text style={styles.HeadFont}>past events</Text>
         </View>
-        {Organizers.map((item, index) => {
+        {Events.map((item, index) => {
           return (
-            <OrganizerItem
+            <EventPane
               key={index}
-              title={item.title}
               image={item.image}
+              title={item.title}
+              location={item.location}
+              prize={item.prize}
               statusText={item.statusText}
-              onPress={() => navigation.navigate('OrganizerProfileScreen')}
             />
           );
         })}
@@ -43,9 +44,11 @@ const styles = StyleSheet.create({
   HeadFont: {
     color: COLOR_FONT_DEFAULT,
     fontFamily: FONT_REGULAR,
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: 34,
+    letterSpacing: 0.16,
+    textTransform: 'uppercase',
   },
 });
 
-export default OrganizersView;
+export default PastEventsView;

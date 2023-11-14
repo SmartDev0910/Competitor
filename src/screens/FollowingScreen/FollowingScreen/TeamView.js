@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import FollowingPeople from '../../constants/following/followingPeople';
-import FollowerItem from '../../components/following/FollowerItem';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import FollowingPeople from '../../../constants/following/followingPeople';
+import FollowerItem from '../../../components/following/FollowerItem';
 
 const FollowerView = ({navigation}) => {
   return (
@@ -13,7 +13,7 @@ const FollowerView = ({navigation}) => {
           <Text style={styles.HeadFont}>Following 6 people</Text>
           <Text
             style={styles.HeadFont}
-            onPress={() => navigation.navigate('ProfileScreen')}>
+            onPress={() => navigation.navigate('EditProfileScreen')}>
             Add
           </Text>
         </View>

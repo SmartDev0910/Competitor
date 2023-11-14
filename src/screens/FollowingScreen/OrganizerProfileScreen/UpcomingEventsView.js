@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {COLOR_FONT_DEFAULT} from '../../constants/colors';
-import {FONT_REGULAR} from '../../constants/fonts';
-import Events from '../../constants/events/events';
-import EventPane from '../../components/following/EventPane';
+import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
+import {FONT_REGULAR} from '../../../constants/fonts';
+import Events from '../../../constants/events/events';
+import EventPane from '../../../components/following/EventPane';
 
 const UpcomingEventsView = () => {
   return (

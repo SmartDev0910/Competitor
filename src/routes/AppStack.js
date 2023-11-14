@@ -11,7 +11,7 @@ import {
   FollowingScreen,
   OrganizerProfileScreen,
   ViewEventScreen,
-  ProfileScreen,
+  EditProfileScreen,
   NavScreen,
   MyEventsScreen,
   TicketsScreen,
@@ -25,6 +25,7 @@ import {
   RegisterSignScreen,
   RegisterSplitPaymentsScreen,
   RegisterTicketsScreen,
+  ProfileScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -139,8 +140,8 @@ function EventsStackScreen() {
           }}
         />
         <EventsStack.Screen
-          name="ProfileScreen"
-          component={ProfileScreen}
+          name="EditProfileScreen"
+          component={EditProfileScreen}
           options={{
             headerShown: false,
           }}
@@ -264,6 +265,13 @@ function NavStackScreen() {
         <NavStack.Screen
           name="ProfileScreen"
           component={ProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="EditProfileScreen"
+          component={EditProfileScreen}
           options={{
             headerShown: false,
           }}
