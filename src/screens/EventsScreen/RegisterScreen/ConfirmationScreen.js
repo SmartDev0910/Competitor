@@ -13,6 +13,8 @@ import {
   COLOR_BUTTON_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
+  COLOR_EVENT_BORDER,
+  COLOR_FONT_COMMENT,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
 import CollapseModal from '../../../components/events/CollapseModal';
@@ -25,11 +27,11 @@ import ConfirmationGrandTotalPane from '../../../components/events/ConfirmationG
 const ConfirmationScreen = ({navigation}) => {
   const [showCollapseModal, setShowCollapseModal] = React.useState(false);
   const [registerationCollapsed, setRegisterationCollapsed] =
-    React.useState(true);
-  const [feesCollapsed, setFeesCollapsed] = React.useState(true);
-  const [ticketsCollapsed, setTicketsCollapsed] = React.useState(true);
-  const [paperworkCollapsed, setPaperworkCollapsed] = React.useState(true);
-  const [grandTotalCollapsed, setGrandTotalCollapsed] = React.useState(true);
+    React.useState(false);
+  const [feesCollapsed, setFeesCollapsed] = React.useState(false);
+  const [ticketsCollapsed, setTicketsCollapsed] = React.useState(false);
+  const [paperworkCollapsed, setPaperworkCollapsed] = React.useState(false);
+  const [grandTotalCollapsed, setGrandTotalCollapsed] = React.useState(false);
 
   const handleRegisterationCollapse = () => {
     setRegisterationCollapsed(!registerationCollapsed);
@@ -96,23 +98,16 @@ const ConfirmationScreen = ({navigation}) => {
             />
           </View>
         </ScrollView>
-        <View style={styles.ActionView}>
+        <View style={styles.ActionButtonView}>
+          <Pressable style={[styles.Button, styles.ButtonCancel]}>
+            <Text style={[styles.TextStyle, styles.TextCancel]}>
+              Save & Exit
+            </Text>
+          </Pressable>
           <Pressable
             style={[styles.Button, styles.ButtonApply]}
             onPress={handleNext}>
             <Text style={[styles.TextStyle, styles.TextApply]}>{'Pay >'}</Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonReadyApply]}
-            onPress={handleSaveAndExit}>
-            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-              {'SAVE & EXIT'}
-            </Text>
-          </Pressable>
-          <Pressable
-            style={[styles.Button, styles.ButtonCancel]}
-            onPress={handleCancel}>
-            <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
           </Pressable>
         </View>
       </View>
@@ -134,7 +129,8 @@ const styles = StyleSheet.create({
   },
   ContentView: {
     paddingHorizontal: 24,
-    paddingVertical: 18,
+    paddingTop: 18,
+    paddingBottom: 90,
   },
   Button: {
     borderRadius: 10,
@@ -142,18 +138,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 5,
+    width: (width - 60) / 2,
   },
   ButtonApply: {
     backgroundColor: COLOR_PINK,
-    marginTop: 20,
   },
   ButtonReadyApply: {
     borderWidth: 1,
     borderColor: COLOR_PINK,
   },
   ButtonCancel: {
-    backgroundColor: COLOR_BUTTON_CANCEL,
+    backgroundColor: COLOR_WHITE,
+    color: COLOR_FONT_COMMENT,
   },
   TextStyle: {
     fontFamily: FONT_REGULAR,
@@ -170,11 +166,18 @@ const styles = StyleSheet.create({
   TextReadyApply: {
     color: COLOR_PINK,
   },
-  ActionView: {
+  ActionButtonView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     position: 'absolute',
-    bottom: 10,
+    bottom: 0,
+    borderTopWidth: 1,
+    borderTopColor: COLOR_EVENT_BORDER,
     width: width - 48,
     marginLeft: 24,
+    paddingVertical: 12,
+    backgroundColor: COLOR_WHITE,
   },
 });
 

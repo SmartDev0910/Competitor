@@ -2,6 +2,7 @@
 export const AccountSelcetedIcon = require('../assets/icons/AccountSelected.png');
 export const AddUserMaleIcon = require('../assets/icons/AddUserMale.png');
 export const AirportIcon = require('../assets/icons/Airport.png');
+export const AroundGlobeIcon = require('../assets/icons/AroundGlobe.png');
 export const BillIcon = require('../assets/icons/Bill.png');
 export const BiotechIcon = require('../assets/icons/Biotech.png');
 export const BookmarkIcon = require('../assets/icons/Bookmark.png');
@@ -34,6 +35,7 @@ export const FarmIcon = require('../assets/icons/Farm.png');
 export const Fiat500Icon = require('../assets/icons/Fiat500.png');
 export const FullScreenIcon = require('../assets/icons/FullScreen.png');
 export const GenderIcon = require('../assets/icons/Gender.png');
+export const GlobeIcon = require('../assets/icons/Globe.png');
 export const GoogleDocsIcon = require('../assets/icons/GoogleDocs.png');
 export const GraduationCapIcon = require('../assets/icons/GraduationCap.png');
 export const HeartIcon = require('../assets/icons/Heart.png');

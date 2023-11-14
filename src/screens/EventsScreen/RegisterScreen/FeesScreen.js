@@ -6,6 +6,7 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
 import Appbar from './Appbar';
 import {
@@ -13,6 +14,8 @@ import {
   COLOR_BUTTON_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
+  COLOR_EVENT_BORDER,
+  COLOR_FONT_COMMENT,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
 import CollapseModal from '../../../components/events/CollapseModal';
@@ -66,27 +69,22 @@ const FeesScreen = ({navigation}) => {
               info="Governance fee details...More >"
               onMorePress={handleGovermanceInfoMore}
             />
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleNext}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                {'Next >'}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonReadyApply]}
-              onPress={handleSaveAndExit}>
-              <Text style={[styles.TextStyle, styles.TextReadyApply]}>
-                {'SAVE & EXIT'}
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonCancel]}
-              onPress={handleCancel}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-            </Pressable>
           </View>
         </ScrollView>
+        <View style={styles.ActionButtonView}>
+          <Pressable style={[styles.Button, styles.ButtonCancel]}>
+            <Text style={[styles.TextStyle, styles.TextCancel]}>
+              Save & Exit
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[styles.Button, styles.ButtonReadyApply]}
+            onPress={handleNext}>
+            <Text style={[styles.TextStyle, styles.TextReadyApply]}>
+              {'Next >'}
+            </Text>
+          </Pressable>
+        </View>
       </View>
       <CollapseModal
         modalVisible={showCollapseModal}
@@ -100,6 +98,8 @@ const FeesScreen = ({navigation}) => {
   );
 };
 
+const width = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   Wrapper: {
     flex: 1,
@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
   },
   ContentView: {
     paddingHorizontal: 24,
-    paddingVertical: 18,
+    paddingTop: 18,
+    paddingBottom: 90,
   },
   Button: {
     borderRadius: 10,
@@ -116,18 +117,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 5,
+    width: (width - 60) / 2,
   },
   ButtonApply: {
     backgroundColor: COLOR_PINK,
-    marginTop: 20,
   },
   ButtonReadyApply: {
     borderWidth: 1,
     borderColor: COLOR_PINK,
   },
   ButtonCancel: {
-    backgroundColor: COLOR_BUTTON_CANCEL,
+    backgroundColor: COLOR_WHITE,
+    color: COLOR_FONT_COMMENT,
   },
   TextStyle: {
     fontFamily: FONT_REGULAR,
@@ -143,6 +144,19 @@ const styles = StyleSheet.create({
   },
   TextReadyApply: {
     color: COLOR_PINK,
+  },
+  ActionButtonView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    bottom: 0,
+    borderTopWidth: 1,
+    borderTopColor: COLOR_EVENT_BORDER,
+    width: width - 48,
+    marginLeft: 24,
+    paddingVertical: 12,
+    backgroundColor: COLOR_WHITE,
   },
 });
 

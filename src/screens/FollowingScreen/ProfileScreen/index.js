@@ -46,6 +46,9 @@ import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import FollowButton from '../../../components/following/FollowButton';
 import UpcomingEventsView from './UpcomingEventsView';
 import PastEventsView from './PastEventsView';
+import TeamView from './TeamView';
+import HorsesView from './HorsesView';
+import UserView from './UserView';
 
 const ProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
@@ -57,9 +60,9 @@ const ProfileScreen = ({navigation}) => {
     {key: 'past_events', title: 'Past Events'},
   ]);
 
-  const UserTab = () => <Text>User</Text>;
-  const TeamTab = () => <Text>Team</Text>;
-  const HorsesTab = () => <Text>Horses</Text>;
+  const UserTab = () => <UserView />;
+  const TeamTab = () => <TeamView />;
+  const HorsesTab = () => <HorsesView />;
   const UpcomingEventsTab = () => <UpcomingEventsView />;
   const PastEventsTab = () => <PastEventsView />;
 
@@ -128,7 +131,10 @@ const ProfileScreen = ({navigation}) => {
             <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
           </TouchableOpacity>
           <Text style={styles.AppbarTextFont}>Profile</Text>
-          <Image source={SettingsIcon} style={styles.AppbarButton} />
+          <TouchableOpacity
+            onPress={() => navigation.navigate('EditProfileScreen')}>
+            <Image source={SettingsIcon} style={styles.AppbarButton} />
+          </TouchableOpacity>
         </View>
         <View style={styles.ProfileView}>
           <Image source={ProfileEditImage} style={styles.ProfileEditImage} />
