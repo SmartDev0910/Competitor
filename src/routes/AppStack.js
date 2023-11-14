@@ -422,6 +422,7 @@ export default AppStack = () => {
             tabBarIcon: ({focused, color, size}) => {
               return (
                 <View style={styles.TabBarIcon}>
+                  <View style={styles.DotView} />
                   <Image
                     source={focused ? DoorbellSelectedIcon : DoorbellWeakIcon}
                     style={styles.bottombaricon}
@@ -439,6 +440,7 @@ export default AppStack = () => {
             tabBarIcon: ({focused, color, size}) => {
               return (
                 <View style={styles.TabBarIcon}>
+                  <View style={styles.DotView} />
                   <Image
                     source={focused ? MessagingSelectedIcon : MessagingWeakIcon}
                     style={styles.bottombaricon}
@@ -501,5 +503,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLOR_PINK,
     borderRadius: 45,
+  },
+  DotView: {
+    width: 8,
+    height: 8,
+    backgroundColor: COLOR_PINK,
+    position: 'absolute',
+    right: -4,
+    top: -4,
+    borderRadius: 10,
   },
 });

@@ -6,11 +6,14 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
 import Appbar from './Appbar';
 import {
   COLOR_BUTTON_CANCEL,
   COLOR_BUTTON_DEFAULT,
+  COLOR_EVENT_BORDER,
+  COLOR_FONT_COMMENT,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
@@ -71,19 +74,22 @@ const TeamScreen = ({navigation}) => {
                 />
               );
             })}
-
-            <Pressable
-              style={[styles.Button, styles.ButtonApply]}
-              onPress={handleStart}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>
-                {'Start >'}
-              </Text>
-            </Pressable>
-            <Pressable style={[styles.Button, styles.ButtonCancel]}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-            </Pressable>
           </View>
         </ScrollView>
+        <View style={styles.ActionButtonView}>
+          <Pressable style={[styles.Button, styles.ButtonCancel]}>
+            <Text style={[styles.TextStyle, styles.TextCancel]}>
+              Save & Exit
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[styles.Button, styles.ButtonApply]}
+            onPress={handleStart}>
+            <Text style={[styles.TextStyle, styles.TextApply]}>
+              {'Start >'}
+            </Text>
+          </Pressable>
+        </View>
       </View>
       <TeamHelpModal
         modalVisible={showHelpModal}
@@ -92,6 +98,8 @@ const TeamScreen = ({navigation}) => {
     </>
   );
 };
+
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   Wrapper: {
@@ -109,14 +117,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 5,
+    width: (width - 60) / 2,
   },
   ButtonApply: {
     backgroundColor: COLOR_PINK,
-    marginTop: 20,
   },
   ButtonCancel: {
-    backgroundColor: COLOR_BUTTON_CANCEL,
+    backgroundColor: COLOR_WHITE,
+    color: COLOR_FONT_COMMENT,
   },
   TextStyle: {
     fontFamily: FONT_REGULAR,
@@ -166,6 +174,19 @@ const styles = StyleSheet.create({
     fontFamily: FONT_REGULAR,
     fontSize: 16,
     color: COLOR_BUTTON_DEFAULT,
+  },
+  ActionButtonView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    position: 'absolute',
+    bottom: 0,
+    borderTopWidth: 1,
+    borderTopColor: COLOR_EVENT_BORDER,
+    width: width - 48,
+    marginLeft: 24,
+    paddingVertical: 12,
+    backgroundColor: COLOR_WHITE,
   },
 });
 
