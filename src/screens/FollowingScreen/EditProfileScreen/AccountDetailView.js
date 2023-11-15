@@ -7,66 +7,88 @@ import {
 import {FONT_REGULAR} from '../../../constants/fonts';
 import TouchableIconTextItem from '../../../components/following/TouchableIconTextItem';
 import {
-  EmailWeakIcon,
   EnvelopeWeakIcon,
-  LockIcon,
   LockWeakIcon,
   LogoutWeakIcon,
   MagneticCardWeakIcon,
-  UserWeakIcon,
-  YearOfHorseWeakIcon,
 } from '../../../constants/icons';
-import IconLabeledText from '../../../components/following/IconLabeledText';
-import CompetitionNumbers from '../../../constants/following/competitionNumbers';
+import CardNumbers from '../../../constants/following/cardNumbers';
+import PaymentCardItem from '../../../components/following/PaymentCardItem';
+import LogoutModal from '../../../components/following/LogoutModal';
 
-const AccountDetailView = () => {
+const AccountDetailView = ({navigation}) => {
+  const [showLogoutModal, setShowLogoutModal] = React.useState(false);
+  const handleLogoutModal = () => {
+    setShowLogoutModal(true);
+  };
+
   return (
-    <ScrollView>
-      <View style={styles.Wrapper}>
-        <View style={styles.PartView}>
-          <Text style={styles.HeadFont}>Account details</Text>
-          <TouchableIconTextItem
-            icon={EnvelopeWeakIcon}
-            text={'Account email'}
-            rightIconVisible={true}
-            style={styles.TouchableIconTextItem}
-          />
-          <TouchableIconTextItem
-            icon={LockWeakIcon}
-            text={'Password settings'}
-            rightIconVisible={true}
-            style={styles.TouchableIconTextItem}
-          />
+    <>
+      <ScrollView>
+        <View style={styles.Wrapper}>
+          <View style={styles.PartView}>
+            <Text style={styles.HeadFont}>Account details</Text>
+            <TouchableIconTextItem
+              icon={EnvelopeWeakIcon}
+              text={'Account email'}
+              rightIconVisible={true}
+              style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('AccountEmailScreen')}
+            />
+            <TouchableIconTextItem
+              icon={LockWeakIcon}
+              text={'Password settings'}
+              rightIconVisible={true}
+              style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('ManagePasswordScreen')}
+            />
+          </View>
+          <View style={styles.PartView}>
+            <Text style={styles.HeadFont}>payment DETAILS</Text>
+            <TouchableIconTextItem
+              icon={MagneticCardWeakIcon}
+              text={'Add credit/debit card'}
+              rightIconVisible={true}
+              style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('AddCardScreen')}
+            />
+            {CardNumbers.map((item, index) => {
+              return (
+                <PaymentCardItem
+                  key={index}
+                  cardNumber={item.number}
+                  defaulted={item.defaulted}
+                />
+              );
+            })}
+          </View>
+          <View style={styles.PartView}>
+            <Text style={styles.HeadFont}>Privacy</Text>
+            <TouchableIconTextItem
+              icon={LockWeakIcon}
+              text={'Privacy settings'}
+              rightIconVisible={true}
+              style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('PrivacySettingScreen')}
+            />
+          </View>
+          <View style={styles.PartView}>
+            <Text style={styles.HeadFont}>logout</Text>
+            <TouchableIconTextItem
+              icon={LogoutWeakIcon}
+              text={'Sign out'}
+              rightIconVisible={false}
+              style={styles.TouchableIconTextItem}
+              onPress={() => handleLogoutModal()}
+            />
+          </View>
         </View>
-        <View style={styles.PartView}>
-          <Text style={styles.HeadFont}>payment DETAILS</Text>
-          <TouchableIconTextItem
-            icon={MagneticCardWeakIcon}
-            text={'Add credit/debit card'}
-            rightIconVisible={true}
-            style={styles.TouchableIconTextItem}
-          />
-        </View>
-        <View style={styles.PartView}>
-          <Text style={styles.HeadFont}>Privacy</Text>
-          <TouchableIconTextItem
-            icon={LockWeakIcon}
-            text={'Privacy settings'}
-            rightIconVisible={true}
-            style={styles.TouchableIconTextItem}
-          />
-        </View>
-        <View style={styles.PartView}>
-          <Text style={styles.HeadFont}>logout</Text>
-          <TouchableIconTextItem
-            icon={LogoutWeakIcon}
-            text={'Sign out'}
-            rightIconVisible={false}
-            style={styles.TouchableIconTextItem}
-          />
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <LogoutModal
+        modalVisible={showLogoutModal}
+        setModalVisible={setShowLogoutModal}
+      />
+    </>
   );
 };
 

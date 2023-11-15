@@ -56,7 +56,7 @@ const EditProfileScreen = ({navigation}) => {
   const SynchronizeTab = () => <SynchronizeView />;
   const TeamSettingsTab = () => <TeamSettingsView />;
   const HorsesSettingsTab = () => <HorsesSettingsView />;
-  const AccountDetailTab = () => <AccountDetailView />;
+  const AccountDetailTab = () => <AccountDetailView navigation={navigation} />;
 
   const renderScene = SceneMap({
     user: UserTab,

@@ -26,6 +26,10 @@ import {
   RegisterSplitPaymentsScreen,
   RegisterTicketsScreen,
   ProfileScreen,
+  AccountEmailScreen,
+  ManagePasswordScreen,
+  PrivacySettingScreen,
+  AddCardScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -277,6 +281,34 @@ function NavStackScreen() {
           }}
         />
         <NavStack.Screen
+          name="AccountEmailScreen"
+          component={AccountEmailScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="ManagePasswordScreen"
+          component={ManagePasswordScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PrivacySettingScreen"
+          component={PrivacySettingScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="AddCardScreen"
+          component={AddCardScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
           name="TicketsScreen"
           component={TicketsScreen}
           options={{
@@ -480,7 +512,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    marginTop: 48,
+    paddingTop: 48,
     backgroundColor: COLOR_WHITE,
   },
   bottombaricon: {

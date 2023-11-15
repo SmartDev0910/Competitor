@@ -6,6 +6,7 @@ import {
   ScrollView,
   Dimensions,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import {
   COLOR_FONT_COMMENT,
@@ -17,50 +18,92 @@ import AuthorizeItem from '../../../components/following/AuthorizeItem';
 import AuthorizedMe from '../../../constants/following/authorizedMe';
 import {HelpIcon, PlusOutlinedIcon} from '../../../constants/icons';
 import Divider from '../../../components/home/Divider';
+import AuthorizeHelpModal from '../../../components/following/AuthorizeHelpModal';
+import AddTeamMemberModal from '../../../components/following/AddTeamMemberModal';
+import AuthorizeMeHelpModal from '../../../components/following/AuthorizeMeHelpModal';
 
 const TeamSettingsView = ({navigation}) => {
+  const [showAuthorizeHelpModal, setShowAuthorizeHelpModal] =
+    React.useState(false);
+  const [showAuthorizeMeHelpModal, setShowAuthorizeMeHelpModal] =
+    React.useState(false);
+  const [showAddTeamMemberModal, setShowAddTeamMemberModal] =
+    React.useState(false);
+
+  const handleAuthorizeHelpModal = () => {
+    setShowAuthorizeHelpModal(true);
+  };
+
+  const handleAuthorizeMeHelpModal = () => {
+    setShowAuthorizeMeHelpModal(true);
+  };
+
+  const handleAddTeamMemberModal = () => {
+    setShowAddTeamMemberModal(true);
+  };
+
   return (
-    <ScrollView style={styles.ScrollView}>
-      <View style={styles.Wrapper}>
-        <Text style={styles.SubTitleFont}>Team settings</Text>
-        <View style={styles.AuthorizeTitleView}>
-          <Text style={styles.AuthorizeFont}>AUTHORIZE</Text>
-          <Image source={HelpIcon} style={styles.HelpIcon} />
+    <>
+      <ScrollView style={styles.ScrollView}>
+        <View style={styles.Wrapper}>
+          <Text style={styles.SubTitleFont}>Team settings</Text>
+          <View style={styles.AuthorizeTitleView}>
+            <Text style={styles.AuthorizeFont}>AUTHORIZE</Text>
+            <TouchableOpacity onPress={() => handleAuthorizeHelpModal()}>
+              <Image source={HelpIcon} style={styles.HelpIcon} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.AuthorizedWrapper}>
+            {AuthorizedMe.map((item, index) => {
+              return (
+                <AuthorizeItem
+                  key={index}
+                  fullName={item.fullName}
+                  avatar={item.avatar}
+                  detail={item.detail}
+                />
+              );
+            })}
+          </View>
+          <TouchableOpacity
+            style={styles.PlusIconView}
+            onPress={() => handleAddTeamMemberModal()}>
+            <Image source={PlusOutlinedIcon} style={styles.PlusOutlinedIcon} />
+          </TouchableOpacity>
+          <Divider style={styles.Divider} />
+          <View style={styles.AuthorizeTitleView}>
+            <Text style={styles.AuthorizeFont}>AUTHORIZED ME</Text>
+            <TouchableOpacity onPress={() => handleAuthorizeMeHelpModal()}>
+              <Image source={HelpIcon} style={styles.HelpIcon} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.AuthorizedWrapper}>
+            {AuthorizedMe.map((item, index) => {
+              return (
+                <AuthorizeItem
+                  key={index}
+                  fullName={item.fullName}
+                  avatar={item.avatar}
+                  detail={item.detail}
+                />
+              );
+            })}
+          </View>
         </View>
-        <View style={styles.AuthorizedWrapper}>
-          {AuthorizedMe.map((item, index) => {
-            return (
-              <AuthorizeItem
-                key={index}
-                fullName={item.fullName}
-                avatar={item.avatar}
-                detail={item.detail}
-              />
-            );
-          })}
-        </View>
-        <View style={styles.PlusIconView}>
-          <Image source={PlusOutlinedIcon} style={styles.PlusOutlinedIcon} />
-        </View>
-        <Divider style={styles.Divider} />
-        <View style={styles.AuthorizeTitleView}>
-          <Text style={styles.AuthorizeFont}>AUTHORIZED ME</Text>
-          <Image source={HelpIcon} style={styles.HelpIcon} />
-        </View>
-        <View style={styles.AuthorizedWrapper}>
-          {AuthorizedMe.map((item, index) => {
-            return (
-              <AuthorizeItem
-                key={index}
-                fullName={item.fullName}
-                avatar={item.avatar}
-                detail={item.detail}
-              />
-            );
-          })}
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <AuthorizeHelpModal
+        modalVisible={showAuthorizeHelpModal}
+        setModalVisible={setShowAuthorizeHelpModal}
+      />
+      <AuthorizeMeHelpModal
+        modalVisible={showAuthorizeMeHelpModal}
+        setModalVisible={setShowAuthorizeMeHelpModal}
+      />
+      <AddTeamMemberModal
+        modalVisible={showAddTeamMemberModal}
+        setModalVisible={setShowAddTeamMemberModal}
+      />
+    </>
   );
 };
 
