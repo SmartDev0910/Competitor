@@ -162,6 +162,7 @@ const AboutEventView = ({navigation}) => {
                     itemValue3={item.itemValue3}
                     itemTitle4={item.itemTitle4}
                     itemValue4={item.itemValue4}
+                    onMorePress={() => navigation.navigate('FeesScreen')}
                   />
                 );
               })}
@@ -171,7 +172,12 @@ const AboutEventView = ({navigation}) => {
               <Text style={styles.AboutTextFont}>Staff</Text>
               {StaffsData?.map((item, index) => {
                 return (
-                  <StaffItem key={index} icon={item.icon} text={item.text} />
+                  <StaffItem
+                    key={index}
+                    icon={item.icon}
+                    text={item.text}
+                    onPress={() => navigation.navigate('StaffScreen')}
+                  />
                 );
               })}
             </View>
@@ -235,7 +241,8 @@ const AboutEventView = ({navigation}) => {
               <Text style={styles.LocationDescFont}>
                 {`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut alickajdk a...`}
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('DirectionsScreen')}>
                 <Text style={styles.ShowMoreFont}>{`Show more >`}</Text>
               </TouchableOpacity>
             </View>

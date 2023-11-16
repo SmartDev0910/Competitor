@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {COLOR_EVENT_BORDER, COLOR_FONT_DEFAULT} from '../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
 
@@ -14,6 +14,7 @@ const FeeDataItem = ({
   itemTitle4,
   itemValue4,
   title,
+  onMorePress,
 }) => {
   return (
     <View style={styles.Wrapper}>
@@ -37,7 +38,9 @@ const FeeDataItem = ({
         <Text style={styles.ItemTitleFont}>{itemTitle4}</Text>
         <Text style={styles.ItemValueFont}>{itemValue4}</Text>
       </View>
-      <Text style={styles.ShowMoreFont}>{'Show more >'}</Text>
+      <TouchableOpacity onPress={onMorePress}>
+        <Text style={styles.ShowMoreFont}>{'Show more >'}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

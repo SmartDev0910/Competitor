@@ -30,6 +30,9 @@ import {
   ManagePasswordScreen,
   PrivacySettingScreen,
   AddCardScreen,
+  StaffScreen,
+  DirectionsScreen,
+  FeesScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -132,6 +135,27 @@ function EventsStackScreen() {
         <EventsStack.Screen
           name="ViewEventScreen"
           component={ViewEventScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="StaffScreen"
+          component={StaffScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="DirectionsScreen"
+          component={DirectionsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="FeesScreen"
+          component={FeesScreen}
           options={{
             headerShown: false,
           }}

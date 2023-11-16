@@ -28,7 +28,7 @@ import MapView from 'react-native-maps';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-Geocoder.init(GOOGLE_MAPS_API_KEY);
+Geocoder.init('AIzaSyCXSMy0vZO9FK9LeeztSN20eF-TT9-9NNI');
 
 const SearchModal = ({modalVisible, setModalVisible}) => {
   const [sliderValue, setSliderValue] = useState(0);
