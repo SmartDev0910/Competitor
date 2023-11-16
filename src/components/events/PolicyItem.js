@@ -3,7 +3,7 @@ import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {FONT_BOLD, FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
 import {COLOR_FONT_DEFAULT} from '../../constants/colors';
 
-const PolicyItem = ({icon, title, content, onPress}) => {
+const PolicyItem = ({icon, title, content, onMorePress}) => {
   return (
     <View style={styles.Wrapper}>
       <View style={styles.Row}>
@@ -14,7 +14,7 @@ const PolicyItem = ({icon, title, content, onPress}) => {
       </View>
       <View>
         <Text style={styles.ContentTextFont}>{content}</Text>
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onMorePress}>
           <Text style={styles.MoreTextFont}>{'More >'}</Text>
         </TouchableOpacity>
       </View>

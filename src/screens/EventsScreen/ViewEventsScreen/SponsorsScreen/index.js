@@ -7,32 +7,29 @@ import {
   COLOR_WHITE,
 } from '../../../../constants/colors';
 import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../../../constants/fonts';
-import StallsView from './StallsView';
 import ImageButton from '../../../../components/home/ImageButton';
 import {ArrowLeftIcon} from '../../../../constants/icons';
-import GovernanceView from './GovernanceView';
-import RefundsView from './RefundsView';
-import OtherView from './OtherView';
+import SponsorsView from './SponsorsView';
 
-function FeesScreen({navigation}) {
+function SponsorsScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'stalls', title: 'Stalls'},
-    {key: 'governance', title: 'Governance'},
-    {key: 'refunds', title: 'Refunds'},
-    {key: 'other', title: 'Other'},
+    {key: 'sponsors', title: 'Sponsors'},
+    {key: 'onsite_vendors', title: 'On-site Vendors'},
+    {key: 'virtual_vendors', title: 'Virtual Vendors'},
+    {key: 'nearby_businesses', title: 'Nearby Businesses'},
   ]);
 
-  const StallsTab = () => <StallsView navigation={navigation} />;
-  const GovernanceTab = () => <GovernanceView navigation={navigation} />;
-  const RefundsTab = () => <RefundsView navigation={navigation} />;
-  const OtherTab = () => <OtherView navigation={navigation} />;
+  const SponsorsTab = () => <SponsorsView navigation={navigation} />;
+  const OnsiteVendorsTab = () => <SponsorsView navigation={navigation} />;
+  const VirtualVendorsTab = () => <SponsorsView navigation={navigation} />;
+  const NearbyBusinessesTab = () => <SponsorsView navigation={navigation} />;
 
   const renderScene = SceneMap({
-    stalls: StallsTab,
-    governance: GovernanceTab,
-    refunds: RefundsTab,
-    other: OtherTab,
+    sponsors: SponsorsTab,
+    onsite_vendors: OnsiteVendorsTab,
+    virtual_vendors: VirtualVendorsTab,
+    nearby_businesses: NearbyBusinessesTab,
   });
 
   const renderTabBar = props => (
@@ -72,7 +69,7 @@ function FeesScreen({navigation}) {
           onPress={() => navigation.goBack()}
           style={styles.BackButton}
         />
-        <Text style={styles.AppbarTitle}>Fees</Text>
+        <Text style={styles.AppbarTitle}>Sponsors & Vendors</Text>
       </View>
       <TabView
         navigationState={{index, routes}}
@@ -116,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FeesScreen;
+export default SponsorsScreen;

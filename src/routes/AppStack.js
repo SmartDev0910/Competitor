@@ -33,6 +33,11 @@ import {
   StaffScreen,
   DirectionsScreen,
   FeesScreen,
+  PoliciesScreen,
+  SpectatorTicketsScreen,
+  AboutScreen,
+  ScheduleScreen,
+  SponsorsScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -147,6 +152,27 @@ function EventsStackScreen() {
           }}
         />
         <EventsStack.Screen
+          name="SponsorsScreen"
+          component={SponsorsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="AboutScreen"
+          component={AboutScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="ScheduleScreen"
+          component={ScheduleScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
           name="DirectionsScreen"
           component={DirectionsScreen}
           options={{
@@ -156,6 +182,20 @@ function EventsStackScreen() {
         <EventsStack.Screen
           name="FeesScreen"
           component={FeesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="PoliciesScreen"
+          component={PoliciesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="SpectatorTicketsScreen"
+          component={SpectatorTicketsScreen}
           options={{
             headerShown: false,
           }}

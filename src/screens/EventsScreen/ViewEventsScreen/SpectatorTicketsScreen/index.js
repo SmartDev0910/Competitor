@@ -1,16 +1,17 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, Pressable, StyleSheet, ScrollView} from 'react-native';
 import {
   COLOR_BLACK,
   COLOR_FONT_DEFAULT,
+  COLOR_PINK,
   COLOR_WHITE,
 } from '../../../../constants/colors';
 import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../../../constants/fonts';
 import ImageButton from '../../../../components/home/ImageButton';
 import {ArrowLeftIcon} from '../../../../constants/icons';
-import PoliciesData from '../../../../constants/events/policies';
-import PolicyBorderedItem from '../../../../components/events/PolicyBorderedItem';
+import StallItem from '../../../../components/events/StallItem';
+import SpectatorTicketsData from '../../../../constants/events/spectatorTickets';
 
-function PoliciesScreen({navigation}) {
+function SpectatorTicketsScreen({navigation}) {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
@@ -20,18 +21,23 @@ function PoliciesScreen({navigation}) {
             onPress={() => navigation.goBack()}
             style={styles.BackButton}
           />
-          <Text style={styles.AppbarTitle}>Policies</Text>
+          <Text style={styles.AppbarTitle}>Spectator tickets</Text>
         </View>
-        {PoliciesData.map((item, index) => {
+        {SpectatorTicketsData.map((item, index) => {
           return (
-            <PolicyBorderedItem
+            <StallItem
               key={index}
-              icon={item.icon}
               title={item.title}
+              status={item.status}
               content={item.content}
             />
           );
         })}
+        <Pressable style={[styles.Button, styles.ButtonApply]}>
+          <Text style={[styles.TextStyle, styles.TextApply]}>
+            Purchase Tickets
+          </Text>
+        </Pressable>
       </View>
     </ScrollView>
   );
@@ -70,6 +76,28 @@ const styles = StyleSheet.create({
     color: COLOR_FONT_DEFAULT,
     marginTop: 20,
   },
+  Button: {
+    borderRadius: 10,
+    padding: 10,
+    width: '100%',
+    height: 55,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 20,
+  },
+  ButtonApply: {
+    backgroundColor: COLOR_PINK,
+  },
+  TextStyle: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 16,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  TextApply: {
+    color: COLOR_WHITE,
+  },
 });
 
-export default PoliciesScreen;
+export default SpectatorTicketsScreen;

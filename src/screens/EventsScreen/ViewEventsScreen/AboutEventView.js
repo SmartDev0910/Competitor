@@ -16,7 +16,6 @@ import {
 } from '../../../constants/images';
 import ZoetisPane from '../../../components/events/ZoetisPane';
 import {
-  COLOR_BUTTON_DEFAULT,
   COLOR_EVENT_BORDER,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
@@ -43,9 +42,10 @@ import PoliciesData from '../../../constants/events/policies';
 import PolicyItem from '../../../components/events/PolicyItem';
 import PaperworksData from '../../../constants/events/paperworks';
 import PaperworkItem from '../../../components/events/PaperworkItem';
-import {PhoneIcon, PhoneWeakIcon, UserIcon} from '../../../constants/icons';
+import {PhoneIcon, UserIcon} from '../../../constants/icons';
 import EventPaperworkModal from '../../../components/events/EventPaperworkModal';
 import CallModal from '../../../components/events/CallModal';
+import ExhibitorsModal from '../../../components/events/ExhibitorsModal';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -54,6 +54,7 @@ const AboutEventView = ({navigation}) => {
   const [showEventPaperworkModal, setShowEventPaperworkModal] =
     React.useState(false);
   const [showCallModal, setShowCallModal] = React.useState(false);
+  const [showExhibitorsModal, setShowExhibitorsModal] = React.useState(false);
 
   const handleRegister = () => {
     navigation.navigate('RegisterTeamScreen');
@@ -65,6 +66,10 @@ const AboutEventView = ({navigation}) => {
 
   const handleCallModal = () => {
     setShowCallModal(true);
+  };
+
+  const handleExhibitorsModal = () => {
+    setShowExhibitorsModal(true);
   };
 
   return (
@@ -90,6 +95,11 @@ const AboutEventView = ({navigation}) => {
                   title={item.title}
                   statusText={item.statusText}
                   image={item.image}
+                  onPress={() => {
+                    if (item?.route) {
+                      navigation.navigate(item.route);
+                    }
+                  }}
                 />
               );
             })}
@@ -98,7 +108,7 @@ const AboutEventView = ({navigation}) => {
               role="Event Organizer"
               image={EventLogo1Image}
             />
-            <StatisticPane />
+            <StatisticPane onPress={handleExhibitorsModal} />
             <Divider style={styles.Divider} />
             <View style={styles.AboutTextView}>
               <Text style={styles.AboutTextFont}>About</Text>
@@ -109,7 +119,10 @@ const AboutEventView = ({navigation}) => {
                 hour from Washington, D.C., HITS Commonwealth Park boasts a 100+
                 accounts...
               </Text>
-              <Text style={styles.ShowMoreFont}>{'Show more >'}</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('AboutScreen')}>
+                <Text style={styles.ShowMoreFont}>{'Show more >'}</Text>
+              </TouchableOpacity>
             </View>
             <Divider style={styles.Divider} />
             <View style={styles.KeyDataView}>
@@ -143,7 +156,10 @@ const AboutEventView = ({navigation}) => {
                   />
                 );
               })}
-              <Text style={styles.ShowMoreFont}>{'Show more >'}</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('SponsorsScreen')}>
+                <Text style={styles.ShowMoreFont}>{'Show more >'}</Text>
+              </TouchableOpacity>
             </View>
             <Divider style={styles.Divider} />
             <View style={styles.KeyDataView}>
@@ -191,6 +207,7 @@ const AboutEventView = ({navigation}) => {
                     icon={item.icon}
                     title={item.title}
                     content={item.content}
+                    onMorePress={() => navigation.navigate('PoliciesScreen')}
                   />
                 );
               })}
@@ -261,6 +278,12 @@ const AboutEventView = ({navigation}) => {
       <CallModal
         modalVisible={showCallModal}
         setModalVisible={setShowCallModal}
+      />
+      <ExhibitorsModal
+        modalVisible={showExhibitorsModal}
+        setModalVisible={setShowExhibitorsModal}
+        navigation={navigation}
+        activeTab={0}
       />
     </>
   );

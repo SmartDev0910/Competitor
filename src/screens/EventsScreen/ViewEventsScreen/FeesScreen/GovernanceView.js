@@ -2,23 +2,23 @@ import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../../../constants/colors';
 import {FONT_REGULAR} from '../../../../constants/fonts';
-import VolunteerItem from '../../../../components/events/VolunteerItem';
-import VolunteersData from '../../../../constants/events/volunteers';
+import StallItem from '../../../../components/events/StallItem';
+import GovermanceFeesData from '../../../../constants/events/govermanceFees';
 
-const VolunteersView = ({navigation}) => {
+const GovernanceView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>28 volunteers</Text>
+          <Text style={styles.HeadFont}>5 governance fees</Text>
         </View>
-        {VolunteersData.map((item, index) => {
+        {GovermanceFeesData.map((item, index) => {
           return (
-            <VolunteerItem
+            <StallItem
               key={index}
-              fullName={item.fullName}
-              avatar={item.avatar}
+              title={item.title}
               status={item.status}
+              content={item.content}
             />
           );
         })}
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VolunteersView;
+export default GovernanceView;

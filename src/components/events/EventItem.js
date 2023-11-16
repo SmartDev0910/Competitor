@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import {
   COLOR_FONT_COMMENT,
   COLOR_PINK,
@@ -10,7 +17,7 @@ import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 
 const EventItem = ({image, title, statusText, onPress}) => {
   return (
-    <View style={styles.View} onPress={onPress}>
+    <TouchableOpacity style={styles.View} onPress={onPress}>
       <View style={styles.ImageView}>
         <Image source={image} style={styles.Image} />
       </View>
@@ -20,7 +27,7 @@ const EventItem = ({image, title, statusText, onPress}) => {
           <Text style={styles.StatusTextFont}>{statusText}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

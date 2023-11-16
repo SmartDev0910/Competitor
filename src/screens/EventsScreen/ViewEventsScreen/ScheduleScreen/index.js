@@ -7,32 +7,29 @@ import {
   COLOR_WHITE,
 } from '../../../../constants/colors';
 import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../../../constants/fonts';
-import StallsView from './StallsView';
 import ImageButton from '../../../../components/home/ImageButton';
 import {ArrowLeftIcon} from '../../../../constants/icons';
-import GovernanceView from './GovernanceView';
-import RefundsView from './RefundsView';
-import OtherView from './OtherView';
+import DayView from './DayView';
 
-function FeesScreen({navigation}) {
+function ScheduleScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'stalls', title: 'Stalls'},
-    {key: 'governance', title: 'Governance'},
-    {key: 'refunds', title: 'Refunds'},
-    {key: 'other', title: 'Other'},
+    {key: 'thursday', title: 'Thursday'},
+    {key: 'friday', title: 'Friday'},
+    {key: 'saturday', title: 'Saturday'},
+    {key: 'sunday', title: 'Sunday'},
   ]);
 
-  const StallsTab = () => <StallsView navigation={navigation} />;
-  const GovernanceTab = () => <GovernanceView navigation={navigation} />;
-  const RefundsTab = () => <RefundsView navigation={navigation} />;
-  const OtherTab = () => <OtherView navigation={navigation} />;
+  const ThursdayTab = () => <DayView navigation={navigation} />;
+  const FridayTab = () => <DayView navigation={navigation} />;
+  const SaturdayTab = () => <DayView navigation={navigation} />;
+  const SundayTab = () => <DayView navigation={navigation} />;
 
   const renderScene = SceneMap({
-    stalls: StallsTab,
-    governance: GovernanceTab,
-    refunds: RefundsTab,
-    other: OtherTab,
+    thursday: ThursdayTab,
+    friday: FridayTab,
+    saturday: SaturdayTab,
+    sunday: SundayTab,
   });
 
   const renderTabBar = props => (
@@ -72,7 +69,7 @@ function FeesScreen({navigation}) {
           onPress={() => navigation.goBack()}
           style={styles.BackButton}
         />
-        <Text style={styles.AppbarTitle}>Fees</Text>
+        <Text style={styles.AppbarTitle}>Schedule</Text>
       </View>
       <TabView
         navigationState={{index, routes}}
@@ -116,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FeesScreen;
+export default ScheduleScreen;
