@@ -1,13 +1,14 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   Modal,
   StyleSheet,
   Text,
   Pressable,
-  Image,
   View,
   SafeAreaView,
   Dimensions,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import {
   COLOR_BUTTON_CANCEL,
@@ -18,8 +19,9 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import RadiusSliderPane from './RadiusSliderPane';
-import SearchMapText from './SearchMapText';
+import {LaurelWreathIcon} from '../../constants/icons';
+import GovermentRecordsModal from './GovermentRecordsModal';
+import SearchMapText from '../home/SearchMapText';
 import {GOOGLE_MAPS_API_KEY} from '../../constants/env';
 import Geocoder from 'react-native-geocoding';
 import MapView from 'react-native-maps';
@@ -29,7 +31,9 @@ const height = Dimensions.get('window').height;
 
 Geocoder.init(GOOGLE_MAPS_API_KEY);
 
-const SearchModal = ({modalVisible, setModalVisible}) => {
+const AddressModal = ({modalVisible, setModalVisible}) => {
+  const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
+    useState(false);
   const [sliderValue, setSliderValue] = useState(0);
   const [searchText, setSearchText] = useState('');
   // const [address, setAddress] = useState('26 Lombard Street East, Dublin, Ireland');
@@ -85,43 +89,59 @@ const SearchModal = ({modalVisible, setModalVisible}) => {
         onRegionChangeComplete={onRegionChangeComplete}
       />
       {/* <Image source={MapWellingtonImage} style={styles.MapWellingtonImage} /> */}
-      <View style={styles.ScrollView}>
-        <RadiusSliderPane
-          style={styles.RadiusSliderPane}
-          title="Select radius"
-          value={sliderValue}
-          onValueChange={handleSliderValueChange}
-        />
-      </View>
     </>
   );
 
+  const handleGovermentRecordsModal = () => {
+    setModalVisible(false);
+    setShowGovermentRecordsModal(true);
+  };
+
   return (
-    <SafeAreaView>
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={styles.OverlayStyle} />
-        <View style={styles.ModalView}>
-          <View style={styles.BottomButton}>
-            <SearchMapText
-              style={[styles.SearchMapText]}
-              value={searchText}
-              onChangeText={onChangeText}
-            />
+    <>
+      <SafeAreaView>
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <View style={styles.OverlayStyle} />
+          <View style={styles.ModalView}>
+            <View style={styles.Appbar}>
+              <Text style={styles.ModalTitleFont}>Address</Text>
+              <TouchableOpacity
+                style={styles.RightIconView}
+                onPress={handleGovermentRecordsModal}>
+                <Image source={LaurelWreathIcon} style={styles.RightIcon} />
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.ModalContentView}>
+              <SearchMapText
+                style={[styles.SearchMapText]}
+                value={searchText}
+                onChangeText={onChangeText}
+              />
+            </View>
+            {MapPane}
+
+            <View style={styles.BottomButton}>
+              <Pressable style={[styles.Button, styles.ButtonApply]}>
+                <Text style={[styles.TextStyle, styles.TextApply]}>Save</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.Button, styles.ButtonCancel]}
+                onPress={() => setModalVisible(false)}>
+                <Text style={[styles.TextStyle, styles.TextCancel]}>
+                  Cancel
+                </Text>
+              </Pressable>
+            </View>
           </View>
-          {MapPane}
-          <View style={styles.BottomButton}>
-            <Pressable style={[styles.Button, styles.ButtonApply]}>
-              <Text style={[styles.TextStyle, styles.TextApply]}>Save</Text>
-            </Pressable>
-            <Pressable
-              style={[styles.Button, styles.ButtonCancel]}
-              onPress={() => setModalVisible(false)}>
-              <Text style={[styles.TextStyle, styles.TextCancel]}>Cancel</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
-    </SafeAreaView>
+        </Modal>
+        <GovermentRecordsModal
+          modalVisible={showGovermentRecordsModal}
+          setModalVisible={setShowGovermentRecordsModal}
+          value={'Australia'}
+        />
+      </SafeAreaView>
+    </>
   );
 };
 
@@ -150,6 +170,42 @@ const styles = StyleSheet.create({
   },
   ScrollView: {
     paddingHorizontal: 24,
+  },
+  Appbar: {
+    height: 36,
+    paddingHorizontal: 24,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  AppbarButton: {
+    width: 22,
+    height: 22,
+  },
+  AppbarTextFont: {
+    fontFamily: FONT_REGULAR,
+    color: COLOR_FONT_DEFAULT,
+    fontSize: 24,
+    marginLeft: 7,
+  },
+  TitleView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  RightIconView: {
+    width: 24,
+    height: 24,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    borderColor: COLOR_FONT_DEFAULT,
+    borderWidth: 1,
+  },
+  RightIcon: {
+    width: 14,
+    height: 14,
   },
   Button: {
     borderRadius: 10,
@@ -181,34 +237,36 @@ const styles = StyleSheet.create({
     color: COLOR_WHITE,
   },
   ModalTitleFont: {
-    marginBottom: 15,
     fontFamily: FONT_REGULAR,
     fontSize: 25,
     color: COLOR_FONT_DEFAULT,
     lineHeight: 34,
-    marginHorizontal: 24,
-  },
-  SubTitleFont: {
-    fontFamily: FONT_REGULAR,
-    fontSize: 16,
-    lineHeight: 34,
-  },
-  RadiusSliderPane: {
-    marginVertical: 10,
-    width: '100%',
   },
   BottomButton: {
     marginHorizontal: 24,
+    position: 'absolute',
+    bottom: 30,
+    width: width - 48,
+  },
+  ModalContentView: {
+    paddingHorizontal: 16,
+    flexDirection: 'column',
+    marginTop: 20,
+  },
+  HelpTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 14,
+    color: COLOR_FONT_DEFAULT,
   },
   SearchMapText: {
-    width: width - 140,
+    width: width - 130,
     height: 50,
   },
   MapWellingtonImage: {
     width: '100%',
-    height: '50%',
+    height: '60%',
     marginVertical: 20,
   },
 });
 
-export default SearchModal;
+export default AddressModal;

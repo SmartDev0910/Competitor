@@ -50,3 +50,7 @@ export {default as AccountEmailScreen} from './FollowingScreen/EditProfileScreen
 export {default as ManagePasswordScreen} from './FollowingScreen/EditProfileScreen/ManagePasswordScreen';
 export {default as PrivacySettingScreen} from './FollowingScreen/EditProfileScreen/PrivacySettingScreen';
 export {default as AddCardScreen} from './FollowingScreen/EditProfileScreen/AddCardScreen';
+export {default as USEFNumberScreen} from './FollowingScreen/EditProfileScreen/USEFNumberScreen';
+export {default as FEINumberScreen} from './FollowingScreen/EditProfileScreen/FEINumberScreen';
+export {default as SafeSportScreen} from './FollowingScreen/EditProfileScreen/SafeSportScreen';
+export {default as BackgroundCheckScreen} from './FollowingScreen/EditProfileScreen/BackgroundCheckScreen';
