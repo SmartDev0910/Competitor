@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {COLOR_EVENT_BORDER} from '../../constants/colors';
 import {LaurelWreathWeakIcon} from '../../constants/icons';
+import GovermentRecordsModal from './GovermentRecordsModal';
 
 const IconLabeledText = ({
   style,
@@ -18,25 +19,44 @@ const IconLabeledText = ({
   placeholder,
   rightIconVisible,
 }) => {
+  const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
+    useState(false);
+
+  const handleGovermentRecordsModal = () => {
+    setShowGovermentRecordsModal(true);
+  };
+
   return (
-    <View style={styles.Wrapper}>
-      <TouchableOpacity>
-        <Image source={icon} style={{width: 24, height: 24, marginRight: 10}} />
-      </TouchableOpacity>
-      <TextInput
-        style={[styles.TextInput, style]}
+    <>
+      <View style={styles.Wrapper}>
+        <TouchableOpacity>
+          <Image
+            source={icon}
+            style={{width: 24, height: 24, marginRight: 10}}
+          />
+        </TouchableOpacity>
+        <TextInput
+          style={[styles.TextInput, style]}
+          value={value}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+        />
+        {rightIconVisible ? (
+          <TouchableOpacity
+            style={styles.RightIconView}
+            onPress={handleGovermentRecordsModal}>
+            <Image source={LaurelWreathWeakIcon} style={styles.RightIcon} />
+          </TouchableOpacity>
+        ) : (
+          ''
+        )}
+      </View>
+      <GovermentRecordsModal
+        modalVisible={showGovermentRecordsModal}
+        setModalVisible={setShowGovermentRecordsModal}
         value={value}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
       />
-      {rightIconVisible ? (
-        <View style={styles.RightIconView}>
-          <Image source={LaurelWreathWeakIcon} style={styles.RightIcon} />
-        </View>
-      ) : (
-        ''
-      )}
-    </View>
+    </>
   );
 };
 

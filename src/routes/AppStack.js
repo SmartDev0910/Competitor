@@ -38,6 +38,10 @@ import {
   AboutScreen,
   ScheduleScreen,
   SponsorsScreen,
+  FEINumberScreen,
+  USEFNumberScreen,
+  SafeSportScreen,
+  BackgroundCheckScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -368,6 +372,34 @@ function NavStackScreen() {
         <NavStack.Screen
           name="AddCardScreen"
           component={AddCardScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="USEFNumberScreen"
+          component={USEFNumberScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="FEINumberScreen"
+          component={FEINumberScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="SafeSportScreen"
+          component={SafeSportScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BackgroundCheckScreen"
+          component={BackgroundCheckScreen}
           options={{
             headerShown: false,
           }}
