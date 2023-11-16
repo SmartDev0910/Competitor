@@ -18,6 +18,7 @@ const IconTextItem = ({icon, text}) => {
 
 const styles = StyleSheet.create({
   Wrapper: {
+    width: '100%',
     height: 56,
     borderWidth: 1,
     borderRadius: 12,

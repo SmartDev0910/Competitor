@@ -13,51 +13,31 @@ import {
   COLOR_WHITE,
 } from '../../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
+import {PlusOutlinedIcon} from '../../../constants/icons';
 import AuthorizeItem from '../../../components/following/AuthorizeItem';
-import AuthorizedMe from '../../../constants/following/authorizedMe';
-import {HelpIcon, PlusOutlinedIcon} from '../../../constants/icons';
-import Divider from '../../../components/home/Divider';
+import Horses from '../../../constants/following/horses';
 
-const AuthorizeView = ({navigation}) => {
+const HorsesSettingsView = ({navigation}) => {
   return (
     <ScrollView style={styles.ScrollView}>
       <View style={styles.Wrapper}>
-        <Text style={styles.SubTitleFont}>Team settings</Text>
         <View style={styles.AuthorizeTitleView}>
-          <Text style={styles.AuthorizeFont}>AUTHORIZE</Text>
-          <Image source={HelpIcon} style={styles.HelpIcon} />
+          <Text style={styles.AuthorizeFont}>horses</Text>
         </View>
         <View style={styles.AuthorizedWrapper}>
-          {AuthorizedMe.map((item, index) => {
+          {Horses.map((item, index) => {
             return (
               <AuthorizeItem
                 key={index}
                 fullName={item.fullName}
                 avatar={item.avatar}
-                detail={item.detail}
+                detail={item.status}
               />
             );
           })}
         </View>
         <View style={styles.PlusIconView}>
           <Image source={PlusOutlinedIcon} style={styles.PlusOutlinedIcon} />
-        </View>
-        <Divider style={styles.Divider} />
-        <View style={styles.AuthorizeTitleView}>
-          <Text style={styles.AuthorizeFont}>AUTHORIZED ME</Text>
-          <Image source={HelpIcon} style={styles.HelpIcon} />
-        </View>
-        <View style={styles.AuthorizedWrapper}>
-          {AuthorizedMe.map((item, index) => {
-            return (
-              <AuthorizeItem
-                key={index}
-                fullName={item.fullName}
-                avatar={item.avatar}
-                detail={item.detail}
-              />
-            );
-          })}
         </View>
       </View>
     </ScrollView>
@@ -109,6 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: COLOR_FONT_DEFAULT,
     marginTop: 8,
+    textTransform: 'uppercase',
   },
   HelpIcon: {
     width: 14,
@@ -134,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthorizeView;
+export default HorsesSettingsView;

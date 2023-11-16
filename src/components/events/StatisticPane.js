@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
@@ -12,31 +19,19 @@ import {
   UserOval3Image,
 } from '../../constants/images';
 
-const StatisticPane = () => {
+const StatisticPane = ({onPress}) => {
   return (
-    <View style={styles.StatisticView}>
+    <TouchableOpacity style={styles.StatisticView} onPress={onPress}>
       <View style={styles.StatisticImagesView}>
-        <Image
-          source={UserOval1Image}
-          style={styles.StatisticImage}
-          resizeMode="contain"
-        />
-        <Image
-          source={UserOval2Image}
-          style={styles.StatisticImage}
-          resizeMode="contain"
-        />
-        <Image
-          source={UserOval3Image}
-          style={styles.StatisticImage}
-          resizeMode="contain"
-        />
+        <Image source={UserOval1Image} style={styles.StatisticImage} />
+        <Image source={UserOval2Image} style={styles.StatisticImage} />
+        <Image source={UserOval3Image} style={styles.StatisticImage} />
       </View>
       <View style={styles.StatisticTextView}>
         <Text style={styles.StatisticBoldText}>136 Registered</Text>
         <Text style={styles.StatisticText}>23 on waitlist</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

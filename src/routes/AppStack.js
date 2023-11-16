@@ -26,6 +26,18 @@ import {
   RegisterSplitPaymentsScreen,
   RegisterTicketsScreen,
   ProfileScreen,
+  AccountEmailScreen,
+  ManagePasswordScreen,
+  PrivacySettingScreen,
+  AddCardScreen,
+  StaffScreen,
+  DirectionsScreen,
+  FeesScreen,
+  PoliciesScreen,
+  SpectatorTicketsScreen,
+  AboutScreen,
+  ScheduleScreen,
+  SponsorsScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -128,6 +140,62 @@ function EventsStackScreen() {
         <EventsStack.Screen
           name="ViewEventScreen"
           component={ViewEventScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="StaffScreen"
+          component={StaffScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="SponsorsScreen"
+          component={SponsorsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="AboutScreen"
+          component={AboutScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="ScheduleScreen"
+          component={ScheduleScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="DirectionsScreen"
+          component={DirectionsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="FeesScreen"
+          component={FeesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="PoliciesScreen"
+          component={PoliciesScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="SpectatorTicketsScreen"
+          component={SpectatorTicketsScreen}
           options={{
             headerShown: false,
           }}
@@ -272,6 +340,34 @@ function NavStackScreen() {
         <NavStack.Screen
           name="EditProfileScreen"
           component={EditProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="AccountEmailScreen"
+          component={AccountEmailScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="ManagePasswordScreen"
+          component={ManagePasswordScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PrivacySettingScreen"
+          component={PrivacySettingScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="AddCardScreen"
+          component={AddCardScreen}
           options={{
             headerShown: false,
           }}
@@ -480,7 +576,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    marginTop: 48,
+    paddingTop: 48,
     backgroundColor: COLOR_WHITE,
   },
   bottombaricon: {

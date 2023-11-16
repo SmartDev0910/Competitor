@@ -2,7 +2,6 @@ import {
   CertificateOutlinedIcon,
   ClockOutlinedIcon,
   DepartmentShopOutlinedIcon,
-  JourneyIcon,
   JourneyOutlinedIcon,
   LocationOutlinedIcon,
   TearOffCalendarOutlinedIcon,
@@ -34,15 +33,18 @@ export default [
     title: 'Accepting Partners',
     statusText: 'Sponsors, Vendors, Nearbye Businesses',
     image: DepartmentShopOutlinedIcon,
+    route: 'SponsorsScreen',
   },
   {
     title: '236 tickets remaining',
     statusText: 'Spectator tickets',
     image: TwoTicketsOutlinedIcon,
+    route: 'SpectatorTicketsScreen',
   },
   {
     title: 'Event schedule',
     statusText: 'Starts Friday, 8am',
     image: ClockOutlinedIcon,
+    route: 'ScheduleScreen',
   },
 ];
