@@ -23,16 +23,22 @@ import TouchableIconTextItem from '../../../../components/following/TouchableIco
 import GovermentRecordsModal from '../../../../components/following/GovermentRecordsModal';
 import {ModalContext} from '../../../../providers/ModalProvider';
 import CompetitionNumbersData from '../../../../constants/following/competitionNumbers';
+import SelectDateModal from '../../../../components/common/SelectDateModal';
 
 const CompetitionNumberScreen = ({navigation}) => {
   const [comNumber, setComNumber] = useState('');
   const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
     useState(false);
+  const [showSelectDateModal, setShowSelectDateModal] = useState(false);
   const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
     useContext(ModalContext);
 
   const handleGovermentRecordsModal = () => {
     setShowGovermentRecordsModal(true);
+  };
+
+  const handleSelectDateModal = () => {
+    setShowSelectDateModal(true);
   };
 
   return (
@@ -67,6 +73,7 @@ const CompetitionNumberScreen = ({navigation}) => {
               text={'Select expiration date'}
               downIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={handleSelectDateModal}
             />
           </View>
         </View>
@@ -75,6 +82,10 @@ const CompetitionNumberScreen = ({navigation}) => {
         modalVisible={showGovermentRecordsModal}
         setModalVisible={setShowGovermentRecordsModal}
         value={comNumber}
+      />
+      <SelectDateModal
+        modalVisible={showSelectDateModal}
+        setModalVisible={setShowSelectDateModal}
       />
     </>
   );

@@ -21,13 +21,19 @@ import {
 } from '../../../../constants/colors';
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
 import GovermentRecordsModal from '../../../../components/following/GovermentRecordsModal';
+import SelectDateModal from '../../../../components/common/SelectDateModal';
 
 const BackgroundCheckScreen = ({navigation}) => {
   const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
     useState(false);
+  const [showSelectDateModal, setShowSelectDateModal] = useState(false);
 
   const handleGovermentRecordsModal = () => {
     setShowGovermentRecordsModal(true);
+  };
+
+  const handleSelectDateModal = () => {
+    setShowSelectDateModal(true);
   };
 
   return (
@@ -59,6 +65,7 @@ const BackgroundCheckScreen = ({navigation}) => {
               text={'Select expiration date'}
               downIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={handleSelectDateModal}
             />
           </View>
         </View>
@@ -67,6 +74,10 @@ const BackgroundCheckScreen = ({navigation}) => {
         modalVisible={showGovermentRecordsModal}
         setModalVisible={setShowGovermentRecordsModal}
         value={'Yes, Expires: 2023-07-19'}
+      />
+      <SelectDateModal
+        modalVisible={showSelectDateModal}
+        setModalVisible={setShowSelectDateModal}
       />
     </>
   );
