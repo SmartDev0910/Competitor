@@ -53,7 +53,7 @@ const EditProfileScreen = ({navigation}) => {
   ]);
 
   const UserTab = () => <UserView navigation={navigation} />;
-  const SynchronizeTab = () => <SynchronizeView />;
+  const SynchronizeTab = () => <SynchronizeView navigation={navigation} />;
   const TeamSettingsTab = () => <TeamSettingsView />;
   const HorsesSettingsTab = () => <HorsesSettingsView />;
   const AccountDetailTab = () => <AccountDetailView navigation={navigation} />;

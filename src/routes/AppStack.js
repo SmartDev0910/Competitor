@@ -43,6 +43,8 @@ import {
   SafeSportScreen,
   BackgroundCheckScreen,
   EndorsementLetterScreen,
+  CompetitionNumberScreen,
+  SyncCompetitionNumberScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -408,6 +410,20 @@ function NavStackScreen() {
         <NavStack.Screen
           name="EndorsementLetterScreen"
           component={EndorsementLetterScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="CompetitionNumberScreen"
+          component={CompetitionNumberScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="SyncCompetitionNumberScreen"
+          component={SyncCompetitionNumberScreen}
           options={{
             headerShown: false,
           }}

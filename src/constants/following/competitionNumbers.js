@@ -13,38 +13,47 @@ import {
 export default [
   {
     icon: UsefLogo1Image,
-    text: 'USDF: 102910',
+    title: 'USDF number',
+    value: '',
   },
   {
     icon: UsefLogo2Image,
-    text: 'No USEA number',
+    title: 'USEA number',
+    value: '',
   },
   {
     icon: UsefLogo3Image,
-    text: 'USHJA: 102910',
+    title: 'USHJA number',
+    value: '',
   },
   {
     icon: UsefLogo4Image,
-    text: 'No AHHS number',
+    title: 'AHHS number',
+    value: '',
   },
   {
     icon: UsefLogo5Image,
-    text: 'No AMHA number',
+    title: 'AMHA number',
+    value: '',
   },
   {
     icon: UsefLogo6Image,
-    text: 'No ARHPA number',
+    title: 'ARHPA number',
+    value: '',
   },
   {
     icon: UsefLogo10Image,
-    text: 'No ASHA number',
+    title: 'ASHA number',
+    value: '',
   },
   {
     icon: UsefLogo11Image,
-    text: 'No UPHA number',
+    title: 'UPHA number',
+    value: '',
   },
   {
     icon: UsefLogo12Image,
-    text: 'No WDAA number',
+    title: 'WDAA number',
+    value: '',
   },
 ];

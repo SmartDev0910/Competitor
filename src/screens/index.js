@@ -55,3 +55,5 @@ export {default as FEINumberScreen} from './FollowingScreen/EditProfileScreen/FE
 export {default as SafeSportScreen} from './FollowingScreen/EditProfileScreen/SafeSportScreen';
 export {default as BackgroundCheckScreen} from './FollowingScreen/EditProfileScreen/BackgroundCheckScreen';
 export {default as EndorsementLetterScreen} from './FollowingScreen/EditProfileScreen/EndorsementLetterScreen';
+export {default as CompetitionNumberScreen} from './FollowingScreen/EditProfileScreen/CompetitionNumberScreen';
+export {default as SyncCompetitionNumberScreen} from './FollowingScreen/EditProfileScreen/SyncCompetitionNumberScreen';
