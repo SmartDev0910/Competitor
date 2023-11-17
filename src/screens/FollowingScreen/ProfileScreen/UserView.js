@@ -37,7 +37,7 @@ const UserView = () => {
           <Text style={styles.HeadFont}>COMPETITION NUMBERS</Text>
           {CompetitionNumbers?.map((item, index) => {
             return (
-              <IconTextItem key={index} icon={item.icon} text={item.text} />
+              <IconTextItem key={index} icon={item.icon} text={item.title} />
             );
           })}
         </View>

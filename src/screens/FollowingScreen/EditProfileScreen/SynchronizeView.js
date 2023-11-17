@@ -25,6 +25,16 @@ const SynchronizeView = ({navigation}) => {
     navigation.navigate('SyncCompetitionNumberScreen');
   };
 
+  const handleSyncEligibilityPress = index => {
+    setCompetitionNumberIndex(index);
+    navigation.navigate('SyncEligibilityScreen');
+  };
+
+  const handleSyncSuspensionPress = index => {
+    setCompetitionNumberIndex(index);
+    navigation.navigate('SyncSuspensionScreen');
+  };
+
   const handleSyncPress = () => {
     setSyncStatus(true);
   };
@@ -49,6 +59,7 @@ const SynchronizeView = ({navigation}) => {
                     status={item.status}
                     expDate={item.expDate}
                     selected={item.selected}
+                    onPress={() => handleSyncEligibilityPress(index)}
                   />
                 );
               })}
@@ -59,6 +70,7 @@ const SynchronizeView = ({navigation}) => {
                     key={index}
                     title={item.title}
                     details={item.details}
+                    onPress={() => handleSyncSuspensionPress(index)}
                   />
                 );
               })}

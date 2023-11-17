@@ -8,7 +8,7 @@ import {
 
 export default [
   {
-    title: 'USEF membership:',
+    title: 'USEF membership',
     image: UsefLogo1Image,
     status: 'Current',
     details: 'Active',
@@ -16,7 +16,7 @@ export default [
     selected: true,
   },
   {
-    title: 'FEI Registration:',
+    title: 'FEI Registration',
     image: UsefLogo2Image,
     status: 'Registered',
     details: 'Active',
@@ -24,7 +24,7 @@ export default [
     selected: true,
   },
   {
-    title: 'Background check:',
+    title: 'Background check',
     image: UsefLogo3Image,
     status: 'Expired',
     details: 'Active',
@@ -32,7 +32,7 @@ export default [
     selected: false,
   },
   {
-    title: 'SafeSport Training:',
+    title: 'SafeSport Training',
     image: UsefLogo4Image,
     status: 'Current',
     details: 'Active',
@@ -40,7 +40,7 @@ export default [
     selected: true,
   },
   {
-    title: 'Foreign Endorsement Letter:',
+    title: 'Foreign Endorsement Letter',
     image: UsefLogo5Image,
     status: 'Current',
     details: 'Active',

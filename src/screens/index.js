@@ -57,3 +57,5 @@ export {default as BackgroundCheckScreen} from './FollowingScreen/EditProfileScr
 export {default as EndorsementLetterScreen} from './FollowingScreen/EditProfileScreen/EndorsementLetterScreen';
 export {default as CompetitionNumberScreen} from './FollowingScreen/EditProfileScreen/CompetitionNumberScreen';
 export {default as SyncCompetitionNumberScreen} from './FollowingScreen/EditProfileScreen/SyncCompetitionNumberScreen';
+export {default as SyncEligibilityScreen} from './FollowingScreen/EditProfileScreen/SyncEligibilityScreen';
+export {default as SyncSuspensionScreen} from './FollowingScreen/EditProfileScreen/SyncSuspensionScreen';
