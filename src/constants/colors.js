@@ -17,3 +17,4 @@ export const COLOR_SKELETON_BORDER = '#E6E6E6';
 export const COLOR_GREY_CAMERA = '#8C95AC';
 export const COLOR_SKY = '#00B6AA';
 export const COLOR_LIGHT_SKY = 'rgba(0,182,170, 0.10)'; // #00B6AA opacity 10%
+export const COLOR_RED_OPACITY = 'rgba(235, 87, 87, 0.10)';

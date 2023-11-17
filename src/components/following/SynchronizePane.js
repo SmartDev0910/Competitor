@@ -9,7 +9,7 @@ import {
 import {UsefLogo1Image} from '../../constants/images';
 import {FONT_REGULAR} from '../../constants/fonts';
 
-const SynchronizePane = () => {
+const SynchronizePane = ({onSyncPress}) => {
   return (
     <View style={styles.Wrapper}>
       <View style={styles.TopView}>
@@ -18,7 +18,9 @@ const SynchronizePane = () => {
         <View style={styles.TopViewItem} />
       </View>
       <Image source={UsefLogo1Image} style={styles.LogoImage} />
-      <Pressable style={[styles.Button, styles.ButtonApply]}>
+      <Pressable
+        style={[styles.Button, styles.ButtonApply]}
+        onPress={onSyncPress}>
         <Text style={[styles.TextStyle, styles.TextApply]}>Sync</Text>
       </Pressable>
     </View>

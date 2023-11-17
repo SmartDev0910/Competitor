@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {
   COLOR_FONT_COMMENT,
@@ -26,6 +26,7 @@ import AddressModal from '../../../components/following/AddressModal';
 import DisciplineModal from '../../../components/following/DisciplineModal';
 import SelectStatusModal from '../../../components/following/SelectStatusModal';
 import ZoneModal from '../../../components/following/ZoneModal';
+import {ModalContext} from '../../../providers/ModalProvider';
 
 const UserView = ({navigation}) => {
   const [showSelectNationalityModal, setShowSelectNationalityModal] =
@@ -34,6 +35,8 @@ const UserView = ({navigation}) => {
   const [showDisciplineModal, setShowDisciplineModal] = useState(false);
   const [showSelectStatusModal, setShowSelectStatusModal] = useState(false);
   const [showZoneModal, setShowZoneModal] = useState(false);
+  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+    useContext(ModalContext);
 
   const handleSelectNationalityModal = () => {
     setShowSelectNationalityModal(true);
@@ -53,6 +56,11 @@ const UserView = ({navigation}) => {
 
   const handleShowZoneModal = () => {
     setShowZoneModal(true);
+  };
+
+  const handleCompetitionNumberPress = index => {
+    setCompetitionNumberIndex(index);
+    navigation.navigate('CompetitionNumberScreen');
   };
 
   return (
@@ -157,6 +165,7 @@ const UserView = ({navigation}) => {
               text={'Add Foreign Endorsement Letter'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('EndorsementLetterScreen')}
             />
           </View>
           <View style={styles.PartView}>
@@ -166,8 +175,9 @@ const UserView = ({navigation}) => {
                 <TouchableIconTextItem
                   key={index}
                   icon={item.icon}
-                  text={item.text}
+                  text={item.title}
                   rightIconVisible={true}
+                  onPress={() => handleCompetitionNumberPress(index)}
                 />
               );
             })}
