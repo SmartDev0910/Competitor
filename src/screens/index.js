@@ -54,3 +54,4 @@ export {default as USEFNumberScreen} from './FollowingScreen/EditProfileScreen/U
 export {default as FEINumberScreen} from './FollowingScreen/EditProfileScreen/FEINumberScreen';
 export {default as SafeSportScreen} from './FollowingScreen/EditProfileScreen/SafeSportScreen';
 export {default as BackgroundCheckScreen} from './FollowingScreen/EditProfileScreen/BackgroundCheckScreen';
+export {default as EndorsementLetterScreen} from './FollowingScreen/EditProfileScreen/EndorsementLetterScreen';

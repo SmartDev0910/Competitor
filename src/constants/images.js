@@ -84,3 +84,5 @@ export const EmilySpannerImage = require('../assets/images/EmilySpanner.png');
 export const StephanieBardsImage = require('../assets/images/StephanieBards.png');
 export const KatieNuteImage = require('../assets/images/KatieNute.png');
 export const JennyWilliamsImage = require('../assets/images/JennyWilliams.png');
+export const CameraRollImage = require('../assets/images/CameraRoll.png');
+export const CheckmarkImage = require('../assets/images/Checkmark.png');

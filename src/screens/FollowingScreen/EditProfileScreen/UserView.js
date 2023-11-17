@@ -157,6 +157,7 @@ const UserView = ({navigation}) => {
               text={'Add Foreign Endorsement Letter'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('EndorsementLetterScreen')}
             />
           </View>
           <View style={styles.PartView}>

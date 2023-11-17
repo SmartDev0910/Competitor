@@ -42,6 +42,7 @@ import {
   USEFNumberScreen,
   SafeSportScreen,
   BackgroundCheckScreen,
+  EndorsementLetterScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -400,6 +401,13 @@ function NavStackScreen() {
         <NavStack.Screen
           name="BackgroundCheckScreen"
           component={BackgroundCheckScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="EndorsementLetterScreen"
+          component={EndorsementLetterScreen}
           options={{
             headerShown: false,
           }}
