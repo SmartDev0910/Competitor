@@ -120,6 +120,7 @@ export const PriceTagIcon = require('../assets/icons/PriceTag.png');
 export const PrizeIcon = require('../assets/icons/Prize.png');
 export const PrizeWeakIcon = require('../assets/icons/PrizeWeak.png');
 export const PublicSafetyIcon = require('../assets/icons/PublicSafety.png');
+export const PublicSafetyWeakIcon = require('../assets/icons/PublicSafetyWeak.png');
 export const QuillPenIcon = require('../assets/icons/QuillPen.png');
 export const RailcarIcon = require('../assets/icons/Railcar.png');
 export const RegularDocumentIcon = require('../assets/icons/RegularDocument.png');

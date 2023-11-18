@@ -20,13 +20,22 @@ import {FONT_REGULAR} from '../../constants/fonts';
 import TeamMembers from '../../constants/events/teamMembers';
 import SelectableTeamMemberItem from '../events/SelectableTeamMemberItem';
 import SearchText from './SearchText';
+import DropDownSelect from '../common/DropDownSelect';
+import {PublicSafetyIcon, PublicSafetyWeakIcon} from '../../constants/icons';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
+  const authorityOptions = ['Authorized', 'Unauthorized'];
+  const [authorityValue, setAuthorityValue] = React.useState('');
+  const [showAuthorityView, setShowAuthorityView] = React.useState(false);
   const [selectedMemberItems, setSelectedMemberItems] = React.useState([]);
   const [searchText, setSearchText] = React.useState('');
+
+  const handleNextPress = () => {
+    if (selectedMemberItems.length) setShowAuthorityView(true);
+  };
 
   const handleMemberItemPress = index => {
     if (selectedMemberItems.includes(index)) {
@@ -38,6 +47,10 @@ const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
     }
   };
 
+  const handleDropDownSelectChange = index => {
+    setAuthorityValue(authorityOptions[index]);
+  };
+
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
@@ -45,43 +58,80 @@ const AddTeamMemberModal = ({modalVisible, setModalVisible}) => {
         <View style={styles.ModalView}>
           <Text style={styles.ModalTitleFont}>Add team member</Text>
           <View style={styles.ModalContentView}>
-            <SearchText
-              placeholder={'Search team members'}
-              value={searchText}
-              onChangeText={text => setSearchText(text)}
-            />
-            {TeamMembers.map((item, index) => {
-              return (
+            {showAuthorityView ? (
+              <>
                 <SelectableTeamMemberItem
-                  key={index}
-                  fullName={item.fullName}
-                  avatar={item.avatar}
-                  status={item.status}
-                  selected={selectedMemberItems.includes(index)}
-                  onPress={() => handleMemberItemPress(index)}
+                  fullName={TeamMembers[selectedMemberItems[0]].fullName}
+                  avatar={TeamMembers[selectedMemberItems[0]].avatar}
+                  status={TeamMembers[selectedMemberItems[0]].status}
+                  selected={true}
                 />
-              );
-            })}
+                <DropDownSelect
+                  icon={PublicSafetyWeakIcon}
+                  selectedIcon={PublicSafetyIcon}
+                  placeholder={'Select authority...'}
+                  value={authorityValue}
+                  options={authorityOptions}
+                  onPress={handleDropDownSelectChange}
+                />
+              </>
+            ) : (
+              <>
+                <SearchText
+                  placeholder={'Search team members'}
+                  value={searchText}
+                  onChangeText={text => setSearchText(text)}
+                />
+                {TeamMembers.map((item, index) => {
+                  return (
+                    <SelectableTeamMemberItem
+                      key={index}
+                      fullName={item.fullName}
+                      avatar={item.avatar}
+                      status={item.status}
+                      selected={selectedMemberItems.includes(index)}
+                      onPress={() => handleMemberItemPress(index)}
+                    />
+                  );
+                })}
+              </>
+            )}
           </View>
 
           <View style={styles.BottomButton}>
-            <Pressable
-              style={[
-                styles.Button,
-                selectedMemberItems.length
-                  ? styles.ButtonApply
-                  : styles.ButtonReadyApply,
-              ]}>
-              <Text
+            {showAuthorityView ? (
+              authorityValue !== '' ? (
+                <Pressable
+                  style={[styles.Button, styles.ButtonApply]}
+                  onPress={handleNextPress}>
+                  <Text style={[styles.TextStyle, styles.TextApply]}>
+                    {'Save'}
+                  </Text>
+                </Pressable>
+              ) : (
+                ''
+              )
+            ) : (
+              <Pressable
                 style={[
-                  styles.TextStyle,
+                  styles.Button,
                   selectedMemberItems.length
-                    ? styles.TextApply
-                    : styles.TextReadyApply,
-                ]}>
-                {'NEXT >'}
-              </Text>
-            </Pressable>
+                    ? styles.ButtonApply
+                    : styles.ButtonReadyApply,
+                ]}
+                onPress={handleNextPress}>
+                <Text
+                  style={[
+                    styles.TextStyle,
+                    selectedMemberItems.length
+                      ? styles.TextApply
+                      : styles.TextReadyApply,
+                  ]}>
+                  {'NEXT >'}
+                </Text>
+              </Pressable>
+            )}
+
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>

@@ -21,6 +21,7 @@ import Divider from '../../../components/home/Divider';
 import AuthorizeHelpModal from '../../../components/following/AuthorizeHelpModal';
 import AddTeamMemberModal from '../../../components/following/AddTeamMemberModal';
 import AuthorizeMeHelpModal from '../../../components/following/AuthorizeMeHelpModal';
+import TeamMemberModal from '../../../components/following/TeamMemberModal';
 
 const TeamSettingsView = ({navigation}) => {
   const [showAuthorizeHelpModal, setShowAuthorizeHelpModal] =
@@ -29,6 +30,9 @@ const TeamSettingsView = ({navigation}) => {
     React.useState(false);
   const [showAddTeamMemberModal, setShowAddTeamMemberModal] =
     React.useState(false);
+  const [showTeamMemberModal, setShowTeamMemberModal] = React.useState(false);
+  const [removedTeamModal, setRemovedTeamModal] = React.useState(false);
+  const [selectedMember, setSelectedMember] = React.useState(null);
 
   const handleAuthorizeHelpModal = () => {
     setShowAuthorizeHelpModal(true);
@@ -40,6 +44,18 @@ const TeamSettingsView = ({navigation}) => {
 
   const handleAddTeamMemberModal = () => {
     setShowAddTeamMemberModal(true);
+  };
+
+  const handleTeamMemberModal = item => {
+    setSelectedMember(item);
+    setRemovedTeamModal(false);
+    setShowTeamMemberModal(true);
+  };
+
+  const handleRemoveTeamMemberModal = item => {
+    setSelectedMember(item);
+    setRemovedTeamModal(true);
+    setShowTeamMemberModal(true);
   };
 
   return (
@@ -61,6 +77,9 @@ const TeamSettingsView = ({navigation}) => {
                   fullName={item.fullName}
                   avatar={item.avatar}
                   detail={item.detail}
+                  removable={true}
+                  onPress={() => handleTeamMemberModal(item)}
+                  onRemovePress={() => handleRemoveTeamMemberModal(item)}
                 />
               );
             })}
@@ -85,6 +104,9 @@ const TeamSettingsView = ({navigation}) => {
                   fullName={item.fullName}
                   avatar={item.avatar}
                   detail={item.detail}
+                  removable={true}
+                  onPress={() => handleTeamMemberModal(item)}
+                  onRemovePress={() => handleRemoveTeamMemberModal(item)}
                 />
               );
             })}
@@ -102,6 +124,12 @@ const TeamSettingsView = ({navigation}) => {
       <AddTeamMemberModal
         modalVisible={showAddTeamMemberModal}
         setModalVisible={setShowAddTeamMemberModal}
+      />
+      <TeamMemberModal
+        modalVisible={showTeamMemberModal}
+        setModalVisible={setShowTeamMemberModal}
+        member={selectedMember}
+        removed={removedTeamModal}
       />
     </>
   );
