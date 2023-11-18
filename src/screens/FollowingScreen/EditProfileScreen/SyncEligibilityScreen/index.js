@@ -10,35 +10,27 @@ import {
 import {FONT_REGULAR} from '../../../../constants/fonts';
 import {
   ArrowLeftIcon,
-  LaurelWreathIcon,
-  TearOffCalendarWeakIcon,
+  SettingsIcon,
+  TearOffCalendarIcon,
 } from '../../../../constants/icons';
 import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
   COLOR_FONT_COMMENT,
 } from '../../../../constants/colors';
-import IconLabeledText from '../../../../components/following/IconLabeledText';
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
-import GovermentRecordsModal from '../../../../components/following/GovermentRecordsModal';
 import {ModalContext} from '../../../../providers/ModalProvider';
-import CompetitionNumbersData from '../../../../constants/following/competitionNumbers';
-import SelectDateModal from '../../../../components/common/SelectDateModal';
+import ManageCompetitionNumberModal from '../../../../components/following/ManageCompetitionNumberModal';
+import EligibilityStatusData from '../../../../constants/following/eligibilityStatus';
+import SelectableSyncEligibilityItem from '../../../../components/following/SelectableSyncEligibilityItem';
 
-const CompetitionNumberScreen = ({navigation}) => {
-  const [comNumber, setComNumber] = useState('');
-  const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
-    useState(false);
-  const [showSelectDateModal, setShowSelectDateModal] = useState(false);
+const SyncEligibilityScreen = ({navigation}) => {
+  const [showManageModal, setShowManageModal] = useState(false);
   const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
     useContext(ModalContext);
 
-  const handleGovermentRecordsModal = () => {
-    setShowGovermentRecordsModal(true);
-  };
-
-  const handleSelectDateModal = () => {
-    setShowSelectDateModal(true);
+  const handleManageModal = () => {
+    setShowManageModal(true);
   };
 
   return (
@@ -51,41 +43,41 @@ const CompetitionNumberScreen = ({navigation}) => {
                 <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
               </TouchableOpacity>
               <Text style={styles.AppbarTextFont}>
-                {CompetitionNumbersData[competitionNumberIndex].title}
+                {EligibilityStatusData[competitionNumberIndex].title}
               </Text>
             </View>
-            <TouchableOpacity
-              style={styles.RightIconView}
-              onPress={handleGovermentRecordsModal}>
-              <Image source={LaurelWreathIcon} style={styles.RightIcon} />
-            </TouchableOpacity>
           </View>
           <View style={styles.ContentView}>
-            <IconLabeledText
-              icon={CompetitionNumbersData[competitionNumberIndex].icon}
-              placeholder={'Enter number...'}
-              rightIconVisible={false}
-              value={comNumber}
-              onChangeText={text => setComNumber(text)}
+            <SelectableSyncEligibilityItem
+              image={EligibilityStatusData[competitionNumberIndex].image}
+              selected={EligibilityStatusData[competitionNumberIndex].selected}
+              title={'Status:'}
+              value={EligibilityStatusData[competitionNumberIndex].status}
+            />
+            <SelectableSyncEligibilityItem
+              image={EligibilityStatusData[competitionNumberIndex].image}
+              selected={EligibilityStatusData[competitionNumberIndex].selected}
+              title={'Details:'}
+              value={EligibilityStatusData[competitionNumberIndex].details}
+            />
+            <SelectableSyncEligibilityItem
+              icon={TearOffCalendarIcon}
+              selected={EligibilityStatusData[competitionNumberIndex].selected}
+              title={'Expiration date:'}
+              value={EligibilityStatusData[competitionNumberIndex].expDate}
             />
             <TouchableIconTextItem
-              icon={TearOffCalendarWeakIcon}
-              text={'Select expiration date'}
+              icon={SettingsIcon}
+              text={'Manage'}
               downIconVisible={true}
-              style={styles.TouchableIconTextItem}
-              onPress={handleSelectDateModal}
+              onPress={handleManageModal}
             />
           </View>
         </View>
       </ScrollView>
-      <GovermentRecordsModal
-        modalVisible={showGovermentRecordsModal}
-        setModalVisible={setShowGovermentRecordsModal}
-        value={comNumber}
-      />
-      <SelectDateModal
-        modalVisible={showSelectDateModal}
-        setModalVisible={setShowSelectDateModal}
+      <ManageCompetitionNumberModal
+        modalVisible={showManageModal}
+        setModalVisible={setShowManageModal}
       />
     </>
   );
@@ -142,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CompetitionNumberScreen;
+export default SyncEligibilityScreen;

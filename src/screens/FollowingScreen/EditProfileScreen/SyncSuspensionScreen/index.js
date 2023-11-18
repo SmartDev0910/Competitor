@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -10,9 +10,8 @@ import {
 import {FONT_REGULAR} from '../../../../constants/fonts';
 import {
   ArrowLeftIcon,
-  AuditWeakIcon,
-  LaurelWreathIcon,
-  TearOffCalendarWeakIcon,
+  SettingsIcon,
+  TearOffCalendarIcon,
 } from '../../../../constants/icons';
 import {
   COLOR_WHITE,
@@ -20,20 +19,19 @@ import {
   COLOR_FONT_COMMENT,
 } from '../../../../constants/colors';
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
-import GovermentRecordsModal from '../../../../components/following/GovermentRecordsModal';
-import SelectDateModal from '../../../../components/common/SelectDateModal';
+import {ModalContext} from '../../../../providers/ModalProvider';
+import ManageCompetitionNumberModal from '../../../../components/following/ManageCompetitionNumberModal';
+import SelectableSyncSuspensionItem from '../../../../components/following/SelectableSyncSuspensionItem';
+import {UsefLogo1Image} from '../../../../constants/images';
+import SuspensionsData from '../../../../constants/following/suspensions';
 
-const BackgroundCheckScreen = ({navigation}) => {
-  const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
-    useState(false);
-  const [showSelectDateModal, setShowSelectDateModal] = useState(false);
+const SyncSuspensionScreen = ({navigation}) => {
+  const [showManageModal, setShowManageModal] = useState(false);
+  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+    useContext(ModalContext);
 
-  const handleGovermentRecordsModal = () => {
-    setShowGovermentRecordsModal(true);
-  };
-
-  const handleSelectDateModal = () => {
-    setShowSelectDateModal(true);
+  const handleManageModal = () => {
+    setShowManageModal(true);
   };
 
   return (
@@ -45,39 +43,39 @@ const BackgroundCheckScreen = ({navigation}) => {
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
               </TouchableOpacity>
-              <Text style={styles.AppbarTextFont}>Background check</Text>
+              <Text style={styles.AppbarTextFont}>
+                {SuspensionsData[competitionNumberIndex].title}
+              </Text>
             </View>
-            <TouchableOpacity
-              style={styles.RightIconView}
-              onPress={handleGovermentRecordsModal}>
-              <Image source={LaurelWreathIcon} style={styles.RightIcon} />
-            </TouchableOpacity>
           </View>
           <View style={styles.ContentView}>
-            <TouchableIconTextItem
-              icon={AuditWeakIcon}
-              text={'Current?'}
-              downIconVisible={true}
-              style={styles.TouchableIconTextItem}
+            <SelectableSyncSuspensionItem
+              image={UsefLogo1Image}
+              title={'Suspension?'}
+              value={'Yes'}
+            />
+            <SelectableSyncSuspensionItem
+              image={UsefLogo1Image}
+              title={'Details:'}
+              value={SuspensionsData[competitionNumberIndex].details}
+            />
+            <SelectableSyncSuspensionItem
+              icon={TearOffCalendarIcon}
+              title={'Suspension ends:'}
+              value={SuspensionsData[competitionNumberIndex].expDate}
             />
             <TouchableIconTextItem
-              icon={TearOffCalendarWeakIcon}
-              text={'Select expiration date'}
+              icon={SettingsIcon}
+              text={'Manage'}
               downIconVisible={true}
-              style={styles.TouchableIconTextItem}
-              onPress={handleSelectDateModal}
+              onPress={handleManageModal}
             />
           </View>
         </View>
       </ScrollView>
-      <GovermentRecordsModal
-        modalVisible={showGovermentRecordsModal}
-        setModalVisible={setShowGovermentRecordsModal}
-        value={'Yes, Expires: 2023-07-19'}
-      />
-      <SelectDateModal
-        modalVisible={showSelectDateModal}
-        setModalVisible={setShowSelectDateModal}
+      <ManageCompetitionNumberModal
+        modalVisible={showManageModal}
+        setModalVisible={setShowManageModal}
       />
     </>
   );
@@ -134,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BackgroundCheckScreen;
+export default SyncSuspensionScreen;

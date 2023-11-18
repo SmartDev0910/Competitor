@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  TouchableOpacity,
+  Pressable,
   View,
   Text,
   Image,
   StyleSheet,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import {
   COLOR_EVENT_BORDER,
@@ -15,9 +16,16 @@ import {
 import {FONT_REGULAR} from '../../constants/fonts';
 import {CancelWeakIcon} from '../../constants/icons';
 
-const AuthorizeItem = ({avatar, fullName, detail, onPress}) => {
+const AuthorizeItem = ({
+  avatar,
+  fullName,
+  detail,
+  onPress,
+  onRemovePress,
+  removable,
+}) => {
   return (
-    <TouchableOpacity style={styles.View} onPress={onPress}>
+    <Pressable style={styles.View} onPress={onPress}>
       <Image source={avatar} style={styles.Avatar} />
       <View style={styles.DetailView}>
         <Text style={styles.NameFont}>{fullName}</Text>
@@ -25,8 +33,14 @@ const AuthorizeItem = ({avatar, fullName, detail, onPress}) => {
           <Text style={styles.MatchText}>{detail}</Text>
         </View>
       </View>
-      <Image source={CancelWeakIcon} style={styles.CancelWeakIcon} />
-    </TouchableOpacity>
+      {removable ? (
+        <TouchableOpacity onPress={onRemovePress}>
+          <Image source={CancelWeakIcon} style={styles.CancelWeakIcon} />
+        </TouchableOpacity>
+      ) : (
+        ''
+      )}
+    </Pressable>
   );
 };
 
@@ -34,17 +48,16 @@ const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   View: {
-    flex: 1,
-    padding: 12,
-    marginVertical: 5,
     flexDirection: 'row',
-    backgroundColor: COLOR_WHITE,
-    gap: 12,
-    alignItems: 'center',
     borderWidth: 1,
     borderColor: COLOR_EVENT_BORDER,
     borderRadius: 12,
+    backgroundColor: COLOR_WHITE,
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    marginVertical: 5,
     height: 56,
+    gap: 12,
   },
   Avatar: {
     width: 45,
