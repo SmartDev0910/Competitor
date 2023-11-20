@@ -21,12 +21,18 @@ import {
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
 import CameraRollModal from '../../../../components/following/CameraRollModal';
 import TouchableAddImageItem from '../../../../components/following/TouchableAddImageItem';
+import SelectDateModal from '../../../../components/common/SelectDateModal';
 
 const EndorsementLetterScreen = ({navigation}) => {
   const [showCameraRollModal, setShowCameraRollModal] = useState(false);
+  const [showSelectDateModal, setShowSelectDateModal] = useState(false);
 
   const handleCameraRollModal = () => {
     setShowCameraRollModal(true);
+  };
+
+  const handleSelectDateModal = () => {
+    setShowSelectDateModal(true);
   };
 
   return (
@@ -54,6 +60,7 @@ const EndorsementLetterScreen = ({navigation}) => {
               text={'Select expiration date'}
               downIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={handleSelectDateModal}
             />
           </View>
         </View>
@@ -61,6 +68,10 @@ const EndorsementLetterScreen = ({navigation}) => {
       <CameraRollModal
         modalVisible={showCameraRollModal}
         setModalVisible={setShowCameraRollModal}
+      />
+      <SelectDateModal
+        modalVisible={showSelectDateModal}
+        setModalVisible={setShowSelectDateModal}
       />
     </>
   );

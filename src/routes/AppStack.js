@@ -95,6 +95,7 @@ function HomeStackScreen() {
     </HomeStack.Navigator>
   );
 }
+
 const NotificationStack = createStackNavigator();
 
 function NotificationStackScreen() {
@@ -126,6 +127,7 @@ function MessageStackScreen() {
     </MessageStack.Navigator>
   );
 }
+
 const EventsStack = createStackNavigator();
 
 function EventsStackScreen() {

@@ -37,6 +37,10 @@ const UserView = ({navigation}) => {
   const [showZoneModal, setShowZoneModal] = useState(false);
   const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
     useContext(ModalContext);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleSelectNationalityModal = () => {
     setShowSelectNationalityModal(true);
@@ -100,11 +104,15 @@ const UserView = ({navigation}) => {
               icon={UserWeakIcon}
               placeholder={'First name...'}
               rightIconVisible={true}
+              value={firstName}
+              onChangeText={text => setFirstName(text)}
             />
             <IconLabeledText
               icon={UserWeakIcon}
               placeholder={'Last name...'}
               rightIconVisible={true}
+              value={lastName}
+              onChangeText={text => setLastName(text)}
             />
             <TouchableIconTextItem
               icon={GlobeWeakIcon}
@@ -130,11 +138,15 @@ const UserView = ({navigation}) => {
               icon={PhoneWeakIcon}
               placeholder={'Enter number...'}
               rightIconVisible={true}
+              value={phoneNumber}
+              onChangeText={text => setPhoneNumber(text)}
             />
             <IconLabeledText
               icon={MailWeakIcon}
               placeholder={'Enter email address...'}
               rightIconVisible={true}
+              value={email}
+              onChangeText={text => setEmail(text)}
             />
           </View>
           <View style={styles.PartView}>

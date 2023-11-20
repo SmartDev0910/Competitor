@@ -19,10 +19,13 @@ import {
   CalendarIcon,
   CalendarOutlinedIcon,
   ClockIcon,
+  ClockOutlinedIcon,
   SettingsIcon,
   SpeechBubbleIcon,
   UserGroupsIcon,
+  UserGroupsOutlinedIcon,
   UserIcon,
+  UserOutlinedIcon,
 } from '../../../constants/icons';
 import {
   COLOR_BUTTON_DEFAULT,
@@ -34,32 +37,31 @@ import {OrganizerProfileImage} from '../../../constants/images';
 import FollowButton from '../../../components/following/FollowButton';
 import UpcomingEventsView from './UpcomingEventsView';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
+import AboutView from './AboutView';
+import StaffView from './StaffView';
 
 const OrganizerProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {
-      key: 'events',
-      title: 'Events',
-    },
+    {key: 'events', title: 'Events'},
     {key: 'past', title: 'Past'},
-    {key: 'eligibility', title: 'Eligibility'},
-    {key: 'authority', title: 'Authority'},
+    {key: 'staff', title: 'Staff'},
+    {key: 'about', title: 'About'},
   ]);
 
   const EventsTab = () => <UpcomingEventsView />;
 
   const PastTab = () => <UpcomingEventsView />;
 
-  const EligibilityTab = () => <UpcomingEventsView />;
+  const StaffTab = () => <StaffView />;
 
-  const AuthorityTab = () => <UpcomingEventsView />;
+  const AboutTab = () => <AboutView />;
 
   const renderScene = SceneMap({
     events: EventsTab,
     past: PastTab,
-    eligibility: EligibilityTab,
-    authority: AuthorityTab,
+    staff: StaffTab,
+    about: AboutTab,
   });
 
   const renderTabBar = props => (
@@ -81,21 +83,21 @@ const OrganizerProfileScreen = ({navigation}) => {
           case 'past':
             return (
               <Image
-                source={focused ? ClockIcon : ClockIcon}
+                source={focused ? ClockOutlinedIcon : ClockIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'eligibility':
+          case 'staff':
             return (
               <Image
-                source={focused ? UserGroupsIcon : UserGroupsIcon}
+                source={focused ? UserGroupsOutlinedIcon : UserGroupsIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'authority':
+          case 'about':
             return (
               <Image
-                source={focused ? UserIcon : UserIcon}
+                source={focused ? UserOutlinedIcon : UserIcon}
                 style={styles.TabTitleIcon}
               />
             );

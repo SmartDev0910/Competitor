@@ -12,6 +12,10 @@ import StallItem from '../../../../components/events/StallItem';
 import SpectatorTicketsData from '../../../../constants/events/spectatorTickets';
 
 function SpectatorTicketsScreen({navigation}) {
+  const handlePurchaseTickets = () => {
+    navigation.navigate('RegisterTicketsScreen');
+  };
+
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
@@ -33,7 +37,9 @@ function SpectatorTicketsScreen({navigation}) {
             />
           );
         })}
-        <Pressable style={[styles.Button, styles.ButtonApply]}>
+        <Pressable
+          style={[styles.Button, styles.ButtonApply]}
+          onPress={handlePurchaseTickets}>
           <Text style={[styles.TextStyle, styles.TextApply]}>
             Purchase Tickets
           </Text>

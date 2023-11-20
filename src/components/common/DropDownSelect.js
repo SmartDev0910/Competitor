@@ -81,6 +81,7 @@ const DropDownSelect = ({
 
 const styles = StyleSheet.create({
   Wrapper: {
+    width: '100%',
     borderRadius: 12,
     borderWidth: 1,
     borderColor: COLOR_EVENT_BORDER,
