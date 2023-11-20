@@ -3,6 +3,7 @@ import {
   View,
   Image,
   Text,
+  Share,
   StyleSheet,
   Dimensions,
   ScrollView,
@@ -16,13 +17,16 @@ import {
 } from '../../../constants/images';
 import ZoetisPane from '../../../components/events/ZoetisPane';
 import {
+  COLOR_BLACK_OPACITY,
   COLOR_EVENT_BORDER,
   COLOR_FONT_DEFAULT,
+  COLOR_GREY,
   COLOR_PINK,
   COLOR_WHITE,
 } from '../../../constants/colors';
 import {
   FONT_BOLD,
+  FONT_MEDIUM,
   FONT_REGULAR,
   FONT_SEMI_BOLD,
 } from '../../../constants/fonts';
@@ -42,7 +46,12 @@ import PoliciesData from '../../../constants/events/policies';
 import PolicyItem from '../../../components/events/PolicyItem';
 import PaperworksData from '../../../constants/events/paperworks';
 import PaperworkItem from '../../../components/events/PaperworkItem';
-import {PhoneIcon, UserIcon} from '../../../constants/icons';
+import {
+  BookmarkIcon,
+  PhoneIcon,
+  ShareRoundedIcon,
+  UserIcon,
+} from '../../../constants/icons';
 import EventPaperworkModal from '../../../components/events/EventPaperworkModal';
 import CallModal from '../../../components/events/CallModal';
 import ExhibitorsModal from '../../../components/events/ExhibitorsModal';
@@ -72,11 +81,33 @@ const AboutEventView = ({navigation}) => {
     setShowExhibitorsModal(true);
   };
 
+  const handleSharePress = () => {
+    Share.share({
+      message: 'Hello, this is a content to share with others!', // Any custom message you want to share
+    });
+  };
+
   return (
     <>
       <ScrollView>
         <View style={styles.Wrapper}>
-          <Image source={AboutEventImage} style={styles.AboutEventImage} />
+          <View style={styles.AboutEventImageView}>
+            <Image source={AboutEventImage} style={styles.AboutEventImage} />
+            <Pressable
+              style={styles.ShareRoundedIconView}
+              onPress={handleSharePress}>
+              <Image
+                source={ShareRoundedIcon}
+                style={styles.ShareRoundedIcon}
+              />
+            </Pressable>
+            <Pressable style={styles.BookmarkIconView}>
+              <Image source={BookmarkIcon} style={styles.BookmarkIcon} />
+            </Pressable>
+            <Pressable style={styles.PaginationView}>
+              <Text style={styles.PaginationTextFont}>1 of 8</Text>
+            </Pressable>
+          </View>
           <View style={styles.ZoetisPane}>
             <ZoetisPane />
           </View>
@@ -293,9 +324,62 @@ const styles = StyleSheet.create({
   Wrapper: {
     flex: 1,
   },
+  AboutEventImageView: {
+    height: 235,
+    width: '100%',
+  },
   AboutEventImage: {
     height: 235,
     width: '100%',
+  },
+  ShareRoundedIconView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 30,
+    height: 30,
+    borderRadius: 6,
+    backgroundColor: COLOR_GREY,
+    position: 'absolute',
+    top: 10,
+    right: 58,
+  },
+  BookmarkIconView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 30,
+    height: 30,
+    borderRadius: 6,
+    backgroundColor: COLOR_GREY,
+    position: 'absolute',
+    top: 10,
+    right: 18,
+  },
+  PaginationView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 46,
+    height: 22,
+    borderRadius: 6,
+    backgroundColor: COLOR_BLACK_OPACITY,
+    position: 'absolute',
+    right: 12,
+    bottom: 12,
+  },
+  PaginationTextFont: {
+    fontFamily: FONT_MEDIUM,
+    fontSize: 10,
+    color: COLOR_WHITE,
+  },
+  ShareRoundedIcon: {
+    width: 20,
+    height: 20,
+  },
+  BookmarkIcon: {
+    width: 20,
+    height: 20,
   },
   ZoetisPane: {
     flexDirection: 'row',

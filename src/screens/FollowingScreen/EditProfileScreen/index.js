@@ -43,7 +43,7 @@ import HorsesSettingsView from './HorsesSettingsView';
 import AccountDetailView from './AccountDetailView';
 
 const EditProfileScreen = ({navigation}) => {
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: 'user', title: 'User'},
     {key: 'synchronize', title: 'Events'},

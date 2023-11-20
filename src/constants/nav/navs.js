@@ -1,4 +1,3 @@
-import {setNativeProps} from 'react-native-reanimated';
 import {
   BillIcon,
   DoorbellIcon,
@@ -56,7 +55,7 @@ export default [
   {
     icon: SettingsIcon,
     text: 'Settings',
-    route: 'FollowingScreen',
+    route: 'EditProfileScreen',
   },
   {
     icon: HelpIcon,

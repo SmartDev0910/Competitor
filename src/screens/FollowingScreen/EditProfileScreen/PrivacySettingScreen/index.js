@@ -10,7 +10,12 @@ import {
   Dimensions,
 } from 'react-native';
 import {FONT_REGULAR} from '../../../../constants/fonts';
-import {ArrowLeftIcon, HelpIcon} from '../../../../constants/icons';
+import {
+  ArrowLeftIcon,
+  HelpIcon,
+  LockIcon,
+  LockWeakIcon,
+} from '../../../../constants/icons';
 import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
@@ -19,11 +24,19 @@ import {
   COLOR_BUTTON_DEFAULT,
 } from '../../../../constants/colors';
 import PrivacySettingsHelpModal from '../../../../components/following/PrivacySettingsHelpModal';
+import DropDownSelect from '../../../../components/common/DropDownSelect';
 
 const PrivacySettingScreen = ({navigation}) => {
+  const privacyOptions = ['Public', 'Private'];
+  const [privacyValue, setPrivacyValue] = React.useState('');
   const [showHelpModal, setShowHelpModal] = useState(false);
+
   const handleHelpModal = () => {
     setShowHelpModal(true);
+  };
+
+  const handleDropDownSelectChange = index => {
+    setPrivacyValue(privacyOptions[index]);
   };
 
   return (
@@ -45,6 +58,14 @@ const PrivacySettingScreen = ({navigation}) => {
             Make your account private to prevent non-team members from seeing
             your profile.
           </Text>
+          <DropDownSelect
+            icon={LockWeakIcon}
+            selectedIcon={LockIcon}
+            placeholder={'Select privacy...'}
+            value={privacyValue}
+            options={privacyOptions}
+            onPress={handleDropDownSelectChange}
+          />
         </View>
         <View style={styles.BottomButton}>
           <Pressable style={[styles.Button, styles.ButtonApply]}>
