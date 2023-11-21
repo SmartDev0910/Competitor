@@ -111,6 +111,7 @@ export const PenSquaredIcon = require('../assets/icons/PenSquared.png');
 export const PeopleIcon = require('../assets/icons/People.png');
 export const PeopleOutlinedIcon = require('../assets/icons/PeopleOutlined.png');
 export const PhoneIcon = require('../assets/icons/Phone.png');
+export const PhoneWhiteIcon = require('../assets/icons/PhoneWhite.png');
 export const PhoneWeakIcon = require('../assets/icons/PhoneWeak.png');
 export const PinterestIcon = require('../assets/icons/Pinterest.png');
 export const PlusIcon = require('../assets/icons/Plus.png');

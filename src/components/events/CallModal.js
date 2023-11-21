@@ -18,7 +18,7 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import {PhoneIcon} from '../../constants/icons';
+import {PhoneWhiteIcon} from '../../constants/icons';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -32,7 +32,7 @@ const CallModal = ({modalVisible, setModalVisible}) => {
           <View style={styles.BottomButton}>
             <Pressable style={[styles.Button, styles.ButtonApply]}>
               <View style={styles.CallRow}>
-                <Image source={PhoneIcon} />
+                <Image source={PhoneWhiteIcon} />
                 <Text style={[styles.TextStyle, styles.TextApply]}>
                   {`Call (202) 309 9809`}
                 </Text>

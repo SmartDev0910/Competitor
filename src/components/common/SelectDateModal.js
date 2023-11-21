@@ -18,7 +18,7 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {Calendar} from 'react-native-calendars';
-import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
+import {FONT_REGULAR} from '../../constants/fonts';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

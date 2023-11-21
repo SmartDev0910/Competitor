@@ -71,7 +71,7 @@ const AddNewCardModal = ({modalVisible, setModalVisible}) => {
                 />
                 <LabeledTextInput
                   label="ZIP code"
-                  placeholder="XXX"
+                  placeholder="XXXXX"
                   value={zipCode}
                   onChangeText={text => setZipCode(text)}
                 />

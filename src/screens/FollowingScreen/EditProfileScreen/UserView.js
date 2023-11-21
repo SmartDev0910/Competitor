@@ -27,6 +27,7 @@ import DisciplineModal from '../../../components/following/DisciplineModal';
 import SelectStatusModal from '../../../components/following/SelectStatusModal';
 import ZoneModal from '../../../components/following/ZoneModal';
 import {ModalContext} from '../../../providers/ModalProvider';
+import SelectDateModal from '../../../components/common/SelectDateModal';
 
 const UserView = ({navigation}) => {
   const [showSelectNationalityModal, setShowSelectNationalityModal] =
@@ -35,6 +36,7 @@ const UserView = ({navigation}) => {
   const [showDisciplineModal, setShowDisciplineModal] = useState(false);
   const [showSelectStatusModal, setShowSelectStatusModal] = useState(false);
   const [showZoneModal, setShowZoneModal] = useState(false);
+  const [showSelectDateModal, setShowSelectDateModal] = useState(false);
   const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
     useContext(ModalContext);
   const [firstName, setFirstName] = useState('');
@@ -60,6 +62,10 @@ const UserView = ({navigation}) => {
 
   const handleShowZoneModal = () => {
     setShowZoneModal(true);
+  };
+
+  const handleSelectDateModal = () => {
+    setShowSelectDateModal(true);
   };
 
   const handleCompetitionNumberPress = index => {
@@ -126,6 +132,7 @@ const UserView = ({navigation}) => {
               text={'Select date of birth...'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={handleSelectDateModal}
             />
             <TouchableIconTextItem
               icon={LocationWeakIcon}
@@ -215,6 +222,10 @@ const UserView = ({navigation}) => {
       <ZoneModal
         modalVisible={showZoneModal}
         setModalVisible={setShowZoneModal}
+      />
+      <SelectDateModal
+        modalVisible={showSelectDateModal}
+        setModalVisible={setShowSelectDateModal}
       />
     </>
   );

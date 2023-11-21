@@ -11,6 +11,11 @@ import {COLOR_EVENT_BORDER} from '../../constants/colors';
 import {HiddenWeakIcon, LockWeakIcon} from '../../constants/icons';
 
 const PasswordTextInput = ({style, value, onChangeText, placeholder}) => {
+  const [passwordVisible, setPasswordVisible] = useState(true);
+  const handlePasswordVisiblePress = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <View style={styles.Wrapper}>
       <Image
@@ -22,9 +27,9 @@ const PasswordTextInput = ({style, value, onChangeText, placeholder}) => {
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
-        secureTextEntry={true}
+        secureTextEntry={passwordVisible}
       />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handlePasswordVisiblePress}>
         <Image source={HiddenWeakIcon} style={styles.RightIcon} />
       </TouchableOpacity>
     </View>
