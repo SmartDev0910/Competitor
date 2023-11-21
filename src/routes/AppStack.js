@@ -48,6 +48,10 @@ import {
   SyncEligibilityScreen,
   SyncSuspensionScreen,
   SingleEventScreen,
+  HorseProfileScreen,
+  SettingHorseProfileScreen,
+  HorseUSEFNumberScreen,
+  HorseFEINumberScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -469,6 +473,34 @@ function NavStackScreen() {
           }}
         />
         <NavStack.Screen
+          name="HorseProfileScreen"
+          component={HorseProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="SettingHorseProfileScreen"
+          component={SettingHorseProfileScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HorseUSEFNumberScreen"
+          component={HorseUSEFNumberScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HorseFEINumberScreen"
+          component={HorseFEINumberScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
           name="ViewEventScreen"
           component={ViewEventScreen}
           options={{
@@ -665,7 +697,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: 'transparent',
+    backgroundColor: COLOR_WHITE,
   },
   bottombaricon: {
     width: 30,

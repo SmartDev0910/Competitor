@@ -2,24 +2,23 @@ import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {COLOR_FONT_DEFAULT} from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
-import Horses from '../../../constants/following/horses';
+import TeamMembers from '../../../constants/following/teamMembers';
 import TeamMemberItem from '../../../components/following/TeamMemberItem';
 
-const HorsesView = ({navigation}) => {
+const TeamView = () => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>Horses</Text>
+          <Text style={styles.HeadFont}>Team</Text>
         </View>
-        {Horses.map((item, index) => {
+        {TeamMembers.map((item, index) => {
           return (
             <TeamMemberItem
               key={index}
               fullName={item.fullName}
               avatar={item.avatar}
               status={item.status}
-              onPress={() => navigation.navigate('HorseProfileScreen')}
             />
           );
         })}
@@ -50,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HorsesView;
+export default TeamView;
