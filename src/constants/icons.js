@@ -7,6 +7,7 @@ export const AroundGlobeWeakIcon = require('../assets/icons/AroundGlobeWeak.png'
 export const ArrowRightIcon = require('../assets/icons/ArrowRight.png');
 export const ArrowRightPinkIcon = require('../assets/icons/ArrowRightPink.png');
 export const ArrowLeftIcon = require('../assets/icons/ArrowLeft.png');
+export const ArrowLeftWhiteIcon = require('../assets/icons/ArrowLeftWhite.png');
 export const ArrowDownIcon = require('../assets/icons/ArrowDown.png');
 export const ArrowUpPinkIcon = require('../assets/icons/ArrowUpPink.png');
 export const AuditWeakIcon = require('../assets/icons/AuditWeak.png');

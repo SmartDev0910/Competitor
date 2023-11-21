@@ -5,7 +5,7 @@ import {FONT_REGULAR} from '../../../constants/fonts';
 import Events from '../../../constants/events/events';
 import EventPane from '../../../components/following/EventPane';
 
-const UpcomingEventsView = () => {
+const UpcomingEventsView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
@@ -21,6 +21,7 @@ const UpcomingEventsView = () => {
               location={item.location}
               prize={item.prize}
               statusText={item.statusText}
+              onPress={() => navigation.navigate('SingleEventScreen')}
             />
           );
         })}

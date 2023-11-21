@@ -4,16 +4,11 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  ScrollView,
   StyleSheet,
   Pressable,
 } from 'react-native';
 import {FONT_REGULAR} from '../../../../constants/fonts';
-import {
-  ArrowLeftIcon,
-  EnvelopeIcon,
-  MailWeakIcon,
-} from '../../../../constants/icons';
+import {ArrowLeftIcon, EnvelopeIcon} from '../../../../constants/icons';
 import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,

@@ -47,6 +47,7 @@ import {
   SyncCompetitionNumberScreen,
   SyncEligibilityScreen,
   SyncSuspensionScreen,
+  SingleEventScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -144,6 +145,13 @@ function EventsStackScreen() {
         <EventsStack.Screen
           name="MyEventsScreen"
           component={MyEventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="SingleEventScreen"
+          component={SingleEventScreen}
           options={{
             headerShown: false,
           }}
@@ -330,6 +338,13 @@ function NavStackScreen() {
         <NavStack.Screen
           name="MyEventsScreen"
           component={MyEventsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="SingleEventScreen"
+          component={SingleEventScreen}
           options={{
             headerShown: false,
           }}
@@ -650,8 +665,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    paddingTop: 48,
-    backgroundColor: COLOR_WHITE,
+    backgroundColor: 'transparent',
   },
   bottombaricon: {
     width: 30,
