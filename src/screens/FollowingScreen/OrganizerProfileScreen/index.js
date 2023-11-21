@@ -49,13 +49,13 @@ const OrganizerProfileScreen = ({navigation}) => {
     {key: 'about', title: 'About'},
   ]);
 
-  const EventsTab = () => <UpcomingEventsView />;
+  const EventsTab = () => <UpcomingEventsView navigation={navigation} />;
 
-  const PastTab = () => <UpcomingEventsView />;
+  const PastTab = () => <UpcomingEventsView navigation={navigation} />;
 
-  const StaffTab = () => <StaffView />;
+  const StaffTab = () => <StaffView navigation={navigation} />;
 
-  const AboutTab = () => <AboutView />;
+  const AboutTab = () => <AboutView navigation={navigation} />;
 
   const renderScene = SceneMap({
     events: EventsTab,

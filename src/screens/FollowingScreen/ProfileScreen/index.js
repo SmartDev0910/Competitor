@@ -18,15 +18,10 @@ import {
   ArrowLeftIcon,
   CalendarIcon,
   CalendarOutlinedIcon,
-  CameraIcon,
   ClockIcon,
   ClockOutlinedIcon,
-  LockIcon,
-  LockOutlinedIcon,
   SettingsIcon,
   SpeechBubbleIcon,
-  SynchronizeIcon,
-  SynchronizeOutlinedIcon,
   UserGroupsIcon,
   UserGroupsOutlinedIcon,
   UserIcon,
@@ -39,7 +34,6 @@ import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
-  COLOR_GREY_CAMERA,
 } from '../../../constants/colors';
 import {ProfileEditImage} from '../../../constants/images';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';

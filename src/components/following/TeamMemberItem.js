@@ -1,17 +1,13 @@
 import React from 'react';
 import {
-  TouchableOpacity,
+  Pressable,
   View,
   Text,
   Image,
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import {
-  COLOR_EVENT_BORDER,
-  COLOR_FONT_COMMENT,
-  COLOR_WHITE,
-} from '../../constants/colors';
+import {COLOR_FONT_COMMENT, COLOR_WHITE} from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
 import {CancelWeakIcon} from '../../constants/icons';
 
@@ -24,7 +20,7 @@ const TeamMemberItem = ({
   onPress,
 }) => {
   return (
-    <View style={[styles.View, style]} onPress={onPress}>
+    <Pressable style={[styles.View, style]} onPress={onPress}>
       <Image source={avatar} style={styles.Avatar} />
       <View style={styles.DetailView}>
         <Text style={styles.NameFont}>{fullName}</Text>
@@ -37,7 +33,7 @@ const TeamMemberItem = ({
       ) : (
         ''
       )}
-    </View>
+    </Pressable>
   );
 };
 

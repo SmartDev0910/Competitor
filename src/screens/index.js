@@ -20,6 +20,7 @@ export {default as MessageScreen} from './MessageScreen';
 // Event Screens
 export {default as EventsScreen} from './EventsScreen/EventsScreen';
 export {default as MyEventsScreen} from './EventsScreen/MyEventsScreen';
+export {default as SingleEventScreen} from './EventsScreen/SingleEventScreen';
 export {default as ViewEventScreen} from './EventsScreen/ViewEventsScreen';
 export {default as StaffScreen} from './EventsScreen/ViewEventsScreen/StaffScreen';
 export {default as AboutScreen} from './EventsScreen/ViewEventsScreen/AboutScreen';

@@ -11,9 +11,15 @@ import {
   FacebookIcon,
   GlobeIcon,
   InstagramIcon,
+  LocationIcon,
+  MailWeakIcon,
+  PhoneIcon,
   PinterestIcon,
   TwitterIcon,
+  UserIcon,
 } from '../../../constants/icons';
+import IconTextItem from '../../../components/following/IconTextItem';
+import {LocationMapImage} from '../../../constants/images';
 
 const AboutView = () => {
   return (
@@ -51,6 +57,24 @@ const AboutView = () => {
           </View>
         </View>
         <Divider style={styles.Divider} />
+        <View style={styles.ItemColumnView}>
+          <Text style={[styles.ItemRowTitleFont, {marginBottom: 10}]}>
+            POINT OF CONTACT
+          </Text>
+          <IconTextItem icon={UserIcon} text="Jenny Williams" />
+          <IconTextItem icon={PhoneIcon} text="703 209 1029" />
+          <IconTextItem icon={MailWeakIcon} text="jenny.williams@gmail.com" />
+          <IconTextItem
+            icon={LocationIcon}
+            text="21927 Yellow Rd, Middleburg, VA 20..."
+          />
+        </View>
+        <View style={styles.ItemColumnView}>
+          <Text style={[styles.ItemRowTitleFont, {marginVertical: 10}]}>
+            LOCATION
+          </Text>
+          <Image source={LocationMapImage} style={styles.LocationMapImage} />
+        </View>
       </View>
     </ScrollView>
   );
@@ -62,7 +86,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     paddingHorizontal: 20,
-    paddingTop: 12,
+    paddingVertical: 12,
   },
   HeadWrapper: {
     flexDirection: 'row',
@@ -114,6 +138,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
+  },
+  ItemColumnView: {
+    flexDirection: 'column',
+  },
+  LocationMapImage: {
+    width: '100%',
+    height: 330,
+    borderRadius: 12,
   },
 });
 
