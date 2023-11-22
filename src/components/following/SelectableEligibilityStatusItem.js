@@ -32,7 +32,9 @@ const SelectableEligibilityStatusItem = ({
       ]}
       onPress={onPress}>
       <View style={styles.TitleView}>
-        <Image source={image} style={styles.Image} />
+        <View style={styles.ImageView}>
+          <Image source={image} style={styles.Image} />
+        </View>
         <View style={styles.InfoTextView}>
           <Text style={styles.Text}>{title}</Text>
           <Text style={styles.Text}>
@@ -74,7 +76,11 @@ const styles = StyleSheet.create({
     width: width - 140,
     gap: 16,
   },
-  Image: {
+  Image: {},
+  ImageView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 40,
     height: 40,
     borderRadius: 100,

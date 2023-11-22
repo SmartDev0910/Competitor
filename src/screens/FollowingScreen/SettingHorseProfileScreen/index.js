@@ -42,6 +42,9 @@ import {SkippyProfileImage} from '../../../constants/images';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import HorseDetailView from './HorseDetailView';
 import SynchronizeView from './SynchronizeView';
+import DocumentsView from './DocumentsView';
+import TeamView from './TeamView';
+import LineageView from './LineageView';
 
 const SettingHorseProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
@@ -55,9 +58,9 @@ const SettingHorseProfileScreen = ({navigation}) => {
 
   const HorseDetailTab = () => <HorseDetailView navigation={navigation} />;
   const SynchronizeTab = () => <SynchronizeView navigation={navigation} />;
-  const DocumentTab = () => <Text>DocumentTab</Text>;
-  const TeamTab = () => <Text>TeamTab</Text>;
-  const LineageTab = () => <Text>LineageTab</Text>;
+  const DocumentTab = () => <DocumentsView navigation={navigation} />;
+  const TeamTab = () => <TeamView navigation={navigation} />;
+  const LineageTab = () => <LineageView navigation={navigation} />;
 
   const renderScene = SceneMap({
     horse_detail: HorseDetailTab,

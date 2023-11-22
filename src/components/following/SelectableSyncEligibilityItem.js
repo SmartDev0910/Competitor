@@ -22,21 +22,18 @@ const SelectableSyncEligibilityItem = ({
   value,
   selected,
   onPress,
-  icon,
 }) => {
   return (
     <TouchableOpacity
       style={[
         styles.Wrapper,
         selected ? styles.SelectedWrapper : styles.UnSelectedWrapper,
-        icon ? styles.IconWrapper : {},
       ]}
       onPress={onPress}>
       <View style={styles.TitleView}>
-        <Image
-          source={image ? image : icon ? icon : null}
-          style={[image ? styles.Image : {}, icon ? styles.Icon : {}]}
-        />
+        <View style={styles.ImageView}>
+          <Image source={image} style={styles.Image} />
+        </View>
         <View style={styles.InfoTextView}>
           <Text
             style={[selected ? styles.SelectedText : styles.UnSelectedText]}>
@@ -64,9 +61,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5,
   },
-  IconWrapper: {
-    paddingLeft: 24,
-  },
   SelectedWrapper: {
     borderWidth: 1,
     borderRadius: 12,
@@ -84,15 +78,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 16,
   },
-  Image: {
+  ImageView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 40,
     height: 40,
     borderRadius: 100,
   },
-  Icon: {
-    width: 24,
-    height: 24,
-  },
+  Image: {},
   UnSelectedText: {
     fontFamily: FONT_REGULAR,
     fontSize: 14,
