@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import {
   COLOR_EVENT_BORDER,
-  COLOR_FONT_COMMENT,
   COLOR_PINK,
   COLOR_WHITE,
 } from '../../constants/colors';
@@ -45,11 +44,6 @@ const styles = StyleSheet.create({
     width: 22,
     height: 22,
   },
-  LocationFont: {
-    color: COLOR_FONT_COMMENT,
-    fontFamily: FONT_REGULAR,
-    fontSize: 12,
-  },
   TitleFont: {
     fontFamily: FONT_REGULAR,
     fontSize: 14,
@@ -60,20 +54,6 @@ const styles = StyleSheet.create({
   },
   DetailView: {
     flexDirection: 'column',
-  },
-  StatusTextView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  RubberStampIcon: {
-    width: 9,
-    height: 11,
-    marginRight: 6,
-  },
-  StatusTextFont: {
-    color: COLOR_FONT_COMMENT,
-    fontFamily: FONT_REGULAR,
-    fontSize: 12,
   },
 });
 

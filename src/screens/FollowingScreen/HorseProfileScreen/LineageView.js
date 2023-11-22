@@ -5,12 +5,12 @@ import {FONT_REGULAR} from '../../../constants/fonts';
 import Horses from '../../../constants/following/horses';
 import TeamMemberItem from '../../../components/following/TeamMemberItem';
 
-const HorsesView = ({navigation}) => {
+const LineageView = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.Wrapper}>
         <View style={styles.HeadWrapper}>
-          <Text style={styles.HeadFont}>Horses</Text>
+          <Text style={styles.HeadFont}>LINEAGE</Text>
         </View>
         {Horses.map((item, index) => {
           return (
@@ -19,7 +19,6 @@ const HorsesView = ({navigation}) => {
               fullName={item.fullName}
               avatar={item.avatar}
               status={item.status}
-              onPress={() => navigation.navigate('HorseProfileScreen')}
             />
           );
         })}
@@ -50,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HorsesView;
+export default LineageView;

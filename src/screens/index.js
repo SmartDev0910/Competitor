@@ -45,6 +45,7 @@ export {default as RegisterTicketsScreen} from './EventsScreen/RegisterScreen/Ti
 // Following Screens
 export {default as FollowingScreen} from './FollowingScreen/FollowingScreen';
 export {default as ProfileScreen} from './FollowingScreen/ProfileScreen';
+export {default as HorseProfileScreen} from './FollowingScreen/HorseProfileScreen';
 export {default as OrganizerProfileScreen} from './FollowingScreen/OrganizerProfileScreen';
 export {default as EditProfileScreen} from './FollowingScreen/EditProfileScreen';
 export {default as AccountEmailScreen} from './FollowingScreen/EditProfileScreen/AccountEmailScreen';
@@ -60,3 +61,6 @@ export {default as CompetitionNumberScreen} from './FollowingScreen/EditProfileS
 export {default as SyncCompetitionNumberScreen} from './FollowingScreen/EditProfileScreen/SyncCompetitionNumberScreen';
 export {default as SyncEligibilityScreen} from './FollowingScreen/EditProfileScreen/SyncEligibilityScreen';
 export {default as SyncSuspensionScreen} from './FollowingScreen/EditProfileScreen/SyncSuspensionScreen';
+export {default as SettingHorseProfileScreen} from './FollowingScreen/SettingHorseProfileScreen';
+export {default as HorseUSEFNumberScreen} from './FollowingScreen/SettingHorseProfileScreen/USEFNumberScreen';
+export {default as HorseFEINumberScreen} from './FollowingScreen/SettingHorseProfileScreen/FEINumberScreen';

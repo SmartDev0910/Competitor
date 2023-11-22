@@ -9,7 +9,7 @@ export const ModalProvider = ({children}) => {
   const [ticketAssignName, setTicketAssignName] = useState('');
   const [ticketAssignEmail, setTicketAssignEmail] = useState('');
   const [showScratchView, setShowScratchView] = useState(false);
-  const [competitionNumberIndex, setCompetitionNumberIndex] = useState(0);
+  const [competitionNumberData, setCompetitionNumberData] = useState(null);
 
   return (
     <ModalContext.Provider
@@ -22,8 +22,8 @@ export const ModalProvider = ({children}) => {
         setTicketAssignEmail,
         showScratchView,
         setShowScratchView,
-        competitionNumberIndex,
-        setCompetitionNumberIndex,
+        competitionNumberData,
+        setCompetitionNumberData,
       ]}>
       {children}
     </ModalContext.Provider>

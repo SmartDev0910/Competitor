@@ -13,7 +13,7 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
-import {RubberStampIcon} from '../../constants/icons';
+import {RubberStampWeakIcon} from '../../constants/icons';
 
 const EligibilityPane = ({image, title, statusText, onPress}) => {
   return (
@@ -22,7 +22,10 @@ const EligibilityPane = ({image, title, statusText, onPress}) => {
       <View style={styles.DetailView}>
         <Text style={styles.TitleFont}>{title}</Text>
         <View style={styles.StatusTextView}>
-          <Image source={RubberStampIcon} style={styles.RubberStampIcon} />
+          <Image
+            source={RubberStampWeakIcon}
+            style={styles.RubberStampWeakIcon}
+          />
           <Text style={styles.StatusTextFont}>{statusText}</Text>
         </View>
       </View>
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  RubberStampIcon: {
+  RubberStampWeakIcon: {
     width: 9,
     height: 11,
     marginRight: 6,

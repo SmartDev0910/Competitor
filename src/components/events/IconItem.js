@@ -63,20 +63,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 21,
   },
-  StatusTextView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  RubberStampIcon: {
-    width: 9,
-    height: 11,
-    marginRight: 6,
-  },
-  StatusTextFont: {
-    color: COLOR_FONT_COMMENT,
-    fontFamily: FONT_REGULAR,
-    fontSize: 12,
-  },
 });
 
 export default IconItem;

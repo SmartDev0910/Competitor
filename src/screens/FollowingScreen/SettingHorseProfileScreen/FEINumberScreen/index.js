@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -10,28 +10,26 @@ import {
 import {FONT_REGULAR} from '../../../../constants/fonts';
 import {
   ArrowLeftIcon,
-  SettingsIcon,
-  TearOffCalendarIcon,
+  LaurelWreathIcon,
+  PasteWeakIcon,
 } from '../../../../constants/icons';
 import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
   COLOR_FONT_COMMENT,
 } from '../../../../constants/colors';
+import IconLabeledText from '../../../../components/following/IconLabeledText';
+import {UsefLogo2Image} from '../../../../constants/images';
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
-import {ModalContext} from '../../../../providers/ModalProvider';
-import ManageCompetitionNumberModal from '../../../../components/following/ManageCompetitionNumberModal';
-import SelectableSyncSuspensionItem from '../../../../components/following/SelectableSyncSuspensionItem';
-import {UsefLogo1Image} from '../../../../constants/images';
-import SuspensionsData from '../../../../constants/following/suspensions';
+import GovermentRecordsModal from '../../../../components/following/GovermentRecordsModal';
 
-const SyncSuspensionScreen = ({navigation}) => {
-  const [showManageModal, setShowManageModal] = useState(false);
-  const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
-    useContext(ModalContext);
+const FEINumberScreen = ({navigation}) => {
+  const [feiNumber, setFeiNumber] = useState('');
+  const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
+    useState(false);
 
-  const handleManageModal = () => {
-    setShowManageModal(true);
+  const handleGovermentRecordsModal = () => {
+    setShowGovermentRecordsModal(true);
   };
 
   return (
@@ -43,39 +41,35 @@ const SyncSuspensionScreen = ({navigation}) => {
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
               </TouchableOpacity>
-              <Text style={styles.AppbarTextFont}>
-                {competitionNumberData.title}
-              </Text>
+              <Text style={styles.AppbarTextFont}>Horses FEI number</Text>
             </View>
+            <TouchableOpacity
+              style={styles.RightIconView}
+              onPress={handleGovermentRecordsModal}>
+              <Image source={LaurelWreathIcon} style={styles.RightIcon} />
+            </TouchableOpacity>
           </View>
           <View style={styles.ContentView}>
-            <SelectableSyncSuspensionItem
-              image={UsefLogo1Image}
-              title={'Suspension?'}
-              value={'Yes'}
-            />
-            <SelectableSyncSuspensionItem
-              image={UsefLogo1Image}
-              title={'Details:'}
-              value={competitionNumberData.details}
-            />
-            <SelectableSyncSuspensionItem
-              icon={TearOffCalendarIcon}
-              title={'Suspension ends:'}
-              value={competitionNumberData.expDate}
+            <IconLabeledText
+              icon={UsefLogo2Image}
+              placeholder={'Enter FEI number...'}
+              rightIconVisible={false}
+              value={feiNumber}
+              onChangeText={text => setFeiNumber(text)}
             />
             <TouchableIconTextItem
-              icon={SettingsIcon}
-              text={'Manage'}
+              icon={PasteWeakIcon}
+              text={'FEI status...'}
               downIconVisible={true}
-              onPress={handleManageModal}
+              style={styles.TouchableIconTextItem}
             />
           </View>
         </View>
       </ScrollView>
-      <ManageCompetitionNumberModal
-        modalVisible={showManageModal}
-        setModalVisible={setShowManageModal}
+      <GovermentRecordsModal
+        modalVisible={showGovermentRecordsModal}
+        setModalVisible={setShowGovermentRecordsModal}
+        value={'987654, Active'}
       />
     </>
   );
@@ -132,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SyncSuspensionScreen;
+export default FEINumberScreen;

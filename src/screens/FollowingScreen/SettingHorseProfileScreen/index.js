@@ -14,14 +14,16 @@ import {
   FONT_SEMI_BOLD,
 } from '../../../constants/fonts';
 import {
-  AddUserMaleIcon,
   ArrowLeftIcon,
-  CalendarIcon,
-  CalendarOutlinedIcon,
-  ClockIcon,
-  ClockOutlinedIcon,
-  SettingsIcon,
-  SpeechBubbleIcon,
+  BiotechIcon,
+  BiotechOutlinedIcon,
+  CameraIcon,
+  DocumentsIcon,
+  DocumentsOutlinedIcon,
+  LockIcon,
+  LockOutlinedIcon,
+  SynchronizeIcon,
+  SynchronizeOutlinedIcon,
   UserGroupsIcon,
   UserGroupsOutlinedIcon,
   UserIcon,
@@ -34,38 +36,35 @@ import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
+  COLOR_GREY_CAMERA,
 } from '../../../constants/colors';
-import {ProfileEditImage} from '../../../constants/images';
+import {SkippyProfileImage} from '../../../constants/images';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
-import FollowButton from '../../../components/following/FollowButton';
-import UpcomingEventsView from './UpcomingEventsView';
-import PastEventsView from './PastEventsView';
-import TeamView from './TeamView';
-import HorsesView from './HorsesView';
-import UserView from './UserView';
+import HorseDetailView from './HorseDetailView';
+import SynchronizeView from './SynchronizeView';
 
-const ProfileScreen = ({navigation}) => {
+const SettingHorseProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'user', title: 'User'},
-    {key: 'team', title: 'Events'},
-    {key: 'horses', title: 'Past'},
-    {key: 'upcoming_events', title: 'Upcoming Events'},
-    {key: 'past_events', title: 'Past Events'},
+    {key: 'horse_detail', title: 'Horse Detail'},
+    {key: 'synchronize', title: 'Events'},
+    {key: 'document', title: 'Document'},
+    {key: 'team', title: 'Team'},
+    {key: 'lineage', title: 'Lineage'},
   ]);
 
-  const UserTab = () => <UserView />;
-  const TeamTab = () => <TeamView />;
-  const HorsesTab = () => <HorsesView navigation={navigation} />;
-  const UpcomingEventsTab = () => <UpcomingEventsView />;
-  const PastEventsTab = () => <PastEventsView />;
+  const HorseDetailTab = () => <HorseDetailView navigation={navigation} />;
+  const SynchronizeTab = () => <SynchronizeView navigation={navigation} />;
+  const DocumentTab = () => <Text>DocumentTab</Text>;
+  const TeamTab = () => <Text>TeamTab</Text>;
+  const LineageTab = () => <Text>LineageTab</Text>;
 
   const renderScene = SceneMap({
-    user: UserTab,
+    horse_detail: HorseDetailTab,
+    synchronize: SynchronizeTab,
+    document: DocumentTab,
     team: TeamTab,
-    horses: HorsesTab,
-    upcoming_events: UpcomingEventsTab,
-    past_events: PastEventsTab,
+    lineage: LineageTab,
   });
 
   const renderTabBar = props => (
@@ -77,10 +76,24 @@ const ProfileScreen = ({navigation}) => {
       style={{backgroundColor: COLOR_WHITE}}
       renderLabel={({route, focused, color}) => {
         switch (route.key) {
-          case 'user':
+          case 'horse_detail':
             return (
               <Image
-                source={focused ? UserOutlinedIcon : UserIcon}
+                source={focused ? YearOfHorseOutlinedIcon : YearOfHorseIcon}
+                style={styles.TabTitleIcon}
+              />
+            );
+          case 'synchronize':
+            return (
+              <Image
+                source={focused ? SynchronizeOutlinedIcon : SynchronizeIcon}
+                style={styles.TabTitleIcon}
+              />
+            );
+          case 'document':
+            return (
+              <Image
+                source={focused ? DocumentsOutlinedIcon : DocumentsIcon}
                 style={styles.TabTitleIcon}
               />
             );
@@ -91,24 +104,10 @@ const ProfileScreen = ({navigation}) => {
                 style={styles.TabTitleIcon}
               />
             );
-          case 'horses':
+          case 'lineage':
             return (
               <Image
-                source={focused ? YearOfHorseOutlinedIcon : YearOfHorseIcon}
-                style={styles.TabTitleIcon}
-              />
-            );
-          case 'upcoming_events':
-            return (
-              <Image
-                source={focused ? CalendarOutlinedIcon : CalendarIcon}
-                style={styles.TabTitleIcon}
-              />
-            );
-          case 'past_events':
-            return (
-              <Image
-                source={focused ? ClockOutlinedIcon : ClockIcon}
+                source={focused ? BiotechOutlinedIcon : BiotechIcon}
                 style={styles.TabTitleIcon}
               />
             );
@@ -124,35 +123,18 @@ const ProfileScreen = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
           </TouchableOpacity>
-          <Text style={styles.AppbarTextFont}>Profile</Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EditProfileScreen')}>
-            <Image source={SettingsIcon} style={styles.AppbarButton} />
-          </TouchableOpacity>
+          <Text style={styles.AppbarTextFont}>Settings</Text>
         </View>
         <View style={styles.ProfileView}>
-          <Image source={ProfileEditImage} style={styles.ProfileEditImage} />
-          <Text style={styles.ProfileTitleFont}>David Silbia</Text>
-        </View>
-        <View style={styles.ActionButtonView}>
-          <FollowButton icon={AddUserMaleIcon} text="Connect" />
-          <FollowButton icon={SpeechBubbleIcon} text="Message" />
-        </View>
-        <View style={styles.FollowerDetail}>
-          <View style={styles.DetailItemView}>
-            <Text style={styles.DetailItemTitleFont}>Jumper</Text>
-            <Text style={styles.DetailItemDescFont}>Discipline</Text>
-          </View>
-          <View style={styles.DetailItemView}>
-            <Text style={styles.DetailItemTitleFont}>4</Text>
-            <Text style={styles.DetailItemDescFont}>Zone</Text>
-          </View>
-          <View style={styles.DetailItemView}>
-            <Text style={styles.DetailItemTitleFont}>AUS</Text>
-            <Text style={styles.DetailItemDescFont}>Nationality</Text>
+          <Image
+            source={SkippyProfileImage}
+            style={styles.SkippyProfileImage}
+          />
+          <View style={styles.CameraView}>
+            <Image source={CameraIcon} style={styles.CameraIcon} />
           </View>
         </View>
-        <View style={styles.AuthorizeView}>
+        <View style={styles.TeamSettingsView}>
           <TabView
             navigationState={{index, routes}}
             renderScene={renderScene}
@@ -170,13 +152,13 @@ const height = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   Wrapper: {
     flex: 1,
+    backgroundColor: COLOR_WHITE,
   },
   Appbar: {
-    height: 24,
+    height: 36,
     paddingHorizontal: 24,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   AppbarButton: {
     width: 22,
@@ -184,18 +166,20 @@ const styles = StyleSheet.create({
   },
   AppbarTextFont: {
     fontFamily: FONT_REGULAR,
-    color: COLOR_BUTTON_DEFAULT,
+    color: COLOR_FONT_DEFAULT,
+    fontSize: 24,
+    marginLeft: 7,
   },
   ProfileView: {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  ProfileEditImage: {
+  SkippyProfileImage: {
     width: 120,
     height: 120,
     marginTop: 12,
   },
-  ProfileTitleFont: {
+  OrganizerTitleFont: {
     fontFamily: FONT_BOLD,
     fontSize: 20,
     color: COLOR_FONT_DEFAULT,
@@ -234,17 +218,29 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: COLOR_BUTTON_DEFAULT,
   },
-  AuthorizeView: {
+  TeamSettingsView: {
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: COLOR_WHITE,
     paddingTop: 25,
-    height: height - 160,
+    height: height - 140,
   },
   TabTitleIcon: {
     width: 24,
     height: 24,
   },
+  CameraView: {
+    width: 30,
+    height: 30,
+    borderRadius: 45,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLOR_GREY_CAMERA,
+    position: 'absolute',
+    bottom: 2,
+    right: '37%',
+  },
 });
 
-export default ProfileScreen;
+export default SettingHorseProfileScreen;

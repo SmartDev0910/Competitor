@@ -16,16 +16,17 @@ import {
 import {
   AddUserMaleIcon,
   ArrowLeftIcon,
-  CalendarIcon,
-  CalendarOutlinedIcon,
-  ClockIcon,
-  ClockOutlinedIcon,
+  BiotechIcon,
+  BiotechOutlinedIcon,
+  DocumentsIcon,
+  DocumentsOutlinedIcon,
+  PeopleIcon,
+  PeopleOutlinedIcon,
+  PrizeIcon,
   SettingsIcon,
   SpeechBubbleIcon,
-  UserGroupsIcon,
-  UserGroupsOutlinedIcon,
-  UserIcon,
-  UserOutlinedIcon,
+  SynchronizeIcon,
+  SynchronizeOutlinedIcon,
   YearOfHorseIcon,
   YearOfHorseOutlinedIcon,
 } from '../../../constants/icons';
@@ -35,37 +36,33 @@ import {
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
 } from '../../../constants/colors';
-import {ProfileEditImage} from '../../../constants/images';
+import {SkippyProfileImage} from '../../../constants/images';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import FollowButton from '../../../components/following/FollowButton';
-import UpcomingEventsView from './UpcomingEventsView';
-import PastEventsView from './PastEventsView';
+import HorseDetailView from './HorseDetailView';
+import DocumentView from './DocumentView';
 import TeamView from './TeamView';
-import HorsesView from './HorsesView';
-import UserView from './UserView';
+import LineageView from './LineageView';
 
-const ProfileScreen = ({navigation}) => {
+const HorseProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'user', title: 'User'},
-    {key: 'team', title: 'Events'},
-    {key: 'horses', title: 'Past'},
-    {key: 'upcoming_events', title: 'Upcoming Events'},
-    {key: 'past_events', title: 'Past Events'},
+    {key: 'horse_detail', title: 'Horse Detail'},
+    {key: 'document', title: 'Document'},
+    {key: 'team', title: 'Team'},
+    {key: 'lineage', title: 'Lineage'},
   ]);
 
-  const UserTab = () => <UserView />;
+  const HorseDetailTab = () => <HorseDetailView />;
+  const DocumentTab = () => <DocumentView />;
   const TeamTab = () => <TeamView />;
-  const HorsesTab = () => <HorsesView navigation={navigation} />;
-  const UpcomingEventsTab = () => <UpcomingEventsView />;
-  const PastEventsTab = () => <PastEventsView />;
+  const LineageTab = () => <LineageView />;
 
   const renderScene = SceneMap({
-    user: UserTab,
+    horse_detail: HorseDetailTab,
+    document: DocumentTab,
     team: TeamTab,
-    horses: HorsesTab,
-    upcoming_events: UpcomingEventsTab,
-    past_events: PastEventsTab,
+    lineage: LineageTab,
   });
 
   const renderTabBar = props => (
@@ -77,38 +74,31 @@ const ProfileScreen = ({navigation}) => {
       style={{backgroundColor: COLOR_WHITE}}
       renderLabel={({route, focused, color}) => {
         switch (route.key) {
-          case 'user':
-            return (
-              <Image
-                source={focused ? UserOutlinedIcon : UserIcon}
-                style={styles.TabTitleIcon}
-              />
-            );
-          case 'team':
-            return (
-              <Image
-                source={focused ? UserGroupsOutlinedIcon : UserGroupsIcon}
-                style={styles.TabTitleIcon}
-              />
-            );
-          case 'horses':
+          case 'horse_detail':
             return (
               <Image
                 source={focused ? YearOfHorseOutlinedIcon : YearOfHorseIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'upcoming_events':
+          case 'document':
             return (
               <Image
-                source={focused ? CalendarOutlinedIcon : CalendarIcon}
+                source={focused ? DocumentsOutlinedIcon : DocumentsIcon}
                 style={styles.TabTitleIcon}
               />
             );
-          case 'past_events':
+          case 'team':
             return (
               <Image
-                source={focused ? ClockOutlinedIcon : ClockIcon}
+                source={focused ? PeopleOutlinedIcon : PeopleIcon}
+                style={styles.TabTitleIcon}
+              />
+            );
+          case 'lineage':
+            return (
+              <Image
+                source={focused ? BiotechOutlinedIcon : BiotechIcon}
                 style={styles.TabTitleIcon}
               />
             );
@@ -124,15 +114,18 @@ const ProfileScreen = ({navigation}) => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
           </TouchableOpacity>
-          <Text style={styles.AppbarTextFont}>Profile</Text>
+          <Text style={styles.AppbarTextFont}>Horse Profile</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('EditProfileScreen')}>
+            onPress={() => navigation.navigate('SettingHorseProfileScreen')}>
             <Image source={SettingsIcon} style={styles.AppbarButton} />
           </TouchableOpacity>
         </View>
         <View style={styles.ProfileView}>
-          <Image source={ProfileEditImage} style={styles.ProfileEditImage} />
-          <Text style={styles.ProfileTitleFont}>David Silbia</Text>
+          <Image
+            source={SkippyProfileImage}
+            style={styles.SkippyProfileImage}
+          />
+          <Text style={styles.ProfileTitleFont}>Skippy</Text>
         </View>
         <View style={styles.ActionButtonView}>
           <FollowButton icon={AddUserMaleIcon} text="Connect" />
@@ -140,7 +133,7 @@ const ProfileScreen = ({navigation}) => {
         </View>
         <View style={styles.FollowerDetail}>
           <View style={styles.DetailItemView}>
-            <Text style={styles.DetailItemTitleFont}>Jumper</Text>
+            <Text style={styles.DetailItemTitleFont}>Dressage</Text>
             <Text style={styles.DetailItemDescFont}>Discipline</Text>
           </View>
           <View style={styles.DetailItemView}>
@@ -148,7 +141,7 @@ const ProfileScreen = ({navigation}) => {
             <Text style={styles.DetailItemDescFont}>Zone</Text>
           </View>
           <View style={styles.DetailItemView}>
-            <Text style={styles.DetailItemTitleFont}>AUS</Text>
+            <Text style={styles.DetailItemTitleFont}>USA</Text>
             <Text style={styles.DetailItemDescFont}>Nationality</Text>
           </View>
         </View>
@@ -190,7 +183,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  ProfileEditImage: {
+  SkippyProfileImage: {
     width: 120,
     height: 120,
     marginTop: 12,
@@ -247,4 +240,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen;
+export default HorseProfileScreen;
