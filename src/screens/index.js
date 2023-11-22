@@ -64,3 +64,7 @@ export {default as SyncSuspensionScreen} from './FollowingScreen/EditProfileScre
 export {default as SettingHorseProfileScreen} from './FollowingScreen/SettingHorseProfileScreen';
 export {default as HorseUSEFNumberScreen} from './FollowingScreen/SettingHorseProfileScreen/USEFNumberScreen';
 export {default as HorseFEINumberScreen} from './FollowingScreen/SettingHorseProfileScreen/FEINumberScreen';
+export {default as MeasurementCardScreen} from './FollowingScreen/SettingHorseProfileScreen/MeasurementCardScreen';
+export {default as CogginsScreen} from './FollowingScreen/SettingHorseProfileScreen/CogginsScreen';
+export {default as HealthRecordsScreen} from './FollowingScreen/SettingHorseProfileScreen/HealthRecordsScreen';
+export {default as VaccinationRecordsScreen} from './FollowingScreen/SettingHorseProfileScreen/VaccinationRecordsScreen';

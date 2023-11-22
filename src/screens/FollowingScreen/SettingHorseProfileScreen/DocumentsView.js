@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {
   COLOR_FONT_COMMENT,
@@ -13,10 +13,21 @@ import {
   LengthWeakIcon,
 } from '../../../constants/icons';
 import {ModalContext} from '../../../providers/ModalProvider';
+import SelectItemsModal from '../../../components/following/SelectItemsModal';
+import VaccinationsStatusData from '../../../constants/following/vaccinationsStatus';
 
 const DocumentsView = ({navigation}) => {
   const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
     useContext(ModalContext);
+  const [selectItemsModalTitle, setSelectItemsModalTitle] = useState('');
+  const [selectItemsModalData, setSelectItemsModalData] = useState([]);
+  const [showSelectItemsModal, setShowSelectItemsModal] = useState(false);
+
+  const handleSelectItemsModal = (title, data) => {
+    setSelectItemsModalTitle(title);
+    setSelectItemsModalData(data);
+    setShowSelectItemsModal(true);
+  };
 
   return (
     <>
@@ -29,18 +40,21 @@ const DocumentsView = ({navigation}) => {
               text={'Measurement card'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('MeasurementCardScreen')}
             />
             <TouchableIconTextItem
               icon={CertificateWeakIcon}
               text={'Coggins'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('CogginsScreen')}
             />
             <TouchableIconTextItem
               icon={DoctorsBagWeakIcon}
               text={'Health records'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('HealthRecordsScreen')}
             />
           </View>
           <View style={styles.PartView}>
@@ -50,22 +64,41 @@ const DocumentsView = ({navigation}) => {
               text={'Vaccinations records'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() => navigation.navigate('VaccinationRecordsScreen')}
             />
             <TouchableIconTextItem
               icon={InsulinPenWeakIcon}
               text={'Rhinopneumonitis status'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() =>
+                handleSelectItemsModal(
+                  `Rhinopneumonitis current?`,
+                  VaccinationsStatusData,
+                )
+              }
             />
             <TouchableIconTextItem
               icon={InsulinPenWeakIcon}
               text={'Influenza current status'}
               rightIconVisible={true}
               style={styles.TouchableIconTextItem}
+              onPress={() =>
+                handleSelectItemsModal(
+                  'Influenza current?',
+                  VaccinationsStatusData,
+                )
+              }
             />
           </View>
         </View>
       </ScrollView>
+      <SelectItemsModal
+        modalVisible={showSelectItemsModal}
+        setModalVisible={setShowSelectItemsModal}
+        title={selectItemsModalTitle}
+        data={selectItemsModalData}
+      />
     </>
   );
 };

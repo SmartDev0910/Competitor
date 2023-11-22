@@ -52,6 +52,10 @@ import {
   SettingHorseProfileScreen,
   HorseUSEFNumberScreen,
   HorseFEINumberScreen,
+  MeasurementCardScreen,
+  CogginsScreen,
+  HealthRecordsScreen,
+  VaccinationRecordsScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -496,6 +500,34 @@ function NavStackScreen() {
         <NavStack.Screen
           name="HorseFEINumberScreen"
           component={HorseFEINumberScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="MeasurementCardScreen"
+          component={MeasurementCardScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="CogginsScreen"
+          component={CogginsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HealthRecordsScreen"
+          component={HealthRecordsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="VaccinationRecordsScreen"
+          component={VaccinationRecordsScreen}
           options={{
             headerShown: false,
           }}
