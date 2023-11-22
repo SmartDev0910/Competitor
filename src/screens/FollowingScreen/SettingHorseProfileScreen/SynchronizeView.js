@@ -9,7 +9,7 @@ import SynchronizePane from '../../../components/following/SynchronizePane';
 import HorseEligibilityStatusData from '../../../constants/following/horseEligibilityStatus';
 import SelectableEligibilityStatusItem from '../../../components/following/SelectableEligibilityStatusItem';
 import Divider from '../../../components/home/Divider';
-import SuspensionsData from '../../../constants/following/suspensions';
+import HorseSuspensionsData from '../../../constants/following/horseSuspensions';
 import SelectableSuspensionItem from '../../../components/following/SelectableSuspensionItem';
 import SyncCompetitionNumbersData from '../../../constants/following/syncCompetitionNumbers';
 import SelectableCompetitionNumberItem from '../../../components/following/SelectableCompetitionNumberItem';
@@ -31,7 +31,7 @@ const SynchronizeView = ({navigation}) => {
   };
 
   const handleSyncSuspensionPress = index => {
-    setCompetitionNumberData(SuspensionsData[index]);
+    setCompetitionNumberData(HorseSuspensionsData[index]);
     navigation.navigate('SyncSuspensionScreen');
   };
 
@@ -64,7 +64,7 @@ const SynchronizeView = ({navigation}) => {
                 );
               })}
               <Divider style={styles.Divider} />
-              {SuspensionsData.map((item, index) => {
+              {HorseSuspensionsData.map((item, index) => {
                 return (
                   <SelectableSuspensionItem
                     key={index}

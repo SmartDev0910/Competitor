@@ -75,6 +75,11 @@ const AddressModal = ({modalVisible, setModalVisible}) => {
     setSearchText(text);
   };
 
+  const handleGovermentRecordsModal = () => {
+    setModalVisible(false);
+    setShowGovermentRecordsModal(true);
+  };
+
   const MapPane = (
     <>
       <MapView
@@ -91,11 +96,6 @@ const AddressModal = ({modalVisible, setModalVisible}) => {
       {/* <Image source={MapWellingtonImage} style={styles.MapWellingtonImage} /> */}
     </>
   );
-
-  const handleGovermentRecordsModal = () => {
-    setModalVisible(false);
-    setShowGovermentRecordsModal(true);
-  };
 
   return (
     <>

@@ -60,7 +60,7 @@ const SyncCompetitionNumberScreen = ({navigation}) => {
               value={competitionNumberData?.details}
             />
             <SelectableSyncCompetitionNumberItem
-              icon={TearOffCalendarIcon}
+              image={TearOffCalendarIcon}
               selected={competitionNumberData?.selected}
               title={'Expiration date:'}
               value={competitionNumberData?.expDate}
