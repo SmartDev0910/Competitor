@@ -22,7 +22,6 @@ import IconLabeledText from '../../../../components/following/IconLabeledText';
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
 import GovermentRecordsModal from '../../../../components/following/GovermentRecordsModal';
 import {ModalContext} from '../../../../providers/ModalProvider';
-import CompetitionNumbersData from '../../../../constants/following/competitionNumbers';
 import SelectDateModal from '../../../../components/common/SelectDateModal';
 
 const CompetitionNumberScreen = ({navigation}) => {
@@ -30,7 +29,7 @@ const CompetitionNumberScreen = ({navigation}) => {
   const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
     useState(false);
   const [showSelectDateModal, setShowSelectDateModal] = useState(false);
-  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+  const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
     useContext(ModalContext);
 
   const handleGovermentRecordsModal = () => {
@@ -51,7 +50,7 @@ const CompetitionNumberScreen = ({navigation}) => {
                 <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
               </TouchableOpacity>
               <Text style={styles.AppbarTextFont}>
-                {CompetitionNumbersData[competitionNumberIndex].title}
+                {competitionNumberData?.title}
               </Text>
             </View>
             <TouchableOpacity
@@ -62,7 +61,7 @@ const CompetitionNumberScreen = ({navigation}) => {
           </View>
           <View style={styles.ContentView}>
             <IconLabeledText
-              icon={CompetitionNumbersData[competitionNumberIndex].icon}
+              icon={competitionNumberData?.icon}
               placeholder={'Enter number...'}
               rightIconVisible={false}
               value={comNumber}

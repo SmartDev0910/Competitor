@@ -41,6 +41,7 @@ import {
 import {SkippyProfileImage} from '../../../constants/images';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import HorseDetailView from './HorseDetailView';
+import SynchronizeView from './SynchronizeView';
 
 const SettingHorseProfileScreen = ({navigation}) => {
   const [index, setIndex] = useState(0);
@@ -53,7 +54,7 @@ const SettingHorseProfileScreen = ({navigation}) => {
   ]);
 
   const HorseDetailTab = () => <HorseDetailView navigation={navigation} />;
-  const SynchronizeTab = () => <Text>SynchronizeTab</Text>;
+  const SynchronizeTab = () => <SynchronizeView navigation={navigation} />;
   const DocumentTab = () => <Text>DocumentTab</Text>;
   const TeamTab = () => <Text>TeamTab</Text>;
   const LineageTab = () => <Text>LineageTab</Text>;

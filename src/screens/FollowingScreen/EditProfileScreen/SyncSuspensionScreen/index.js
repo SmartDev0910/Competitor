@@ -27,7 +27,7 @@ import SuspensionsData from '../../../../constants/following/suspensions';
 
 const SyncSuspensionScreen = ({navigation}) => {
   const [showManageModal, setShowManageModal] = useState(false);
-  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+  const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
     useContext(ModalContext);
 
   const handleManageModal = () => {
@@ -44,7 +44,7 @@ const SyncSuspensionScreen = ({navigation}) => {
                 <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
               </TouchableOpacity>
               <Text style={styles.AppbarTextFont}>
-                {SuspensionsData[competitionNumberIndex].title}
+                {competitionNumberData.title}
               </Text>
             </View>
           </View>
@@ -57,12 +57,12 @@ const SyncSuspensionScreen = ({navigation}) => {
             <SelectableSyncSuspensionItem
               image={UsefLogo1Image}
               title={'Details:'}
-              value={SuspensionsData[competitionNumberIndex].details}
+              value={competitionNumberData.details}
             />
             <SelectableSyncSuspensionItem
               icon={TearOffCalendarIcon}
               title={'Suspension ends:'}
-              value={SuspensionsData[competitionNumberIndex].expDate}
+              value={competitionNumberData.expDate}
             />
             <TouchableIconTextItem
               icon={SettingsIcon}

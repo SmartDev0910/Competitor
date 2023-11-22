@@ -23,7 +23,7 @@ import FollowerItem from './FollowerItem';
 import EligibilityItem from './EligibilityItem';
 import EligibilityEvents from '../../constants/events/eligibility';
 import DateItem from './DateItem';
-import {HelpIcon, InfoIcon, RubberStampIcon} from '../../constants/icons';
+import {HelpIcon, InfoIcon, RubberStampWeakIcon} from '../../constants/icons';
 import StatusDetailItem from './StatusDetailItem';
 import StatusHelpItem from './StatusHelpItem';
 
@@ -48,7 +48,7 @@ const StatusModal = ({modalVisible, setModalVisible}) => {
               title={EligibilityEvents[0].title}
               image={EligibilityEvents[0].image}
             />
-            <DateItem title="Expired: 2021-12-13" image={RubberStampIcon} />
+            <DateItem title="Expired: 2021-12-13" image={RubberStampWeakIcon} />
             <StatusDetailItem
               image={InfoIcon}
               title="Detail"

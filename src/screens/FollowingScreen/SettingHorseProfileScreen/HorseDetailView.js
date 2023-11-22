@@ -35,7 +35,7 @@ import ColoringsData from '../../../constants/following/colorings';
 import MarkingsData from '../../../constants/following/markings';
 
 const HorseDetailView = ({navigation}) => {
-  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+  const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
     useContext(ModalContext);
   const [name, setName] = useState('');
   const [microchipNumber, setMicrochipNumber] = useState('');
@@ -48,7 +48,7 @@ const HorseDetailView = ({navigation}) => {
   const [showSelectItemsModal, setShowSelectItemsModal] = useState(false);
 
   const handleCompetitionNumberPress = index => {
-    setCompetitionNumberIndex(index);
+    setCompetitionNumberData(CompetitionNumbers[index]);
     navigation.navigate('CompetitionNumberScreen');
   };
 

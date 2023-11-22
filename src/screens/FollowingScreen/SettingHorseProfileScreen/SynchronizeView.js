@@ -6,7 +6,7 @@ import {
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
 import SynchronizePane from '../../../components/following/SynchronizePane';
-import EligibilityStatusData from '../../../constants/following/eligibilityStatus';
+import HorseEligibilityStatusData from '../../../constants/following/horseEligibilityStatus';
 import SelectableEligibilityStatusItem from '../../../components/following/SelectableEligibilityStatusItem';
 import Divider from '../../../components/home/Divider';
 import SuspensionsData from '../../../constants/following/suspensions';
@@ -26,7 +26,7 @@ const SynchronizeView = ({navigation}) => {
   };
 
   const handleSyncEligibilityPress = index => {
-    setCompetitionNumberData(EligibilityStatusData[index]);
+    setCompetitionNumberData(HorseEligibilityStatusData[index]);
     navigation.navigate('SyncEligibilityScreen');
   };
 
@@ -47,10 +47,10 @@ const SynchronizeView = ({navigation}) => {
           {syncStatus ? (
             <>
               <View style={styles.SubTitleView}>
-                <Text style={styles.SubTitleFont}>4 problems found</Text>
+                <Text style={styles.SubTitleFont}>2 problems found</Text>
                 <Text style={styles.SubTitleFont}>Refresh</Text>
               </View>
-              {EligibilityStatusData.map((item, index) => {
+              {HorseEligibilityStatusData.map((item, index) => {
                 return (
                   <SelectableEligibilityStatusItem
                     key={index}

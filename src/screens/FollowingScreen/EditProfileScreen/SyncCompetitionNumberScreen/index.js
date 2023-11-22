@@ -20,13 +20,12 @@ import {
 } from '../../../../constants/colors';
 import TouchableIconTextItem from '../../../../components/following/TouchableIconTextItem';
 import {ModalContext} from '../../../../providers/ModalProvider';
-import SyncCompetitionNumbersData from '../../../../constants/following/syncCompetitionNumbers';
 import ManageCompetitionNumberModal from '../../../../components/following/ManageCompetitionNumberModal';
 import SelectableSyncCompetitionNumberItem from '../../../../components/following/SelectableSyncCompetitionNumberItem';
 
 const SyncCompetitionNumberScreen = ({navigation}) => {
   const [showManageModal, setShowManageModal] = useState(false);
-  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+  const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
     useContext(ModalContext);
 
   const handleManageModal = () => {
@@ -43,34 +42,28 @@ const SyncCompetitionNumberScreen = ({navigation}) => {
                 <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
               </TouchableOpacity>
               <Text style={styles.AppbarTextFont}>
-                {SyncCompetitionNumbersData[competitionNumberIndex].title}
+                {competitionNumberData?.title}
               </Text>
             </View>
           </View>
           <View style={styles.ContentView}>
             <SelectableSyncCompetitionNumberItem
-              image={SyncCompetitionNumbersData[competitionNumberIndex].image}
-              selected={
-                SyncCompetitionNumbersData[competitionNumberIndex].selected
-              }
+              image={competitionNumberData?.image}
+              selected={competitionNumberData?.selected}
               title={'Status:'}
-              value={SyncCompetitionNumbersData[competitionNumberIndex].status}
+              value={competitionNumberData?.status}
             />
             <SelectableSyncCompetitionNumberItem
-              image={SyncCompetitionNumbersData[competitionNumberIndex].image}
-              selected={
-                SyncCompetitionNumbersData[competitionNumberIndex].selected
-              }
+              image={competitionNumberData?.image}
+              selected={competitionNumberData?.selected}
               title={'Details:'}
-              value={SyncCompetitionNumbersData[competitionNumberIndex].details}
+              value={competitionNumberData?.details}
             />
             <SelectableSyncCompetitionNumberItem
               icon={TearOffCalendarIcon}
-              selected={
-                SyncCompetitionNumbersData[competitionNumberIndex].selected
-              }
+              selected={competitionNumberData?.selected}
               title={'Expiration date:'}
-              value={SyncCompetitionNumbersData[competitionNumberIndex].expDate}
+              value={competitionNumberData?.expDate}
             />
             <TouchableIconTextItem
               icon={SettingsIcon}

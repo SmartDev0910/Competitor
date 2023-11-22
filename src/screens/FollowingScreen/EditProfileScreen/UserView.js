@@ -37,7 +37,7 @@ const UserView = ({navigation}) => {
   const [showSelectStatusModal, setShowSelectStatusModal] = useState(false);
   const [showZoneModal, setShowZoneModal] = useState(false);
   const [showSelectDateModal, setShowSelectDateModal] = useState(false);
-  const [, , , , , , , , competitionNumberIndex, setCompetitionNumberIndex] =
+  const [, , , , , , , , competitionNumberData, setCompetitionNumberData] =
     useContext(ModalContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -69,7 +69,7 @@ const UserView = ({navigation}) => {
   };
 
   const handleCompetitionNumberPress = index => {
-    setCompetitionNumberIndex(index);
+    setCompetitionNumberData(CompetitionNumbers[index]);
     navigation.navigate('CompetitionNumberScreen');
   };
 
