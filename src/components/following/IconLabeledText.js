@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   Wrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
     borderWidth: 1,
     borderColor: COLOR_EVENT_BORDER,
     borderRadius: 10,

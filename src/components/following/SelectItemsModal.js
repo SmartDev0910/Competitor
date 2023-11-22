@@ -127,11 +127,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   Appbar: {
-    height: 36,
+    width: '100%',
     paddingHorizontal: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    gap: 12,
   },
   AppbarButton: {
     width: 22,
@@ -196,6 +197,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: COLOR_FONT_DEFAULT,
     lineHeight: 34,
+    width: width - 96,
   },
   BottomButton: {
     marginHorizontal: 24,
@@ -207,6 +209,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'column',
     marginTop: 20,
+    marginBottom: 130,
   },
   HelpTextFont: {
     fontFamily: FONT_REGULAR,
