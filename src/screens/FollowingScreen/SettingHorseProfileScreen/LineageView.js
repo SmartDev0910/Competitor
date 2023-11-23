@@ -16,50 +16,34 @@ import {
 } from '../../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
 import AuthorizeItem from '../../../components/following/AuthorizeItem';
-import AuthorizedMe from '../../../constants/following/authorizedMe';
 import {LaurelWreathIcon, PlusOutlinedIcon} from '../../../constants/icons';
-import AuthorizeHelpModal from '../../../components/following/AuthorizeHelpModal';
-import AddTeamMemberModal from '../../../components/following/AddTeamMemberModal';
-import AuthorizeMeHelpModal from '../../../components/following/AuthorizeMeHelpModal';
-import TeamMemberModal from '../../../components/following/TeamMemberModal';
 import GovermentRecordsModal from '../../../components/following/GovermentRecordsModal';
-import HorsesData from '../../../constants/following/horses';
+import LineageHorsesData from '../../../constants/following/lineageHorses';
+import AddHorseModal from '../../../components/following/AddHorseModal';
+import RelatedHorsesModal from '../../../components/following/RelatedHorsesModal';
+import RemoveHorseModal from '../../../components/following/RemoveHorseModal';
 
 const LineageView = ({navigation}) => {
-  const [showAuthorizeHelpModal, setShowAuthorizeHelpModal] =
-    React.useState(false);
-  const [showAuthorizeMeHelpModal, setShowAuthorizeMeHelpModal] =
-    React.useState(false);
-  const [showAddTeamMemberModal, setShowAddTeamMemberModal] =
-    React.useState(false);
+  const [showAddHorseModal, setShowAddHorseModal] = React.useState(false);
   const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
     React.useState(false);
-  const [showTeamMemberModal, setShowTeamMemberModal] = React.useState(false);
-  const [removedTeamModal, setRemovedTeamModal] = React.useState(false);
-  const [selectedMember, setSelectedMember] = React.useState(null);
+  const [showRelatedHorsesModal, setShowRelatedHorsesModal] =
+    React.useState(false);
+  const [showRemoveHorseModal, setShowRemoveHorseModal] = React.useState(false);
+  const [selectedHorse, setSelectedHorse] = React.useState(null);
 
-  const handleAuthorizeHelpModal = () => {
-    setShowAuthorizeHelpModal(true);
+  const handleAddHorseModal = () => {
+    setShowAddHorseModal(true);
   };
 
-  const handleAuthorizeMeHelpModal = () => {
-    setShowAuthorizeMeHelpModal(true);
+  const handleRelatedHorsesModal = item => {
+    setSelectedHorse(item);
+    setShowRelatedHorsesModal(true);
   };
 
-  const handleAddTeamMemberModal = () => {
-    setShowAddTeamMemberModal(true);
-  };
-
-  const handleTeamMemberModal = item => {
-    setSelectedMember(item);
-    setRemovedTeamModal(false);
-    setShowTeamMemberModal(true);
-  };
-
-  const handleRemoveTeamMemberModal = item => {
-    setSelectedMember(item);
-    setRemovedTeamModal(true);
-    setShowTeamMemberModal(true);
+  const handleRemoveHorseModal = item => {
+    setSelectedHorse(item);
+    setShowRemoveHorseModal(true);
   };
 
   const handleGovermentRecordsModal = () => {
@@ -82,44 +66,40 @@ const LineageView = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.AuthorizedWrapper}>
-            {HorsesData.map((item, index) => {
+            {LineageHorsesData.map((item, index) => {
               return (
                 <AuthorizeItem
                   key={index}
                   fullName={item.fullName}
                   avatar={item.avatar}
-                  detail={item.status}
+                  detail={item.detail}
                   removable={true}
-                  onPress={() => handleTeamMemberModal(item)}
-                  onRemovePress={() => handleRemoveTeamMemberModal(item)}
+                  onPress={() => handleRelatedHorsesModal(item)}
+                  onRemovePress={() => handleRemoveHorseModal(item)}
                 />
               );
             })}
           </View>
           <TouchableOpacity
             style={styles.PlusIconView}
-            onPress={() => handleAddTeamMemberModal()}>
+            onPress={() => handleAddHorseModal()}>
             <Image source={PlusOutlinedIcon} style={styles.PlusOutlinedIcon} />
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <AuthorizeHelpModal
-        modalVisible={showAuthorizeHelpModal}
-        setModalVisible={setShowAuthorizeHelpModal}
+      <AddHorseModal
+        modalVisible={showAddHorseModal}
+        setModalVisible={setShowAddHorseModal}
       />
-      <AuthorizeMeHelpModal
-        modalVisible={showAuthorizeMeHelpModal}
-        setModalVisible={setShowAuthorizeMeHelpModal}
+      <RelatedHorsesModal
+        modalVisible={showRelatedHorsesModal}
+        setModalVisible={setShowRelatedHorsesModal}
+        horse={selectedHorse}
       />
-      <AddTeamMemberModal
-        modalVisible={showAddTeamMemberModal}
-        setModalVisible={setShowAddTeamMemberModal}
-      />
-      <TeamMemberModal
-        modalVisible={showTeamMemberModal}
-        setModalVisible={setShowTeamMemberModal}
-        member={selectedMember}
-        removed={removedTeamModal}
+      <RemoveHorseModal
+        modalVisible={showRemoveHorseModal}
+        setModalVisible={setShowRemoveHorseModal}
+        horse={selectedHorse}
       />
       <GovermentRecordsModal
         modalVisible={showGovermentRecordsModal}

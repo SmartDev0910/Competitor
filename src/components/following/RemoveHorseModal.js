@@ -17,56 +17,30 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import DropDownSelect from '../common/DropDownSelect';
-import {PublicSafetyIcon, PublicSafetyWeakIcon} from '../../constants/icons';
 import AuthorizeItem from './AuthorizeItem';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const TeamMemberModal = ({modalVisible, setModalVisible, member, removed}) => {
-  const authorityOptions = ['Authorized', 'Unauthorized'];
-  const [authorityValue, setAuthorityValue] = React.useState('Authorized');
-
-  const handleDropDownSelectChange = index => {
-    setAuthorityValue(authorityOptions[index]);
-  };
-
+const RemoveHorseModal = ({modalVisible, setModalVisible, horse}) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>
-            {(removed ? 'Remove' : '') + 'Team member'}
-          </Text>
+          <Text style={styles.ModalTitleFont}>Remove horse</Text>
           <View style={styles.ModalContentView}>
             <AuthorizeItem
-              fullName={member?.fullName}
-              avatar={member?.avatar}
-              detail={member?.detail}
-            />
-            <DropDownSelect
-              icon={PublicSafetyWeakIcon}
-              selectedIcon={PublicSafetyIcon}
-              placeholder={'Select authority...'}
-              value={authorityValue}
-              options={authorityOptions}
-              onPress={handleDropDownSelectChange}
+              fullName={horse?.fullName}
+              avatar={horse?.avatar}
+              detail={horse?.detail}
             />
           </View>
 
           <View style={styles.BottomButton}>
-            {authorityValue !== '' ? (
-              <Pressable style={[styles.Button, styles.ButtonApply]}>
-                <Text style={[styles.TextStyle, styles.TextApply]}>
-                  {removed ? 'Remove' : 'Save'}
-                </Text>
-              </Pressable>
-            ) : (
-              ''
-            )}
-
+            <Pressable style={[styles.Button, styles.ButtonApply]}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>Remove</Text>
+            </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
@@ -154,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TeamMemberModal;
+export default RemoveHorseModal;

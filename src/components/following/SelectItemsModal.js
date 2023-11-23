@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Modal,
   StyleSheet,
@@ -27,14 +27,22 @@ import DisciplineItem from './DisciplineItem';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const SelectItemsModal = ({modalVisible, setModalVisible, title, data}) => {
+const SelectItemsModal = ({
+  modalVisible,
+  setModalVisible,
+  title,
+  data,
+  govermenceIconVisible,
+}) => {
   const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
     useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [reopenParentModal, setReopenParentModal] = useState(false);
 
   const handleGovermentRecordsModal = () => {
     setModalVisible(false);
     setShowGovermentRecordsModal(true);
+    setReopenParentModal(true); // set flag when opening the SelectItemsModal
   };
 
   const handleItemPress = index => {
@@ -44,6 +52,13 @@ const SelectItemsModal = ({modalVisible, setModalVisible, title, data}) => {
       setSelectedItems([...selectedItems, index]);
     }
   };
+
+  useEffect(() => {
+    if (!showGovermentRecordsModal && reopenParentModal) {
+      setModalVisible(true);
+      setReopenParentModal(false); // reset to default
+    }
+  }, [showGovermentRecordsModal, reopenParentModal]);
 
   const ModalContentView = data.map((item, index) => {
     return (
@@ -66,11 +81,15 @@ const SelectItemsModal = ({modalVisible, setModalVisible, title, data}) => {
           <View style={styles.ModalView}>
             <View style={styles.Appbar}>
               <Text style={styles.ModalTitleFont}>{title}</Text>
-              <TouchableOpacity
-                style={styles.RightIconView}
-                onPress={handleGovermentRecordsModal}>
-                <Image source={LaurelWreathIcon} style={styles.RightIcon} />
-              </TouchableOpacity>
+              {govermenceIconVisible ? (
+                <TouchableOpacity
+                  style={styles.RightIconView}
+                  onPress={handleGovermentRecordsModal}>
+                  <Image source={LaurelWreathIcon} style={styles.RightIcon} />
+                </TouchableOpacity>
+              ) : (
+                ''
+              )}
             </View>
             <ScrollView>
               <View style={styles.ModalContentView}>{ModalContentView}</View>

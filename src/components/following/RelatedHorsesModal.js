@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Modal,
   StyleSheet,
   Text,
   Pressable,
   View,
-  SafeAreaView,
   Dimensions,
 } from 'react-native';
 import {
@@ -17,56 +16,65 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
-import DropDownSelect from '../common/DropDownSelect';
-import {PublicSafetyIcon, PublicSafetyWeakIcon} from '../../constants/icons';
+import {BiotechIcon} from '../../constants/icons';
 import AuthorizeItem from './AuthorizeItem';
+import SelectItemsModal from './SelectItemsModal';
+import TouchableIconTextItem from './TouchableIconTextItem';
+import RelationHorsesData from '../../constants/following/relationHorses';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const TeamMemberModal = ({modalVisible, setModalVisible, member, removed}) => {
-  const authorityOptions = ['Authorized', 'Unauthorized'];
-  const [authorityValue, setAuthorityValue] = React.useState('Authorized');
+const RelatedHorsesModal = ({modalVisible, setModalVisible, horse}) => {
+  const [selectItemsModalTitle, setSelectItemsModalTitle] = useState('');
+  const [selectItemsModalData, setSelectItemsModalData] = useState([]);
+  const [showSelectItemsModal, setShowSelectItemsModal] = useState(false);
+  const [reopenParentModal, setReopenParentModal] = useState(false);
 
-  const handleDropDownSelectChange = index => {
-    setAuthorityValue(authorityOptions[index]);
+  const handleSelectItemsModal = (title, data) => {
+    setModalVisible(false);
+    setSelectItemsModalTitle(title);
+    setSelectItemsModalData(data);
+    setShowSelectItemsModal(true);
+    setReopenParentModal(true); // set flag when opening the SelectItemsModal
   };
 
+  useEffect(() => {
+    if (!showSelectItemsModal && reopenParentModal) {
+      setModalVisible(true);
+      setReopenParentModal(false); // reset to default
+    }
+  }, [showSelectItemsModal, reopenParentModal]);
+
   return (
-    <SafeAreaView>
+    <>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.OverlayStyle} />
         <View style={styles.ModalView}>
-          <Text style={styles.ModalTitleFont}>
-            {(removed ? 'Remove' : '') + 'Team member'}
-          </Text>
+          <Text style={styles.ModalTitleFont}>Related horse</Text>
           <View style={styles.ModalContentView}>
             <AuthorizeItem
-              fullName={member?.fullName}
-              avatar={member?.avatar}
-              detail={member?.detail}
+              fullName={horse?.fullName}
+              avatar={horse?.avatar}
+              detail={horse?.detail}
             />
-            <DropDownSelect
-              icon={PublicSafetyWeakIcon}
-              selectedIcon={PublicSafetyIcon}
-              placeholder={'Select authority...'}
-              value={authorityValue}
-              options={authorityOptions}
-              onPress={handleDropDownSelectChange}
+            <TouchableIconTextItem
+              icon={BiotechIcon}
+              text={horse?.detail}
+              downIconVisible={true}
+              onPress={() =>
+                handleSelectItemsModal(
+                  'Select relationship',
+                  RelationHorsesData,
+                )
+              }
             />
           </View>
 
           <View style={styles.BottomButton}>
-            {authorityValue !== '' ? (
-              <Pressable style={[styles.Button, styles.ButtonApply]}>
-                <Text style={[styles.TextStyle, styles.TextApply]}>
-                  {removed ? 'Remove' : 'Save'}
-                </Text>
-              </Pressable>
-            ) : (
-              ''
-            )}
-
+            <Pressable style={[styles.Button, styles.ButtonApply]}>
+              <Text style={[styles.TextStyle, styles.TextApply]}>Save</Text>
+            </Pressable>
             <Pressable
               style={[styles.Button, styles.ButtonCancel]}
               onPress={() => setModalVisible(false)}>
@@ -75,7 +83,14 @@ const TeamMemberModal = ({modalVisible, setModalVisible, member, removed}) => {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+      <SelectItemsModal
+        modalVisible={showSelectItemsModal}
+        setModalVisible={setShowSelectItemsModal}
+        title={selectItemsModalTitle}
+        data={selectItemsModalData}
+        govermenceIconVisible={false}
+      />
+    </>
   );
 };
 
@@ -154,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TeamMemberModal;
+export default RelatedHorsesModal;

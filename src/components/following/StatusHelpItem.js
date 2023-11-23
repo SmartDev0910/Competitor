@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   ContentFont: {
     fontFamily: FONT_REGULAR,
     fontSize: 14,
-    width: width - 100,
+    width: width - 120,
     flexWrap: 'wrap',
     marginBottom: 2,
     color: COLOR_FONT_COMMENT,

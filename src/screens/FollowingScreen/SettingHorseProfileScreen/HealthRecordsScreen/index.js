@@ -81,6 +81,7 @@ const HealthRecordsScreen = ({navigation}) => {
         setModalVisible={setShowSelectItemsModal}
         title={selectItemsModalTitle}
         data={selectItemsModalData}
+        govermenceIconVisible={true}
       />
     </>
   );
