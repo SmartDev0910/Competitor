@@ -128,6 +128,7 @@ export const PDFIcon = require('../assets/icons/PDF.png');
 export const PenIcon = require('../assets/icons/Pen.png');
 export const PenSquaredIcon = require('../assets/icons/PenSquared.png');
 export const PeopleIcon = require('../assets/icons/People.png');
+export const PeopleWeakIcon = require('../assets/icons/PeopleWeak.png');
 export const PeopleOutlinedIcon = require('../assets/icons/PeopleOutlined.png');
 export const PhoneIcon = require('../assets/icons/Phone.png');
 export const PhoneWhiteIcon = require('../assets/icons/PhoneWhite.png');

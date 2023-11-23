@@ -81,6 +81,7 @@ const VaccinationRecordsScreen = ({navigation}) => {
         setModalVisible={setShowSelectItemsModal}
         title={selectItemsModalTitle}
         data={selectItemsModalData}
+        govermenceIconVisible={true}
       />
     </>
   );

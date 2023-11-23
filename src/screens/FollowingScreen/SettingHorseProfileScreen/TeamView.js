@@ -16,34 +16,22 @@ import {
 } from '../../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
 import AuthorizeItem from '../../../components/following/AuthorizeItem';
-import AuthorizedMe from '../../../constants/following/authorizedMe';
 import {LaurelWreathIcon, PlusOutlinedIcon} from '../../../constants/icons';
-import AuthorizeHelpModal from '../../../components/following/AuthorizeHelpModal';
-import AddTeamMemberModal from '../../../components/following/AddTeamMemberModal';
-import AuthorizeMeHelpModal from '../../../components/following/AuthorizeMeHelpModal';
-import TeamMemberModal from '../../../components/following/TeamMemberModal';
+import HorseTeamMemberModal from '../../../components/following/HorseTeamMemberModal';
 import GovermentRecordsModal from '../../../components/following/GovermentRecordsModal';
+import TeamSettingMembersData from '../../../constants/following/teamSettingMembers';
+import RemoveHorseTeamMemberModal from '../../../components/following/RemoveHorseTeamMemberModal';
+import AddHorseTeamMemberModal from '../../../components/following/AddHorseTeamMemberModal';
 
 const TeamView = ({navigation}) => {
-  const [showAuthorizeHelpModal, setShowAuthorizeHelpModal] =
-    React.useState(false);
-  const [showAuthorizeMeHelpModal, setShowAuthorizeMeHelpModal] =
-    React.useState(false);
   const [showAddTeamMemberModal, setShowAddTeamMemberModal] =
     React.useState(false);
   const [showGovermentRecordsModal, setShowGovermentRecordsModal] =
     React.useState(false);
   const [showTeamMemberModal, setShowTeamMemberModal] = React.useState(false);
-  const [removedTeamModal, setRemovedTeamModal] = React.useState(false);
+  const [showRemoveTeamMemberModal, setShowRemoveTeamMemberModal] =
+    React.useState(false);
   const [selectedMember, setSelectedMember] = React.useState(null);
-
-  const handleAuthorizeHelpModal = () => {
-    setShowAuthorizeHelpModal(true);
-  };
-
-  const handleAuthorizeMeHelpModal = () => {
-    setShowAuthorizeMeHelpModal(true);
-  };
 
   const handleAddTeamMemberModal = () => {
     setShowAddTeamMemberModal(true);
@@ -51,14 +39,12 @@ const TeamView = ({navigation}) => {
 
   const handleTeamMemberModal = item => {
     setSelectedMember(item);
-    setRemovedTeamModal(false);
     setShowTeamMemberModal(true);
   };
 
   const handleRemoveTeamMemberModal = item => {
     setSelectedMember(item);
-    setRemovedTeamModal(true);
-    setShowTeamMemberModal(true);
+    setShowRemoveTeamMemberModal(true);
   };
 
   const handleGovermentRecordsModal = () => {
@@ -81,7 +67,7 @@ const TeamView = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.AuthorizedWrapper}>
-            {AuthorizedMe.map((item, index) => {
+            {TeamSettingMembersData.map((item, index) => {
               return (
                 <AuthorizeItem
                   key={index}
@@ -102,23 +88,19 @@ const TeamView = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <AuthorizeHelpModal
-        modalVisible={showAuthorizeHelpModal}
-        setModalVisible={setShowAuthorizeHelpModal}
-      />
-      <AuthorizeMeHelpModal
-        modalVisible={showAuthorizeMeHelpModal}
-        setModalVisible={setShowAuthorizeMeHelpModal}
-      />
-      <AddTeamMemberModal
+      <AddHorseTeamMemberModal
         modalVisible={showAddTeamMemberModal}
         setModalVisible={setShowAddTeamMemberModal}
       />
-      <TeamMemberModal
+      <HorseTeamMemberModal
         modalVisible={showTeamMemberModal}
         setModalVisible={setShowTeamMemberModal}
         member={selectedMember}
-        removed={removedTeamModal}
+      />
+      <RemoveHorseTeamMemberModal
+        modalVisible={showRemoveTeamMemberModal}
+        setModalVisible={setShowRemoveTeamMemberModal}
+        member={selectedMember}
       />
       <GovermentRecordsModal
         modalVisible={showGovermentRecordsModal}
