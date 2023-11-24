@@ -87,3 +87,5 @@ export const JennyWilliamsImage = require('../assets/images/JennyWilliams.png');
 export const CameraRollImage = require('../assets/images/CameraRoll.png');
 export const CheckmarkImage = require('../assets/images/Checkmark.png');
 export const SkippyProfileImage = require('../assets/images/SkippyProfile.png');
+export const PegasusLogoLgImage = require('../assets/images/PegasusLogoLg.png');
+export const PegasusLogoSmImage = require('../assets/images/PegasusLogoSm.png');
