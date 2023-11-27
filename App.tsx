@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthLoadingScreen from './src/screens/AuthLoadingScreen';
 import SplashScreen from './src/screens/SplashScreen';
+import {AuthProvider} from './src/providers/AuthProvider';
 
 function App(): JSX.Element {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,9 @@ function App(): JSX.Element {
     <SplashScreen />
   ) : (
     <NavigationContainer>
-      <AuthLoadingScreen />
+      <AuthProvider>
+        <AuthLoadingScreen />
+      </AuthProvider>
     </NavigationContainer>
   );
 }

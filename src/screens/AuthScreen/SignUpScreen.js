@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -17,15 +17,11 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import IconLabeledText from '../../components/following/IconLabeledText';
-import {
-  ArrowLeftIcon,
-  MailWeakIcon,
-  UserIcon,
-  UserWeakIcon,
-} from '../../constants/icons';
+import {ArrowLeftIcon, MailWeakIcon, UserWeakIcon} from '../../constants/icons';
 import PasswordTextInput from '../../components/following/PasswordTextInput';
 import ToggleIconLabeledItem from '../../components/common/ToggleIconLabeledItem';
 import RolesData from '../../constants/auth/roles';
+import SignUpSuccessModal from '../../components/auth/SignUpSuccessModal';
 
 const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = React.useState('');
@@ -35,16 +31,24 @@ const SignUpScreen = ({navigation}) => {
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [showFormView, setShowFormView] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [showSignUpSuccessModal, setShowSignUpSuccessModal] =
+    React.useState(false);
 
   const handleNextPress = () => {
-    setShowFormView(!showFormView);
+    if (showFormView) setShowSignUpSuccessModal(true);
+    else setShowFormView(true);
+  };
+
+  const handleBackPress = () => {
+    if (showFormView) setShowFormView(false);
+    else navigation.goBack();
   };
 
   return (
     <SafeAreaView style={styles.SafeAreaView}>
       <View style={styles.Wrapper}>
         <View style={styles.Appbar}>
-          <Pressable onPress={() => navigation.goBack()}>
+          <Pressable onPress={handleBackPress}>
             <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
           </Pressable>
           <Image source={PegasusLogoSmImage} />
@@ -123,6 +127,10 @@ const SignUpScreen = ({navigation}) => {
           </Pressable>
         </View>
       </View>
+      <SignUpSuccessModal
+        modalVisible={showSignUpSuccessModal}
+        setModalVisible={setShowSignUpSuccessModal}
+      />
     </SafeAreaView>
   );
 };
