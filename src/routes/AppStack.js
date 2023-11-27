@@ -56,6 +56,10 @@ import {
   CogginsScreen,
   HealthRecordsScreen,
   VaccinationRecordsScreen,
+  PurchaseTicketsScreen,
+  PurchaseConfirmationScreen,
+  PurchasePayScreen,
+  PurchaseSplitPaymentsScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -307,6 +311,34 @@ function EventsStackScreen() {
         <EventsStack.Screen
           name="RegisterTicketsScreen"
           component={RegisterTicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="PurchaseTicketsScreen"
+          component={PurchaseTicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="PurchaseConfirmationScreen"
+          component={PurchaseConfirmationScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="PurchasePayScreen"
+          component={PurchasePayScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <EventsStack.Screen
+          name="PurchaseSplitPaymentsScreen"
+          component={PurchaseSplitPaymentsScreen}
           options={{
             headerShown: false,
           }}
