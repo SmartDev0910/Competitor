@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AuthStack from '../../routes/AuthStack';
 import AppStack from '../../routes/AppStack';
 
-export default function AuthLoadingScreen({userToken = true}) {
+export default function AuthLoadingScreen({userToken = false}) {
   const Stack = createStackNavigator();
 
   return (

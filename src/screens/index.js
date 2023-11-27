@@ -1,11 +1,15 @@
 // Nav Screens
 export {default as NavScreen} from './NavScreen';
 
+// Splash Screens
+export {default as SplashScreen} from './SplashScreen';
+
 // Auth Loading Screens
 export {default as AuthLoadingScreen} from './AuthLoadingScreen';
 
-// Splash Screens
-export {default as SplashScreen} from './SplashScreen';
+// Auth Screens
+export {default as SignInScreen} from './AuthScreen/SignInScreen';
+export {default as SignUpScreen} from './AuthScreen/SignUpScreen';
 
 // Home Screens
 export {default as HomeScreen} from './HomeScreen';
