@@ -13,7 +13,7 @@ import SpectatorTicketsData from '../../../../constants/events/spectatorTickets'
 
 function SpectatorTicketsScreen({navigation}) {
   const handlePurchaseTickets = () => {
-    navigation.navigate('RegisterTicketsScreen');
+    navigation.navigate('PurchaseTicketsScreen');
   };
 
   return (

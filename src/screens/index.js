@@ -46,6 +46,11 @@ export {default as RegisterSignScreen} from './EventsScreen/RegisterScreen/SignS
 export {default as RegisterSplitPaymentsScreen} from './EventsScreen/RegisterScreen/SplitPaymentsScreen';
 export {default as RegisterTicketsScreen} from './EventsScreen/RegisterScreen/TicketsScreen';
 
+export {default as PurchaseTicketsScreen} from './EventsScreen/PurchaseScreen/TicketsScreen';
+export {default as PurchaseConfirmationScreen} from './EventsScreen/PurchaseScreen/ConfirmationScreen';
+export {default as PurchasePayScreen} from './EventsScreen/PurchaseScreen/PayScreen';
+export {default as PurchaseSplitPaymentsScreen} from './EventsScreen/PurchaseScreen/SplitPaymentsScreen';
+
 // Following Screens
 export {default as FollowingScreen} from './FollowingScreen/FollowingScreen';
 export {default as ProfileScreen} from './FollowingScreen/ProfileScreen';
