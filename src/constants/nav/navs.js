@@ -35,7 +35,7 @@ export default [
   {
     icon: MessagingIcon,
     text: 'Messages',
-    route: 'FollowingScreen',
+    route: 'MessageScreen',
   },
   {
     icon: DoorbellIcon,

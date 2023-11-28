@@ -60,6 +60,8 @@ import {
   PurchaseConfirmationScreen,
   PurchasePayScreen,
   PurchaseSplitPaymentsScreen,
+  MessageSearchScreen,
+  MessageDetailScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -133,6 +135,20 @@ function MessageStackScreen() {
       <MessageStack.Screen
         name="MessageScreen"
         component={MessageScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <MessageStack.Screen
+        name="MessageSearchScreen"
+        component={MessageSearchScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <MessageStack.Screen
+        name="MessageDetailScreen"
+        component={MessageDetailScreen}
         options={{
           headerShown: false,
         }}

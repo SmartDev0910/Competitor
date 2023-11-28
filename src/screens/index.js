@@ -20,6 +20,8 @@ export {default as NotificationScreen} from './NotificationScreen';
 
 // Message Screens
 export {default as MessageScreen} from './MessageScreen';
+export {default as MessageSearchScreen} from './MessageScreen/SearchScreen';
+export {default as MessageDetailScreen} from './MessageScreen/DetailScreen';
 
 // Event Screens
 export {default as EventsScreen} from './EventsScreen/EventsScreen';
