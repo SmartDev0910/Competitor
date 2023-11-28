@@ -16,9 +16,9 @@ import {
   COLOR_FONT_COMMENT,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
-import SplitPaymentsTicketsPane from '../../../components/events/SplitPaymentsTicketsPane';
-import SplitPaymentsSummaryPane from '../../../components/events/SplitPaymentsSummaryPane';
-import PaySplitPaymentsModal from '../../../components/events/PaySplitPaymentsModal';
+import PurchaseSplitPaymentsTicketsPane from '../../../components/events/PurchaseSplitPaymentsTicketsPane';
+import PurchaseSplitPaymentsSummaryPane from '../../../components/events/PurchaseSplitPaymentsSummaryPane';
+import PurchasePaySplitPaymentsModal from '../../../components/events/PurchasePaySplitPaymentsModal';
 
 const SplitPaymentsScreen = ({navigation}) => {
   const [showPaySplitPaymentsModal, setShowPaySplitPaymentsModal] =
@@ -45,14 +45,14 @@ const SplitPaymentsScreen = ({navigation}) => {
   return (
     <>
       <View style={styles.Wrapper}>
-        <Appbar title="Split Payments" navigation={navigation} />
+        <Appbar title="Pay" navigation={navigation} />
         <ScrollView>
           <View style={styles.ContentView}>
-            <SplitPaymentsTicketsPane
+            <PurchaseSplitPaymentsTicketsPane
               collapsed={ticketsCollapsed}
               onCollapse={handleTicketsCollapse}
             />
-            <SplitPaymentsSummaryPane
+            <PurchaseSplitPaymentsSummaryPane
               collapsed={summaryCollapsed}
               onCollapse={handleSummaryCollapse}
             />
@@ -71,9 +71,10 @@ const SplitPaymentsScreen = ({navigation}) => {
           </Pressable>
         </View>
       </View>
-      <PaySplitPaymentsModal
+      <PurchasePaySplitPaymentsModal
         modalVisible={showPaySplitPaymentsModal}
         setModalVisible={setShowPaySplitPaymentsModal}
+        navigation={navigation}
       />
     </>
   );

@@ -18,7 +18,7 @@ import {
   COLOR_FONT_COMMENT,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
-import TicketsPaneItem from '../../../components/events/TicketsPaneItem';
+import PurchaseTicketsPaneItem from '../../../components/events/PurchaseTicketsPaneItem';
 import Divider from '../../../components/home/Divider';
 import PurchaseTicketsData from '../../../constants/events/purchaseTicketsData';
 
@@ -39,7 +39,7 @@ const TicketsScreen = ({navigation}) => {
           <View style={styles.TicketsWrapper}>
             {PurchaseTicketsData.map((item, ticketIndex) => (
               <React.Fragment key={'ticket' + ticketIndex}>
-                <TicketsPaneItem
+                <PurchaseTicketsPaneItem
                   title={item.subTitle}
                   available={item.available}
                   price={item.price}

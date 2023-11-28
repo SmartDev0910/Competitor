@@ -11,7 +11,6 @@ import {
   COLOR_EVENT_BORDER,
   COLOR_FONT_COMMENT,
   COLOR_FONT_DEFAULT,
-  COLOR_PINK,
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR} from '../../constants/fonts';
@@ -22,7 +21,7 @@ const StatusHelpItem = ({image, title, content, onPress}) => {
       <Image source={image} style={styles.Image} />
       <View style={styles.DetailView}>
         <Text style={styles.TitleFont}>{title}</Text>
-        <Text style={styles.TitleFont}>{content}</Text>
+        {content ? <Text style={styles.TitleFont}>{content}</Text> : ''}
       </View>
     </TouchableOpacity>
   );
@@ -45,7 +44,6 @@ const styles = StyleSheet.create({
   Image: {
     width: 22,
     height: 22,
-    marginTop: 2,
   },
   LocationFont: {
     color: COLOR_FONT_COMMENT,

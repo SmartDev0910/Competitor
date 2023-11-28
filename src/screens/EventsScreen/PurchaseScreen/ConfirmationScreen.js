@@ -16,19 +16,19 @@ import {
   COLOR_FONT_COMMENT,
 } from '../../../constants/colors';
 import {FONT_REGULAR} from '../../../constants/fonts';
-import ConfirmationTicketsPane from '../../../components/events/ConfirmationTicketsPane';
-import ConfirmationGrandTotalPane from '../../../components/events/ConfirmationGrandTotalPane';
+import PurchaseConfirmationTicketsPane from '../../../components/events/PurchaseConfirmationTicketsPane';
+import PurchaseConfirmationTotalPane from '../../../components/events/PurchaseConfirmationTotalPane';
 
 const ConfirmationScreen = ({navigation}) => {
   const [ticketsCollapsed, setTicketsCollapsed] = React.useState(true);
-  const [grandTotalCollapsed, setGrandTotalCollapsed] = React.useState(true);
+  const [totalCollapsed, setTotalCollapsed] = React.useState(true);
 
   const handleTicketsCollapse = () => {
     setTicketsCollapsed(!ticketsCollapsed);
   };
 
-  const handleGrandTotalCollapse = () => {
-    setGrandTotalCollapsed(!grandTotalCollapsed);
+  const handleTotalCollapse = () => {
+    setTotalCollapsed(!totalCollapsed);
   };
 
   const handleNext = () => {
@@ -45,13 +45,13 @@ const ConfirmationScreen = ({navigation}) => {
         <Appbar title="Confirmation" navigation={navigation} />
         <ScrollView>
           <View style={styles.ContentView}>
-            <ConfirmationTicketsPane
+            <PurchaseConfirmationTicketsPane
               collapsed={ticketsCollapsed}
               onCollapse={handleTicketsCollapse}
             />
-            <ConfirmationGrandTotalPane
-              collapsed={grandTotalCollapsed}
-              onCollapse={handleGrandTotalCollapse}
+            <PurchaseConfirmationTotalPane
+              collapsed={totalCollapsed}
+              onCollapse={handleTotalCollapse}
             />
           </View>
         </ScrollView>

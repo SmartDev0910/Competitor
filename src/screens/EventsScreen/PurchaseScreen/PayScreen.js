@@ -21,7 +21,7 @@ import {
   COLOR_FONT_COMMENT,
 } from '../../../constants/colors';
 import {FONT_BOLD, FONT_REGULAR} from '../../../constants/fonts';
-import SelectPaymentMethodModal from '../../../components/events/SelectPaymentMethodModal';
+import PurchaseSelectPaymentMethodModal from '../../../components/events/PurchaseSelectPaymentMethodModal';
 import {ArrowRightIcon} from '../../../constants/icons';
 
 const PayScreen = ({navigation}) => {
@@ -48,24 +48,16 @@ const PayScreen = ({navigation}) => {
           <View style={styles.ContentView}>
             <View style={styles.PayResultView}>
               <View style={styles.PayRowView}>
-                <Text style={styles.PayItemFont}>Registrations</Text>
-                <Text style={styles.PayItemFont}>$775</Text>
-              </View>
-              <View style={styles.PayRowView}>
-                <Text style={styles.PayItemFont}>Fees</Text>
-                <Text style={styles.PayItemFont}>$6,750</Text>
-              </View>
-              <View style={styles.PayRowView}>
                 <Text style={styles.PayItemFont}>Tickets</Text>
-                <Text style={styles.PayItemFont}>$2,400</Text>
+                <Text style={styles.PayItemFont}>$320</Text>
               </View>
               <View style={styles.PayRowView}>
                 <Text style={styles.PayItemFont}>Taxes</Text>
-                <Text style={styles.PayItemFont}>$250</Text>
+                <Text style={styles.PayItemFont}>$16</Text>
               </View>
               <View style={styles.PayRowView}>
-                <Text style={styles.PayTotalTextFont}>Grand Total</Text>
-                <Text style={styles.PayTotalTextFont}>$10,175</Text>
+                <Text style={styles.PayTotalTextFont}>Total</Text>
+                <Text style={styles.PayTotalTextFont}>$336</Text>
               </View>
             </View>
             <TouchableOpacity
@@ -86,14 +78,15 @@ const PayScreen = ({navigation}) => {
             style={[styles.Button, styles.ButtonApply]}
             onPress={handleSelectPaymentMethodModal}>
             <Text style={[styles.TextStyle, styles.TextApply]}>
-              {'PAY $10,175 >'}
+              {'pay $336 >'}
             </Text>
           </Pressable>
         </View>
       </View>
-      <SelectPaymentMethodModal
+      <PurchaseSelectPaymentMethodModal
         modalVisible={showSelectPaymentMethodModal}
         setModalVisible={setShowSelectPaymentMethodModal}
+        navigation={navigation}
       />
     </>
   );
