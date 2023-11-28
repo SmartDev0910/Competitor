@@ -19,10 +19,16 @@ import {
 import IconLabeledText from '../../components/following/IconLabeledText';
 import {MailWeakIcon} from '../../constants/icons';
 import PasswordTextInput from '../../components/following/PasswordTextInput';
+import {AuthContext} from '../../providers/AuthProvider';
 
 const SignInScreen = ({navigation}) => {
+  const [isAuth, setIsAuth] = React.useContext(AuthContext);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+
+  const handleSignIn = () => {
+    setIsAuth(true);
+  };
 
   return (
     <SafeAreaView style={styles.SafeAreaView}>
@@ -56,7 +62,9 @@ const SignInScreen = ({navigation}) => {
         </View>
       </View>
       <View style={styles.BottomButtonView}>
-        <Pressable style={[styles.Button, styles.ButtonSignIn]}>
+        <Pressable
+          style={[styles.Button, styles.ButtonSignIn]}
+          onPress={handleSignIn}>
           <Text style={[styles.TextStyle, styles.TextSignIn]}>Sign in</Text>
         </Pressable>
         <Text style={styles.ORTextFont}>OR</Text>

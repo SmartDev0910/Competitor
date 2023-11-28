@@ -111,6 +111,7 @@ export const MindMapWeakIcon = require('../assets/icons/MindMapWeak.png');
 export const MinusSignIcon = require('../assets/icons/MinusSign.png');
 export const MinusSignOutlinedIcon = require('../assets/icons/MinusSignOutlined.png');
 export const MoneyBagIcon = require('../assets/icons/MoneyBag.png');
+export const MoreIcon = require('../assets/icons/More.png');
 export const MySpaceIcon = require('../assets/icons/MySpace.png');
 export const NameTagIcon = require('../assets/icons/NameTag.png');
 export const NameTagWeakIcon = require('../assets/icons/NameTagWeak.png');

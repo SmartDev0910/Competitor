@@ -40,7 +40,7 @@ export default [
   {
     icon: DoorbellIcon,
     text: 'Notifications',
-    route: 'FollowingScreen',
+    route: 'NotificationScreen',
   },
   {
     icon: QuillPenIcon,
