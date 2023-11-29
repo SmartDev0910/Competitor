@@ -29,6 +29,17 @@ export {default as PaperworkSearchScreen} from './PaperworkScreen/SearchScreen';
 export {default as PaperworkSignScreen} from './PaperworkScreen/SignScreen';
 export {default as PaperworkSignedScreen} from './PaperworkScreen/SignedScreen';
 
+// Help Screens
+export {default as HelpScreen} from './HelpScreen';
+export {default as HelpFAQScreen} from './HelpScreen/FAQScreen';
+export {default as HelpTermsAndConditionsScreen} from './HelpScreen/TermsAndConditionsScreen';
+
+// Paperwork Screens
+export {default as BillsScreen} from './BillsScreen';
+export {default as BillsSearchScreen} from './BillsScreen/SearchScreen';
+export {default as BillsPaidScreen} from './BillsScreen/PaidScreen';
+export {default as BillsUnPaidScreen} from './BillsScreen/UnpaidScreen';
+
 // Event Screens
 export {default as EventsScreen} from './EventsScreen/EventsScreen';
 export {default as MyEventsScreen} from './EventsScreen/MyEventsScreen';

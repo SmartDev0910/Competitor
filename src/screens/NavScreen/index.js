@@ -6,7 +6,7 @@ import {ModalContext} from '../../providers/ModalProvider';
 import {useIsFocused} from '@react-navigation/native';
 
 function NavScreen({navigation}) {
-  const [, setShowNavModal] = useContext(ModalContext);
+  const [showNavModal, setShowNavModal] = useContext(ModalContext);
   const isFocused = useIsFocused();
 
   useEffect(() => {

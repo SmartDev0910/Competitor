@@ -66,6 +66,13 @@ import {
   PaperworkSearchScreen,
   PaperworkSignScreen,
   PaperworkSignedScreen,
+  HelpScreen,
+  HelpFAQScreen,
+  HelpTermsAndConditionsScreen,
+  BillsScreen,
+  BillsSearchScreen,
+  BillsPaidScreen,
+  BillsUnPaidScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -685,6 +692,55 @@ function NavStackScreen() {
         <NavStack.Screen
           name="PaperworkSignedScreen"
           component={PaperworkSignedScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HelpScreen"
+          component={HelpScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HelpFAQScreen"
+          component={HelpFAQScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HelpTermsAndConditionsScreen"
+          component={HelpTermsAndConditionsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsScreen"
+          component={BillsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsSearchScreen"
+          component={BillsSearchScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsPaidScreen"
+          component={BillsPaidScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsUnPaidScreen"
+          component={BillsUnPaidScreen}
           options={{
             headerShown: false,
           }}

@@ -100,6 +100,7 @@ export const LogoIcon = require('../assets/icons/Logo.png');
 export const LogoutWeakIcon = require('../assets/icons/LogoutWeak.png');
 export const MagneticCardIcon = require('../assets/icons/MagneticCard.png');
 export const MagneticCardWeakIcon = require('../assets/icons/MagneticCardWeak.png');
+export const MailIcon = require('../assets/icons/Mail.png');
 export const MailWeakIcon = require('../assets/icons/MailWeak.png');
 export const MapIcon = require('../assets/icons/Map.png');
 export const MapOutlinedIcon = require('../assets/icons/MapOutlined.png');

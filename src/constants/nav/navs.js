@@ -50,7 +50,7 @@ export default [
   {
     icon: BillIcon,
     text: 'Bills',
-    route: 'FollowingScreen',
+    route: 'BillsScreen',
   },
   {
     icon: SettingsIcon,
@@ -60,6 +60,6 @@ export default [
   {
     icon: HelpIcon,
     text: 'Help',
-    route: 'FollowingScreen',
+    route: 'HelpScreen',
   },
 ];
