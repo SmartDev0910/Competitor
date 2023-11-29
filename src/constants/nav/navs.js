@@ -45,7 +45,7 @@ export default [
   {
     icon: QuillPenIcon,
     text: 'Paperwork',
-    route: 'FollowingScreen',
+    route: 'PaperworkScreen',
   },
   {
     icon: BillIcon,

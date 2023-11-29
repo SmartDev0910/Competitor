@@ -23,6 +23,12 @@ export {default as MessageScreen} from './MessageScreen';
 export {default as MessageSearchScreen} from './MessageScreen/SearchScreen';
 export {default as MessageDetailScreen} from './MessageScreen/DetailScreen';
 
+// Paperwork Screens
+export {default as PaperworkScreen} from './PaperworkScreen';
+export {default as PaperworkSearchScreen} from './PaperworkScreen/SearchScreen';
+export {default as PaperworkSignScreen} from './PaperworkScreen/SignScreen';
+export {default as PaperworkSignedScreen} from './PaperworkScreen/SignedScreen';
+
 // Event Screens
 export {default as EventsScreen} from './EventsScreen/EventsScreen';
 export {default as MyEventsScreen} from './EventsScreen/MyEventsScreen';

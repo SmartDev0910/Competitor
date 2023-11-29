@@ -62,6 +62,10 @@ import {
   PurchaseSplitPaymentsScreen,
   MessageSearchScreen,
   MessageDetailScreen,
+  PaperworkScreen,
+  PaperworkSearchScreen,
+  PaperworkSignScreen,
+  PaperworkSignedScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -653,6 +657,34 @@ function NavStackScreen() {
         <NavStack.Screen
           name="RegisterTicketsScreen"
           component={RegisterTicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkScreen"
+          component={PaperworkScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkSearchScreen"
+          component={PaperworkSearchScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkSignScreen"
+          component={PaperworkSignScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkSignedScreen"
+          component={PaperworkSignedScreen}
           options={{
             headerShown: false,
           }}

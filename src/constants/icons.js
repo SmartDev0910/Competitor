@@ -11,6 +11,7 @@ export const ArrowLeftWhiteIcon = require('../assets/icons/ArrowLeftWhite.png');
 export const ArrowDownIcon = require('../assets/icons/ArrowDown.png');
 export const ArrowDownOutlinedIcon = require('../assets/icons/ArrowDownOutlined.png');
 export const ArrowUpPinkIcon = require('../assets/icons/ArrowUpPink.png');
+export const AttachWeakIcon = require('../assets/icons/AttachWeak.png');
 export const AuditWeakIcon = require('../assets/icons/AuditWeak.png');
 export const BillIcon = require('../assets/icons/Bill.png');
 export const BiotechIcon = require('../assets/icons/Biotech.png');
