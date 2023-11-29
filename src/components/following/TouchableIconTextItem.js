@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import {
   COLOR_EVENT_BORDER,
   COLOR_FONT_DEFAULT,
@@ -28,6 +35,8 @@ const TouchableIconTextItem = ({
   );
 };
 
+const width = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   Wrapper: {
     height: 56,
@@ -55,6 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLOR_FONT_DEFAULT,
     lineHeight: 23,
+    width: width - 140,
   },
 });
 

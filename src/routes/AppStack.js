@@ -60,6 +60,19 @@ import {
   PurchaseConfirmationScreen,
   PurchasePayScreen,
   PurchaseSplitPaymentsScreen,
+  MessageSearchScreen,
+  MessageDetailScreen,
+  PaperworkScreen,
+  PaperworkSearchScreen,
+  PaperworkSignScreen,
+  PaperworkSignedScreen,
+  HelpScreen,
+  HelpFAQScreen,
+  HelpTermsAndConditionsScreen,
+  BillsScreen,
+  BillsSearchScreen,
+  BillsPaidScreen,
+  BillsUnPaidScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -133,6 +146,20 @@ function MessageStackScreen() {
       <MessageStack.Screen
         name="MessageScreen"
         component={MessageScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <MessageStack.Screen
+        name="MessageSearchScreen"
+        component={MessageSearchScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <MessageStack.Screen
+        name="MessageDetailScreen"
+        component={MessageDetailScreen}
         options={{
           headerShown: false,
         }}
@@ -637,6 +664,83 @@ function NavStackScreen() {
         <NavStack.Screen
           name="RegisterTicketsScreen"
           component={RegisterTicketsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkScreen"
+          component={PaperworkScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkSearchScreen"
+          component={PaperworkSearchScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkSignScreen"
+          component={PaperworkSignScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="PaperworkSignedScreen"
+          component={PaperworkSignedScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HelpScreen"
+          component={HelpScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HelpFAQScreen"
+          component={HelpFAQScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="HelpTermsAndConditionsScreen"
+          component={HelpTermsAndConditionsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsScreen"
+          component={BillsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsSearchScreen"
+          component={BillsSearchScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsPaidScreen"
+          component={BillsPaidScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsUnPaidScreen"
+          component={BillsUnPaidScreen}
           options={{
             headerShown: false,
           }}

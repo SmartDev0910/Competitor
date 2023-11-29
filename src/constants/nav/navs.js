@@ -35,7 +35,7 @@ export default [
   {
     icon: MessagingIcon,
     text: 'Messages',
-    route: 'FollowingScreen',
+    route: 'MessageScreen',
   },
   {
     icon: DoorbellIcon,
@@ -45,12 +45,12 @@ export default [
   {
     icon: QuillPenIcon,
     text: 'Paperwork',
-    route: 'FollowingScreen',
+    route: 'PaperworkScreen',
   },
   {
     icon: BillIcon,
     text: 'Bills',
-    route: 'FollowingScreen',
+    route: 'BillsScreen',
   },
   {
     icon: SettingsIcon,
@@ -60,6 +60,6 @@ export default [
   {
     icon: HelpIcon,
     text: 'Help',
-    route: 'FollowingScreen',
+    route: 'HelpScreen',
   },
 ];

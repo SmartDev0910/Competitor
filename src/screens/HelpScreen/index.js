@@ -8,34 +8,28 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR, FONT_BOLD} from '../../constants/fonts';
-import MessageView from './MessageView';
-import ImageButton from '../../components/home/ImageButton';
-import {SearchIcon} from '../../constants/icons';
+import HelpView from './HelpView';
+import FAQView from './FAQView';
+import PoliciesView from './PoliciesView';
 
-function MessageScreen({navigation}) {
+function HelpScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'all', title: 'All'},
-    {key: 'unread', title: 'Unread'},
-    {key: 'read', title: 'Read'},
+    {key: 'help', title: 'Help'},
+    {key: 'faq', title: 'FAQ'},
+    {key: 'policies', title: 'Policies'},
   ]);
 
-  const AllTab = () => (
-    <MessageView navigation={navigation} visibleAction={true} />
-  );
+  const HelpTab = () => <HelpView navigation={navigation} />;
 
-  const UnreadTab = () => (
-    <MessageView navigation={navigation} visibleAction={true} />
-  );
+  const FAQTab = () => <FAQView navigation={navigation} />;
 
-  const ReadTab = () => (
-    <MessageView navigation={navigation} visibleAction={true} />
-  );
+  const PoliciesTab = () => <PoliciesView navigation={navigation} />;
 
   const renderScene = SceneMap({
-    all: AllTab,
-    unread: UnreadTab,
-    read: ReadTab,
+    help: HelpTab,
+    faq: FAQTab,
+    policies: PoliciesTab,
   });
 
   const renderTabBar = props => (
@@ -66,21 +60,9 @@ function MessageScreen({navigation}) {
     />
   );
 
-  const handleSearchModal = () => {
-    navigation.navigate('MessageSearchScreen');
-  };
-
   return (
     <View style={styles.Wrapper}>
-      <View style={styles.Appbar}>
-        <Text style={styles.TitleFont}>Messages</Text>
-        <ImageButton
-          source={SearchIcon}
-          style={styles.TopButton}
-          viewStyle={styles.TopButtonView}
-          onPress={handleSearchModal}
-        />
-      </View>
+      <Text style={styles.TitleFont}>Help</Text>
       <TabView
         navigationState={{index, routes}}
         renderScene={renderScene}
@@ -98,14 +80,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-  Appbar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 24,
-    marginVertical: 10,
-    paddingTop: 20,
-  },
   TopButton: {
     width: 24,
     height: 24,
@@ -120,7 +94,10 @@ const styles = StyleSheet.create({
     fontFamily: FONT_BOLD,
     fontSize: 20,
     color: COLOR_FONT_DEFAULT,
+    marginVertical: 10,
+    paddingHorizontal: 24,
+    paddingTop: 20,
   },
 });
 
-export default MessageScreen;
+export default HelpScreen;

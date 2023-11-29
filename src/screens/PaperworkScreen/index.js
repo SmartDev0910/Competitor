@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
 import {
@@ -8,34 +8,32 @@ import {
   COLOR_WHITE,
 } from '../../constants/colors';
 import {FONT_REGULAR, FONT_BOLD} from '../../constants/fonts';
-import MessageView from './MessageView';
 import ImageButton from '../../components/home/ImageButton';
 import {SearchIcon} from '../../constants/icons';
+import PaperworkView from './PaperworkView';
 
-function MessageScreen({navigation}) {
+function PaperworkScreen({navigation}) {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: 'all', title: 'All'},
-    {key: 'unread', title: 'Unread'},
-    {key: 'read', title: 'Read'},
+    {key: 'unsigned', title: 'Unsigned'},
+    {key: 'signed', title: 'Signed'},
+    {key: 'recieved', title: 'Recieved'},
   ]);
 
-  const AllTab = () => (
-    <MessageView navigation={navigation} visibleAction={true} />
-  );
+  const AllTab = () => <PaperworkView navigation={navigation} />;
 
-  const UnreadTab = () => (
-    <MessageView navigation={navigation} visibleAction={true} />
-  );
+  const UnsignedTab = () => <PaperworkView navigation={navigation} />;
 
-  const ReadTab = () => (
-    <MessageView navigation={navigation} visibleAction={true} />
-  );
+  const SignedTab = () => <PaperworkView navigation={navigation} />;
+
+  const RecievedTab = () => <PaperworkView navigation={navigation} />;
 
   const renderScene = SceneMap({
     all: AllTab,
-    unread: UnreadTab,
-    read: ReadTab,
+    unsigned: UnsignedTab,
+    signed: SignedTab,
+    recieved: RecievedTab,
   });
 
   const renderTabBar = props => (
@@ -67,13 +65,13 @@ function MessageScreen({navigation}) {
   );
 
   const handleSearchModal = () => {
-    navigation.navigate('MessageSearchScreen');
+    navigation.navigate('PaperworkSearchScreen');
   };
 
   return (
     <View style={styles.Wrapper}>
       <View style={styles.Appbar}>
-        <Text style={styles.TitleFont}>Messages</Text>
+        <Text style={styles.TitleFont}>Paperwork</Text>
         <ImageButton
           source={SearchIcon}
           style={styles.TopButton}
@@ -123,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MessageScreen;
+export default PaperworkScreen;
