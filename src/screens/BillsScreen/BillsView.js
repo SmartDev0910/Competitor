@@ -9,6 +9,9 @@ const BillsView = ({navigation}) => {
   const handlePress = status => {
     if (status === 'Paid') navigation.navigate('BillsPaidScreen');
     else if (status === 'Unpaid') navigation.navigate('BillsUnPaidScreen');
+    else if (status === 'Refunded') navigation.navigate('BillsRefundedScreen');
+    else if (status === 'Refund pending')
+      navigation.navigate('BillsRefundPendingScreen');
   };
 
   return (

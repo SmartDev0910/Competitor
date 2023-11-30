@@ -22,3 +22,4 @@ export const COLOR_BLACK_OPACITY = 'rgba(0, 0, 0, 0.70)';
 export const COLOR_GREY_DARK = 'rgba(119, 126, 133, 0.15)';
 export const COLOR_GREY_TEXT = '#777E85';
 export const COLOR_SWITCH_FALSE = 'rgba(31, 65, 115, 0.10)';
+export const COLOR_YELLOW = '#F38805';

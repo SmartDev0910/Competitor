@@ -12,6 +12,7 @@ import {
 import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 import {
   ArrowLeftIcon,
+  InfoIcon,
   LocationIcon,
   MagneticCardIcon,
   ShareRoundedIcon,
@@ -23,6 +24,7 @@ import {
   COLOR_PINK,
   COLOR_FONT_COMMENT,
   COLOR_SKY,
+  COLOR_YELLOW,
 } from '../../constants/colors';
 import ImageButton from '../../components/home/ImageButton';
 import {EventLogo4Image, WoodyWilsonImage} from '../../constants/images';
@@ -33,8 +35,9 @@ import BillsPaperworkPane from '../../components/bills/BillsPaperworkPane';
 import BillsGrandTotalPane from '../../components/bills/BillsGrandTotalPane';
 import Divider from '../../components/home/Divider';
 import IconLabeledItem from '../../components/bills/IconLabeledItem';
+import StatusHelpItem from '../../components/bills/StatusHelpItem';
 
-const PaidScreen = ({navigation}) => {
+const RefundedScreen = ({navigation}) => {
   const [registerationCollapsed, setRegisterationCollapsed] =
     React.useState(true);
   const [feesCollapsed, setFeesCollapsed] = React.useState(true);
@@ -82,7 +85,7 @@ const PaidScreen = ({navigation}) => {
           <View style={styles.ContentView}>
             <View style={styles.PriceView}>
               <Text style={styles.PriceTextFont}>{`$5,685`}</Text>
-              <Text style={styles.PriceCommentFont}>{`No scratches`}</Text>
+              <Text style={styles.PriceCommentFont}>{`$1,175 refunded`}</Text>
             </View>
             <View style={styles.AvatarView}>
               <Image source={WoodyWilsonImage} style={styles.AvatarImage} />
@@ -139,14 +142,19 @@ const PaidScreen = ({navigation}) => {
               onCollapse={handleGrandTotalCollapse}
             />
             <View style={styles.PaymentDetailView}>
-              <Text style={styles.PaymentDetailTitleFont}>Payment details</Text>
+              <Text style={styles.PaymentDetailTitleFont}>Refund details</Text>
               <IconLabeledItem
                 image={MagneticCardIcon}
-                title={'XXXX-XXXX-XXXX-1029'}
+                title={'Refunded to: XXXX-XXXX-XXXX-1029'}
               />
               <IconLabeledItem
                 image={TearOffCalendarIcon}
-                title={'Payment date: Dec 28, 2022'}
+                title={'Refund date: Dec 28, 2022'}
+              />
+              <StatusHelpItem
+                image={InfoIcon}
+                title="Organizer comments:"
+                content="Hi Elias - sorry to hear about your dad. I refund what I could but we do have policies for a reason because we have fixed costs we have to cover. So I hope this amount will be acceptable. I see you are registered to compete again next week, hopefully everything with your dad is fine and you are able to attend. See you then!"
               />
             </View>
           </View>
@@ -249,7 +257,7 @@ const styles = StyleSheet.create({
   PriceCommentFont: {
     fontFamily: FONT_REGULAR,
     fontSize: 12,
-    color: COLOR_FONT_DEFAULT,
+    color: COLOR_YELLOW,
   },
   AvatarView: {
     flexDirection: 'row',
@@ -320,4 +328,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PaidScreen;
+export default RefundedScreen;

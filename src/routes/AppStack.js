@@ -73,6 +73,8 @@ import {
   BillsSearchScreen,
   BillsPaidScreen,
   BillsUnPaidScreen,
+  BillsRefundedScreen,
+  BillsRefundPendingScreen,
 } from '../screens';
 import {
   HomeWeakIcon,
@@ -741,6 +743,20 @@ function NavStackScreen() {
         <NavStack.Screen
           name="BillsUnPaidScreen"
           component={BillsUnPaidScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsRefundedScreen"
+          component={BillsRefundedScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <NavStack.Screen
+          name="BillsRefundPendingScreen"
+          component={BillsRefundPendingScreen}
           options={{
             headerShown: false,
           }}
