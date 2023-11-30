@@ -89,3 +89,4 @@ export const CheckmarkImage = require('../assets/images/Checkmark.png');
 export const SkippyProfileImage = require('../assets/images/SkippyProfile.png');
 export const PegasusLogoLgImage = require('../assets/images/PegasusLogoLg.png');
 export const PegasusLogoSmImage = require('../assets/images/PegasusLogoSm.png');
+export const BlackLogoImage = require('../assets/images/BlackLogo.png');
