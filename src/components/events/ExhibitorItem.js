@@ -7,11 +7,11 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import {COLOR_FONT_COMMENT, COLOR_WHITE} from '../../constants/colors';
-import {FONT_REGULAR, FONT_SEMI_BOLD} from '../../constants/fonts';
-import {YearOfHorseIcon} from '../../constants/icons';
+import { COLOR_FONT_COMMENT, COLOR_WHITE } from '../../constants/colors';
+import { FONT_REGULAR, FONT_SEMI_BOLD } from '../../constants/fonts';
+import { YearOfHorseIcon } from '../../constants/icons';
 
-const ExhibitorItem = ({avatar, fullName, detail, onPress}) => {
+const ExhibitorItem = ({ avatar, fullName, detail, onPress }) => {
   return (
     <TouchableOpacity style={styles.View} onPress={onPress}>
       <Image source={avatar} style={styles.Avatar} />
