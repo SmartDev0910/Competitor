@@ -38,7 +38,9 @@ export {default as HelpTermsAndConditionsScreen} from './HelpScreen/TermsAndCond
 export {default as BillsScreen} from './BillsScreen';
 export {default as BillsSearchScreen} from './BillsScreen/SearchScreen';
 export {default as BillsPaidScreen} from './BillsScreen/PaidScreen';
-export {default as BillsUnPaidScreen} from './BillsScreen/UnpaidScreen';
+export {default as BillsUnPaidScreen} from './BillsScreen/UnPaidScreen';
+export {default as BillsRefundedScreen} from './BillsScreen/RefundedScreen';
+export {default as BillsRefundPendingScreen} from './BillsScreen/RefundPendingScreen';
 
 // Event Screens
 export {default as EventsScreen} from './EventsScreen/EventsScreen';

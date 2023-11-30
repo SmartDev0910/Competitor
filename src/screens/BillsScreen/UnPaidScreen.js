@@ -9,76 +9,139 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import {FONT_REGULAR} from '../../constants/fonts';
+import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
 import {
   ArrowLeftIcon,
-  DocumentsIcon,
-  ErrorIcon,
-  FullScreenIcon,
-  NameTagIcon,
-  PeopleIcon,
+  LocationIcon,
+  ShareRoundedIcon,
+  TearOffCalendarIcon,
 } from '../../constants/icons';
 import {
   COLOR_WHITE,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
+  COLOR_FONT_COMMENT,
+  COLOR_SKY,
 } from '../../constants/colors';
-import ImageLabeledItem from '../../components/paperwork/ImageLabeledItem';
-import StatusHelpItem from '../../components/paperwork/StatusHelpItem';
-import IconLabeledItem from '../../components/paperwork/IconLabeledItem';
-import {EventLogo4Image, JamesSpriegImage} from '../../constants/images';
-import SignSuccessModal from '../../components/paperwork/SignSuccessModal';
-import SignViewAnnexModal from '../../components/paperwork/SignViewAnnexModal';
+import ImageButton from '../../components/home/ImageButton';
+import {EventLogo4Image, WoodyWilsonImage} from '../../constants/images';
+import BillsRegistrationsPane from '../../components/bills/BillsRegistrationsPane';
+import BillsFeesPane from '../../components/bills/BillsFeesPane';
+import BillsTicketsPane from '../../components/bills/BillsTicketsPane';
+import BillsPaperworkPane from '../../components/bills/BillsPaperworkPane';
+import BillsGrandTotalPane from '../../components/bills/BillsGrandTotalPane';
+import Divider from '../../components/home/Divider';
+import SelectPaymentMethodModal from '../../components/events/SelectPaymentMethodModal';
 
 const UnPaidScreen = ({navigation}) => {
-  const [showSignSuccessModal, setShowSignSuccessModal] = React.useState(false);
-  const [showSignViewAnnexModal, setShowSignViewAnnexModal] =
+  const [showSelectPaymentModal, setShowSelectPaymentModal] =
     React.useState(false);
+  const [registerationCollapsed, setRegisterationCollapsed] =
+    React.useState(true);
+  const [feesCollapsed, setFeesCollapsed] = React.useState(true);
+  const [ticketsCollapsed, setTicketsCollapsed] = React.useState(true);
+  const [paperworkCollapsed, setPaperworkCollapsed] = React.useState(true);
+  const [grandTotalCollapsed, setGrandTotalCollapsed] = React.useState(true);
 
-  const handleSign = () => {
-    setShowSignSuccessModal(true);
+  const handleSelectPaymentModal = () => {
+    setShowSelectPaymentModal(true);
   };
 
-  const handleViewAnnex = () => {
-    setShowSignViewAnnexModal(true);
+  const handleRegisterationCollapse = () => {
+    setRegisterationCollapsed(!registerationCollapsed);
+  };
+
+  const handleFeesCollapse = () => {
+    setFeesCollapsed(!feesCollapsed);
+  };
+
+  const handleTicketsCollapse = () => {
+    setTicketsCollapsed(!ticketsCollapsed);
+  };
+
+  const handlePaperworkCollapse = () => {
+    setPaperworkCollapsed(!paperworkCollapsed);
+  };
+
+  const handleGrandTotalCollapse = () => {
+    setGrandTotalCollapsed(!grandTotalCollapsed);
   };
 
   return (
     <>
       <View style={styles.Wrapper}>
         <View style={styles.Appbar}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
-          </TouchableOpacity>
-          <Text style={styles.AppbarTextFont}>Sign</Text>
+          <View style={styles.AppbarTitleView}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Image source={ArrowLeftIcon} style={styles.AppbarButton} />
+            </TouchableOpacity>
+            <Text style={styles.AppbarTextFont}>Pay bill</Text>
+          </View>
+          <ImageButton
+            source={ShareRoundedIcon}
+            style={styles.TopButton}
+            viewStyle={styles.TopButtonView}
+          />
         </View>
         <ScrollView>
           <View style={styles.ContentView}>
-            <ImageLabeledItem title={'Jason Kalipa'} image={JamesSpriegImage} />
-            <ImageLabeledItem
-              title={'MARS Hosts Boy Martin'}
-              image={EventLogo4Image}
+            <View style={styles.PriceView}>
+              <Text style={styles.PriceTextFont}>{`$5,685`}</Text>
+              <Text style={styles.PriceCommentFont}>{`No scratches`}</Text>
+            </View>
+            <View style={styles.AvatarView}>
+              <Image source={WoodyWilsonImage} style={styles.AvatarImage} />
+              <View style={styles.AvatarInfoView}>
+                <Text style={styles.AvatarTextFont}>{`From`}</Text>
+                <Text style={styles.AvatarContentFont}>{`Elias Wilson`}</Text>
+              </View>
+            </View>
+            <View style={styles.AvatarView}>
+              <Image source={EventLogo4Image} style={styles.AvatarImage} />
+              <View style={styles.AvatarInfoView}>
+                <Text style={styles.AvatarTextFont}>{`Event`}</Text>
+                <Text
+                  style={
+                    styles.AvatarContentFont
+                  }>{`MARS Hosts Boy Martin`}</Text>
+              </View>
+            </View>
+            <View style={styles.IconRowView}>
+              <View style={styles.IconView}>
+                <Image source={TearOffCalendarIcon} style={styles.Icon} />
+              </View>
+              <Text style={styles.IconInfoTextFont}>
+                {`November 29th, 2021`}
+              </Text>
+            </View>
+            <View style={styles.IconRowView}>
+              <View style={styles.IconView}>
+                <Image source={LocationIcon} style={styles.Icon} />
+              </View>
+              <Text style={styles.IconInfoTextFont}>
+                {`158 Yellow Hill Rd, Middleburg, VA 20117`}
+              </Text>
+            </View>
+            <Divider style={styles.Divider} />
+            <BillsRegistrationsPane
+              collapsed={registerationCollapsed}
+              onCollapse={handleRegisterationCollapse}
             />
-            <IconLabeledItem
-              title="General Liability Waiver"
-              image={DocumentsIcon}
+            <BillsFeesPane
+              collapsed={feesCollapsed}
+              onCollapse={handleFeesCollapse}
             />
-            <IconLabeledItem title="Rider" image={NameTagIcon} />
-            <IconLabeledItem title="View Document" image={FullScreenIcon} />
-            <IconLabeledItem
-              title="View Annex"
-              image={FullScreenIcon}
-              onPress={handleViewAnnex}
+            <BillsTicketsPane
+              collapsed={ticketsCollapsed}
+              onCollapse={handleTicketsCollapse}
             />
-            <StatusHelpItem
-              image={PeopleIcon}
-              title="Who must sign?"
-              content="Riders, trainers, owners, coaches or legal guardians associated with a horse competing in this event."
+            <BillsPaperworkPane
+              collapsed={paperworkCollapsed}
+              onCollapse={handlePaperworkCollapse}
             />
-            <StatusHelpItem
-              image={ErrorIcon}
-              title="Disclaimer"
-              content="By clicking sign, you confirm you have read and agree to the terms and conditions in this document and the attached annex."
+            <BillsGrandTotalPane
+              collapsed={grandTotalCollapsed}
+              onCollapse={handleGrandTotalCollapse}
             />
           </View>
         </ScrollView>
@@ -86,18 +149,14 @@ const UnPaidScreen = ({navigation}) => {
         <View style={styles.BottomButton}>
           <Pressable
             style={[styles.Button, styles.ButtonApply]}
-            onPress={handleSign}>
-            <Text style={[styles.TextStyle, styles.TextApply]}>Sign</Text>
+            onPress={handleSelectPaymentModal}>
+            <Text style={[styles.TextStyle, styles.TextApply]}>pay</Text>
           </Pressable>
         </View>
       </View>
-      <SignSuccessModal
-        modalVisible={showSignSuccessModal}
-        setModalVisible={setShowSignSuccessModal}
-      />
-      <SignViewAnnexModal
-        modalVisible={showSignViewAnnexModal}
-        setModalVisible={setShowSignViewAnnexModal}
+      <SelectPaymentMethodModal
+        modalVisible={showSelectPaymentModal}
+        setModalVisible={setShowSelectPaymentModal}
       />
     </>
   );
@@ -114,6 +173,7 @@ const styles = StyleSheet.create({
     height: 36,
     paddingHorizontal: 24,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   AppbarButton: {
@@ -159,6 +219,93 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 10,
     width: width - 48,
+  },
+  TopButton: {
+    width: 24,
+    height: 24,
+  },
+  TopButtonView: {
+    borderWidth: 1,
+    borderColor: COLOR_FONT_COMMENT,
+    borderRadius: 45,
+    padding: 3,
+  },
+  AppbarTitleView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  PriceView: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: 56,
+    marginVertical: 5,
+  },
+  PriceTextFont: {
+    fontFamily: FONT_BOLD,
+    fontSize: 20,
+    color: COLOR_SKY,
+    lineHeight: 24,
+  },
+  PriceCommentFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 12,
+    color: COLOR_FONT_DEFAULT,
+  },
+  AvatarView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 56,
+    gap: 12,
+    marginVertical: 5,
+  },
+  AvatarImage: {
+    width: 45,
+    height: 45,
+    borderRadius: 45,
+  },
+  AvatarInfoView: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  AvatarTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 12,
+    color: COLOR_FONT_COMMENT,
+  },
+  AvatarContentFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 16,
+    color: COLOR_FONT_DEFAULT,
+  },
+  IconRowView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    height: 56,
+    marginVertical: 5,
+  },
+  IconView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 45,
+    height: 45,
+  },
+  Icon: {
+    width: 24,
+    height: 24,
+  },
+  IconInfoTextFont: {
+    fontFamily: FONT_REGULAR,
+    fontSize: 16,
+    color: COLOR_FONT_DEFAULT,
+    flexWrap: 'wrap',
+    width: width - 140,
+  },
+  Divider: {
+    backgroundColor: COLOR_FONT_DEFAULT,
+    height: 1,
+    marginVertical: 5,
   },
 });
 
