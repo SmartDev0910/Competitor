@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
-import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
 import {
   COLOR_FONT_COMMENT,
   COLOR_FONT_DEFAULT,
   COLOR_PINK,
   COLOR_WHITE,
 } from '../../constants/colors';
-import {FONT_BOLD, FONT_REGULAR} from '../../constants/fonts';
+import { FONT_BOLD, FONT_REGULAR } from '../../constants/fonts';
 import ImageButton from '../../components/home/ImageButton';
 
 import {
@@ -18,17 +18,17 @@ import {
   SearchIcon,
 } from '../../constants/icons';
 import FilterEventsModal from '../../components/home/FilterEventsModal';
-import {MapMarsWinterImage} from '../../constants/images';
+import { MapMarsWinterImage } from '../../constants/images';
 import SearchModal from '../../components/home/SearchModal';
 import MainFragment from './mainFragment';
 import AddressView from './AddressView';
 
 const LicensedTab = () => <MainFragment />;
-const LicensedMapViewTab = () => (
-  <Image source={MapMarsWinterImage} style={styles.MapMarsWinterImage} />
-);
+// const LicensedMapViewTab = () => (
+//   <Image source={MapMarsWinterImage} style={styles.MapMarsWinterImage} />
+// );
 
-// const LicensedMapViewTab = () => <AddressView />;
+const LicensedMapViewTab = () => <AddressView />;
 
 const UnlicensedTab = () => (
   <View style={styles.TabViewWrapper}>
@@ -54,17 +54,17 @@ const FollowTab = () => (
   </View>
 );
 
-function HomeScreen({navigation}) {
+function HomeScreen({ navigation }) {
   const [index, setIndex] = useState(0);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [mapViewVisible, setMapViewVisible] = React.useState(false);
   const [searchModalVisible, setSearchModalVisible] = React.useState(false);
   const [routes] = useState([
-    {key: 'licensed', title: 'Licensed'},
-    {key: 'unlicensed', title: 'Unlicensed'},
-    {key: 'clinics', title: 'Clinics'},
-    {key: 'other', title: 'Other'},
-    {key: 'follow', title: 'Follow'},
+    { key: 'licensed', title: 'Licensed' },
+    { key: 'unlicensed', title: 'Unlicensed' },
+    { key: 'clinics', title: 'Clinics' },
+    { key: 'other', title: 'Other' },
+    { key: 'follow', title: 'Follow' },
   ]);
 
   const renderScene = SceneMap({
@@ -78,10 +78,10 @@ function HomeScreen({navigation}) {
   const renderTabBar = props => (
     <TabBar
       {...props}
-      indicatorStyle={{backgroundColor: COLOR_PINK}}
-      style={{backgroundColor: COLOR_WHITE}}
+      indicatorStyle={{ backgroundColor: COLOR_PINK }}
+      style={{ backgroundColor: COLOR_WHITE }}
       scrollEnabled
-      renderLabel={({route, focused, color}) => (
+      renderLabel={({ route, focused, color }) => (
         <View
           style={{
             flex: 1,
@@ -155,7 +155,7 @@ function HomeScreen({navigation}) {
         </View>
       </View>
       <TabView
-        navigationState={{index, routes}}
+        navigationState={{ index, routes }}
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         onIndexChange={setIndex}
