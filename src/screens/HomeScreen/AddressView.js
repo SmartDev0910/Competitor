@@ -1,14 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Button, StyleSheet, View, Image, Text} from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button, StyleSheet, View, Image, Text } from 'react-native';
 import Geocoder from 'react-native-geocoding';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps'; // remember to import PROVIDER_GOOGLE
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'; // remember to import PROVIDER_GOOGLE
 
-// import { useDispatch } from 'react-redux';
-import {GOOGLE_MAPS_API_KEY} from '../../constants/env';
+import { GOOGLE_MAPS_API_KEY } from '../../constants/env';
 
 Geocoder.init(GOOGLE_MAPS_API_KEY);
 
-const AddressView = ({navigation}) => {
+const AddressView = ({ navigation }) => {
   const [address, setAddress] = useState(
     '26 Lombard Street East, Dublin, Ireland',
   );
@@ -35,11 +34,11 @@ const AddressView = ({navigation}) => {
   }, []);
 
   const onRegionChangeComplete = async region => {
-    const {latitude, longitude} = region;
+    const { latitude, longitude } = region;
 
     try {
       const geo = await Geocoder.from(latitude, longitude).catch(e => {
-        return {status: 'ERROR', results: []};
+        return { status: 'ERROR', results: [] };
       });
       if (geo.results.length > 0) {
         const address = geo.results[0].formatted_address;

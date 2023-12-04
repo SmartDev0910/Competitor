@@ -1,7 +1,7 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Image} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { SafeAreaView, StyleSheet, View, Image } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   HomeScreen,
   EventsScreen,
@@ -86,10 +86,10 @@ import {
   MessagingWeakIcon,
   MessagingSelectedIcon,
 } from '../constants/icons';
-import {UserAvatarImage} from '../constants/images';
-import {COLOR_PINK, COLOR_WHITE} from '../constants/colors';
+import { UserAvatarImage } from '../constants/images';
+import { COLOR_PINK, COLOR_WHITE } from '../constants/colors';
 import Divider from '../components/home/Divider';
-import {ModalProvider} from '../providers/ModalProvider';
+import { ModalProvider } from '../providers/ModalProvider';
 
 const Tab = createBottomTabNavigator();
 
@@ -778,15 +778,12 @@ export default AppStack = () => {
             height: 58,
             elevation: 0,
           },
-          tabBarItemStyle: {
-            marginTop: 27,
-          },
         }}>
         <Tab.Screen
           name="Home"
           component={HomeStackScreen}
           options={{
-            tabBarIcon: ({focused, color, size}) => {
+            tabBarIcon: ({ focused, color, size }) => {
               return (
                 <View style={styles.TabBarIcon}>
                   <Image
@@ -803,7 +800,7 @@ export default AppStack = () => {
           name="Events"
           component={EventsStackScreen}
           options={{
-            tabBarIcon: ({focused, color, size}) => {
+            tabBarIcon: ({ focused, color, size }) => {
               return (
                 <View style={styles.TabBarIcon}>
                   <Image
@@ -820,7 +817,7 @@ export default AppStack = () => {
           name="Notification"
           component={NotificationStackScreen}
           options={{
-            tabBarIcon: ({focused, color, size}) => {
+            tabBarIcon: ({ focused, color, size }) => {
               return (
                 <View style={styles.TabBarIcon}>
                   <View style={styles.DotView} />
@@ -838,7 +835,7 @@ export default AppStack = () => {
           name="Message"
           component={MessageStackScreen}
           options={{
-            tabBarIcon: ({focused, color, size}) => {
+            tabBarIcon: ({ focused, color, size }) => {
               return (
                 <View style={styles.TabBarIcon}>
                   <View style={styles.DotView} />
@@ -856,7 +853,7 @@ export default AppStack = () => {
           name="Nav"
           component={NavStackScreen}
           options={{
-            tabBarIcon: ({focused, color, size}) => {
+            tabBarIcon: ({ focused, color, size }) => {
               return (
                 <View style={styles.TabBarIcon}>
                   <Image

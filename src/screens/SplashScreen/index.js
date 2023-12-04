@@ -9,80 +9,70 @@ const windowHeight = Dimensions.get('window').height;
 
 const SplashScreen = () => {
   const scaleAnim = useRef(new Animated.Value(1)).current;
-  const fadeAnim = useRef(new Animated.Value(1)).current;
-  const marginTopAnim = useRef(new Animated.Value(200)).current;
+  const logoOpacity = useRef(new Animated.Value(1)).current;
+  const textOpacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    Animated.parallel([
-      Animated.sequence([
+    Animated.sequence([
+      Animated.timing(scaleAnim, {
+        toValue: 0.1,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+      Animated.delay(300),
+      Animated.parallel([
         Animated.timing(scaleAnim, {
-          toValue: 0.9,
-          duration: 1000,
+          toValue: 30, //Increase it as per requirement
+          duration: 500,
           useNativeDriver: true,
         }),
-        Animated.timing(scaleAnim, {
-          toValue: windowWidth,
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-      ]),
-      Animated.sequence([
-        Animated.delay(1000),
-        Animated.timing(marginTopAnim, {
-          toValue: -windowHeight / 2,
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(fadeAnim, {
+        Animated.timing(logoOpacity, {
           toValue: 0,
-          duration: 1000,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(textOpacity, {
+          toValue: 0,
+          duration: 200,
           useNativeDriver: true,
         }),
       ]),
     ]).start();
-  }, [fadeAnim, scaleAnim, marginTopAnim]);
+  }, []);
 
   return (
-    <View style={styles.Wrapper}>
-      <Animated.View
+    <View style={styles.container}>
+      <Animated.Image
+        source={BlackLogoImage}
         style={[
-          styles.LogoView,
+          styles.logo,
           {
-            transform: [
-              { scale: scaleAnim },
-              { translateY: marginTopAnim },
-            ],
-            opacity: fadeAnim,
+            transform: [{ scale: scaleAnim }],
+            opacity: logoOpacity,
           },
         ]}
-      >
-        <Image source={BlackLogoImage} style={styles.LogoImage} />
-        <Text style={styles.LogoTextFont}>pegasus</Text>
-      </Animated.View>
+      />
+      <Animated.Text style={[styles.text, { opacity: textOpacity }]}>pegasus</Animated.Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  Wrapper: {
+  container: {
     flex: 1,
     backgroundColor: COLOR_BLACK,
-    flexDirection: 'row',
     justifyContent: 'center',
-  },
-  LogoView: {
-    flexDirection: 'column',
     alignItems: 'center',
   },
-  LogoImage: {
-    width: 130,
-    height: 130,
+  logo: {
+    width: 100,
+    height: 100,
   },
-  LogoTextFont: {
+  text: {
+    marginTop: 40,
     color: COLOR_WHITE,
     fontFamily: FONT_REGULAR,
     fontSize: 24,
-    marginTop: 12,
   },
 });
 
